@@ -1,4 +1,4 @@
-<h1 align='center'>**AIRNESS AIRLINES**</h1>
+<h1 align='center'><b>AIRNESS AIRLINES</b></h1>
 > <center>A Web Application Project for the course **COMP 20093** - *Information Management* from Polytechnic University of the Philippines.</center>
 
 ---
