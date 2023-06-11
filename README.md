@@ -10,7 +10,9 @@ To install all dependencies, run:
 The application requires `db.yaml` to be created on your local machine to connect to your own MySQL server. 
 
 **db.yaml** should contain:
-- HOSTNAME: `<your-host-name>`
-- DB_USER: `<your-db-user>`
-- DB_PASS: `<your-password>`
-- DB_NAME: `<your-db-name>`
+| KEY | VALUE
+---------------------------------
+| HOSTNAME: | `<your-host-name>` |
+| DB_USER: | `<your-db-user>` |
+| DB_PASS: | `<your-password>` |
+| DB_NAME: | `<your-db-name>` |
