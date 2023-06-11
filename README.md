@@ -19,6 +19,7 @@ The application requires `db.yaml` to be created on your local machine to connec
 
 To create the database needed in the application, run the following SQL queries in any of your preferred workbench or SQL editor:
 
+**Passengers Table**
 ~~~~sql
 CREATE TABLE passengers (
   PassengerId CHAR(4),
@@ -32,7 +33,10 @@ CREATE TABLE passengers (
   AgeGroup CHAR(6) NOT NULL,
   PRIMARY KEY (PassengerId)
 );
+~~~~
 
+**Flights Table**
+~~~~sql
 CREATE TABLE flights (
   FlightNo CHAR(7),
   ETA DATE NOT NULL,
@@ -42,7 +46,10 @@ CREATE TABLE flights (
   Destination VARCHAR(70) NOT NULL,
   PRIMARY KEY (FlightNo)
 );
+~~~~
 
+**Tickets Table**
+~~~~sql
 CREATE TABLE tickets (
   TicketId CHAR(4),
   AccountName VARCHAR(70) NOT NULL,
@@ -54,9 +61,13 @@ CREATE TABLE tickets (
   TotalFare DECIMAL(10, 2) NOT NULL,
   FlightNo CHAR(7) NOT NULL,
   FlightDate DATE NOT NULL,
-  PRIMARY KEY (TicketId)
+  PRIMARY KEY (TicketId),
+  FOREIGN KEY (FlightNo) REFERENCES flights(FlightNo)
 );
+~~~~
 
+**Seats Table**
+~~~~sql
 CREATE TABLE seats (
   SeatId CHAR(4),
   AirlineClass CHAR(8) NOT NULL,
@@ -64,3 +75,17 @@ CREATE TABLE seats (
   PRIMARY KEY (SeatId)
 );
 ~~~~
+
+**RESERVATIONS Table *(master table)***
+~~~~sql
+CREATE TABLE reservations (
+  PassengerId CHAR(4),
+  TicketId CHAR(4),
+  SeatId CHAR(4),
+  PRIMARY KEY (PassengerId, TicketId, SeatId),
+  FOREIGN KEY PassengerId REFERENCES passengers(PassengerId),
+  FOREIGN KEY TicketId REFERENCES tickets(TicketId),
+  FOREIGN KEY SeatId REFERENCES seats(SeatId)
+);
+~~~~
+
