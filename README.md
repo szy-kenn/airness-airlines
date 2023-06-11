@@ -1,4 +1,4 @@
-`<h1 align='center'><span color='gold'>AIRNESS</span> AIRLINES</h1>`
+<p align='center'><span color='gold'>AIRNESS</span> AIRLINES</p>
 
 > <center>A Web Application Project for the course **COMP 20093** - *Information Management* from Polytechnic University of the Philippines.</center>
 
