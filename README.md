@@ -1,6 +1,7 @@
 <h1 align='center'><b>AIRNESS AIRLINES</b></h1>
 <h3 align='center'>A Web Application Project for the course <b>COMP 20093 - Information Management<b> from Polytechnic University of the Philippines.</h3>
 
+~~~
   
 ## Dependencies
 To install all dependencies, run:  
