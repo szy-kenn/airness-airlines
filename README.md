@@ -19,6 +19,6 @@ The application requires `db.yaml` to be created on your local machine to connec
 
 To create the database needed in the application, run the following SQL queries in any of your preferred workbench or SQL editor:
 
-```SQL
-CREATE TABLE
-```
+~~~~sql
+CREATE TABLE passengers
+~~~~
