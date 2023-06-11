@@ -7,8 +7,7 @@
 To install all dependencies, run:  
 `pip install -r requirements.txt`
 
-The application requires `db.yaml` to be created on your local machine to connect  
-to your own MySQL server. 
+The application requires `db.yaml` to be created on your local machine to connect to your own MySQL server. 
 
 **db.yaml** should contain:
 - HOSTNAME: `<your-host-name>`
