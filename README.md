@@ -12,7 +12,7 @@ The application requires `db.yaml` to be created on your local machine to connec
 **db.yaml** should contain:
 |  **KEY**  |      **VALUE**     |
 |-----------|--------------------|
-| HOSTNAME: |  <your-host-name>  |
-| DB_USER:  |  <your-db-user>    |
-| DB_PASS:  |  <your-password>   |
-| DB_NAME:  |  <your-db-name>    |
+| HOSTNAME: | *<your-host-name>* |
+| DB_USER:  | *<your-db-user>*   |
+| DB_PASS:  | *<your-password>*  |
+| DB_NAME:  | *<your-db-name>*   |
