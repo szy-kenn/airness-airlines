@@ -1,4 +1,4 @@
-<p align='center'><span style='color: gold'>AIRNESS</span> AIRLINES</p>
+<p align='center'><span style="color: yellow">AIRNESS</span> AIRLINES</p>
 
 > <center>A Web Application Project for the course **COMP 20093** - *Information Management* from Polytechnic University of the Philippines.</center>
 
