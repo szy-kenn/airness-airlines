@@ -1,5 +1,4 @@
-<p align='center'> <span style="color:red"> AIRNESS </span> AIRLINES</p>
-<font color="red">This text is red!</font>
+<h1 align='center'>**AIRNESS AIRLINES**</h1>
 > <center>A Web Application Project for the course **COMP 20093** - *Information Management* from Polytechnic University of the Philippines.</center>
 
 ---
