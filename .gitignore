@@ -1,0 +1,8 @@
+# virtual env
+/.venv
+
+# python compiled code
+.pyc
+
+# db info
+db.yaml
