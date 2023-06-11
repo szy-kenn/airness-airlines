@@ -1,12 +1,11 @@
 <h1 align='center'><b>AIRNESS AIRLINES</b></h1>
 <h2 align='center'>A Web Application Project for the course <b>COMP 20093 - Information Management<b> from Polytechnic University of the Philippines.</h2>
 
----
-
 ## Dependencies
 To install all dependencies, run:  
 `pip install -r requirements.txt`
 
+## Database Configuration File
 The application requires `db.yaml` to be present on your local machine to connect to your own MySQL server. 
 
 **db.yaml** should contain:
@@ -17,6 +16,8 @@ The application requires `db.yaml` to be present on your local machine to connec
 | DB_PASS:  |  *your-password*   |
 | DB_NAME:  |  *your-db-name*    |
 
+  
+## Database Structure
 To create the database needed in the application, run the following SQL queries in any of your preferred workbench or SQL editor:
 
 **Passengers Table**
