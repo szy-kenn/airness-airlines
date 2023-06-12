@@ -22,6 +22,8 @@ The application requires `db.yaml` to be present on your local machine to connec
 ## Database Structure
 To create the database needed in the application, run the following SQL queries in any of your preferred workbench or SQL editor:
 
+*(make sure to run the query separately to not cause circular or invalid references)*
+
 **Passengers Table**
 ~~~~sql
 CREATE TABLE passengers (
