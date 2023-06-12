@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+    {% for airport, iata in results.items() %}
+    <tr>
+        <td>{{ airport }}</td>
+        <td>{{ iata }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

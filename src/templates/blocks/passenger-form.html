@@ -6,16 +6,16 @@
         <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 0)">–</button>
         <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-adult" name="passenger-adult" readonly>
         <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 0)">+</button>
-        <div class="passenger-form__container__airline-class">
-            <input type="text" class="airline-class--selected" name="airline-class1" value="Economy" onclick="showChoices(0)" readonly>
-            <div class="airline-class__group-choices">
-                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'Economy')">
+        <div class="with-dropdown-select passenger-form__container__airline-class">
+            <input type="text" class="with-dropdown-select__input airline-class--selected" name="airline-class1" value="Economy" onclick="showChoices('airline-class', 0)" readonly>
+            <div class="with-dropdown-select__container airline-class__group-choices">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'Economy')">
                     <p>Economy</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'Business')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'Business')">
                     <p>Business</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'First-Class')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'First-Class')">
                     <p>First-Class</p>
                 </div>
             </div>
@@ -27,16 +27,16 @@
         <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 1)">–</button>
         <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-children" name="passenger-children" readonly>
         <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 1)">+</button>
-        <div class="passenger-form__container__airline-class">
-            <input type="text" class="airline-class--selected" name="airline-class2" value="Economy" onclick="showChoices(1)" readonly>
-            <div class="airline-class__group-choices">
-                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'Economy')">
+        <div class="with-dropdown-select passenger-form__container__airline-class">
+            <input type="text" class="with-dropdown-select__input airline-class--selected" name="airline-class2" value="Economy" onclick="showChoices('airline-class', 1)" readonly>
+            <div class="with-dropdown-select__container airline-class__group-choices">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(1, 'Economy')">
                     <p>Economy</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'Business')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(1, 'Business')">
                     <p>Business</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'First-Class')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(1, 'First-Class')">
                     <p>First-Class</p>
                 </div>
             </div>
@@ -48,16 +48,16 @@
         <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 2)">–</button>
         <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-infant" name="passenger-infant" readonly>
         <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 2)">+</button>
-        <div class="passenger-form__container__airline-class">
-            <input type="text" class="airline-class--selected" name="airline-class3" value="Economy" onclick="showChoices(2)" readonly>
-            <div class="airline-class__group-choices">
-                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'Economy')">
+        <div class="with-dropdown-select passenger-form__container__airline-class">
+            <input type="text" class="with-dropdown-select__input airline-class--selected" name="airline-class3" value="Economy" onclick="showChoices('airline-class', 2)" readonly>
+            <div class="with-dropdown-select__container airline-class__group-choices">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(2, 'Economy')">
                     <p>Economy</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'Business')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(2, 'Business')">
                     <p>Business</p>
                 </div>
-                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'First-Class')">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(2, 'First-Class')">
                     <p>First-Class</p>
                 </div>
             </div>

@@ -12,13 +12,28 @@
 <div class="form-container">
     <form method="POST">
         <div class="flight-location-form">
-            <div class="from">
-                <!-- <span>From</span> -->
-                <input type="text" name="from" id="from-flight-location">
+            <div class="with-dropdown-select from">
+                <div class="flight-location-input__container">
+                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="from" id="from-flight-location" onclick="showChoices('airport', 0)">
+                </div>
+                <div class="with-dropdown-select__container flight-location-form__container">
+                    <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
+                        <p>MNL</p>
+                    </div> -->
+                </div>
             </div>
-            <div class="to">
-                <!-- <span>To</span> -->
-                <input type="text" name="to" id="to-flight-location">
+            <button class="swap-btn" type="button">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            </button>
+            <div class="with-dropdown-select to">
+                <div class="flight-location-input__container">
+                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="to" id="to-flight-location"  onclick="showChoices('airport', 1)">
+                </div>
+                <div class="with-dropdown-select__container flight-location-form__container">
+                    <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
+                        <p>MNL</p>
+                    </div> -->
+                </div>
             </div>
         </div>
         <div class="flight-date-form">
@@ -27,7 +42,7 @@
             </div>
         </div>
         {% include 'blocks/passenger-form.html' %}
-        <button type="submit" class="form-btn">Submit</button>
+        <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
     </form>
 </div>
 

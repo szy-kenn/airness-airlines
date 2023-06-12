@@ -31,7 +31,9 @@ def create_app():
 
     # ===========| BLUEPRINT REGISTRATION |=========== #
     from .views import view
+    from .api import api
 
     app.register_blueprint(view, url_prefix='/')
+    app.register_blueprint(api, url_prefix='/api')
 
     return app
