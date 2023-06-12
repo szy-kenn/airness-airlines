@@ -3,9 +3,10 @@
 
 # python compiled code
 .pyc
+src/__pycache__/.pyc
 
 # db info
 db.yaml
 
 # css map
-.map
+src/static/css/.map
