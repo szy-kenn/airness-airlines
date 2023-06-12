@@ -1,0 +1,9 @@
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition-ease($speed) {
+    transition: all $speed ease-in-out;
+}

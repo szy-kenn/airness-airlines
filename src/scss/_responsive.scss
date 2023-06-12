@@ -1,0 +1,10 @@
+@media screen and (max-width: 40rem) {
+    .passenger-form {
+        display: flex;
+        color: orange;
+
+        &__container {
+            display: block;
+        }
+    }
+}
