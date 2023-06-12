@@ -1,0 +1,90 @@
+.flight-location-form {
+    @include flex;
+    
+    div {
+        position: relative;
+        @include font($primary-font, 1rem, 400, $primary-button);
+        height: 2.5rem;
+        border: 1px solid $lighter-primary-button;
+        padding: 0.2rem;
+
+        input {
+            display: inline;
+            width: 150px;
+            height: 1.5rem;
+            margin-top: 10px;
+            margin-left: 5px;
+            outline: none;
+            border: none;
+            @include font($primary-font, 1rem, 400, $primary-button);
+        }
+    }
+
+    .from {
+
+        border-radius: 10px 0 0 10px;
+        
+        input {
+            border-radius: 10px 0 0 10px;
+        }
+
+        &::before {
+            content: 'From';
+            position: absolute;
+            pointer-events: none;
+            font-size: 1rem;
+            top: 30%;
+            bottom: 0;
+            left: 10%;
+            right: 0;
+            @include transition-ease(0.1s, ease-out);
+        }
+
+        &.focused::before {
+            content: 'From';
+            position: absolute;
+            pointer-events: none;
+            font-size: 0.7rem;
+            font-weight: 300;
+            top: 10%;
+            bottom: 0;
+            left: 5%;
+            right: 0;
+            @include transition-ease(0.1s, ease-out);
+        }
+    }
+
+    .to {
+
+        border-radius: 0 10px 10px 0;
+
+        input {
+            border-radius: 0 10px 10px 0;
+        }
+
+        &::before {
+            content: 'To';
+            position: absolute;
+            pointer-events: none;
+            font-size: 1rem;
+            top: 30%;
+            bottom: 0;
+            left: 10%;
+            right: 0;
+            @include transition-ease(0.1s, ease-out);
+        }
+
+        &.focused::before {
+            content: 'To';
+            position: absolute;
+            pointer-events: none;
+            font-size: 0.7rem;
+            font-weight: 300;
+            top: 10%;
+            bottom: 0;
+            left: 5%;
+            right: 0;
+            @include transition-ease(0.1s, ease-out);
+        }
+    }
+}

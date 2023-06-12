@@ -30,11 +30,12 @@ a,
 }
 
 .passenger-form {
-  display: inline;
-  position: absolute;
   font-family: "Montserrat";
+  font-size: 1rem;
   font-weight: bold;
-  padding: 1rem 1rem;
+  color: #000000;
+  display: inline;
+  position: relative;
 }
 .passenger-form::-webkit-inner-spin-button, .passenger-form::-webkit-outer-spin-button {
   display: none;
@@ -52,17 +53,20 @@ a,
   cursor: pointer;
 }
 .passenger-form__container .age-group-label {
+  font-family: "Montserrat";
   font-size: 1rem;
-  font-weight: 100;
+  font-weight: 400;
+  color: #000000;
   width: 100px;
   display: inline-block;
 }
 .passenger-form__container__passenger-count {
-  padding-left: 13px;
-  font-size: 1.2rem;
   font-family: "Montserrat";
-  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
   color: #9b1297;
+  padding-left: 13px;
+  text-align: center;
   width: 1.75rem;
   border: none;
 }
@@ -77,10 +81,11 @@ a,
   border: none;
   border-radius: 30px;
   text-align: center;
+  font-family: "Montserrat";
   font-size: 1.25rem;
   font-weight: 400;
-  background: #9b1297;
   color: #ffffff;
+  background: #9b1297;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
@@ -96,6 +101,8 @@ a,
 .passenger-form__container__airline-class .airline-class--selected {
   font-family: "Montserrat";
   font-size: 1rem;
+  font-weight: 400;
+  color: #000000;
   text-align: center;
   width: 7rem;
   padding: 0.6rem 0.6rem;
@@ -120,9 +127,115 @@ a,
 .passenger-form__container__airline-class .airline-class__group-choices p {
   text-align: center;
   padding: 1rem;
-  font-weight: 100;
+  font-weight: 400;
 }
 .passenger-form__container__airline-class .airline-class__group-choices div:hover {
   background: rgba(155, 18, 151, 0.5);
   color: #ffffff;
+}
+
+.flight-location-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flight-location-form div {
+  position: relative;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9b1297;
+  height: 2.5rem;
+  border: 1px solid #b399b0;
+  padding: 0.2rem;
+}
+.flight-location-form div input {
+  display: inline;
+  width: 150px;
+  height: 1.5rem;
+  margin-top: 10px;
+  margin-left: 5px;
+  outline: none;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9b1297;
+}
+.flight-location-form .from {
+  border-radius: 10px 0 0 10px;
+}
+.flight-location-form .from input {
+  border-radius: 10px 0 0 10px;
+}
+.flight-location-form .from::before {
+  content: "From";
+  position: absolute;
+  pointer-events: none;
+  font-size: 1rem;
+  top: 30%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  transition: all 0.1s ease-out;
+}
+.flight-location-form .from.focused::before {
+  content: "From";
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.7rem;
+  font-weight: 300;
+  top: 10%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  transition: all 0.1s ease-out;
+}
+.flight-location-form .to {
+  border-radius: 0 10px 10px 0;
+}
+.flight-location-form .to input {
+  border-radius: 0 10px 10px 0;
+}
+.flight-location-form .to::before {
+  content: "To";
+  position: absolute;
+  pointer-events: none;
+  font-size: 1rem;
+  top: 30%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  transition: all 0.1s ease-out;
+}
+.flight-location-form .to.focused::before {
+  content: "To";
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.7rem;
+  font-weight: 300;
+  top: 10%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  transition: all 0.1s ease-out;
+}
+
+.form-container {
+  display: inline-block;
+  padding: 1rem 1rem;
+}
+
+.form-btn {
+  position: relative;
+  font-family: "Montserrat";
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background: #5d478b;
+  box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
 }/*# sourceMappingURL=main.css.map */

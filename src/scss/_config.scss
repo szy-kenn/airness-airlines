@@ -4,6 +4,13 @@
     align-items: center;
 }
 
-@mixin transition-ease($speed) {
-    transition: all $speed ease-in-out;
+@mixin transition-ease($speed, $transition: ease-in-out) {
+    transition: all $speed $transition;
+}
+
+@mixin font($font-family, $font-size, $weight, $color: $primary-color) {
+    font-family: $font-family;
+    font-size: $font-size;
+    font-weight: $weight;
+    color: $color;
 }

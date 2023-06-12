@@ -1,123 +1,17 @@
-@import "../scss/_reset", "../scss/colors", "../scss/global", "../scss/config", "../scss/responsive";
+@import "../scss/_reset", "../scss/variables", "../scss/global", "../scss/config", "../scss/responsive", "../scss/passenger-form", "../scss/flight-form";
 
-.passenger-container {
-
-    h3, div {
-        padding: 0.25rem 0;
-    }
+.form-container {
+    display: inline-block;
+    padding: 1rem 1rem;
 }
 
-.passenger-form {
-
-    display: inline;
-    position: absolute;
-    font-family: 'Montserrat';
-    font-weight: bold;
-    padding: 1rem 1rem;
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-        display: none;
-    }
-
-    &__container {
-        @include flex;
-        height: 4rem;
-
-        i {
-            color: $primary-button;
-            display: inline-block;
-            transform: scale(1.25);
-            cursor: pointer;
-        }
-
-        .age-group-label {
-            font-size: 1rem;
-            font-weight: 100;
-            width: clamp(50px, 100px, 125px);
-            display: inline-block;
-        }
-
-        &__passenger-count {
-            padding-left: clamp(1px, 13px, 13px);
-            font-size: 1.2rem;
-            font-family: 'Montserrat';
-            text-align: center;
-            color: $primary-button;
-            width: clamp(1.3rem, 1.75rem, 1.75rem);
-            border: none;
-
-            &:focus {
-                outline: none;
-                border: none;
-            }
-        }
-
-        &__btn {
-            margin: 0 clamp(0.25rem, 2vw, 1.25rem);
-            width: 2.5rem;
-            height: 2.5rem;
-            border: none;
-            border-radius: 30px;
-            text-align: center;
-            font-size: 1.25rem;
-            font-weight: 400;
-            background: $primary-button;
-            color: $secondary-color;
-            cursor: pointer;
-            @include transition-ease(0.1s);
-    
-            &:disabled {
-                color: white;
-                background: $lighter-primary-button;
-                @include transition-ease(0.1s);
-            }
-        }
-        
-        &__airline-class {
-            
-            position: relative;
-            transform: translateY(4.9rem);
-
-            .airline-class--selected {
-                font-family: 'Montserrat';
-                font-size: 1rem;
-                text-align: center;
-                width: 7rem;
-                padding: 0.6rem 0.6rem;
-                border-radius: 5px;
-                border: 1px solid $lighter-primary-button;
-
-                &:focus {
-                    outline: 1px solid $primary-button;
-                }
-            }
-
-            .airline-class__group-choices {
-
-                position: relative;
-                display: block;
-                background: $secondary-color;
-                margin: 5px 0;
-                border: 1px solid $lighter-primary-button;
-                border-radius: 5px;
-                opacity: 0;
-                pointer-events: none;
-                cursor: pointer;
-                @include transition-ease(0.1s);
-
-                p {
-                    text-align: center;
-                    padding: 1rem;
-                    font-weight: 100;
-                }
-
-                div:hover {
-                    // fix border radius in top and bottom
-                    background: rgba($primary-button, 0.5);
-                    color: $secondary-color;
-                }
-            }
-        }
-    }
+.form-btn {
+    position: relative;
+    @include font($primary-font, 0.85rem, 700, $secondary-color);
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: $secondary-button;
+    box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
 }

@@ -3,7 +3,7 @@
 
 # python compiled code
 .pyc
-src/__pycache__/.pyc
+src/__pycache__/
 
 # db info
 db.yaml

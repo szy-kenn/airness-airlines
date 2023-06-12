@@ -1,0 +1,66 @@
+<div class="passenger-form">
+    <h3>Passengers</h3>
+    <div class="passenger-form__container">
+        <label for="passenger-adult" class="age-group-label">Adult</label>
+        <i class="fa-sharp fa-solid fa-circle-info"></i>
+        <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 0)">–</button>
+        <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-adult" name="passenger-adult" readonly>
+        <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 0)">+</button>
+        <div class="passenger-form__container__airline-class">
+            <input type="text" class="airline-class--selected" name="airline-class1" value="Economy" onclick="showChoices(0)" readonly>
+            <div class="airline-class__group-choices">
+                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'Economy')">
+                    <p>Economy</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'Business')">
+                    <p>Business</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(0, 'First-Class')">
+                    <p>First-Class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="passenger-form__container">
+        <label for="passenger-childen" class="age-group-label">Children</label>
+        <i class="fa-sharp fa-solid fa-circle-info"></i>
+        <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 1)">–</button>
+        <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-children" name="passenger-children" readonly>
+        <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 1)">+</button>
+        <div class="passenger-form__container__airline-class">
+            <input type="text" class="airline-class--selected" name="airline-class2" value="Economy" onclick="showChoices(1)" readonly>
+            <div class="airline-class__group-choices">
+                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'Economy')">
+                    <p>Economy</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'Business')">
+                    <p>Business</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(1, 'First-Class')">
+                    <p>First-Class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="passenger-form__container">
+        <label for="passenger-childen" class="age-group-label">Infant</label>
+        <i class="fa-sharp fa-solid fa-circle-info"></i>
+        <button class="passenger-form__container__btn btn-down" type="button" onclick="passengerBtnOnClick('down', 2)">–</button>
+        <input type="number" class="passenger-form__container__passenger-count" min="0" max="9" value=0 id="passenger-infant" name="passenger-infant" readonly>
+        <button class="passenger-form__container__btn btn-up" type="button" onclick="passengerBtnOnClick('up', 2)">+</button>
+        <div class="passenger-form__container__airline-class">
+            <input type="text" class="airline-class--selected" name="airline-class3" value="Economy" onclick="showChoices(2)" readonly>
+            <div class="airline-class__group-choices">
+                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'Economy')">
+                    <p>Economy</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'Business')">
+                    <p>Business</p>
+                </div>
+                <div class="airline-class--choices" onclick="selectAirlineClass(2, 'First-Class')">
+                    <p>First-Class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

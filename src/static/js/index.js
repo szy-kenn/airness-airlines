@@ -1,3 +1,6 @@
+/******************
+ * PASSENGER FORM *
+ ******************/
 const passengerCount = document.querySelectorAll('.passenger-form__container__passenger-count');
     // passengerCount[0] = adult, [1] = children, [2] = infant
 const btnDown = document.querySelectorAll('.btn-down');
@@ -87,4 +90,27 @@ for (let i = 0; i < airlineClassSelected.length; i++) {
 
 btnStateUpdate();
 
+/******************
+ *  FLIGHTS FORM  *
+ ******************/
+
+const fromLocation = document.getElementById("from-flight-location");
+const toLocation = document.getElementById("to-flight-location");
+const fromDiv = document.querySelector(".from");
+const toDiv = document.querySelector(".to");
+
+function flightFormUpdate(event, element) {
+    if (event.type === 'focus') {
+        element.classList.add('focused');
+    } else if (event.type === 'blur') {
+        element.classList.remove('focused');
+        // check if the input is valid
+        event.target.value = '';
+    }
+}
+
+fromLocation.addEventListener("focus", event => flightFormUpdate(event, fromDiv))
+fromLocation.addEventListener("blur", event => flightFormUpdate(event, fromDiv))
+toLocation.addEventListener("focus", event => flightFormUpdate(event, toDiv))
+toLocation.addEventListener("blur", event => flightFormUpdate(event, toDiv))
 
