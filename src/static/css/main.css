@@ -42,9 +42,10 @@ a,
 }
 .passenger-form__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   height: 4rem;
+  padding: 0 1rem;
 }
 .passenger-form__container i {
   color: #5d478b;
@@ -57,7 +58,7 @@ a,
   font-size: 1rem;
   font-weight: 400;
   color: #000000;
-  width: 100px;
+  width: 75px;
   display: inline-block;
 }
 .passenger-form__container__passenger-count {
@@ -403,7 +404,7 @@ a,
   color: #ffffff;
   position: absolute;
   z-index: 4;
-  top: 0.5rem;
+  top: 2.15rem;
   left: calc(50% - 1rem);
   right: 0;
   bottom: 0;

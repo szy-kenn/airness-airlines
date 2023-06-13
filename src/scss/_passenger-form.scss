@@ -17,8 +17,10 @@
     }
 
     &__container {
-        @include flex;
+        @include flex(space-evenly);
         height: 4rem;
+        // border: 1px solid black;
+        padding: 0 1rem;
 
         i {
             color: $primary-button;
@@ -29,7 +31,7 @@
 
         .age-group-label {
             @include font($primary-font, 1rem, 400);
-            width: clamp(50px, 100px, 125px);
+            width: clamp(50px, 75px, 100px);
             display: inline-block;
         }
 
