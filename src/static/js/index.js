@@ -221,12 +221,13 @@ function searchAirport(inputSourceIdx, substring) {
                     data['iso_country'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['municipality'][i].toLowerCase().includes(substring.toLowerCase())
                     ) {
-                        createChoice(inputSourceIdx, 
-                            data['name'][i],
-                            data['iata'][i],
-                            data['iso_country'][i], 
-                            data['municipality'][i], filtered);
-                        filtered++;
+                        if ((inputSourceIdx === 1 && fromLocation.value !== data['iata'][i]) ||
+                            inputSourceIdx === 0) {
+                                createChoice(inputSourceIdx, data['name'][i],
+                                            data['iata'][i], data['iso_country'][i], 
+                                            data['municipality'][i], filtered);
+                                filtered++;
+                            }
                 }
                 i++;
             }
