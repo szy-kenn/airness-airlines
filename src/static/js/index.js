@@ -252,6 +252,11 @@ function searchAirport(inputSourceIdx, substring) {
 
 }
 
+function invalidInput(event, element) {
+    event.preventDefault();
+    element.classList.add('invalid');
+}
+
 fromLocation.addEventListener("focus", event => flightFormUpdate(event, fromContainer));
 fromLocation.addEventListener("blur", event => flightFormUpdate(event, fromContainer));
 toLocation.addEventListener("focus", event => flightFormUpdate(event, toContainer));
@@ -262,10 +267,13 @@ toLocation.addEventListener("input", () => searchAirport(1, toLocation.value));
 fromLocation.addEventListener("invalid", event => invalidInput(event, fromContainer))
 toLocation.addEventListener("invalid", event => invalidInput(event, toContainer))
 
-function invalidInput(event, element) {
-    event.preventDefault();
-    element.classList.add('invalid');
+if (toLocation.value !== ' ') {
+    toContainer.classList.add('focused');
 }
+if (fromLocation.value !== ' ') {
+    fromContainer.classList.add('focused');
+}
+
 
 /******************
  *   FORM SUBMIT  *
@@ -273,17 +281,10 @@ function invalidInput(event, element) {
 
 const formPg1 = document.getElementById("form-pg-1");
 
-function validateForm(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const data_list = [...data.entries()];
+// function validateForm(event) {
+//     event.preventDefault();
+//     const data = new FormData(event.target);
+//     const data_list = [...data.entries()];
+// }
 
-    // if (data_list[0][1] === data_list[1][1]) {
-    //     invalidInput(toContainer, toContainer, 1)
-    //     // FROM and TO are same values
-    // } else if (data_list[2][1] === 0) {
-    //     // adult passenger count is 0
-    // }
-}
-
-formPg1.addEventListener("submit", event => validateForm(event));
+// formPg1.addEventListener("submit", event => validateForm(event));
