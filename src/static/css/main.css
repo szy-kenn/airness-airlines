@@ -42,7 +42,7 @@ a,
 }
 .passenger-form__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 4rem;
 }
@@ -113,7 +113,7 @@ a,
 
 .flight-location-form {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   padding: 1.25rem 0;
@@ -184,6 +184,7 @@ a,
 .flight-location-form div input {
   width: 12rem;
   height: 2.75rem;
+  padding-top: 0.75rem;
   outline: none;
   border: none;
   text-align: left;
@@ -210,7 +211,7 @@ a,
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
-  top: 32.5%;
+  top: 35%;
   bottom: 0;
   left: 5%;
   right: 0;
@@ -222,7 +223,7 @@ a,
   pointer-events: none;
   font-size: 0.7rem;
   font-weight: 300;
-  top: 5%;
+  top: 15%;
   bottom: 0;
   left: 5%;
   right: 0;
@@ -269,7 +270,7 @@ a,
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
-  top: 32.5%;
+  top: 35%;
   bottom: 0;
   left: 2rem;
   right: 0;
@@ -281,7 +282,7 @@ a,
   pointer-events: none;
   font-size: 0.7rem;
   font-weight: 300;
-  top: 5%;
+  top: 15%;
   bottom: 0;
   left: 2rem;
   right: 0;
@@ -310,6 +311,65 @@ a,
 }
 .flight-location-form #to.invalid .flight-location-input__container {
   border: 2px solid rgb(245, 67, 67);
+}
+
+.flight-date-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1.25em 0;
+  margin: 0;
+  z-index: 1;
+}
+.flight-date-form .flight-date-form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5d478b;
+  width: 100%;
+}
+.flight-date-form .flight-date-form__container__input {
+  width: 12rem;
+  height: 2.75rem;
+  padding-top: 0.75rem;
+  outline: none;
+  border: none;
+  text-align: left;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 400;
+  color: #5d478b;
+}
+.flight-date-form div:nth-child(1) {
+  border-radius: 10px 0 0 10px;
+}
+.flight-date-form div:nth-child(1)::before {
+  content: "Depart";
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.7rem;
+  font-weight: 300;
+  top: 15%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  transition: all 0.15s ease-out;
+}
+.flight-date-form div:nth-child(2) {
+  border-radius: 0 10px 10px 0;
+}
+.flight-date-form div:nth-child(2)::before {
+  content: "Return";
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.7rem;
+  font-weight: 300;
+  top: 15%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  transition: all 0.15s ease-out;
 }
 
 .form-container {

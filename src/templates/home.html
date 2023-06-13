@@ -36,11 +36,16 @@
                 </div>
             </div>
         </div>
+
         <div class="flight-date-form">
-            <div>
-                <p>Departure Date</p>
+            <div class="with-dropdown-select flight-date-form__container">
+                <input type="date" tabindex="0" min="2023-06-13" max="2024-06-13" value="2023-06-13" class="with-dropdown-select__input flight-date-form__container__input" name="departure-date" id="departureDate" required="">
+            </div>
+            <div class="with-dropdown-select flight-date-form__container">
+                <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" name="return-date" id="returnDate" disabled>
             </div>
         </div>
+
         {% include 'blocks/passenger-form.html' %}
         <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
     </form>
