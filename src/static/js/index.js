@@ -49,6 +49,9 @@ function btnStateUpdate() {
             btnDown[idx].disabled = true;
         } else {
             btnDown[idx].disabled = false;
+            if (idx === 0 && parseInt(passengerCount[idx].value) === 1) {
+                btnDown[idx].disabled = true;
+            }
         }
 
     }
