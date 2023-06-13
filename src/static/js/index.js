@@ -267,13 +267,14 @@ toLocation.addEventListener("input", () => searchAirport(1, toLocation.value));
 fromLocation.addEventListener("invalid", event => invalidInput(event, fromContainer))
 toLocation.addEventListener("invalid", event => invalidInput(event, toContainer))
 
-if (toLocation.value !== ' ') {
-    toContainer.classList.add('focused');
-}
-if (fromLocation.value !== ' ') {
-    fromContainer.classList.add('focused');
-}
-
+setTimeout(() => {
+    if (toLocation.value !== '') {
+        toContainer.classList.add('focused');
+    }
+    if (fromLocation.value !== '') {
+        fromContainer.classList.add('focused');
+    }
+}, 100);
 
 /******************
  *   FORM SUBMIT  *
