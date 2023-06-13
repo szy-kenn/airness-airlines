@@ -2,6 +2,9 @@
 <h3 align='center'>A Web Application Project for the course <b>COMP 20093 - Information Management</b> from Polytechnic University of the Philippines.</h3>
 
 ---
+
+## Web Application Structure
+![Web Application Structure](/assets/img/structure.png "Web Application Structure")
   
 ## Dependencies
 To install all dependencies, run:  
