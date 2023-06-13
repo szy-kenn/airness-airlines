@@ -1,6 +1,7 @@
 .flight-location-form {
     @include flex;
     position: relative;
+    padding: 1.25rem 0;
     z-index: 2;
     // transform: translateX(100%);
   
@@ -9,7 +10,7 @@
         display: block;
         position: fixed;
         background: $secondary-color;
-        border: 1px solid $primary-button;
+        // border: 1px solid $primary-button;
         border-radius: 10px;
         max-height: 20rem;
         overflow-y: scroll;
@@ -59,8 +60,10 @@
                 @include font($primary-font, 0.9rem, 700, $secondary-color);
             }
 
-            &:hover, &.first-choice {
-                background: rgba($primary-button, 0.6);
+            &:hover {
+                
+                background: rgba($primary-button, 1);
+
                 p {
                     color: $secondary-color;
                 }
@@ -83,7 +86,7 @@
         }
     }
 
-    .from {
+    #from {
         border-radius: 10px 0 0 10px;
         
         .flight-location-input__container {
@@ -102,7 +105,7 @@
             position: absolute;
             pointer-events: none;
             font-size: 1rem;
-            top: 15%;
+            top: 32.5%;
             bottom: 0;
             left: 5%;
             right: 0;
@@ -125,10 +128,32 @@
             .flight-location-input__container {
                 border: 2px solid $primary-button;
             }
+
+        }
+        &.invalid {
+            &::before {
+                color: $invalid-color;
+            }
+            &::after {
+                content: "This field is required";
+                position: absolute;
+                @include font($primary-font, 0.8rem, 300, $invalid-color);
+                top: 100%;
+                bottom: 0;
+                left: 5%;
+                right: 0;
+                z-index: -1;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
+            }
+            
+            .flight-location-input__container {
+                border: 2px solid $invalid-color;
+            }
         }
     }
 
-    .to {
+    #to {
 
         border-radius: 0 10px 10px 0;
 
@@ -148,7 +173,7 @@
             position: absolute;
             pointer-events: none;
             font-size: 1rem;
-            top: 15%;
+            top: 32.5%;
             bottom: 0;
             left: 2rem;
             right: 0;
@@ -173,7 +198,29 @@
             .flight-location-input__container {
                 border: 2px solid $primary-button;
             }
+        }
 
+        &.invalid {
+            &::before {
+                color: $invalid-color;
+            }
+
+            &::after {
+                content: 'This field is required';
+                position: absolute;
+                @include font($primary-font, 0.8rem, 300, $invalid-color);
+                top: 100%;
+                bottom: 0;
+                left: 5%;
+                right: 0;
+                z-index: -1;
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
+            }
+
+            .flight-location-input__container {
+                border: 2px solid $invalid-color;
+            }
         }
     }
 }

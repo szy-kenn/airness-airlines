@@ -103,42 +103,49 @@ btnStateUpdate();
 const fromLocation = document.getElementById("from-flight-location");
 const toLocation = document.getElementById("to-flight-location");
 const flightLocationInputDiv = document.querySelectorAll(".flight-location-input__container");
-const fromContainer = document.querySelector(".from");
-const toContainer = document.querySelector(".to");
+const fromContainer = document.getElementById("from");
+const toContainer = document.getElementById("to");
 const airportChoicesContainer = document.querySelectorAll(".flight-location-form__container");
 
 function flightFormUpdate(event, container) {
     let i = null;
     (container === fromContainer) ? i = 0 : i = 1;
 
-    if (event.type === 'focus') {
+    if (event.type === 'focus' || event === 'focus') {
         container.classList.add('focused');
     } else if (event.type === 'blur') {
-        if (i === 0) {
-            if (fromLocation.value == '') {
-                container.classList.remove('focused');
-            }
-        } else {
-            if (toLocation.value == '') {
-                container.classList.remove('focused');
-            }
-        }
         // container.classList.remove('focused');
         airportChoicesContainer[i].style.opacity = 0;
 
         setTimeout(() => {
             airportChoicesContainer[i].style.pointerEvents = 'none';
+            if (i === 0) {
+                if (fromLocation.value == '') {
+                    container.classList.remove('focused');
+                } 
+                else {
+                    container.classList.remove('invalid');
+                }
+                
+            } else {
+                if (toLocation.value == '') {
+                    container.classList.remove('focused');
+                } 
+                else {
+                    container.classList.remove('invalid');
+                }
+            }
         }, 100);
         // check if the input is valid
         event.target.value = '';
     }
 }
 
-function selectAirportChoice(inputSourceIdx, municipality) {
+function selectAirportChoice(inputSourceIdx, iata, municipality) {
     if (inputSourceIdx === 0) {
-        fromLocation.value = municipality;
+        fromLocation.value = iata;
     } else {
-        toLocation.value = municipality;
+        toLocation.value = iata;
     }
 }
 
@@ -181,12 +188,13 @@ function createChoice(inputSourceIdx, name, iata, iso_country, municipality, cho
         img.style.paddingLeft = '1rem';
         const span = document.createElement("span");
         span.innerHTML = iata;
-        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, municipality));
+        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, iata, municipality));
         currentDiv.setAttribute('role', 'button');
         currentDiv.setAttribute('tabIndex', '0');
         currentDiv.append(img, newP, span);
     }
     else {
+        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, '', ''));
         currentDiv.appendChild(newP);
     }
     
@@ -197,11 +205,14 @@ function createChoice(inputSourceIdx, name, iata, iso_country, municipality, cho
 
 function searchAirport(inputSourceIdx, substring) {
 
+    let container = null;
+    (inputSourceIdx === 0) ? container = fromContainer : container = toContainer;
+    flightFormUpdate('focus', container)
+
     fetch('/api/iata-codes')
         .then(response => response.json())
         .then(data => {
             // Handle the received JSON data here
-            // console.log(data)
             let i = 0;
             let filtered = 0;
             while (data['index'][i] !== undefined && filtered < 10) {
@@ -244,34 +255,31 @@ toLocation.addEventListener("blur", event => flightFormUpdate(event, toContainer
 
 fromLocation.addEventListener("input", () => searchAirport(0, fromLocation.value));
 toLocation.addEventListener("input", () => searchAirport(1, toLocation.value));
+fromLocation.addEventListener("invalid", event => invalidInput(event, fromContainer))
+toLocation.addEventListener("invalid", event => invalidInput(event, toContainer))
+
+function invalidInput(event, element) {
+    event.preventDefault();
+    element.classList.add('invalid');
+}
 
 /******************
- *  CONTINUE BTN  *
+ *   FORM SUBMIT  *
  ******************/
 
-const continueBtnPg1 = document.getElementById("continue-btn-pg-1");
+const formPg1 = document.getElementById("form-pg-1");
 
-// continueBtnPg1.addEventListener("click", event => continueForm(event));
+function validateForm(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const data_list = [...data.entries()];
 
-// function continueForm(evt) {
+    // if (data_list[0][1] === data_list[1][1]) {
+    //     invalidInput(toContainer, toContainer, 1)
+    //     // FROM and TO are same values
+    // } else if (data_list[2][1] === 0) {
+    //     // adult passenger count is 0
+    // }
+}
 
-//     const serializedEvent = {};
-
-//     for (key in evt) {
-//         serializedEvent[key] = evt[key];
-//     }
-//     console.log(serializedEvent);
-
-//     try {
-//         fetch('/', {
-//             method: "POST",
-//             body: JSON.stringify(serializedEvent)
-//         }).then((res) => {
-//             window.location.href = '/';
-//         }).catch((error) => {
-//             console.error(error);
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+formPg1.addEventListener("submit", event => validateForm(event));

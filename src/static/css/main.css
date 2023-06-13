@@ -47,7 +47,7 @@ a,
   height: 4rem;
 }
 .passenger-form__container i {
-  color: #9b1297;
+  color: #5d478b;
   display: inline-block;
   transform: scale(1.25);
   cursor: pointer;
@@ -64,7 +64,7 @@ a,
   font-family: "Montserrat";
   font-size: 1.2rem;
   font-weight: 300;
-  color: #9b1297;
+  color: #5d478b;
   padding-left: 13px;
   text-align: center;
   width: 1.75rem;
@@ -85,7 +85,7 @@ a,
   font-size: 1.25rem;
   font-weight: 400;
   color: #ffffff;
-  background: #9b1297;
+  background: #5d478b;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
@@ -103,7 +103,7 @@ a,
   text-align: center;
 }
 .passenger-form__container__airline-class .airline-class--selected:focus {
-  outline: 1px solid #9b1297;
+  outline: 1px solid #5d478b;
 }
 .passenger-form__container__airline-class p {
   text-align: center;
@@ -116,13 +116,13 @@ a,
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 1.25rem 0;
   z-index: 2;
 }
 .flight-location-form .flight-location-form__container {
   display: block;
   position: fixed;
   background: #ffffff;
-  border: 1px solid #9b1297;
   border-radius: 10px;
   max-height: 20rem;
   overflow-y: scroll;
@@ -140,7 +140,7 @@ a,
   border-radius: 100px;
 }
 .flight-location-form .flight-location-form__container::-webkit-scrollbar-thumb:hover {
-  background: #9b1297;
+  background: #5d478b;
 }
 .flight-location-form .flight-location-form__container__options {
   display: flex;
@@ -161,24 +161,24 @@ a,
   text-align: center;
   width: 55px;
   padding: 0.4rem 0.4rem;
-  background: #5d478b;
+  background: #9b1297;
   border-radius: 5px;
   font-family: "Montserrat";
   font-size: 0.9rem;
   font-weight: 700;
   color: #ffffff;
 }
-.flight-location-form .flight-location-form__container__options:hover, .flight-location-form .flight-location-form__container__options.first-choice {
-  background: rgba(155, 18, 151, 0.6);
+.flight-location-form .flight-location-form__container__options:hover {
+  background: #5d478b;
 }
-.flight-location-form .flight-location-form__container__options:hover p, .flight-location-form .flight-location-form__container__options.first-choice p {
+.flight-location-form .flight-location-form__container__options:hover p {
   color: #ffffff;
 }
 .flight-location-form div {
   font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #9b1297;
+  color: #5d478b;
 }
 .flight-location-form div input {
   width: 12rem;
@@ -192,30 +192,30 @@ a,
   color: #000000;
   z-index: 3;
 }
-.flight-location-form .from {
+.flight-location-form #from {
   border-radius: 10px 0 0 10px;
 }
-.flight-location-form .from .flight-location-input__container {
+.flight-location-form #from .flight-location-input__container {
   padding: 0 2rem 0 0;
-  border: 1px solid #9b1297;
+  border: 1px solid #5d478b;
   border-radius: 10px 0 0 10px;
 }
-.flight-location-form .from input {
+.flight-location-form #from input {
   margin-left: 10px;
   border-radius: 10px 0 0 10px;
 }
-.flight-location-form .from::before {
+.flight-location-form #from::before {
   content: "From";
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
-  top: 15%;
+  top: 32.5%;
   bottom: 0;
   left: 5%;
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form .from.focused::before {
+.flight-location-form #from.focused::before {
   content: "From";
   position: absolute;
   pointer-events: none;
@@ -227,33 +227,54 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form .from.focused .flight-location-input__container {
-  border: 2px solid #9b1297;
+.flight-location-form #from.focused .flight-location-input__container {
+  border: 2px solid #5d478b;
 }
-.flight-location-form .to {
+.flight-location-form #from.invalid::before {
+  color: rgb(245, 67, 67);
+}
+.flight-location-form #from.invalid::after {
+  content: "This field is required";
+  position: absolute;
+  font-family: "Montserrat";
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgb(245, 67, 67);
+  top: 100%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  z-index: -1;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.flight-location-form #from.invalid .flight-location-input__container {
+  border: 2px solid rgb(245, 67, 67);
+}
+.flight-location-form #to {
   border-radius: 0 10px 10px 0;
 }
-.flight-location-form .to .flight-location-input__container {
+.flight-location-form #to .flight-location-input__container {
   padding: 0 0 0 2rem;
-  border: 1px solid #9b1297;
+  border: 1px solid #5d478b;
   border-radius: 0 10px 10px 0;
 }
-.flight-location-form .to input {
+.flight-location-form #to input {
   margin-right: 10px;
   border-radius: 0 10px 10px 0;
 }
-.flight-location-form .to::before {
+.flight-location-form #to::before {
   content: "To";
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
-  top: 15%;
+  top: 32.5%;
   bottom: 0;
   left: 2rem;
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form .to.focused::before {
+.flight-location-form #to.focused::before {
   content: "To";
   position: absolute;
   pointer-events: none;
@@ -265,8 +286,29 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form .to.focused .flight-location-input__container {
-  border: 2px solid #9b1297;
+.flight-location-form #to.focused .flight-location-input__container {
+  border: 2px solid #5d478b;
+}
+.flight-location-form #to.invalid::before {
+  color: rgb(245, 67, 67);
+}
+.flight-location-form #to.invalid::after {
+  content: "This field is required";
+  position: absolute;
+  font-family: "Montserrat";
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgb(245, 67, 67);
+  top: 100%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  z-index: -1;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.flight-location-form #to.invalid .flight-location-input__container {
+  border: 2px solid rgb(245, 67, 67);
 }
 
 .form-container {
@@ -278,7 +320,7 @@ a,
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
-  background: #5d478b;
+  background: #9b1297;
   box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
   font-family: "Montserrat";
   font-size: 0.85rem;
@@ -292,7 +334,7 @@ a,
   border: none;
   border-radius: 50px;
   text-transform: uppercase;
-  background: #9b1297;
+  background: #5d478b;
   box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
   font-family: "Montserrat";
   font-size: 0.85rem;
@@ -332,6 +374,6 @@ a,
   transition: all 0.1s ease-in-out;
 }
 .with-dropdown-select__container__options:hover {
-  background: rgba(155, 18, 151, 0.5);
+  background: rgba(93, 71, 139, 0.5);
   color: #ffffff;
 }/*# sourceMappingURL=main.css.map */

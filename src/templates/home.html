@@ -10,11 +10,11 @@
 </div>
 
 <div class="form-container">
-    <form method="POST">
+    <form method="POST" id="form-pg-1">
         <div class="flight-location-form">
-            <div class="with-dropdown-select from">
+            <div class="with-dropdown-select" id="from">
                 <div class="flight-location-input__container">
-                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="from" id="from-flight-location" onclick="showChoices('airport', 0)">
+                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="from" id="from-flight-location" oninput="showChoices('airport', 0)" required="">
                 </div>
                 <div class="with-dropdown-select__container flight-location-form__container">
                     <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
@@ -25,9 +25,9 @@
             <button class="swap-btn" type="button">
                 <i class="fa-solid fa-arrow-right-arrow-left"></i>
             </button>
-            <div class="with-dropdown-select to">
+            <div class="with-dropdown-select" id="to">
                 <div class="flight-location-input__container">
-                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="to" id="to-flight-location"  onclick="showChoices('airport', 1)">
+                    <input type="text" tabindex="0" class="with-dropdown-select__input" name="to" id="to-flight-location"  oninput="showChoices('airport', 1)" required="">
                 </div>
                 <div class="with-dropdown-select__container flight-location-form__container">
                     <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
