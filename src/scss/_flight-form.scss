@@ -8,7 +8,7 @@
     .flight-location-form__container {
 
         display: block;
-        position: fixed;
+        position: absolute;
         background: $secondary-color;
         // border: 1px solid $primary-button;
         border-radius: 10px;
@@ -74,12 +74,13 @@
 
     div {
         @include font($primary-font, 1rem, 400, $primary-button);
-        // border: 1px solid $lighter-primary-button;
+        // background-color: black;
+        width: 100%;
 
         input {
-            width: 12rem;
-            height: 2.75rem;
-            padding-top: 0.75rem;
+            width: 95%;
+            height: 4rem;
+            padding: 0;
             outline: none;
             border: none;
             text-align: left;
@@ -92,13 +93,14 @@
         border-radius: 10px 0 0 10px;
         
         .flight-location-input__container {
-            padding: 0 2rem 0 0;
+            // padding: 0 2rem 0 0;
             border: 1px solid $primary-button;
             border-radius: 10px 0 0 10px;
+            width: 100%;
         }
 
         input {
-            margin-left: 10px;
+            // margin-left: 10px;
             border-radius: 10px 0 0 10px;
         }
 
@@ -146,13 +148,13 @@
         border-radius: 0 10px 10px 0;
 
         .flight-location-input__container {
-            padding: 0 0 0 2rem;
+            // padding: 0 0 0 2rem;
             border: 1px solid $primary-button;
             border-radius: 0 10px 10px 0;
+            width: 100%;
         }
 
-        input {
-            margin-right: 10px;
+        input {       
             border-radius: 0 10px 10px 0;
         }
 
@@ -214,7 +216,7 @@
         width: 100%;
         
         &__input {
-            width: 12rem;
+            width: 100%;
             height: 2.75rem;
             padding-top: 0.75rem;
             outline: none;

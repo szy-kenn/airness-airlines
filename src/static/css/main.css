@@ -16,15 +16,6 @@ a,
   -webkit-tap-highlight-color: transparent;
 }
 
-@media screen and (max-width: 40rem) {
-  .passenger-form {
-    display: flex;
-    color: orange;
-  }
-  .passenger-form__container {
-    display: block;
-  }
-}
 .passenger-container h3, .passenger-container div {
   padding: 0.25rem 0;
 }
@@ -122,7 +113,7 @@ a,
 }
 .flight-location-form .flight-location-form__container {
   display: block;
-  position: fixed;
+  position: absolute;
   background: #ffffff;
   border-radius: 10px;
   max-height: 20rem;
@@ -181,11 +172,12 @@ a,
   font-size: 1rem;
   font-weight: 400;
   color: #5d478b;
+  width: 100%;
 }
 .flight-location-form div input {
-  width: 12rem;
-  height: 2.75rem;
-  padding-top: 0.75rem;
+  width: 95%;
+  height: 4rem;
+  padding: 0;
   outline: none;
   border: none;
   text-align: left;
@@ -199,12 +191,11 @@ a,
   border-radius: 10px 0 0 10px;
 }
 .flight-location-form #from .flight-location-input__container {
-  padding: 0 2rem 0 0;
   border: 1px solid #5d478b;
   border-radius: 10px 0 0 10px;
+  width: 100%;
 }
 .flight-location-form #from input {
-  margin-left: 10px;
   border-radius: 10px 0 0 10px;
 }
 .flight-location-form #from::before {
@@ -257,12 +248,11 @@ a,
   border-radius: 0 10px 10px 0;
 }
 .flight-location-form #to .flight-location-input__container {
-  padding: 0 0 0 2rem;
   border: 1px solid #5d478b;
   border-radius: 0 10px 10px 0;
+  width: 100%;
 }
 .flight-location-form #to input {
-  margin-right: 10px;
   border-radius: 0 10px 10px 0;
 }
 .flight-location-form #to::before {
@@ -343,7 +333,7 @@ a,
   width: 100%;
 }
 .flight-date-form .flight-date-form__container__input {
-  width: 12rem;
+  width: 100%;
   height: 2.75rem;
   padding-top: 0.75rem;
   outline: none;
@@ -385,9 +375,46 @@ a,
   transition: all 0.15s ease-out;
 }
 
+.main {
+  display: grid;
+  position: relative;
+  max-width: 100vw;
+  max-height: 100vh;
+  border: 1px solid red;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  z-index: -1;
+}
+
+.body {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  max-width: 100dvw;
+  height: 100rem;
+  z-index: 0;
+}
+
 .form-container {
+  position: absolute;
+  top: calc(75% - 0.5rem);
+  left: calc(25% - 1rem);
+  right: 0;
+  bottom: 0;
   display: inline-block;
-  padding: 1rem 1rem;
+  width: 50%;
+  height: 65%;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  background: #ffffff;
+  z-index: 2;
 }
 
 .form-btn {
@@ -450,4 +477,28 @@ a,
 .with-dropdown-select__container__options:hover {
   background: rgba(93, 71, 139, 0.5);
   color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    max-width: 100vw;
+    height: 75vh;
+  }
+  .form-container {
+    position: absolute;
+    top: 75vh;
+    left: calc(12.5% - 2rem);
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+    width: 75%;
+    height: 100%;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    z-index: 2;
+  }
 }/*# sourceMappingURL=main.css.map */
