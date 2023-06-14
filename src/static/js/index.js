@@ -281,9 +281,14 @@ setTimeout(() => {
 /*  DEPARTURE DATE FORM  */
 /*************************/
 
-
-
-
+// initializations
+const departureDate = document.getElementById("departureDate");
+const today = new Date();
+let todayValues = today.toISOString().split('T')[0].split('-');
+console.log(todayValues)
+departureDate.value = `${todayValues[0]}-${todayValues[1]}-${todayValues[2]}`;    // gets current date
+departureDate.min = departureDate.value;
+departureDate.max = `${parseInt(todayValues[0]) + 1}-${todayValues[1]}-${todayValues[2]}`;
 
 /******************
  *   FORM SUBMIT  *

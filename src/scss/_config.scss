@@ -23,3 +23,23 @@
     box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
     @include font($primary-font, 0.85rem, 700, $secondary-color);
 }
+
+@mixin focused($parent, $top: 15%, $left: 5%) {
+
+    &::before {
+        position: absolute;
+        pointer-events: none;
+        font-size: 0.7rem;
+        font-weight: 300;
+        top: $top;
+        bottom: 0;
+        left: $left;
+        right: 0;
+        @include transition-ease(0.15s, ease-out);
+    }
+
+    & > div {
+        border: 2px solid $primary-button;
+    }
+
+}

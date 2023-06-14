@@ -219,7 +219,6 @@ a,
   transition: all 0.15s ease-out;
 }
 .flight-location-form #from.focused::before {
-  content: "From";
   position: absolute;
   pointer-events: none;
   font-size: 0.7rem;
@@ -230,7 +229,7 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #from.focused .flight-location-input__container {
+.flight-location-form #from.focused > div {
   border: 2px solid #5d478b;
 }
 .flight-location-form #from.invalid::before {
@@ -278,7 +277,6 @@ a,
   transition: all 0.15s ease-out;
 }
 .flight-location-form #to.focused::before {
-  content: "To";
   position: absolute;
   pointer-events: none;
   font-size: 0.7rem;
@@ -289,7 +287,7 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #to.focused .flight-location-input__container {
+.flight-location-form #to.focused > div {
   border: 2px solid #5d478b;
 }
 .flight-location-form #to.invalid::before {
@@ -322,6 +320,20 @@ a,
   padding: 1.25em 0;
   margin: 0;
   z-index: 1;
+}
+.flight-date-form.focused::before {
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.7rem;
+  font-weight: 300;
+  top: 15%;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  transition: all 0.15s ease-out;
+}
+.flight-date-form.focused > div {
+  border: 2px solid #5d478b;
 }
 .flight-date-form .flight-date-form__container {
   display: flex;
