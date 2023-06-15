@@ -4,7 +4,7 @@
     padding: 1.25rem 0;
     z-index: 2;
     // transform: translateX(100%);
-  
+
     .flight-location-form__container {
 
         display: block;
@@ -13,9 +13,9 @@
         // border: 1px solid $primary-button;
         border-radius: 10px;
         max-height: 20rem;
+        width: 200%;
         overflow-y: scroll;
         overflow-x: hidden;
-        left: 1em;
 
         &::-webkit-scrollbar {
             width: 17.5px;
@@ -40,13 +40,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
             background: $secondary-color;
-            width: 28rem;
+            position: relative;
+            width: 100%;
             height: 2rem;
-            padding: 1.25rem 0.5rem;
+            padding: 1.25rem 0rem;
             border-bottom: 1px solid $lighter-primary-button;
-            
+
             p {
                 font-size: 0.8rem;
                 color: $primary-color;
@@ -56,6 +56,7 @@
                 text-align: center;
                 width: 55px;
                 padding: 0.4rem 0.4rem;
+                margin-right: 10px;
                 background: $secondary-button;
                 border-radius: 5px;
                 @include font($primary-font, 0.9rem, 700, $secondary-color);
@@ -146,6 +147,10 @@
     #to {
 
         border-radius: 0 10px 10px 0;
+
+        .flight-location-form__container { 
+            left: -100%;
+        }
 
         .flight-location-input__container {
             // padding: 0 0 0 2rem;

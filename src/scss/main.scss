@@ -5,12 +5,12 @@
     position: relative;
     max-width: 100vw;
     max-height: 100vh;
-    border: 1px solid red;
-    overflow-x: hidden;
+    // border: 1px solid red;
+    // overflow-x: hidden;
     // overflow-y: scroll;
 }
 
-img {
+.img-slideshow {
     max-width: 100%;
     z-index: -1;
     // max-height: 100%;
@@ -30,15 +30,16 @@ img {
 
 .form-container {   
     position: absolute;
-    top: calc(75% - 0.5rem);
-    left: calc(25% - 1rem);
+    top: calc(75% - 1rem);
+    left: calc(25% - 2rem);
     right: 0;
     bottom: 0;
     display: inline-block;
     width: 50%;
     height: 65%;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     border-radius: 25px;
+    // border: 1px solid $primary-button;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
     background: $secondary-color;
     z-index: 2;
