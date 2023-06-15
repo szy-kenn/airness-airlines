@@ -144,14 +144,6 @@ function flightFormUpdate(event, container) {
     }
 }
 
-function selectAirportChoice(inputSourceIdx, iata, municipality) {
-    if (inputSourceIdx === 0) {
-        fromLocation.value = iata;
-    } else {
-        toLocation.value = iata;
-    }
-}
-
 function createChoice(inputSourceIdx, name, iata, iso_country, municipality, choiceIdx) {
 
     let currentDiv = null;
@@ -191,7 +183,7 @@ function createChoice(inputSourceIdx, name, iata, iso_country, municipality, cho
         img.style.paddingLeft = '1rem';
         const span = document.createElement("span");
         span.innerHTML = iata;
-        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, iata, municipality));
+        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, iata, name));
         currentDiv.setAttribute('role', 'button');
         currentDiv.setAttribute('tabIndex', '0');
         currentDiv.append(img, newP, span);
@@ -250,6 +242,14 @@ function searchAirport(inputSourceIdx, substring) {
             console.error('Error:', error);
         });
 
+}
+
+function selectAirportChoice(inputSourceIdx, iata, name) {
+    if (inputSourceIdx === 0) {
+        fromLocation.value = name;
+    } else {
+        toLocation.value = name;
+    }
 }
 
 function invalidInput(event, element) {
