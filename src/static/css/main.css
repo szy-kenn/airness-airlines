@@ -110,6 +110,7 @@ a,
   position: relative;
   padding: 1.25rem 0;
   z-index: 2;
+  gap: 1px;
 }
 .flight-location-form .flight-location-form__container {
   display: block;
@@ -176,9 +177,8 @@ a,
   width: 100%;
 }
 .flight-location-form div input {
-  width: 95%;
+  width: 70%;
   height: 4rem;
-  padding: 0;
   outline: none;
   border: none;
   text-align: left;
@@ -187,6 +187,7 @@ a,
   font-weight: 400;
   color: #000000;
   z-index: 3;
+  padding: 0;
 }
 .flight-location-form #from {
   border-radius: 10px 0 0 10px;
@@ -198,6 +199,7 @@ a,
 }
 .flight-location-form #from input {
   border-radius: 10px 0 0 10px;
+  margin-left: 5%;
 }
 .flight-location-form #from::before {
   content: "From";
@@ -258,6 +260,7 @@ a,
 }
 .flight-location-form #to input {
   border-radius: 0 10px 10px 0;
+  margin-left: 2rem;
 }
 .flight-location-form #to::before {
   content: "To";
