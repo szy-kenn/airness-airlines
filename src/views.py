@@ -16,13 +16,10 @@ def home():
 @view.route('/flights', methods=['GET', 'POST'])
 def flights():
     if request.method  == 'POST':
-        form1Data = session['form_part_one']
-        return jsonify(form1Data)
+        form_part_one = session['form_part_one']
+        return jsonify(form_part_one)
 
-        # if form1Data['from'] == '' or form1Data['to'] == '' or form1Data['passenger-adult'] == 0:
-        #     flash('Fields are not completed')
-        #     return redirect(url_for('.home'))
-
-        return session['form_part_one']
-    
-    return session['form_part_one']
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json']);
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json']);
+    # return session['form_part_one']
+    return render_template('flights.html', form_part_one=session['form_part_one'])

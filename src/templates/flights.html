@@ -1,9 +1,58 @@
-<!-- {% block content %}
+{% extends "base.html" %}
+{% block title %}Flights{% endblock %}
 
-<tr>
-    {% for attribute in form_part_one %}
-    <td>{{ attribute }}</td>
-    {% endfor %}
-</tr>
+{% include 'blocks/navbar.html' %}
 
-{% endblock %} -->
+{% block content %}
+
+<div class="current-page-indicator">
+    <p>Select a Flight</p>
+    <p>Passenger Details</p>
+    <p>Book a Seat</p>
+    <p>Confirmation</p>
+</div>
+
+<div class="flight-input-details">
+
+    <div class="flight-input-details__items from">
+        <i class="fa-sharp fa-solid fa-plane-departure"></i>
+        <div class="input-details">
+            <p>{{ form_part_one['from-json']['municipality'] }}</p>
+            <span>{{ form_part_one['from-json']['name']}} ({{ form_part_one['from-json']['iata']}})</span>
+        </div>
+    </div>
+    <div class="flight-input-details__items to">
+        <i class="fa-solid fa-plane-arrival"></i>
+        <div class="input-details">
+            <p>{{ form_part_one['to-json']['municipality'] }}</p>
+            <span>{{ form_part_one['to-json']['name']}} ({{ form_part_one['to-json']['iata']}})</span>
+        </div>
+    </div>
+    <div class="flight-input-details__items departure_date">
+        <i class="fa-solid fa-calendar"></i>
+        <div class="input-departure-date">
+            <p class="departure-date">{{ form_part_one['departure-date'] }}</p>
+            <span id="departureDay"></span>
+        </div>
+    </div>
+</div>
+
+<div class="available-flights">
+    <div class="available-flights__items">
+        <div class="available-flights__items__flight-details"></div>
+        <div class="available-flights__items__flight-price"></div>
+    </div>
+    <div class="available-flights__items">
+        <div class="available-flights__items__flight-details"></div>
+        <div class="available-flights__items__flight-price"></div>
+    </div>
+    <div class="available-flights__items">
+        <div class="available-flights__items__flight-details"></div>
+        <div class="available-flights__items__flight-price"></div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
+{% endblock %}

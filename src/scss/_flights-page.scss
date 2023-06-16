@@ -1,0 +1,85 @@
+.current-page-indicator {
+    @include flex;
+    width: 80%;
+    color: $secondary-color;
+    margin: auto;
+    padding: 1rem 0;
+
+    p {
+        @include font($primary-font, 0.9rem, 700, $secondary-color);
+        text-align: center;
+        width: 12.5%;
+        background: $secondary-button;
+        padding: 0.75rem 0.5rem;
+    }
+
+}
+
+.flight-input-details {
+    position: relative;
+    width: 80%;
+    height: 8%;
+    margin: auto;
+    background: $primary-button;
+    padding: 1rem 1rem;
+    color: $secondary-color;
+    @include flex;
+
+    &__items {
+        @include flex;
+        position: relative;
+        // border: 1px solid red;
+
+        i {
+            font-size: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .input-details {
+            display: block;
+
+            p {
+                @include font($primary-font, 1.45rem, 400, $secondary-color);
+                text-transform: uppercase;
+            }
+
+            span {
+                @include font($primary-font, 0.75rem, 400, $secondary-color);
+            }
+        }
+
+        .input-departure-date {
+            display: block;
+            padding-right: 1rem;
+
+            p {
+                font-size: 1rem;
+            }
+
+            span {
+                font-size: 0.75rem;
+            }
+
+        }
+
+    }
+}
+
+.available-flights {
+    display: block;
+    width: calc(80% + 2rem);
+    height: 100%;
+    padding: 1rem 0;
+    margin: auto;
+
+    &__items {
+        position: inherit;
+        width: 100%;
+        height: 14%;
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(129, 129, 129, 0.2);
+        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+    }
+}
