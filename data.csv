@@ -1,72 +1,72 @@
-index,iata,name,iso_country,municipality
-0,POM,Port Moresby Jacksons International Airport,PG,Port Moresby
-1,YVR,Vancouver International Airport,CA,Vancouver
-2,YYZ,Lester B. Pearson International Airport,CA,Toronto
-3,JFK,John F Kennedy International Airport,US,New York
-4,LAX,Los Angeles International Airport,US,Los Angeles
-5,SFO,San Francisco International Airport,US,San Francisco
-6,DMM,King Fahd International Airport,SA,Ad Dammam
-7,RUH,King Khaled International Airport,SA,Riyadh
-8,DXB,Dubai International Airport,AE,Dubai
-9,DOH,Hamad International Airport,QA,Doha
-10,GUM,Antonio B. Won Pat International Airport,GU,"HagÃ¥tÃ±a, Guam International Airport"
-11,CGY,Laguindingan Airport,PH,Cagayan de Oro City
-12,HNL,Daniel K Inouye International Airport,US,Honolulu
-13,TPE,Taiwan Taoyuan International Airport,TW,Taipei
-14,NRT,Narita International Airport,JP,Tokyo / Narita
-15,KIX,Kansai International Airport,JP,Osaka
-16,CTS,New Chitose Airport,JP,Chitose / Tomakomai
-17,FUK,Fukuoka Airport,JP,Fukuoka
-18,NGO,Chubu Centrair International Airport,JP,Tokoname
-19,HND,Tokyo Haneda International Airport,JP,"Ota, Tokyo"
-20,PUS,Gimhae International Airport,KR,Busan
-21,ICN,Incheon International Airport,KR,Seoul
-22,CRK,Clark International Airport,PH,Angeles/Mabalacat
-23,LAO,Laoag International Airport,PH,Laoag City
-24,MNL,Ninoy Aquino International Airport,PH,"Pasay / Paranaque, Metro Manila"
-25,CBO,Awang Airport,PH,Cotabato City
-26,DVO,Francisco Bangoy International Airport,PH,Davao City
-27,BXU,Bancasi Airport,PH,Butuan City
-28,DPL,Dipolog Airport,PH,Dipolog City
-29,CGM,Camiguin Airport,PH,Mambajao
-30,TWT,Sanga Sanga Airport,PH,Tawi-tawi
-31,OZC,Labo Airport,PH,Ozamiz City
-32,PAG,Pagadian Airport,PH,Pagadian City
-33,GES,General Santos International Airport,PH,General Santos
-34,ZAM,Zamboanga International Airport,PH,Zamboanga City
-35,IAO,Siargao Airport,PH,Del Carmen
-36,SWL,San Vicente Airport,PH,San Vicente
-37,BSO,Basco Airport,PH,Basco
-38,TAC,Daniel Z. Romualdez Airport,PH,Tacloban City
-39,BCD,Bacolod-Silay Airport,PH,Bacolod City
-40,CYP,Calbayog Airport,PH,Calbayog City
-41,DGT,Sibulan Airport,PH,Dumaguete City
-42,MPH,Godofredo P. Ramos Airport,PH,Malay
-43,CRM,Catarman National Airport,PH,Catarman
-44,ILO,Iloilo International Airport,PH,Iloilo City
-45,KLO,Kalibo International Airport,PH,Kalibo
-46,CEB,Mactan Cebu International Airport,PH,Lapu-Lapu City
-47,PPS,Puerto Princesa Airport,PH,Puerto Princesa City
-48,RXS,Roxas Airport,PH,Roxas City
-49,EUQ,Evelio Javier Airport,PH,San Jose
-50,TAG,Tagbilaran Airport,PH,Tagbilaran City
-51,USU,Francisco B. Reyes Airport,PH,Coron
-52,PNH,Phnom Penh International Airport,KH,Phnom Penh
-53,HKG,Hong Kong International Airport Kai Tak,HK,Hong Kong
-54,MFM,Macau International Airport,MO,Macau
-55,BKK,Suvarnabhumi Airport,TH,Bangkok
-56,HAN,Noi Bai International Airport,VN,Hanoi
-57,SGN,Tan Son Nhat International Airport,VN,Ho Chi Minh City
-58,DPS,Ngurah Rai (Bali) International Airport,ID,Denpasar-Bali Island
-59,CGK,Soekarno-Hatta International Airport,ID,Jakarta
-60,KUL,Kuala Lumpur International Airport,MY,Kuala Lumpur
-61,SIN,Singapore Changi Airport,SG,Singapore
-62,BNE,Brisbane International Airport,AU,Brisbane
-63,MEL,Melbourne International Airport,AU,Melbourne
-64,PER,Perth International Airport,AU,Perth
-65,SYD,Sydney Kingsford Smith International Airport,AU,Sydney
-66,PEK,Beijing Capital International Airport,CN,Beijing
-67,CAN,Guangzhou Baiyun International Airport,CN,Guangzhou
-68,XMN,Xiamen Gaoqi International Airport,CN,Xiamen
-69,PVG,Shanghai Pudong International Airport,CN,Shanghai
-70,JJN,Quanzhou Jinjiang International Airport,CN,Quanzhou
+index,iata,name,iso_country,municipality,og_municipality
+0,POM,Port Moresby Jacksons International Airport,PG,Port Moresby,Port Moresby
+1,YVR,Vancouver International Airport,CA,Vancouver,Vancouver
+2,YYZ,Lester B. Pearson International Airport,CA,Toronto,Toronto
+3,JFK,John F Kennedy International Airport,US,New York,New York
+4,LAX,Los Angeles International Airport,US,Los Angeles,Los Angeles
+5,SFO,San Francisco International Airport,US,San Francisco,San Francisco
+6,DMM,King Fahd International Airport,SA,Dammam,Ad Dammam
+7,RUH,King Khaled International Airport,SA,Riyadh,Riyadh
+8,DXB,Dubai International Airport,AE,Dubai,Dubai
+9,DOH,Hamad International Airport,QA,Doha,Doha
+10,GUM,Antonio B. Won Pat International Airport,GU,Guam,"HagÃ¥tÃ±a, Guam International Airport"
+11,CGY,Laguindingan Airport,PH,Cagayan de Oro,Cagayan de Oro City
+12,HNL,Daniel K Inouye International Airport,US,Honolulu,Honolulu
+13,TPE,Taiwan Taoyuan International Airport,TW,Taipei,Taipei
+14,NRT,Narita International Airport,JP,Tokyo (Narita),Tokyo / Narita
+15,KIX,Kansai International Airport,JP,Osaka,Osaka
+16,CTS,New Chitose Airport,JP,Chitose,Chitose / Tomakomai
+17,FUK,Fukuoka Airport,JP,Fukuoka,Fukuoka
+18,NGO,Chubu Centrair International Airport,JP,Tokoname,Tokoname
+19,HND,Tokyo Haneda International Airport,JP,Tokyo (Haneda),"Ota, Tokyo"
+20,PUS,Gimhae International Airport,KR,Busan,Busan
+21,ICN,Incheon International Airport,KR,Seoul,Seoul
+22,CRK,Clark International Airport,PH,Mabalacat,Angeles/Mabalacat
+23,LAO,Laoag International Airport,PH,Laoag,Laoag City
+24,MNL,Ninoy Aquino International Airport,PH,Manila,"Pasay / Paranaque, Metro Manila"
+25,CBO,Awang Airport,PH,Cotabato,Cotabato City
+26,DVO,Francisco Bangoy International Airport,PH,Davao,Davao City
+27,BXU,Bancasi Airport,PH,Butuan,Butuan City
+28,DPL,Dipolog Airport,PH,Dipolog,Dipolog City
+29,CGM,Camiguin Airport,PH,Mambajao,Mambajao
+30,TWT,Sanga Sanga Airport,PH,Tawi-tawi,Tawi-tawi
+31,OZC,Labo Airport,PH,Ozamiz,Ozamiz City
+32,PAG,Pagadian Airport,PH,Pagadian,Pagadian City
+33,GES,General Santos International Airport,PH,General Santos,General Santos
+34,ZAM,Zamboanga International Airport,PH,Zamboanga,Zamboanga City
+35,IAO,Siargao Airport,PH,Del Carmen,Del Carmen
+36,SWL,San Vicente Airport,PH,San Vicente,San Vicente
+37,BSO,Basco Airport,PH,Basco,Basco
+38,TAC,Daniel Z. Romualdez Airport,PH,Tacloban,Tacloban City
+39,BCD,Bacolod-Silay Airport,PH,Bacolod,Bacolod City
+40,CYP,Calbayog Airport,PH,Calbayod,Calbayog City
+41,DGT,Sibulan Airport,PH,Dumaguete,Dumaguete City
+42,MPH,Godofredo P. Ramos Airport,PH,Malay,Malay
+43,CRM,Catarman National Airport,PH,Catarman,Catarman
+44,ILO,Iloilo International Airport,PH,Iloilo,Iloilo City
+45,KLO,Kalibo International Airport,PH,Kalibo,Kalibo
+46,CEB,Mactan Cebu International Airport,PH,Lapu-Lapu,Lapu-Lapu City
+47,PPS,Puerto Princesa Airport,PH,Puerto Princesa,Puerto Princesa City
+48,RXS,Roxas Airport,PH,Roxas,Roxas City
+49,EUQ,Evelio Javier Airport,PH,San Jose,San Jose
+50,TAG,Tagbilaran Airport,PH,Tagbilaran,Tagbilaran City
+51,USU,Francisco B. Reyes Airport,PH,Coron,Coron
+52,PNH,Phnom Penh International Airport,KH,Phnom Penh,Phnom Penh
+53,HKG,Hong Kong International Airport Kai Tak,HK,Hong Kong,Hong Kong
+54,MFM,Macau International Airport,MO,Macau,Macau
+55,BKK,Suvarnabhumi Airport,TH,Bangkok,Bangkok
+56,HAN,Noi Bai International Airport,VN,Hanoi,Hanoi
+57,SGN,Tan Son Nhat International Airport,VN,Ho Chi Minh,Ho Chi Minh City
+58,DPS,Ngurah Rai (Bali) International Airport,ID,Bali,Denpasar-Bali Island
+59,CGK,Soekarno-Hatta International Airport,ID,Jakarta,Jakarta
+60,KUL,Kuala Lumpur International Airport,MY,Kuala Lumpur,Kuala Lumpur
+61,SIN,Singapore Changi Airport,SG,Singapore,Singapore
+62,BNE,Brisbane International Airport,AU,Brisbane,Brisbane
+63,MEL,Melbourne International Airport,AU,Melbourne,Melbourne
+64,PER,Perth International Airport,AU,Perth,Perth
+65,SYD,Sydney Kingsford Smith International Airport,AU,Sydney,Sydney
+66,PEK,Beijing Capital International Airport,CN,Beijing,Beijing
+67,CAN,Guangzhou Baiyun International Airport,CN,Guangzhou,Guangzhou
+68,XMN,Xiamen Gaoqi International Airport,CN,Xiamen,Xiamen
+69,PVG,Shanghai Pudong International Airport,CN,Shanghai,Shanghai
+70,JJN,Quanzhou Jinjiang International Airport,CN,Quanzhou,Quanzhou

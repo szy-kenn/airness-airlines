@@ -391,6 +391,10 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 
+body {
+  background: rgb(240, 231, 231);
+}
+
 .current-page-indicator {
   display: flex;
   justify-content: space-between;
@@ -479,6 +483,28 @@ input::-webkit-calendar-picker-indicator {
   border-radius: 20px;
   border: 1px solid rgba(129, 129, 129, 0.2);
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+  background: white;
+}
+.available-flights__items.no-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+.available-flights__items.no-result p {
+  font-family: "Montserrat";
+  font-size: clamp(0.75rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  color: #000000;
+  padding: 0.1rem 0.1rem;
+}
+.available-flights__items.no-result span {
+  font-family: "Montserrat";
+  font-size: clamp(0.5rem, 1vw, 1rem);
+  font-weight: 400;
+  color: #000000;
 }
 .available-flights__items__flight-details {
   margin: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem);

@@ -1,0 +1,1925 @@
+{
+  "context": {
+    "sessionId": "858e4bbe-1777-4fd6-aafd-c436faacf668",
+    "status": "incomplete",
+    "totalResults": 10
+  },
+  "itineraries": {
+    "buckets": [
+      {
+        "id": "Best",
+        "items": [
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306161440--32128-1-14213-2306172205?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "eco": {
+              "ecoContenderDelta": 17.62343
+            },
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306161440--32128-1-14213-2306172205",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": false,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-17T22:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "departure": "2023-06-16T14:40:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 985,
+                "id": "18411-2306161440--32128-1-14213-2306172205",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-17T17:50:00",
+                    "departure": "2023-06-16T14:40:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 670,
+                    "flightNumber": "72",
+                    "id": "18411-12409-2306161440-2306171750--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:05:00",
+                    "departure": "2023-06-17T19:00:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 245,
+                    "flightNumber": "623",
+                    "id": "12409-14213-2306171900-2306172205--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 1,
+                "timeDeltaInDays": 1
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0133,067",
+              "raw": 133066.31
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "kore"
+                ],
+                "items": [
+                  {
+                    "agentId": "kore",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 133066.31
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 133066.31
+                }
+              }
+            ],
+            "score": 0.753316,
+            "tags": [
+              "shortest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306160930--32593,-32128-2-14213-2306172205?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306160930--32593,-32128-2-14213-2306172205",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": false,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-17T22:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32593,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/AS.png",
+                      "name": "Alaska Airlines"
+                    },
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operating": [
+                    {
+                      "id": -31521,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/!|.png",
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operationType": "partially_operated"
+                },
+                "departure": "2023-06-16T09:30:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1295,
+                "id": "18411-2306160930--32593,-32128-2-14213-2306172205",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-16T10:29:00",
+                    "departure": "2023-06-16T09:30:00",
+                    "destination": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 59,
+                    "flightNumber": "3493",
+                    "id": "18411-16177-2306160930-2306161029--32593",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "AS",
+                      "id": -32593,
+                      "name": "Alaska Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "!|",
+                      "id": -31521,
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T16:40:00",
+                    "departure": "2023-06-16T13:00:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 700,
+                    "flightNumber": "42",
+                    "id": "16177-12409-2306161300-2306171640--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:05:00",
+                    "departure": "2023-06-17T19:00:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 245,
+                    "flightNumber": "623",
+                    "id": "12409-14213-2306171900-2306172205--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 1
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0134,598",
+              "raw": 134597.94
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "kore"
+                ],
+                "items": [
+                  {
+                    "agentId": "kore",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 134597.94
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 134597.94
+                }
+              }
+            ],
+            "score": 0.566409,
+            "tags": [
+              "third_shortest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306161645--32571,-31651-2-14213-2306180305?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "eco": {
+              "ecoContenderDelta": 21.405947
+            },
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306161645--32571,-31651-2-14213-2306180305",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": true,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-18T03:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32571,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/NH.png",
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    {
+                      "id": -31651,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/6B.png",
+                      "name": "Philippines AirAsia"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "departure": "2023-06-16T16:45:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1160,
+                "id": "18411-2306161645--32571,-31651-2-14213-2306180305",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-17T18:50:00",
+                    "departure": "2023-06-16T16:45:00",
+                    "destination": {
+                      "displayCode": "HND",
+                      "flightPlaceId": "HND",
+                      "name": "Tokyo Haneda",
+                      "parent": {
+                        "displayCode": "TYO",
+                        "flightPlaceId": "TYOA",
+                        "name": "Tokyo",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 605,
+                    "flightNumber": "115",
+                    "id": "18411-12234-2306161645-2306171850--32571",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:20:00",
+                    "departure": "2023-06-17T21:00:00",
+                    "destination": {
+                      "displayCode": "KIX",
+                      "flightPlaceId": "KIX",
+                      "name": "Osaka Kansai International",
+                      "parent": {
+                        "displayCode": "OSA",
+                        "flightPlaceId": "OSAA",
+                        "name": "Osaka",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 80,
+                    "flightNumber": "99",
+                    "id": "12234-13068-2306172100-2306172220--32571",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "origin": {
+                      "displayCode": "HND",
+                      "flightPlaceId": "HND",
+                      "name": "Tokyo Haneda",
+                      "parent": {
+                        "displayCode": "TYO",
+                        "flightPlaceId": "TYOA",
+                        "name": "Tokyo",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-18T03:05:00",
+                    "departure": "2023-06-17T23:55:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 250,
+                    "flightNumber": "187",
+                    "id": "13068-14213-2306172355-2306180305--31651",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "6B",
+                      "id": -31651,
+                      "name": "Philippines AirAsia"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "6B",
+                      "id": -31651,
+                      "name": "Philippines AirAsia"
+                    },
+                    "origin": {
+                      "displayCode": "KIX",
+                      "flightPlaceId": "KIX",
+                      "name": "Osaka Kansai International",
+                      "parent": {
+                        "displayCode": "OSA",
+                        "flightPlaceId": "OSAA",
+                        "name": "Osaka",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 2
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0141,874",
+              "raw": 141874
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "ctpp"
+                ],
+                "items": [
+                  {
+                    "agentId": "ctpp",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 141874
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 141874
+                }
+              }
+            ],
+            "score": 0.545416,
+            "tags": [
+              "second_shortest"
+            ]
+          }
+        ],
+        "name": "Best"
+      },
+      {
+        "id": "Cheapest",
+        "items": [
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306162035--32593,-32558-2-14213-2306182235?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "eco": {
+              "ecoContenderDelta": 7.3551297
+            },
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306162035--32593,-32558-2-14213-2306182235",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": false,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-18T22:35:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32593,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/AS.png",
+                      "name": "Alaska Airlines"
+                    },
+                    {
+                      "id": -32558,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/OZ.png",
+                      "name": "Asiana Airlines"
+                    }
+                  ],
+                  "operating": [
+                    {
+                      "id": -31521,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/!|.png",
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    {
+                      "id": -32558,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/OZ.png",
+                      "name": "Asiana Airlines"
+                    }
+                  ],
+                  "operationType": "partially_operated"
+                },
+                "departure": "2023-06-16T20:35:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 2100,
+                "id": "18411-2306162035--32593,-32558-2-14213-2306182235",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-16T21:36:00",
+                    "departure": "2023-06-16T20:35:00",
+                    "destination": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 61,
+                    "flightNumber": "3360",
+                    "id": "18411-16177-2306162035-2306162136--32593",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "AS",
+                      "id": -32593,
+                      "name": "Alaska Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "!|",
+                      "id": -31521,
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-18T17:45:00",
+                    "departure": "2023-06-17T14:20:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 685,
+                    "flightNumber": "271",
+                    "id": "16177-12409-2306171420-2306181745--32558",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "OZ",
+                      "id": -32558,
+                      "name": "Asiana Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "OZ",
+                      "id": -32558,
+                      "name": "Asiana Airlines"
+                    },
+                    "origin": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-18T22:35:00",
+                    "departure": "2023-06-18T19:05:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 270,
+                    "flightNumber": "703",
+                    "id": "12409-14213-2306181905-2306182235--32558",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "OZ",
+                      "id": -32558,
+                      "name": "Asiana Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "OZ",
+                      "id": -32558,
+                      "name": "Asiana Airlines"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 2
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0100,241",
+              "raw": 100241
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "ctpp"
+                ],
+                "items": [
+                  {
+                    "agentId": "ctpp",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 100241
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 100241
+                }
+              }
+            ],
+            "score": 1,
+            "tags": [
+              "cheapest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306160900--32128,-31964-2-14213-2306180040?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306160900--32128,-31964-2-14213-2306180040",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": true,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-18T00:40:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    },
+                    {
+                      "id": -31964,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/PR.png",
+                      "name": "Philippine Airlines"
+                    }
+                  ],
+                  "operating": [
+                    {
+                      "id": -31519,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/!~.png",
+                      "name": "SkyWest DBA Delta Connection"
+                    },
+                    {
+                      "id": -31964,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/PR.png",
+                      "name": "Philippine Airlines"
+                    }
+                  ],
+                  "operationType": "partially_operated"
+                },
+                "departure": "2023-06-16T09:00:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1480,
+                "id": "18411-2306160900--32128,-31964-2-14213-2306180040",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-16T10:32:00",
+                    "departure": "2023-06-16T09:00:00",
+                    "destination": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 92,
+                    "flightNumber": "3121",
+                    "id": "18411-16177-2306160900-2306161032--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "!~",
+                      "id": -31519,
+                      "name": "SkyWest DBA Delta Connection"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T16:40:00",
+                    "departure": "2023-06-16T13:00:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 700,
+                    "flightNumber": "42",
+                    "id": "16177-12409-2306161300-2306171640--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-18T00:40:00",
+                    "departure": "2023-06-17T21:35:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 245,
+                    "flightNumber": "469",
+                    "id": "12409-14213-2306172135-2306180040--31964",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "PR",
+                      "id": -31964,
+                      "name": "Philippine Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "PR",
+                      "id": -31964,
+                      "name": "Philippine Airlines"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 2
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0126,857",
+              "raw": 126857
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "ctpp"
+                ],
+                "items": [
+                  {
+                    "agentId": "ctpp",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 126857
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 126857
+                }
+              }
+            ],
+            "score": 0.4566167,
+            "tags": [
+              "second_cheapest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306160900--32128,-32179-2-14213-2306172220?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306160900--32128,-32179-2-14213-2306172220",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": true,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-17T22:20:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    },
+                    {
+                      "id": -32179,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/78.png",
+                      "name": "Jeju Air"
+                    }
+                  ],
+                  "operating": [
+                    {
+                      "id": -31519,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/!~.png",
+                      "name": "SkyWest DBA Delta Connection"
+                    },
+                    {
+                      "id": -32179,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/78.png",
+                      "name": "Jeju Air"
+                    }
+                  ],
+                  "operationType": "partially_operated"
+                },
+                "departure": "2023-06-16T09:00:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1340,
+                "id": "18411-2306160900--32128,-32179-2-14213-2306172220",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-16T10:32:00",
+                    "departure": "2023-06-16T09:00:00",
+                    "destination": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 92,
+                    "flightNumber": "3121",
+                    "id": "18411-16177-2306160900-2306161032--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "!~",
+                      "id": -31519,
+                      "name": "SkyWest DBA Delta Connection"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T16:40:00",
+                    "departure": "2023-06-16T13:00:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 700,
+                    "flightNumber": "42",
+                    "id": "16177-12409-2306161300-2306171640--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:20:00",
+                    "departure": "2023-06-17T19:10:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 250,
+                    "flightNumber": "2305",
+                    "id": "12409-14213-2306171910-2306172220--32179",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "78",
+                      "id": -32179,
+                      "name": "Jeju Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "78",
+                      "id": -32179,
+                      "name": "Jeju Air"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 1
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0129,280",
+              "raw": 129280
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "ctpp"
+                ],
+                "items": [
+                  {
+                    "agentId": "ctpp",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 129280
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 129280
+                }
+              }
+            ],
+            "score": 0.4071496,
+            "tags": [
+              "third_cheapest"
+            ]
+          }
+        ],
+        "name": "Cheapest"
+      },
+      {
+        "id": "Fastest",
+        "items": [
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306161440--32128-1-14213-2306172205?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "eco": {
+              "ecoContenderDelta": 17.62343
+            },
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306161440--32128-1-14213-2306172205",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": false,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-17T22:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "departure": "2023-06-16T14:40:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 985,
+                "id": "18411-2306161440--32128-1-14213-2306172205",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-17T17:50:00",
+                    "departure": "2023-06-16T14:40:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 670,
+                    "flightNumber": "72",
+                    "id": "18411-12409-2306161440-2306171750--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:05:00",
+                    "departure": "2023-06-17T19:00:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 245,
+                    "flightNumber": "623",
+                    "id": "12409-14213-2306171900-2306172205--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 1,
+                "timeDeltaInDays": 1
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0133,067",
+              "raw": 133066.31
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "kore"
+                ],
+                "items": [
+                  {
+                    "agentId": "kore",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 133066.31
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 133066.31
+                }
+              }
+            ],
+            "score": 1,
+            "tags": [
+              "shortest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306161645--32571,-31651-2-14213-2306180305?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "eco": {
+              "ecoContenderDelta": 21.405947
+            },
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306161645--32571,-31651-2-14213-2306180305",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": true,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-18T03:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32571,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/NH.png",
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    {
+                      "id": -31651,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/6B.png",
+                      "name": "Philippines AirAsia"
+                    }
+                  ],
+                  "operationType": "fully_operated"
+                },
+                "departure": "2023-06-16T16:45:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1160,
+                "id": "18411-2306161645--32571,-31651-2-14213-2306180305",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-17T18:50:00",
+                    "departure": "2023-06-16T16:45:00",
+                    "destination": {
+                      "displayCode": "HND",
+                      "flightPlaceId": "HND",
+                      "name": "Tokyo Haneda",
+                      "parent": {
+                        "displayCode": "TYO",
+                        "flightPlaceId": "TYOA",
+                        "name": "Tokyo",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 605,
+                    "flightNumber": "115",
+                    "id": "18411-12234-2306161645-2306171850--32571",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:20:00",
+                    "departure": "2023-06-17T21:00:00",
+                    "destination": {
+                      "displayCode": "KIX",
+                      "flightPlaceId": "KIX",
+                      "name": "Osaka Kansai International",
+                      "parent": {
+                        "displayCode": "OSA",
+                        "flightPlaceId": "OSAA",
+                        "name": "Osaka",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 80,
+                    "flightNumber": "99",
+                    "id": "12234-13068-2306172100-2306172220--32571",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "NH",
+                      "id": -32571,
+                      "name": "ANA (All Nippon Airways)"
+                    },
+                    "origin": {
+                      "displayCode": "HND",
+                      "flightPlaceId": "HND",
+                      "name": "Tokyo Haneda",
+                      "parent": {
+                        "displayCode": "TYO",
+                        "flightPlaceId": "TYOA",
+                        "name": "Tokyo",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-18T03:05:00",
+                    "departure": "2023-06-17T23:55:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 250,
+                    "flightNumber": "187",
+                    "id": "13068-14213-2306172355-2306180305--31651",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "6B",
+                      "id": -31651,
+                      "name": "Philippines AirAsia"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "6B",
+                      "id": -31651,
+                      "name": "Philippines AirAsia"
+                    },
+                    "origin": {
+                      "displayCode": "KIX",
+                      "flightPlaceId": "KIX",
+                      "name": "Osaka Kansai International",
+                      "parent": {
+                        "displayCode": "OSA",
+                        "flightPlaceId": "OSAA",
+                        "name": "Osaka",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 2
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0141,874",
+              "raw": 141874
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "ctpp"
+                ],
+                "items": [
+                  {
+                    "agentId": "ctpp",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 141874
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 141874
+                }
+              }
+            ],
+            "score": 0.8430493,
+            "tags": [
+              "second_shortest"
+            ]
+          },
+          {
+            "deeplink": "https://www.skyscanner.net/transport/flights/yvr/mnl/230616/config/18411-2306160930--32593,-32128-2-14213-2306172205?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27544979&originentityid=27537411&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+            "fareAttributes": {},
+            "farePolicy": {
+              "isCancellationAllowed": false,
+              "isChangeAllowed": false,
+              "isPartiallyChangeable": false,
+              "isPartiallyRefundable": false
+            },
+            "hasFlexibleOptions": false,
+            "id": "18411-2306160930--32593,-32128-2-14213-2306172205",
+            "isMashUp": false,
+            "isProtectedSelfTransfer": false,
+            "isSelfTransfer": false,
+            "legs": [
+              {
+                "arrival": "2023-06-17T22:05:00",
+                "carriers": {
+                  "marketing": [
+                    {
+                      "id": -32593,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/AS.png",
+                      "name": "Alaska Airlines"
+                    },
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operating": [
+                    {
+                      "id": -31521,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/!|.png",
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    {
+                      "id": -32128,
+                      "logoUrl": "https://logos.skyscnr.com/images/airlines/favicon/KE.png",
+                      "name": "Korean Air"
+                    }
+                  ],
+                  "operationType": "partially_operated"
+                },
+                "departure": "2023-06-16T09:30:00",
+                "destination": {
+                  "city": "Manila",
+                  "displayCode": "MNL",
+                  "id": "MNL",
+                  "isHighlighted": false,
+                  "name": "Manila Ninoy Aquino"
+                },
+                "durationInMinutes": 1295,
+                "id": "18411-2306160930--32593,-32128-2-14213-2306172205",
+                "isSmallestStops": false,
+                "origin": {
+                  "city": "Vancouver",
+                  "displayCode": "YVR",
+                  "id": "YVR",
+                  "isHighlighted": false,
+                  "name": "Vancouver International"
+                },
+                "segments": [
+                  {
+                    "arrival": "2023-06-16T10:29:00",
+                    "departure": "2023-06-16T09:30:00",
+                    "destination": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 59,
+                    "flightNumber": "3493",
+                    "id": "18411-16177-2306160930-2306161029--32593",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "AS",
+                      "id": -32593,
+                      "name": "Alaska Airlines"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "!|",
+                      "id": -31521,
+                      "name": "SkyWest Airlines AS AlaskaSkyWest"
+                    },
+                    "origin": {
+                      "displayCode": "YVR",
+                      "flightPlaceId": "YVR",
+                      "name": "Vancouver International",
+                      "parent": {
+                        "displayCode": "YVR",
+                        "flightPlaceId": "YVRA",
+                        "name": "Vancouver",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T16:40:00",
+                    "departure": "2023-06-16T13:00:00",
+                    "destination": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 700,
+                    "flightNumber": "42",
+                    "id": "16177-12409-2306161300-2306171640--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "SEA",
+                      "flightPlaceId": "SEA",
+                      "name": "Seattle / Tacoma International",
+                      "parent": {
+                        "displayCode": "SEA",
+                        "flightPlaceId": "SEAA",
+                        "name": "Seattle",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  },
+                  {
+                    "arrival": "2023-06-17T22:05:00",
+                    "departure": "2023-06-17T19:00:00",
+                    "destination": {
+                      "displayCode": "MNL",
+                      "flightPlaceId": "MNL",
+                      "name": "Manila Ninoy Aquino",
+                      "parent": {
+                        "displayCode": "MNL",
+                        "flightPlaceId": "MNLP",
+                        "name": "Manila",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    },
+                    "durationInMinutes": 245,
+                    "flightNumber": "623",
+                    "id": "12409-14213-2306171900-2306172205--32128",
+                    "marketingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "operatingCarrier": {
+                      "allianceId": 0,
+                      "alternateId": "KE",
+                      "id": -32128,
+                      "name": "Korean Air"
+                    },
+                    "origin": {
+                      "displayCode": "ICN",
+                      "flightPlaceId": "ICN",
+                      "name": "Incheon International Airport",
+                      "parent": {
+                        "displayCode": "SEL",
+                        "flightPlaceId": "SELA",
+                        "name": "Seoul",
+                        "type": "City"
+                      },
+                      "type": "Airport"
+                    }
+                  }
+                ],
+                "stopCount": 2,
+                "timeDeltaInDays": 1
+              }
+            ],
+            "price": {
+              "formatted": "P\u00a0134,598",
+              "raw": 134597.94
+            },
+            "pricingOptions": [
+              {
+                "agentIds": [
+                  "kore"
+                ],
+                "items": [
+                  {
+                    "agentId": "kore",
+                    "bookingProposition": "PBOOK",
+                    "price": {
+                      "amount": 134597.94
+                    }
+                  }
+                ],
+                "price": {
+                  "amount": 134597.94
+                }
+              }
+            ],
+            "score": 0.7219731,
+            "tags": [
+              "third_shortest"
+            ]
+          }
+        ],
+        "name": "Fastest"
+      }
+    ]
+  }
+}

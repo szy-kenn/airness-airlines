@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Flights{% endblock %}
+
+{% include 'blocks/navbar.html' %}
+
+{% block content %}
+    <div class="current-page-indicator">
+        <p>Select a Flight</p>
+        <p>Passenger Details</p>
+        <p>Book a Seat</p>
+        <p>Confirmation</p>
+    </div>
+    {% block booking %}
+    {% endblock %}
+{% endblock %}

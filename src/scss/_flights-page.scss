@@ -1,5 +1,9 @@
 $width: 65%;
 
+body {
+    background: rgb(240, 231, 231);
+}
+
 .current-page-indicator {
     @include flex;
     width: $width;
@@ -84,6 +88,24 @@ $width: 65%;
         border-radius: 20px;
         border: 1px solid rgba(129, 129, 129, 0.2);
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+        background: white;
+
+        &.no-result{
+            @include flex(center);
+            width: 100%;
+            margin: 0;
+            text-align: center;
+
+            p {
+                @include font($primary-font, clamp(0.75rem, 1.6vw, 1.4rem), 700, $primary-color);
+                padding: 0.1rem 0.1rem;
+            }
+
+            span {
+                @include font($primary-font, clamp(0.5rem, 1vw, 1rem), 400, $primary-color);
+            }
+
+        }
 
         &__flight-details {
             margin: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem);
