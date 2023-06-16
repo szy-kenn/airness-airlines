@@ -91,9 +91,9 @@ CREATE TABLE reservations (
   TicketId CHAR(4),
   SeatId CHAR(4),
   PRIMARY KEY (PassengerId, TicketId, SeatId),
-  FOREIGN KEY PassengerId REFERENCES passengers(PassengerId),
-  FOREIGN KEY TicketId REFERENCES tickets(TicketId),
-  FOREIGN KEY SeatId REFERENCES seats(SeatId)
+  FOREIGN KEY (PassengerId) REFERENCES passengers(PassengerId),
+  FOREIGN KEY (TicketId) REFERENCES tickets(TicketId),
+  FOREIGN KEY (SeatId) REFERENCES seats(SeatId)
 );
 ~~~~
 
