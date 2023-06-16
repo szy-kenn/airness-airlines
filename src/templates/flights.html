@@ -39,8 +39,36 @@
 
 <div class="available-flights">
     <div class="available-flights__items">
-        <div class="available-flights__items__flight-details"></div>
-        <div class="available-flights__items__flight-price"></div>
+        <div class="available-flights__items__flight-details">
+            <div class="available-flights__items__flight-details__from">
+                <div>
+                    <p>08:10</p>
+                    <span>{{ form_part_one['from-json']['iata']}}</span>
+                </div>
+                <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
+            </div>
+            <div class="available-flights__items__flight-details__stops">
+                <div>
+                    <div class="line"></div>
+                    <i class="fa-solid fa-plane"></i>
+                </div>
+                <p>3 stops</p>
+                <!-- <p>DURATION</p>
+                <p>-------- ></p>
+                <p>3 STOPS</p> -->
+            </div>
+            <div class="available-flights__items__flight-details__to">
+                <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">
+                <div>
+                    <p>23:59</p>
+                    <span>{{ form_part_one['to-json']['iata']}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="available-flights__items__flight-price">
+            <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> 74,871</p>
+            <button class="form-btn">Select</button>
+        </div>
     </div>
     <div class="available-flights__items">
         <div class="available-flights__items__flight-details"></div>
