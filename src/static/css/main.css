@@ -62,9 +62,8 @@ input::-webkit-calendar-picker-indicator {
   font-size: 1.2rem;
   font-weight: 300;
   color: #174885;
-  padding-left: 13px;
   text-align: center;
-  width: 1.75rem;
+  width: 2rem;
   border: none;
 }
 .passenger-form__container__passenger-count:focus {
@@ -264,8 +263,8 @@ input::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 .flight-location-form #to input {
-  border-radius: 0 10px 10px 0;
-  margin-left: 2rem;
+  border-radius: 0 20px 10px 0;
+  margin-left: 11%;
 }
 .flight-location-form #to::before {
   content: "To";
@@ -508,11 +507,13 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media screen and (max-width: 768px) {
-  img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    max-width: 100vw;
-    height: 75vh;
+  .img-slideshow {
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+  }
+  .img-slideshow img {
+    top: 0%;
+    left: -50%;
   }
   .form-container {
     position: absolute;
