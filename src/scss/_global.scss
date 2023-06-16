@@ -15,7 +15,7 @@ a,
     -webkit-tap-highlight-color: transparent;
 }
 
-
-// label {
-//     font-weight: 700;
-// }
+input::-webkit-calendar-picker-indicator {
+    font-size: 26px;
+    padding: 0.5rem;
+  }

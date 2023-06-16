@@ -1,7 +1,8 @@
 .flight-location-form {
     @include flex;
     position: relative;
-    padding: 1.25rem 0;
+    // padding: 1.25rem 0;
+    padding-bottom: 1.25rem;
     z-index: 2;
     gap: 1px;
     // transform: translateX(100%);
@@ -80,9 +81,10 @@
         width: 100%;
 
         input {
-            width: 70%;
+            width: 85%;
             height: 4rem;
             outline: none;
+            // border: 1px solid red;
             border: none;
             text-align: left;
             @include font($primary-font, 1rem, 400, $primary-color);
@@ -213,24 +215,25 @@
     padding: 1.25em 0;
     margin: 0;
     z-index: 1;
-
+    @include font($primary-font, 0.7rem, 300, $primary-button);
     &.focused {
         @include focused('.flight-date-form');
     }
     
     #{&}__container {
-        @include flex(center);
         border: 1px solid $primary-button;
         width: 100%;
         
         &__input {
-            width: 100%;
-            height: 2.75rem;
-            padding-top: 0.75rem;
+            width: 92.5%;
+            height: 4rem;
+            margin-left: 5%;
             outline: none;
             border: none;
+            padding: 0;
+            // border: 1px solid red;
             text-align: left;
-            @include font($primary-font, 1rem, 400, $primary-button);
+            @include font($primary-font, 1rem, 400, $primary-color);
         }
     }
 
@@ -243,9 +246,7 @@
                     content: 'Depart';
                     position: absolute;
                     pointer-events: none;
-                    font-size: 0.7rem;
-                    font-weight: 300;
-                    top: 15%;
+                    top: 10%;
                     bottom: 0;
                     left: 5%;
                     right: 0;
@@ -256,6 +257,10 @@
         } @else {
             & div:nth-child(#{$i}) {
                 border-radius: 0 10px 10px 0;
+
+                input {
+                    color: $lighter-primary-button;
+                }
 
                 &::before {
                     content: 'Return';

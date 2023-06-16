@@ -5,8 +5,6 @@
 
 <div class="main">
 
-    
-
     <div>
         <h1>
            Welcome your AIRNESS
@@ -14,7 +12,7 @@
     </div>
 
     <div class="img-slideshow">
-        <img src="{{ url_for('static', filename='img/flight_attendant_0.jpg') }}" alt="Flight Attendant">
+        <img src="{{ url_for('static', filename='img/paulo_jayr.jpg') }}" alt="Flight Attendant" id="img-slideshow__1">
     </div>
 
     <div class="form-container">
@@ -55,7 +53,9 @@
             </div>
 
             {% include 'blocks/passenger-form.html' %}
-            <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
+            <div>
+                <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
+            </div>
         </form>
     </div>
 
