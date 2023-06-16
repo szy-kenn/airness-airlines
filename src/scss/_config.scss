@@ -21,7 +21,7 @@
     text-transform: uppercase;
     background: $btn-color;
     box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-    @include font($primary-font, 0.85rem, 700, $secondary-color);
+    @include font($primary-font, 1em, 700, $secondary-color);
 }
 
 @mixin focused($parent, $top: 15%, $left: 5%) {

@@ -417,7 +417,7 @@ input::-webkit-calendar-picker-indicator {
   bottom: 0;
   background: #ffffff;
   max-width: 100dvw;
-  height: 100rem;
+  height: 50rem;
   z-index: 0;
 }
 

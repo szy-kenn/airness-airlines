@@ -1,4 +1,6 @@
-@import "../scss/_reset", "../scss/variables", "../scss/global", "../scss/config", "../scss/passenger-form", "../scss/flight-form";
+@import "../scss/_reset", "../scss/variables", "../scss/global", 
+        "../scss/config", "../scss/passenger-form", "../scss/flight-form", 
+        "../scss/navbar";
 
 .main {
     display: grid;
@@ -32,7 +34,7 @@
     bottom: 0;
     background: $secondary-color;
     max-width: 100dvw;
-    height: 100rem;
+    height: 50rem;
     z-index: 0;
 }
 

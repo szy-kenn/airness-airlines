@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Airness Airlines{% endblock %}
 
+{% include 'blocks/navbar.html' %}
+
 {% block content %}
 
 <div class="main">
@@ -17,41 +19,7 @@
 
     <div class="form-container">
         <form method="POST" id="form-pg-1">
-            <div class="flight-location-form">
-                <div class="with-dropdown-select" id="from">
-                    <div class="flight-location-input__container">
-                        <input type="text" tabindex="0" class="with-dropdown-select__input" name="from" id="from-flight-location" oninput="showChoices('airport', 0)" required="">
-                    </div>
-                    <div class="with-dropdown-select__container flight-location-form__container">
-                        <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
-                            <p>MNL</p>
-                        </div> -->
-                    </div>
-                </div>
-                <button class="swap-btn" type="button">
-                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                </button>
-                <div class="with-dropdown-select" id="to">
-                    <div class="flight-location-input__container">
-                        <input type="text" tabindex="0" class="with-dropdown-select__input" name="to" id="to-flight-location"  oninput="showChoices('airport', 1)" required="">
-                    </div>
-                    <div class="with-dropdown-select__container flight-location-form__container">
-                        <!-- <div class="with-dropdown-select__container__options flight-location-form__container__options">
-                            <p>MNL</p>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="flight-date-form">
-                <div class="with-dropdown-select flight-date-form__container">
-                    <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" name="departure-date" id="departureDate" required="">
-                </div>
-                <div class="with-dropdown-select flight-date-form__container">
-                    <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" name="return-date" id="returnDate" disabled>
-                </div>
-            </div>
-
+            {% include 'blocks/flight-form.html' %}
             {% include 'blocks/passenger-form.html' %}
             <div>
                 <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
