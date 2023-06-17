@@ -129,7 +129,7 @@
 
                     {% endfor %}
                     <div class="footer">
-                        <p><span>Arrives: </span> </p>
+                        <p><span>Arrives: </span> {{ available_flights['best'][i]['arrival_time'][0:10] }}</p>
                         <p><span>Duration: </span>  {{ duration }}</p>
                     </div>
                 </div>
