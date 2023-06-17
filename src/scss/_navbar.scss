@@ -1,0 +1,110 @@
+.navbar{
+    background-color: #163976;
+    height: 100px;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.airline_name{
+    color: white;
+    margin-top: -25px;
+    font-style: italic;
+    font-weight: bold;
+    padding-left: -5px;
+}
+
+.logo{
+    margin-left: 70px;
+    align-items: center;
+}
+
+
+.about,.contact{
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+   
+}
+
+#current-time{
+    color: white;
+    font-family:$primary-font;
+    margin-right: 30px;
+}
+
+#current-date{
+    color: white;
+    font-family:$primary-font;
+    margin-right: 30px;
+    
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+    font-size: 20px;   
+    font-weight: bold;
+
+  
+}
+
+
+button{
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: $primary-font;
+}
+
+.contact_button{
+   
+    padding:10px ;
+    padding-left:27px;
+    padding-right: 23px;
+    border-radius: 8px;
+     color:#212121;
+     font-weight: 600;
+     margin: 0 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 50px;
+    color:rgb(217, 171, 53);
+    border: 3px solid  rgb(217, 171, 53);
+}
+
+.about_button{
+   
+    padding:10px ;
+    padding-left:38px;
+    padding-right: 38px;
+    border-radius: 8px;
+     color:#212121;
+     font-weight: 600;
+     margin: 0 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+    color:rgb(217, 171, 53);
+    border: 3px solid  rgb(217, 171, 53);
+}
+
+
+button:hover{
+    color: white;
+    background-color: rgb(217, 171, 53);;
+}
+
+
+.airline-name{
+    color: white;
+    margin-right:190px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Pinyon Script',sans-serif;
+    font-size:40px;
+}

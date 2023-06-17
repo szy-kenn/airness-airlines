@@ -1,1 +1,34 @@
-<p>--INSERT NAVBAR HERE--</p>
+<nav class="navbar">
+    <div class="navdiv">
+        <div class="logo">
+            <img src = "static/img/logo_noname.png" width=100px     height=100px >
+        </div>
+        
+        <div class="menu">
+            <ul>
+                <li><p class ="airline-name">Airness Airlines</p></li>
+                <li><p id="current-date"></p></li>
+                <li><p id="current-time"></p></li>
+                <li><button type="button" class="about_button" onclick="location.href='#'">About</button></li>
+                <li><button type="button" class="contact_button" onclick="location.href='#'">Contact Us</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    let dateToday=document.getElementById
+    ("current-date");
+
+    let today = new Date();
+    let day = `${today.getDate() < 10 ?  "0" : ""}${today.getDate()}`;
+    let month =`${(today.getMonth()+1) < 10 ? "0" : ""}${today.getMonth()+1}`;
+    let year = today.getFullYear();
+    dateToday.textContent=`${day}/${month}/${year}`;
+    
+    let time=document.getElementById("current-time");
+    setInterval(()=>{
+    let d= new Date();
+    time.innerHTML=d.toLocaleTimeString();
+    },1000)
+</script>
