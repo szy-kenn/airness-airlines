@@ -10,3 +10,6 @@ db.yaml
 
 # css map
 src/static/css/.map
+
+# api response caching
+api_cache.sqlite

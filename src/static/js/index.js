@@ -1,4 +1,21 @@
 /******************
+ *     NAVBAR     *
+ ******************/
+let dateToday=document.getElementById("current-date");
+
+let navBarToday = new Date();
+let day = `${navBarToday.getDate() < 10 ?  "0" : ""}${navBarToday.getDate()}`;
+let month =`${(navBarToday.getMonth()+1) < 10 ? "0" : ""}${navBarToday.getMonth()+1}`;
+let year = navBarToday.getFullYear();
+dateToday.textContent=`${day}/${month}/${year}`;
+
+let time=document.getElementById("current-time");
+setInterval(()=>{
+    let d= new Date();
+    time.innerHTML=d.toLocaleTimeString();
+},  1000)
+
+/******************
  * PASSENGER FORM *
  ******************/
 const passengerCount = document.querySelectorAll('.passenger-form__container__passenger-count');
