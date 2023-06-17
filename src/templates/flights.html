@@ -38,55 +38,63 @@
 <div class="available-flights">
     {% for i in range(result_count) %}
 
+        {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
+        {% set hours = duration_in_min // 60 %}
+        {% set min = duration_in_min % 60 %}
+        {% if hours > 0 and min > 0 %}
+            {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
+        {% elif hours > 0 and min == 0 %}
+            {% set duration = hours ~ 'h' %}
+        {% elif hours == 0 and min > 0 %}
+            {% set duration = min ~ 'm' %}
+        {% endif %}
+
+        {% set stop_count = available_flights['best'][i]['stop_count'] %}
+        {% if stop_count > 1 %}
+            {% set stops = stop_count ~ ' stops' %}
+        {% elif stop_count == 1 %}
+            {% set stops = stop_count ~ ' stop' %}
+        {% else %}
+            {% set stops = 'Direct' %}
+        {% endif %}
+
     <div class="available-flights__items">
-        <div class="available-flights__items__flight-details">
-            <div class="available-flights__items__flight-details__from">
-                <div>
-                    <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
-                    <span>{{ form_part_one['from-json']['iata']}}</span>
+            <div class="available-flights__items__flight-details">
+                <div class="available-flights__items__flight-details__from">
+                    <div>
+                        <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
+                        <span>{{ form_part_one['from-json']['iata']}}</span>
+                    </div>
+                    <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
                 </div>
-                <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
-            </div>
-            <div class="available-flights__items__flight-details__stops">
-                {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
-                {% set hours = duration_in_min // 60 %}
-                {% set min = duration_in_min % 60 %}
-                {% if hours > 0 and min > 0 %}
-                    {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
-                {% elif hours > 0 and min == 0 %}
-                    {% set duration = hours ~ 'h' %}
-                {% elif hours == 0 and min > 0 %}
-                    {% set duration = min ~ 'm' %}
-                {% endif %}
-                <p> {{ duration }} </p>
-                <div>
-                    <div class="line"></div>
-                    <i class="fa-solid fa-plane"></i>
+                <div class="available-flights__items__flight-details__stops">
+                    <p> {{ duration }} </p>
+                    <div>
+                        <div class="line"></div>
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+                    <p>{{ stops }}</p>
+                    <i class="fa-sharp fa-solid fa-chevron-down expand-flight-stops" data-index="{{ i }}"></i>
                 </div>
-                {% set stop_count = available_flights['best'][i]['stop_count'] %}
-                {% if stop_count > 1 %}
-                    {% set stops = stop_count ~ ' stops' %}
-                {% elif stop_count == 1 %}
-                    {% set stops = stop_count ~ ' stop' %}
-                {% else %}
-                    {% set stops = 'Direct' %}
-                {% endif %}
-                <p>{{ stops }}</p>
-            </div>
-            <div class="available-flights__items__flight-details__to">
-                <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">
-                <div>
-                    <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
-                    <span>{{ form_part_one['to-json']['iata']}}</span>
+                <div class="available-flights__items__flight-details__to">
+                    <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">
+                    <div>
+                        <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
+                        <span>{{ form_part_one['to-json']['iata']}}</span>
+                    </div>
                 </div>
             </div>
-        </div>
         <div class="available-flights__items__flight-price">
             <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
             <button class="form-btn">Select</button>
         </div>
     </div>
-
+    <div class="available-flights__items expanded-section" data-index="{{ i }}">
+        <div class="available-flights__items__flight-details expanded-section">
+        </div>
+        <div class="available-flights__items__flight-price expanded-section">
+        </div>
+    </div>
     {% endfor %}
 
     {% if result_count == 0 %}

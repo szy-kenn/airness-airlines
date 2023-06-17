@@ -45,12 +45,30 @@ def request(origin, destination, departure_date) -> tuple:
             break
     
         available_flights[key].append({})
-        available_flights[key][i]['arrival_time'] = result['legs'][0]['arrival']
-        available_flights[key][i]['departure_time'] = result['legs'][0]['departure']  
-        available_flights[key][i]['segments'] = result['legs'][0]['segments']  
-        available_flights[key][i]['duration_in_mins'] = result['legs'][0]['durationInMinutes']  
-        available_flights[key][i]['stop_count'] = result['legs'][0]['stopCount']  
-        available_flights[key][i]['price'] = result['price']['raw'] 
+        available_flights[key][i]['arrival_time']       = result['legs'][0]['arrival']
+        available_flights[key][i]['departure_time']     = result['legs'][0]['departure']   
+        available_flights[key][i]['duration_in_mins']   = result['legs'][0]['durationInMinutes']  
+        available_flights[key][i]['stop_count']         = result['legs'][0]['stopCount']  
+        available_flights[key][i]['price']              = result['price']['raw'] 
+        available_flights[key][i]['stops']              = []
+
+        for j in range(len(result['legs'][0]['segments'])):
+            available_flights[key][i]['stops'].append({})
+            available_flights[key][i]['stops'][j]['arrival_time']                  = result['legs'][0]['segments'][i]['arrival']
+            available_flights[key][i]['stops'][j]['departure_time']                = result['legs'][0]['segments'][i]['departure']
+            available_flights[key][i]['stops'][j]['duration']                      = result['legs'][0]['segments'][i]['durationInMinutes']
+            available_flights[key][i]['stops'][j]['flight_number']                 = result['legs'][0]['segments'][i]['flightNumber']
+
+            available_flights[key][i]['stops'][j]['destination']                   = {} 
+            available_flights[key][i]['stops'][j]['destination']['iata']           = result['legs'][0]['segments'][i]['destination']['displayCode']
+            available_flights[key][i]['stops'][j]['destination']['name']           = result['legs'][0]['segments'][i]['destination']['name']
+            available_flights[key][i]['stops'][j]['destination']['municipality']   = result['legs'][0]['segments'][i]['destination']['parent']['name']
+            
+            available_flights[key][i]['stops'][j]['origin']                        = {} 
+            available_flights[key][i]['stops'][j]['origin']['iata']                = result['legs'][0]['segments'][i]['origin']['displayCode']
+            available_flights[key][i]['stops'][j]['origin']['name']                = result['legs'][0]['segments'][i]['origin']['name']
+            available_flights[key][i]['stops'][j]['origin']['municipality']        = result['legs'][0]['segments'][i]['origin']['parent']['name']
+
         i+=1
 
     return (i, available_flights)

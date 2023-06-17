@@ -74,9 +74,17 @@ body {
 .available-flights {
     display: block;
     width: calc($width + 2rem);
+    position: relative;
     height: 100%;
     padding: 1rem 0;
     margin: auto;
+
+    &__container-expandable {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin: auto;
+    }
 
     &__items {
         position: relative;
@@ -89,6 +97,19 @@ body {
         border: 1px solid rgba(129, 129, 129, 0.2);
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
         background: white;
+
+        &.expanded-section {   
+            display: none;
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            border: none;
+            height: 35%;
+
+            &.expanded {
+                display: flex;
+            }
+        }
 
         &.no-result{
             @include flex(center);
@@ -108,11 +129,22 @@ body {
         }
 
         &__flight-details {
-            margin: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem);
-            width: 75%;
+            margin: clamp(0.5rem, 1vw, 1rem);
+            width: 70%;
             @include flex;
             text-align: center;
             position: relative;
+
+            &.expanded-section {
+                position: relative;
+                background-color: white;
+                height: 100%;
+                margin: 0;
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+                border: 1px solid rgba(129, 129, 129, 0.2);
+                box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+            }
 
             &__from,
             &__to {
@@ -130,20 +162,23 @@ body {
                 
                 p {
                     @include font($primary-font, clamp(1rem, 2vw, 1.75rem), 500, rgba($primary-color, 0.7));
-                    // font-size: ;
                     padding-bottom: 0.5rem;
+                }
+
+                span {
+                    @include font($primary-font, clamp(0.5rem, 1vw, 1rem), 500, rgba($primary-color, 0.7));
+                    padding-bottom: 0.5rem;                   
                 }
             }
 
             &__stops {
                 
-                display: inline-block;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
                 position: relative;
                 width: 100%;
-                
-                div {
-                    @include flex;
-                }
+                height: 100%;
 
                 .line {
                     position: relative;
@@ -153,12 +188,27 @@ body {
                     background-color: rgba(0, 0, 0, 0.6);
                 }
 
+                .expand-flight-stops {
+                    cursor: pointer;
+                    color: $secondary-button;
+
+                    &.expanded-btn {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                div {
+                    @include flex;
+                }
+
                 i {
                     color: rgba(0, 0, 0, 0.3); 
+
                 }
 
                 p {
-                    @include font($primary-font, clamp(0.6rem, 0.97vw, 0.85rem), 400, $secondary-button);
+                    @include font($primary-font, clamp(0.6rem, 0.97vw, 0.85rem), 400, rgba($primary-color, 0.8));
+                    padding: 0.3rem 0;
                 }
             }
         }
@@ -173,6 +223,10 @@ body {
             justify-content: space-around;
             text-align: center;
             border-left: 1px solid rgba(97, 96, 96, 0.2);
+
+            &.expanded-section {
+                border: none;
+            }
 
             p {
                 @include font($primary-font, clamp(1rem, 1.6vw, 1.4rem), 400, $primary-color);

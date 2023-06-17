@@ -467,8 +467,15 @@ body {
 .available-flights {
   display: block;
   width: calc(65% + 2rem);
+  position: relative;
   height: 100%;
   padding: 1rem 0;
+  margin: auto;
+}
+.available-flights__container-expandable {
+  display: block;
+  position: relative;
+  width: 100%;
   margin: auto;
 }
 .available-flights__items {
@@ -484,6 +491,17 @@ body {
   border: 1px solid rgba(129, 129, 129, 0.2);
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
   background: white;
+}
+.available-flights__items.expanded-section {
+  display: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border: none;
+  height: 35%;
+}
+.available-flights__items.expanded-section.expanded {
+  display: flex;
 }
 .available-flights__items.no-result {
   display: flex;
@@ -507,13 +525,23 @@ body {
   color: #000000;
 }
 .available-flights__items__flight-details {
-  margin: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem);
-  width: 75%;
+  margin: clamp(0.5rem, 1vw, 1rem);
+  width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   position: relative;
+}
+.available-flights__items__flight-details.expanded-section {
+  position: relative;
+  background-color: white;
+  height: 100%;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid rgba(129, 129, 129, 0.2);
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
 }
 .available-flights__items__flight-details__from, .available-flights__items__flight-details__to {
   display: flex;
@@ -536,15 +564,20 @@ body {
   color: rgba(0, 0, 0, 0.7);
   padding-bottom: 0.5rem;
 }
+.available-flights__items__flight-details__from span, .available-flights__items__flight-details__to span {
+  font-family: "Montserrat";
+  font-size: clamp(0.5rem, 1vw, 1rem);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  padding-bottom: 0.5rem;
+}
 .available-flights__items__flight-details__stops {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   position: relative;
   width: 100%;
-}
-.available-flights__items__flight-details__stops div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 100%;
 }
 .available-flights__items__flight-details__stops .line {
   position: relative;
@@ -553,6 +586,18 @@ body {
   margin: 0 0.2rem;
   background-color: rgba(0, 0, 0, 0.6);
 }
+.available-flights__items__flight-details__stops .expand-flight-stops {
+  cursor: pointer;
+  color: #5d478b;
+}
+.available-flights__items__flight-details__stops .expand-flight-stops.expanded-btn {
+  transform: rotate(180deg);
+}
+.available-flights__items__flight-details__stops div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .available-flights__items__flight-details__stops i {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -560,7 +605,8 @@ body {
   font-family: "Montserrat";
   font-size: clamp(0.6rem, 0.97vw, 0.85rem);
   font-weight: 400;
-  color: #5d478b;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 0.3rem 0;
 }
 .available-flights__items__flight-price {
   padding: 1rem 2rem;
@@ -572,6 +618,9 @@ body {
   justify-content: space-around;
   text-align: center;
   border-left: 1px solid rgba(97, 96, 96, 0.2);
+}
+.available-flights__items__flight-price.expanded-section {
+  border: none;
 }
 .available-flights__items__flight-price p {
   font-family: "Montserrat";
