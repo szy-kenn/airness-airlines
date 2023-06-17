@@ -25,12 +25,12 @@ def flights():
 
     # return session['form_part_one']
 
-    origin = session['form_part_one']['to-json']['iata'],
-    destination = session['form_part_one']['from-json']['iata'],
+    origin = session['form_part_one']['from-json']['iata'],
+    destination = session['form_part_one']['to-json']['iata'],
     departure_date = session['form_part_one']['departure-date'],
     
     available_flights = skyscanner.request(origin, destination, departure_date)
-    # return (jsonify(available_flights[1]['best'][1]['stops']))
+    # return jsonify(available_flights)
 
     if available_flights[0] == 0:
         return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=available_flights[1])

@@ -72,11 +72,14 @@ body {
 }
 
 .available-flights {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width: calc($width + 2rem);
     position: relative;
-    height: 100%;
-    padding: 1rem 0;
+    height: auto;
+    padding: 0rem 0;
     margin: auto;
 
     &__container-expandable {
@@ -84,6 +87,7 @@ body {
         position: relative;
         width: 100%;
         margin: auto;
+        // border: 2px solid red;
     }
 
     &__items {
@@ -91,23 +95,38 @@ body {
         @include flex;
         width: 100%;
         height: 11%;
-        padding: 1rem 0;
-        margin-bottom: 1.5rem;
+        padding: 0.5rem 0;
+        margin: 0.5rem 0;
         border-radius: 20px;
         border: 1px solid rgba(129, 129, 129, 0.2);
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
         background: white;
 
+        &.expanded {
+            margin-bottom: 0;
+        }
+
         &.expanded-section {   
-            display: none;
             background: transparent;
             box-shadow: none;
-            padding: 0;
+            position: relative;
+            padding: 0 0;
             border: none;
-            height: 35%;
+            width: 100%;
+            height: 0rem;
+            z-index: -1;
+            margin: 0 0;
+            opacity: 0;
+            top: -1rem;
+            transition: all 0.1s cubic-bezier(0.19, 1, 0.22, 1);
+            // pointer-events: none;
 
             &.expanded {
-                display: flex;
+                height: auto;
+                opacity: 1;
+                top: 0rem;
+                // z-index: 1;
+                transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
             }
         }
 
@@ -138,12 +157,77 @@ body {
             &.expanded-section {
                 position: relative;
                 background-color: white;
-                height: 100%;
-                margin: 0;
-                padding: 1rem;
+                // height: 100%;
                 border-radius: 0 0 10px 10px;
                 border: 1px solid rgba(129, 129, 129, 0.2);
                 box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+                margin-top: 0;
+                margin-bottom: 1rem;
+
+                .flight-timeline-wrapper {
+                    display: block;
+                    width: 100%;
+
+                    .flight-timeline-p {
+                        font-weight: 700;
+                        background-color: $primary-button;
+                        color: white;
+                        padding: 0.75rem;
+                        border: 1px solid rgba(129, 129, 129, 0.2);
+                    }
+
+                    .flight-number {
+                        padding: 0.5rem;
+                        font-size: 0.8rem;
+                    }
+
+                    .flight-route-container {
+                        @include flex(space-around);
+                        padding: 0.5rem 2rem;
+
+                        p {
+                            @include font($primary-font, 0.8rem, 400, $primary-color);
+                            width: 5rem;
+                        }
+                        
+                        .route-wrapper {
+                            display: block;
+                            width: 100%;
+
+                            .route-from,
+                            .route-to {
+                                @include flex(flex-start);
+                                padding: 0.5rem 0;
+
+                                .time,
+                                .iata {
+                                    @include font($primary-font, 1rem, 400, $primary-color);
+                                }
+
+                                .name {
+                                    width: 100%;
+                                    text-align: left;
+                                    padding: 0 0.5rem;
+                                    @include font($primary-font, 1rem, 400, $primary-color);
+                                }
+                            }
+                        }
+                    }
+
+                    .footer {
+                        @include flex(flex-start);
+
+                        p {
+                            padding: 1rem 2rem;
+                            @include font($primary-font, 0.8rem, 400, $primary-color);
+
+                            span {
+                                font-weight: 700;
+                            }
+                        }
+                    }
+                }
+    
             }
 
             &__from,

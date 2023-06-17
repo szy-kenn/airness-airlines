@@ -1,0 +1,1888 @@
+{
+  "context": {
+    "sessionId": "0dd0092b-7f00-4aa2-897a-206a8dcf7285",
+    "status": "incomplete"
+  },
+  "itineraries": {
+    "results": [
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306200545--32331,-31722-2-18411-2306201057?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306200545--32331,-31722-2-18411-2306201057",
+        "legs": [
+          {
+            "arrival": "2023-06-20T10:57:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T05:45:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1212,
+            "id": "14213-2306200545--32331,-31722-2-18411-2306201057",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T08:05:00",
+                "departure": "2023-06-20T05:45:00",
+                "destination": {
+                  "flightPlaceId": "TPE",
+                  "name": "Taipei Taiwan Taoyuan",
+                  "parent": {
+                    "flightPlaceId": "TPE",
+                    "name": "Taipei",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 140,
+                "flightNumber": "262",
+                "id": "14213-17075-2306200545-2306200805--32331",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T06:45:00",
+                "departure": "2023-06-20T09:50:00",
+                "destination": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 715,
+                "flightNumber": "872",
+                "id": "17075-16216-2306200950-2306200645--31722",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "origin": {
+                  "flightPlaceId": "TPE",
+                  "name": "Taipei Taiwan Taoyuan",
+                  "parent": {
+                    "flightPlaceId": "TPE",
+                    "name": "Taipei",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T10:57:00",
+                "departure": "2023-06-20T08:34:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 143,
+                "flightNumber": "784",
+                "id": "16216-18411-2306200834-2306201057--31722",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "origin": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 211,
+                "id": "lolt",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "lol.travel",
+                "optimised_for_mobile": true,
+                "rating": 1.15,
+                "rating_breakdown": {
+                  "clear_extra_fees": 3.599492,
+                  "customer_service": 4.822244,
+                  "ease_of_booking": 1.998908,
+                  "other": 3.599492,
+                  "reliable_prices": 1
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 96467.18,
+              "last_updated": "2023-06-16T15:05:51",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/lolt/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32331%7C262%7C14213%7C2023-06-20T05%3A45%7C17075%7C2023-06-20T08%3A05%7C140%7C-%7C-%7C-%3Bflight%7C-31722%7C872%7C17075%7C2023-06-20T09%3A50%7C16216%7C2023-06-20T06%3A45%7C715%7C-%7C-%7C-%3Bflight%7C-31722%7C784%7C16216%7C2023-06-20T08%3A34%7C18411%7C2023-06-20T10%3A57%7C143%7C-%7C-%7C-&carriers=-32331%2C-31722&operators=-32331%3B-31722%3B-31722&passengers=1&channel=website&cabin_class=economy&ticket_price=96467.18&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A51&pqid=false"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306200715--31651,-32571,-31722-3-18411-2306202230?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306200715--31651,-32571,-31722-3-18411-2306202230",
+        "legs": [
+          {
+            "arrival": "2023-06-20T22:30:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                {
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                {
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T07:15:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1815,
+            "id": "14213-2306200715--31651,-32571,-31722-3-18411-2306202230",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T12:10:00",
+                "departure": "2023-06-20T07:15:00",
+                "destination": {
+                  "flightPlaceId": "ICN",
+                  "name": "Incheon International Airport",
+                  "parent": {
+                    "flightPlaceId": "SEL",
+                    "name": "Seoul",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 235,
+                "flightNumber": "884",
+                "id": "14213-12409-2306200715-2306201210--31651",
+                "marketingCarrier": {
+                  "alternate_di": "6B",
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "6B",
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T19:20:00",
+                "departure": "2023-06-20T17:05:00",
+                "destination": {
+                  "flightPlaceId": "HND",
+                  "name": "Tokyo Haneda",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 135,
+                "flightNumber": "866",
+                "id": "11876-12234-2306201705-2306201920--32571",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "NH",
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "NH",
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                "origin": {
+                  "flightPlaceId": "GMP",
+                  "name": "Gimpo International Airport",
+                  "parent": {
+                    "flightPlaceId": "SEL",
+                    "name": "Seoul",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T15:15:00",
+                "departure": "2023-06-20T21:05:00",
+                "destination": {
+                  "flightPlaceId": "LAX",
+                  "name": "Los Angeles International",
+                  "parent": {
+                    "flightPlaceId": "LAX",
+                    "name": "Los Angeles",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 610,
+                "flightNumber": "126",
+                "id": "12234-13416-2306202105-2306201515--32571",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "NH",
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "NH",
+                  "id": -32571,
+                  "name": "ANA (All Nippon Airways)"
+                },
+                "origin": {
+                  "flightPlaceId": "HND",
+                  "name": "Tokyo Haneda",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T22:30:00",
+                "departure": "2023-06-20T19:34:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 176,
+                "flightNumber": "608",
+                "id": "13416-18411-2306201934-2306202230--31722",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "origin": {
+                  "flightPlaceId": "LAX",
+                  "name": "Los Angeles International",
+                  "parent": {
+                    "flightPlaceId": "LAX",
+                    "name": "Los Angeles",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 3,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 841,
+                "id": "arph",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "Mytrip",
+                "optimised_for_mobile": true,
+                "rating": 3.88,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.154564,
+                  "customer_service": 4.882632,
+                  "ease_of_booking": 4.20488,
+                  "other": 3.14384,
+                  "reliable_prices": 4.139168
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 54851.14,
+              "last_updated": "2023-06-16T15:05:52",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/arph/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-31651%7C884%7C14213%7C2023-06-20T07%3A15%7C12409%7C2023-06-20T12%3A10%7C235%7C-%7C-%7C-%3Bflight%7C-32571%7C866%7C11876%7C2023-06-20T17%3A05%7C12234%7C2023-06-20T19%3A20%7C135%7C-%7C-%7C-%3Bflight%7C-32571%7C126%7C12234%7C2023-06-20T21%3A05%7C13416%7C2023-06-20T15%3A15%7C610%7C-%7C-%7C-%3Bflight%7C-31722%7C608%7C13416%7C2023-06-20T19%3A34%7C18411%7C2023-06-20T22%3A30%7C176%7C-%7C-%7C-&carriers=-31651%2C-32571%2C-31722&operators=-31651%3B-32571%3B-32571%3B-31722&passengers=1&channel=website&cabin_class=economy&ticket_price=54851.14&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A52&transfer_protection=protected&pqid=true"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201845--32331,-32593-2-18411-2306202355?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201845--32331,-32593-2-18411-2306202355",
+        "legs": [
+          {
+            "arrival": "2023-06-20T23:55:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                {
+                  "id": -32593,
+                  "name": "Alaska Airlines"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                {
+                  "id": -31521,
+                  "name": "SkyWest Airlines AS AlaskaSkyWest"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T18:45:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1210,
+            "id": "14213-2306201845--32331,-32593-2-18411-2306202355",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T21:25:00",
+                "departure": "2023-06-20T18:45:00",
+                "destination": {
+                  "flightPlaceId": "TPE",
+                  "name": "Taipei Taiwan Taoyuan",
+                  "parent": {
+                    "flightPlaceId": "TPE",
+                    "name": "Taipei",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 160,
+                "flightNumber": "278",
+                "id": "14213-17075-2306201845-2306202125--32331",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T19:30:00",
+                "departure": "2023-06-20T23:40:00",
+                "destination": {
+                  "flightPlaceId": "SEA",
+                  "name": "Seattle / Tacoma International",
+                  "parent": {
+                    "flightPlaceId": "SEA",
+                    "name": "Seattle",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 650,
+                "flightNumber": "26",
+                "id": "17075-16177-2306202340-2306201930--32331",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "BR",
+                  "id": -32331,
+                  "name": "EVA Air"
+                },
+                "origin": {
+                  "flightPlaceId": "TPE",
+                  "name": "Taipei Taiwan Taoyuan",
+                  "parent": {
+                    "flightPlaceId": "TPE",
+                    "name": "Taipei",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T23:55:00",
+                "departure": "2023-06-20T22:55:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 60,
+                "flightNumber": "3371",
+                "id": "16177-18411-2306202255-2306202355--32593",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "AS",
+                  "id": -32593,
+                  "name": "Alaska Airlines"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "!|",
+                  "id": -31521,
+                  "name": "SkyWest Airlines AS AlaskaSkyWest"
+                },
+                "origin": {
+                  "flightPlaceId": "SEA",
+                  "name": "Seattle / Tacoma International",
+                  "parent": {
+                    "flightPlaceId": "SEA",
+                    "name": "Seattle",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 2401,
+                "id": "trgo",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "ly.com",
+                "optimised_for_mobile": true,
+                "rating": 3.2,
+                "rating_breakdown": {
+                  "clear_extra_fees": 3.94356,
+                  "customer_service": 5,
+                  "ease_of_booking": 3.342648,
+                  "other": 1,
+                  "reliable_prices": 4.554164
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 91654,
+              "last_updated": "2023-06-16T15:05:57",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/trgo/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32331%7C278%7C14213%7C2023-06-20T18%3A45%7C17075%7C2023-06-20T21%3A25%7C160%7C-%7C-%7C-%3Bflight%7C-32331%7C26%7C17075%7C2023-06-20T23%3A40%7C16177%7C2023-06-20T19%3A30%7C650%7C-%7C-%7C-%3Bflight%7C-32593%7C3371%7C16177%7C2023-06-20T22%3A55%7C18411%7C2023-06-20T23%3A55%7C60%7C-%7C-%7C-&carriers=-32331%2C-32593&operators=-32331%3B-32331%3B-31521&passengers=1&channel=website&cabin_class=economy&ticket_price=91654.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A57&pqid=false"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201410--32454,-30816,-31722-2-18411-2306202322?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201410--32454,-30816,-31722-2-18411-2306202322",
+        "legs": [
+          {
+            "arrival": "2023-06-20T23:22:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T14:10:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1452,
+            "id": "14213-2306201410--32454,-30816,-31722-2-18411-2306202322",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T20:00:00",
+                "departure": "2023-06-20T14:10:00",
+                "destination": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 290,
+                "flightNumber": "5056",
+                "id": "14213-14788-2306201410-2306202000--32454",
+                "marketingCarrier": {
+                  "allianceId": -31987,
+                  "alternate_di": "5J",
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31987,
+                  "alternate_di": "5J",
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T15:00:00",
+                "departure": "2023-06-20T21:35:00",
+                "destination": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 565,
+                "flightNumber": "26",
+                "id": "14788-16216-2306202135-2306201500--30816",
+                "marketingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "origin": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T23:22:00",
+                "departure": "2023-06-20T21:00:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 142,
+                "flightNumber": "2178",
+                "id": "16216-18411-2306202100-2306202322--31722",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "origin": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 1631,
+                "id": "ctpp",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "Trip.com",
+                "optimised_for_mobile": true,
+                "rating": 4.28,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.595444,
+                  "customer_service": 4.996172,
+                  "ease_of_booking": 4.586124,
+                  "other": 3.687184,
+                  "reliable_prices": 4.238016
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 71633,
+              "last_updated": "2023-06-16T15:05:57",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/ctpp/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32454%7C5056%7C14213%7C2023-06-20T14%3A10%7C14788%7C2023-06-20T20%3A00%7C290%7C-%7C-%7C-%3Bflight%7C-30816%7C26%7C14788%7C2023-06-20T21%3A35%7C16216%7C2023-06-20T15%3A00%7C565%7C-%7C-%7C-%3Bflight%7C-31722%7C2178%7C16216%7C2023-06-20T21%3A00%7C18411%7C2023-06-20T23%3A22%7C142%7C-%7C-%7C-&carriers=-32454%2C-30816%2C-31722&operators=-32454%3B-30816%3B-31722&passengers=1&channel=website&cabin_class=economy&ticket_price=71633.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A57&transfer_protection=protected&pqid=true"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306202015--32456-1-18411-2306202150?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306202015--32456-1-18411-2306202150",
+        "legs": [
+          {
+            "arrival": "2023-06-20T21:50:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "departure": "2023-06-20T20:15:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 995,
+            "id": "14213-2306202015--32456-1-18411-2306202150",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T22:35:00",
+                "departure": "2023-06-20T20:15:00",
+                "destination": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 140,
+                "flightNumber": "902",
+                "id": "14213-12191-2306202015-2306202235--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T21:50:00",
+                "departure": "2023-06-21T00:45:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 725,
+                "flightNumber": "888",
+                "id": "12191-18411-2306210045-2306202150--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 1,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 6900,
+                "id": "cath",
+                "is_carrier": true,
+                "live_update_allowed": true,
+                "name": "Cathay Pacific",
+                "optimised_for_mobile": true,
+                "rating": 4.69,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.821636,
+                  "customer_service": 5,
+                  "ease_of_booking": 4.799124,
+                  "other": 4.343684,
+                  "reliable_prices": 4.793924
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 100955.25,
+              "last_updated": "2023-06-16T20:17:27",
+              "quote_age": 883,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/cath/1/14213.18411.2023-06-20/air/airli/flights?itinerary=flight%7C-32456%7C902%7C14213%7C2023-06-20T20%3A15%7C12191%7C2023-06-20T22%3A35%7C140%7CBR21PHAO%7CB%7CPHECO21LH%3Bflight%7C-32456%7C888%7C12191%7C2023-06-21T00%3A45%7C18411%7C2023-06-20T21%3A50%7C725%7CBR21PHAO%7CB%7CPHECO21LH&carriers=-32456&operators=-32456%3B-32456&passengers=1&channel=website&cabin_class=economy&ticket_price=100955.25&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T20%3A17%3A27&pqid=false"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201410--32454,-30816,-31722-2-18411-2306202053?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201410--32454,-30816,-31722-2-18411-2306202053",
+        "legs": [
+          {
+            "arrival": "2023-06-20T20:53:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31722,
+                  "name": "United"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T14:10:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1303,
+            "id": "14213-2306201410--32454,-30816,-31722-2-18411-2306202053",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T20:00:00",
+                "departure": "2023-06-20T14:10:00",
+                "destination": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 290,
+                "flightNumber": "5056",
+                "id": "14213-14788-2306201410-2306202000--32454",
+                "marketingCarrier": {
+                  "allianceId": -31987,
+                  "alternate_di": "5J",
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31987,
+                  "alternate_di": "5J",
+                  "id": -32454,
+                  "name": "Cebu Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T15:00:00",
+                "departure": "2023-06-20T21:35:00",
+                "destination": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 565,
+                "flightNumber": "26",
+                "id": "14788-16216-2306202135-2306201500--30816",
+                "marketingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "origin": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T20:53:00",
+                "departure": "2023-06-20T18:32:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 141,
+                "flightNumber": "460",
+                "id": "16216-18411-2306201832-2306202053--31722",
+                "marketingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31999,
+                  "alternate_di": "UA",
+                  "id": -31722,
+                  "name": "United"
+                },
+                "origin": {
+                  "flightPlaceId": "SFO",
+                  "name": "San Francisco International",
+                  "parent": {
+                    "flightPlaceId": "SFO",
+                    "name": "San Francisco",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 1631,
+                "id": "ctpp",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "Trip.com",
+                "optimised_for_mobile": true,
+                "rating": 4.28,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.595444,
+                  "customer_service": 4.996172,
+                  "ease_of_booking": 4.586124,
+                  "other": 3.687184,
+                  "reliable_prices": 4.238016
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 77426,
+              "last_updated": "2023-06-16T15:05:57",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/ctpp/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32454%7C5056%7C14213%7C2023-06-20T14%3A10%7C14788%7C2023-06-20T20%3A00%7C290%7C-%7C-%7C-%3Bflight%7C-30816%7C26%7C14788%7C2023-06-20T21%3A35%7C16216%7C2023-06-20T15%3A00%7C565%7C-%7C-%7C-%3Bflight%7C-31722%7C460%7C16216%7C2023-06-20T18%3A32%7C18411%7C2023-06-20T20%3A53%7C141%7C-%7C-%7C-&carriers=-32454%2C-30816%2C-31722&operators=-32454%3B-30816%3B-31722&passengers=1&channel=website&cabin_class=economy&ticket_price=77426.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A57&transfer_protection=protected&pqid=true"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306200435--31651,-30816,-31147-2-18411-2306201400?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306200435--31651,-30816,-31147-2-18411-2306201400",
+        "legs": [
+          {
+            "arrival": "2023-06-20T14:00:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31147,
+                  "name": "Flair Airlines"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                {
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                {
+                  "id": -31147,
+                  "name": "Flair Airlines"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T04:35:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1465,
+            "id": "14213-2306200435--31651,-30816,-31147-2-18411-2306201400",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T10:10:00",
+                "departure": "2023-06-20T04:35:00",
+                "destination": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 275,
+                "flightNumber": "190",
+                "id": "14213-14788-2306200435-2306201010--31651",
+                "marketingCarrier": {
+                  "alternate_di": "6B",
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "6B",
+                  "id": -31651,
+                  "name": "Philippines AirAsia"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T08:25:00",
+                "departure": "2023-06-20T14:40:00",
+                "destination": {
+                  "flightPlaceId": "LAX",
+                  "name": "Los Angeles International",
+                  "parent": {
+                    "flightPlaceId": "LAX",
+                    "name": "Los Angeles",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 585,
+                "flightNumber": "24",
+                "id": "14788-13416-2306201440-2306200825--30816",
+                "marketingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "_Z",
+                  "id": -30816,
+                  "name": "Zipair"
+                },
+                "origin": {
+                  "flightPlaceId": "NRT",
+                  "name": "Tokyo Narita",
+                  "parent": {
+                    "flightPlaceId": "TYO",
+                    "name": "Tokyo",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T14:00:00",
+                "departure": "2023-06-20T10:55:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 185,
+                "flightNumber": "1889",
+                "id": "13416-18411-2306201055-2306201400--31147",
+                "marketingCarrier": {
+                  "alternate_di": "F.",
+                  "id": -31147,
+                  "name": "Flair Airlines"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "F.",
+                  "id": -31147,
+                  "name": "Flair Airlines"
+                },
+                "origin": {
+                  "flightPlaceId": "LAX",
+                  "name": "Los Angeles International",
+                  "parent": {
+                    "flightPlaceId": "LAX",
+                    "name": "Los Angeles",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 361,
+                "id": "skap",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "Kiwi.com",
+                "optimised_for_mobile": true,
+                "rating": 3.34,
+                "rating_breakdown": {
+                  "clear_extra_fees": 3.995556,
+                  "customer_service": 4.958784,
+                  "ease_of_booking": 3.788148,
+                  "other": 2.27142,
+                  "reliable_prices": 3.332184
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 73816,
+              "last_updated": "2023-06-16T15:05:58",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/skap/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-31651%7C190%7C14213%7C2023-06-20T04%3A35%7C14788%7C2023-06-20T10%3A10%7C275%7CP01H00%7CP%7C-%3Bflight%7C-30816%7C24%7C14788%7C2023-06-20T14%3A40%7C13416%7C2023-06-20T08%3A25%7C585%7CM0ZSA0A%7CM%7C-%3Bflight%7C-31147%7C1889%7C13416%7C2023-06-20T10%3A55%7C18411%7C2023-06-20T14%3A00%7C185%7C-%7C-%7C-&carriers=-31651%2C-30816%2C-31147&operators=-31651%3B-30816%3B-31147&passengers=1&channel=website&cabin_class=economy&ticket_price=73816.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A58&transfer_protection=protected&pqid=true"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201220--32128-2-18411-2306201627?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201220--32128-2-18411-2306201627",
+        "legs": [
+          {
+            "arrival": "2023-06-20T16:27:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32128,
+                  "name": "Korean Air"
+                }
+              ],
+              "operating": [
+                {
+                  "id": -32128,
+                  "name": "Korean Air"
+                },
+                {
+                  "id": -32385,
+                  "name": "Delta"
+                },
+                {
+                  "id": -31519,
+                  "name": "SkyWest DBA Delta Connection"
+                }
+              ],
+              "operationType": "partially_operated"
+            },
+            "departure": "2023-06-20T12:20:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1147,
+            "id": "14213-2306201220--32128-2-18411-2306201627",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T17:25:00",
+                "departure": "2023-06-20T12:20:00",
+                "destination": {
+                  "flightPlaceId": "ICN",
+                  "name": "Incheon International Airport",
+                  "parent": {
+                    "flightPlaceId": "SEL",
+                    "name": "Seoul",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 245,
+                "flightNumber": "622",
+                "id": "14213-12409-2306201220-2306201725--32128",
+                "marketingCarrier": {
+                  "allianceId": -31998,
+                  "alternate_di": "KE",
+                  "id": -32128,
+                  "name": "Korean Air"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31998,
+                  "alternate_di": "KE",
+                  "id": -32128,
+                  "name": "Korean Air"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T13:55:00",
+                "departure": "2023-06-20T19:20:00",
+                "destination": {
+                  "flightPlaceId": "SEA",
+                  "name": "Seattle / Tacoma International",
+                  "parent": {
+                    "flightPlaceId": "SEA",
+                    "name": "Seattle",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 635,
+                "flightNumber": "5019",
+                "id": "12409-16177-2306201920-2306201355--32128",
+                "marketingCarrier": {
+                  "allianceId": -31998,
+                  "alternate_di": "KE",
+                  "id": -32128,
+                  "name": "Korean Air"
+                },
+                "operatingCarrier": {
+                  "allianceId": -31998,
+                  "alternate_di": "DL",
+                  "id": -32385,
+                  "name": "Delta"
+                },
+                "origin": {
+                  "flightPlaceId": "ICN",
+                  "name": "Incheon International Airport",
+                  "parent": {
+                    "flightPlaceId": "SEL",
+                    "name": "Seoul",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T16:27:00",
+                "departure": "2023-06-20T15:15:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 72,
+                "flightNumber": "3120",
+                "id": "16177-18411-2306201515-2306201627--32128",
+                "marketingCarrier": {
+                  "allianceId": -31998,
+                  "alternate_di": "KE",
+                  "id": -32128,
+                  "name": "Korean Air"
+                },
+                "operatingCarrier": {
+                  "alternate_di": "!~",
+                  "id": -31519,
+                  "name": "SkyWest DBA Delta Connection"
+                },
+                "origin": {
+                  "flightPlaceId": "SEA",
+                  "name": "Seattle / Tacoma International",
+                  "parent": {
+                    "flightPlaceId": "SEA",
+                    "name": "Seattle",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 2,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 1631,
+                "id": "ctpp",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "Trip.com",
+                "optimised_for_mobile": true,
+                "rating": 4.28,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.595444,
+                  "customer_service": 4.996172,
+                  "ease_of_booking": 4.586124,
+                  "other": 3.687184,
+                  "reliable_prices": 4.238016
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 97391,
+              "last_updated": "2023-06-16T15:05:57",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/ctpp/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32128%7C622%7C14213%7C2023-06-20T12%3A20%7C12409%7C2023-06-20T17%3A25%7C245%7C-%7C-%7C-%3Bflight%7C-32128%7C5019%7C12409%7C2023-06-20T19%3A20%7C16177%7C2023-06-20T13%3A55%7C635%7C-%7C-%7C-%3Bflight%7C-32128%7C3120%7C16177%7C2023-06-20T15%3A15%7C18411%7C2023-06-20T16%3A27%7C72%7C-%7C-%7C-&carriers=-32128&operators=-32128%3B-32385%3B-31519&passengers=1&channel=website&cabin_class=economy&ticket_price=97391.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A57&pqid=true"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201235--32456-1-18411-2306201325?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201235--32456-1-18411-2306201325",
+        "legs": [
+          {
+            "arrival": "2023-06-20T13:25:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "departure": "2023-06-20T12:35:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 950,
+            "id": "14213-2306201235--32456-1-18411-2306201325",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T15:15:00",
+                "departure": "2023-06-20T12:35:00",
+                "destination": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 160,
+                "flightNumber": "930",
+                "id": "14213-12191-2306201235-2306201515--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T13:25:00",
+                "departure": "2023-06-20T16:05:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 740,
+                "flightNumber": "810",
+                "id": "12191-18411-2306201605-2306201325--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 1,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 2401,
+                "id": "trgo",
+                "is_carrier": false,
+                "live_update_allowed": true,
+                "name": "ly.com",
+                "optimised_for_mobile": true,
+                "rating": 3.2,
+                "rating_breakdown": {
+                  "clear_extra_fees": 3.94356,
+                  "customer_service": 5,
+                  "ease_of_booking": 3.342648,
+                  "other": 1,
+                  "reliable_prices": 4.554164
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 86694,
+              "last_updated": "2023-06-16T15:05:57",
+              "quote_age": 1194,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/trgo/1/14213.18411.2023-06-20/air/trava/flights?itinerary=flight%7C-32456%7C930%7C14213%7C2023-06-20T12%3A35%7C12191%7C2023-06-20T15%3A15%7C160%7C-%7C-%7C-%3Bflight%7C-32456%7C810%7C12191%7C2023-06-20T16%3A05%7C18411%7C2023-06-20T13%3A25%7C740%7C-%7C-%7C-&carriers=-32456&operators=-32456%3B-32456&passengers=1&channel=website&cabin_class=economy&ticket_price=86694.00&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T15%3A05%3A57&pqid=false"
+          }
+        ]
+      },
+      {
+        "deeplink": "https://www.skyscanner.net/transport/flights/mnl/yvr/230620/config/14213-2306201740--32456-1-18411-2306202150?adults=1&adultsv2=1&cabinclass=economy&children=0&childrenv2=&destinationentityid=27537411&originentityid=27544979&inboundaltsenabled=false&infants=0&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0",
+        "id": "14213-2306201740--32456-1-18411-2306202150",
+        "legs": [
+          {
+            "arrival": "2023-06-20T21:50:00",
+            "carriers": {
+              "marketing": [
+                {
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                }
+              ],
+              "operationType": "fully_operated"
+            },
+            "departure": "2023-06-20T17:40:00",
+            "destination": {
+              "displayCode": "YVR",
+              "id": 18411,
+              "name": "Vancouver International"
+            },
+            "durationInMinutes": 1150,
+            "id": "14213-2306201740--32456-1-18411-2306202150",
+            "isSmallestStops": true,
+            "origin": {
+              "displayCode": "MNL",
+              "id": 14213,
+              "name": "Manila Ninoy Aquino"
+            },
+            "segments": [
+              {
+                "arrival": "2023-06-20T20:10:00",
+                "departure": "2023-06-20T17:40:00",
+                "destination": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 150,
+                "flightNumber": "918",
+                "id": "14213-12191-2306201740-2306202010--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "MNL",
+                  "name": "Manila Ninoy Aquino",
+                  "parent": {
+                    "flightPlaceId": "MNL",
+                    "name": "Manila",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              },
+              {
+                "arrival": "2023-06-20T21:50:00",
+                "departure": "2023-06-21T00:45:00",
+                "destination": {
+                  "flightPlaceId": "YVR",
+                  "name": "Vancouver International",
+                  "parent": {
+                    "flightPlaceId": "YVR",
+                    "name": "Vancouver",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                },
+                "durationInMinutes": 725,
+                "flightNumber": "888",
+                "id": "12191-18411-2306210045-2306202150--32456",
+                "marketingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "operatingCarrier": {
+                  "allianceId": -32000,
+                  "alternate_di": "CX",
+                  "id": -32456,
+                  "name": "Cathay Pacific"
+                },
+                "origin": {
+                  "flightPlaceId": "HKG",
+                  "name": "Hong Kong Intl",
+                  "parent": {
+                    "flightPlaceId": "HKG",
+                    "name": "Hong Kong",
+                    "type": "City"
+                  },
+                  "type": "Airport"
+                }
+              }
+            ],
+            "stopCount": 1,
+            "timeDeltaInDays": 0
+          }
+        ],
+        "pricing_options": [
+          {
+            "agents": [
+              {
+                "feedback_count": 6900,
+                "id": "cath",
+                "is_carrier": true,
+                "live_update_allowed": true,
+                "name": "Cathay Pacific",
+                "optimised_for_mobile": true,
+                "rating": 4.69,
+                "rating_breakdown": {
+                  "clear_extra_fees": 4.821636,
+                  "customer_service": 5,
+                  "ease_of_booking": 4.799124,
+                  "other": 4.343684,
+                  "reliable_prices": 4.793924
+                },
+                "rating_status": "available",
+                "update_status": "pending"
+              }
+            ],
+            "price": {
+              "amount": 100955.25,
+              "last_updated": "2023-06-16T20:17:27",
+              "quote_age": 883,
+              "update_status": "pending"
+            },
+            "url": "https://www.skyscanner.net/transport_deeplink/4.0/PH/en-GB/PHP/cath/1/14213.18411.2023-06-20/air/airli/flights?itinerary=flight%7C-32456%7C918%7C14213%7C2023-06-20T17%3A40%7C12191%7C2023-06-20T20%3A10%7C150%7CBR21PHAO%7CB%7CPHECO21LH%3Bflight%7C-32456%7C888%7C12191%7C2023-06-21T00%3A45%7C18411%7C2023-06-20T21%3A50%7C725%7CBR21PHAO%7CB%7CPHECO21LH&carriers=-32456&operators=-32456%3B-32456&passengers=1&channel=website&cabin_class=economy&ticket_price=100955.25&is_npt=false&is_multipart=false&client_id=skyscanner_website&q_sources=JACQUARD&commercial_filters=false&q_datetime_utc=2023-06-16T20%3A17%3A27&pqid=false"
+          }
+        ]
+      }
+    ]
+  }
+}

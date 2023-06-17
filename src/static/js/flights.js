@@ -24,8 +24,10 @@ expandFlightDetailsBtn.forEach( btn => {
         btn.classList.toggle('expanded-btn');
         if (btn.classList.contains('expanded-btn')) {
             document.querySelector(`.expanded-section[data-index="${btn.dataset.index}"]`).classList.add('expanded');
+            document.querySelector(`.available-flights__items[data-index="${btn.dataset.index}"]`).classList.add('expanded');
         } else {
             document.querySelector(`.expanded-section[data-index="${btn.dataset.index}"]`).classList.remove('expanded');
+            document.querySelector(`.available-flights__items[data-index="${btn.dataset.index}"]`).classList.remove('expanded');
         }
     });
 })

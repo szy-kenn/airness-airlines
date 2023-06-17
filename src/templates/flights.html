@@ -1,113 +1,157 @@
 {% extends "booking-process.html" %}
 {% block title %}Flights{% endblock %}
 {% block booking %}
-<div class="flight-input-details">
 
-    <div class="flight-input-details__items from">
-        <i class="fa-sharp fa-solid fa-plane-departure"></i>
-        <div class="input-details">
-            <p>{{ form_part_one['from-json']['municipality'] }}</p>
-            <span>{{ form_part_one['from-json']['name']}} ({{ form_part_one['from-json']['iata']}})</span>
-        </div>
-    </div>
-    <div class="flight-input-details__items to">
-        <i class="fa-solid fa-plane-arrival"></i>
-        <div class="input-details">
-            <p>{{ form_part_one['to-json']['municipality'] }}</p>
-            <span>{{ form_part_one['to-json']['name']}} ({{ form_part_one['to-json']['iata']}})</span>
-        </div>
-    </div>
-    <div class="flight-input-details__items departure_date">
-        <i class="fa-solid fa-calendar"></i>
-        <div class="input-departure-date">
-            <p class="departure-date">{{ form_part_one['departure-date'] }}</p>
-            <span id="departureDay"></span>
-        </div>
-    </div>
-</div>
-<!-- 
-<div class="filter">
-    <label for="best">Best</label>
-    <input type="radio" name="flights-filter" id="best">
-    <label for="best">Cheapest</label>
-    <input type="radio" name="flights-filter" id="cheapest">
-    <label for="best">Fastest</label>
-    <input type="radio" name="flights-filter" id="fastest">
-</div> -->
+<div class="wrapper">
+    <div class="flight-input-details">
 
-<div class="available-flights">
-    {% for i in range(result_count) %}
-
-        {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
-        {% set hours = duration_in_min // 60 %}
-        {% set min = duration_in_min % 60 %}
-        {% if hours > 0 and min > 0 %}
-            {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
-        {% elif hours > 0 and min == 0 %}
-            {% set duration = hours ~ 'h' %}
-        {% elif hours == 0 and min > 0 %}
-            {% set duration = min ~ 'm' %}
-        {% endif %}
-
-        {% set stop_count = available_flights['best'][i]['stop_count'] %}
-        {% if stop_count > 1 %}
-            {% set stops = stop_count ~ ' stops' %}
-        {% elif stop_count == 1 %}
-            {% set stops = stop_count ~ ' stop' %}
-        {% else %}
-            {% set stops = 'Direct' %}
-        {% endif %}
-
-    <div class="available-flights__items">
-            <div class="available-flights__items__flight-details">
-                <div class="available-flights__items__flight-details__from">
-                    <div>
-                        <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
-                        <span>{{ form_part_one['from-json']['iata']}}</span>
-                    </div>
-                    <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
-                </div>
-                <div class="available-flights__items__flight-details__stops">
-                    <p> {{ duration }} </p>
-                    <div>
-                        <div class="line"></div>
-                        <i class="fa-solid fa-plane"></i>
-                    </div>
-                    <p>{{ stops }}</p>
-                    <i class="fa-sharp fa-solid fa-chevron-down expand-flight-stops" data-index="{{ i }}"></i>
-                </div>
-                <div class="available-flights__items__flight-details__to">
-                    <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">
-                    <div>
-                        <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
-                        <span>{{ form_part_one['to-json']['iata']}}</span>
-                    </div>
-                </div>
+        <div class="flight-input-details__items from">
+            <i class="fa-sharp fa-solid fa-plane-departure"></i>
+            <div class="input-details">
+                <p>{{ form_part_one['from-json']['municipality'] }}</p>
+                <span>{{ form_part_one['from-json']['name']}} ({{ form_part_one['from-json']['iata']}})</span>
             </div>
-        <div class="available-flights__items__flight-price">
-            <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
-            <button class="form-btn">Select</button>
+        </div>
+        <div class="flight-input-details__items to">
+            <i class="fa-solid fa-plane-arrival"></i>
+            <div class="input-details">
+                <p>{{ form_part_one['to-json']['municipality'] }}</p>
+                <span>{{ form_part_one['to-json']['name']}} ({{ form_part_one['to-json']['iata']}})</span>
+            </div>
+        </div>
+        <div class="flight-input-details__items departure_date">
+            <i class="fa-solid fa-calendar"></i>
+            <div class="input-departure-date">
+                <p class="departure-date">{{ form_part_one['departure-date'] }}</p>
+                <span id="departureDay"></span>
+            </div>
         </div>
     </div>
-    <div class="available-flights__items expanded-section" data-index="{{ i }}">
-        <div class="available-flights__items__flight-details expanded-section">
+    <!-- 
+    <div class="filter">
+        <label for="best">Best</label>
+        <input type="radio" name="flights-filter" id="best">
+        <label for="best">Cheapest</label>
+        <input type="radio" name="flights-filter" id="cheapest">
+        <label for="best">Fastest</label>
+        <input type="radio" name="flights-filter" id="fastest">
+    </div> -->
+
+    <div class="available-flights">
+        {% for i in range(result_count) %}
+
+            {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
+            {% set hours = duration_in_min // 60 %}
+            {% set min = duration_in_min % 60 %}
+            {% if hours > 0 and min > 0 %}
+                {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
+            {% elif hours > 0 and min == 0 %}
+                {% set duration = hours ~ 'h' %}
+            {% elif hours == 0 and min > 0 %}
+                {% set duration = min ~ 'm' %}
+            {% endif %}
+
+            {% set stop_count = available_flights['best'][i]['stop_count'] %}
+            {% if stop_count > 1 %}
+                {% set stops = stop_count ~ ' stops' %}
+            {% elif stop_count == 1 %}
+                {% set stops = stop_count ~ ' stop' %}
+            {% else %}
+                {% set stops = 'Direct' %}
+            {% endif %}
+
+        <div class="available-flights__items" data-index="{{ i }}">
+                <div class="available-flights__items__flight-details">
+                    <div class="available-flights__items__flight-details__from">
+                        <div>
+                            <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
+                            <span>{{ form_part_one['from-json']['iata']}}</span>
+                        </div>
+                        <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
+                    </div>
+                    <div class="available-flights__items__flight-details__stops">
+                        <p> {{ duration }} </p>
+                        <div>
+                            <div class="line"></div>
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <p>{{ stops }}</p>
+                        <i class="fa-sharp fa-solid fa-chevron-down expand-flight-stops" data-index="{{ i }}"></i>
+                    </div>
+                    <div class="available-flights__items__flight-details__to">
+                        <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">
+                        <div>
+                            <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
+                            <span>{{ form_part_one['to-json']['iata']}}</span>
+                        </div>
+                    </div>
+                </div>
+            <div class="available-flights__items__flight-price">
+                <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
+                <button class="form-btn">Select</button>
+            </div>
         </div>
-        <div class="available-flights__items__flight-price expanded-section">
+        <div class="available-flights__items expanded-section" data-index="{{ i }}">
+            <div class="available-flights__items__flight-details expanded-section">
+                <div class="flight-timeline-wrapper">
+                    <p class="flight-timeline-p">FLIGHT TIMELINE</p>
+                    {% for j in range(available_flights['best'][i]['stops'] | length) %}
+                        <p class="flight-number"> Flight No: {{ available_flights['best'][i]['stops'][j]['flight_number']}}</p>
+                        <div class="flight-route-container">
+                            
+                            {% set duration_in_min = available_flights['best'][i]['stops'][j]['duration'] %}
+                            {% set hours = duration_in_min // 60 %}
+                            {% set min = duration_in_min % 60 %}
+                            {% if hours > 0 and min > 0 %}
+                                {% set duration_stop = hours ~ 'h ' ~ min ~ 'm' %}
+                            {% elif hours > 0 and min == 0 %}
+                                {% set duration_stop = hours ~ 'h' %}
+                            {% elif hours == 0 and min > 0 %}
+                                {% set duration_stop = min ~ 'm' %}
+                            {% endif %}
+
+
+                            <p class="duration">{{ duration_stop }}</p>
+                            <div class="timeline-track">&nbsp;</div>
+                            <div class="route-wrapper">
+                                <div class="route-from">
+                                    <p class="time">{{ available_flights['best'][i]['stops'][j]['departure_time'][11:16] }}</p>
+                                    <p class="iata">{{ available_flights['best'][i]['stops'][j]['origin']['iata'] }} </p>
+                                    <p class="name">{{ available_flights['best'][i]['stops'][j]['origin']['name'] }}</p>
+                                </div>
+                                <div class="route-to">
+                                    <p class="time">{{ available_flights['best'][i]['stops'][j]['arrival_time'][11:16] }}</p>
+                                    <p class="iata">{{ available_flights['best'][i]['stops'][j]['destination']['iata'] }}</p>
+                                    <p class="name">{{ available_flights['best'][i]['stops'][j]['destination']['name'] }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    <div class="footer">
+                        <p><span>Arrives: </span> </p>
+                        <p><span>Duration: </span>  {{ duration }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="available-flights__items__flight-price expanded-section">
+            </div>
         </div>
+        {% endfor %}
+
+        {% if result_count == 0 %}
+
+        <div class="available-flights__items no-result">
+            <div>
+                <p>{{ error_message[0] }}</p>
+                <p><span> {{ error_message[1] }}</span></p> 
+            </div>
+        </div>
+
+        {% endif %}
+
     </div>
-    {% endfor %}
-
-    {% if result_count == 0 %}
-
-    <div class="available-flights__items no-result">
-        <div>
-            <p>{{ error_message[0] }}</p>
-            <p><span> {{ error_message[1] }}</span></p> 
-        </div>
-    </div>
-
-    {% endif %}
-
 </div>
 
 {% endblock %}
