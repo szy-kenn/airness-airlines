@@ -1,4 +1,5 @@
 {% extends "booking-process.html" %}
+{% block title %}Flights{% endblock %}
 {% block booking %}
 <div class="flight-input-details">
 
@@ -24,9 +25,17 @@
         </div>
     </div>
 </div>
+<!-- 
+<div class="filter">
+    <label for="best">Best</label>
+    <input type="radio" name="flights-filter" id="best">
+    <label for="best">Cheapest</label>
+    <input type="radio" name="flights-filter" id="cheapest">
+    <label for="best">Fastest</label>
+    <input type="radio" name="flights-filter" id="fastest">
+</div> -->
 
 <div class="available-flights">
-
     {% for i in range(result_count) %}
 
     <div class="available-flights__items">
@@ -39,12 +48,30 @@
                 <img src="https://flagcdn.com/{{form_part_one['from-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['from-json']['iso_country'] }}">
             </div>
             <div class="available-flights__items__flight-details__stops">
-                <p> {{ available_flights['best'][i]['duration_in_mins']//60 }} hours {{ available_flights['best'][i]['duration_in_mins'] % 60 }} minutes </p>
+                {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
+                {% set hours = duration_in_min // 60 %}
+                {% set min = duration_in_min % 60 %}
+                {% if hours > 0 and min > 0 %}
+                    {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
+                {% elif hours > 0 and min == 0 %}
+                    {% set duration = hours ~ 'h' %}
+                {% elif hours == 0 and min > 0 %}
+                    {% set duration = min ~ 'm' %}
+                {% endif %}
+                <p> {{ duration }} </p>
                 <div>
                     <div class="line"></div>
                     <i class="fa-solid fa-plane"></i>
                 </div>
-                <p>{{ available_flights['best'][i]['stop_count'] }} stop(s)</p>
+                {% set stop_count = available_flights['best'][i]['stop_count'] %}
+                {% if stop_count > 1 %}
+                    {% set stops = stop_count ~ ' stops' %}
+                {% elif stop_count == 1 %}
+                    {% set stops = stop_count ~ ' stop' %}
+                {% else %}
+                    {% set stops = 'Direct' %}
+                {% endif %}
+                <p>{{ stops }}</p>
             </div>
             <div class="available-flights__items__flight-details__to">
                 <img src="https://flagcdn.com/{{form_part_one['to-json']['iso_country'].lower()}}.svg" width="70" alt="{{ form_part_one['to-json']['iso_country'] }}">

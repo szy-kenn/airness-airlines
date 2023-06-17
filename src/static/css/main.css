@@ -557,7 +557,9 @@ body {
   color: rgba(0, 0, 0, 0.3);
 }
 .available-flights__items__flight-details__stops p {
-  font-weight: 500;
+  font-family: "Montserrat";
+  font-size: clamp(0.6rem, 0.97vw, 0.85rem);
+  font-weight: 400;
   color: #5d478b;
 }
 .available-flights__items__flight-price {
@@ -578,11 +580,13 @@ body {
   color: #000000;
 }
 .available-flights__items__flight-price button {
-  font-size: clamp(0.8rem, 1.4vw, 1.2rem);
-  width: clamp(4.5rem, 9.15vw, 8rem);
-  height: 2.75rem;
+  font-size: clamp(0.65rem, 1vw, 1rem);
+  width: clamp(4rem, 6.85vw, 6rem);
+  height: 2.25rem;
   margin: 0 auto;
   cursor: pointer;
+  border-radius: 5px;
+  background-color: #174885;
 }
 
 .main {
