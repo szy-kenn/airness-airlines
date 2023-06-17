@@ -49,6 +49,9 @@ def request(origin, destination, departure_date) -> tuple:
     except:
         return (0, ('Bad Request.', 'Try a different date or check all your inputs again.'))
 
+    if len(skyscanner_response['itineraries']['results']) == 0:
+        return (0, ('No Results Found.', 'Try a different departure date.'))
+
     # try:
     #     total_results = skyscanner_response['context']['totalResults']
     #     if total_results == 0:
