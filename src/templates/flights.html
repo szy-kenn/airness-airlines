@@ -36,8 +36,13 @@
         <label for="best">Fastest</label>
         <input type="radio" name="flights-filter" id="fastest">
     </div> -->
-
+    <form action="/passenger-details" method="post"> 
     <div class="available-flights">
+        {% if result_count  > 0 %}
+            <p> Status: {{ available_flights['status'] }} </p> 
+            <p> Results: {{ available_flights['totalResults'] }} </p> 
+        {% endif %}
+        
         {% for i in range(result_count) %}
 
             {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
@@ -88,7 +93,8 @@
                 </div>
             <div class="available-flights__items__flight-price">
                 <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
-                <button class="form-btn">Select</button>
+            <button class="form-btn" type="submit" onsubmit="selectFlight( {{ available_flights['best'][i] }})">Select</button>
+        </form> 
             </div>
         </div>
         <div class="available-flights__items expanded-section" data-index="{{ i }}">
@@ -96,7 +102,7 @@
                 <div class="flight-timeline-wrapper">
                     <p class="flight-timeline-p">FLIGHT TIMELINE</p>
                     {% for j in range(available_flights['best'][i]['stops'] | length) %}
-                        <p class="flight-number"> Flight No: {{ available_flights['best'][i]['stops'][j]['flight_number']}}</p>
+                        <p class="flight-number"> {{ available_flights['best'][i]['stops'][j]['marketing_carrier']}} {{ available_flights['best'][i]['stops'][j]['flight_number']}}</p>
                         <div class="flight-route-container">
                             
                             {% set duration_in_min = available_flights['best'][i]['stops'][j]['duration'] %}

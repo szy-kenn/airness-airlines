@@ -132,8 +132,11 @@ body {
 
         &.no-result{
             @include flex(center);
+            position: relative;
             width: 100%;
-            margin: 0;
+            height: 11%;
+            padding: 2rem 0;
+            margin: 0.5rem 0;
             text-align: center;
 
             p {
