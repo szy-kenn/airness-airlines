@@ -37,8 +37,17 @@ def flights():
 
     return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights[1], result_count=available_flights[0])
 
-@view.route('/passenger-details')
+@view.route('/selected-flight/<path:flight>', methods=['POST', 'GET'])
+def selected_flight(flight):
+    if request.method == 'POST':
+        session['selected_flight'] = json.loads(flight)
+        response = {'status': 200}
+        return jsonify(response)
+
+@view.route('/passenger-details', methods=['GET', 'POST'])
 def passenger_details():
+    if request.method == 'POST':
+        return f"<p>{session['form_part_one']}<p> <p>{session['selected_flight']}</p>"
     return render_template('passenger-details.html')
 
 @view.route('/seats')
