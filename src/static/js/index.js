@@ -129,6 +129,8 @@ const fromJSON = document.getElementById("fromJSON");
 const toJSON = document.getElementById("toJSON");
 const airportChoicesContainer = document.querySelectorAll(".flight-location-form__container");
 
+const maxResult = 100
+
 function flightFormUpdate(event, container) {
     let i = null;
     (container === fromContainer) ? i = 0 : i = 1;
@@ -191,7 +193,7 @@ function createChoice(inputSourceIdx, newChoiceData, choiceIdx) {
     }
 
     const newP = document.createElement("p");
-    newP.innerHTML = newChoiceData['name'];
+    newP.innerHTML = newChoiceData['municipality'];
 
     if (newChoiceData['iata'] !== 0) {
         const img = document.createElement("img");
@@ -212,7 +214,7 @@ function createChoice(inputSourceIdx, newChoiceData, choiceIdx) {
         currentDiv.appendChild(newP);
     }
     
-    if (airportChoicesContainer[inputSourceIdx].children.length < 10 && newlyCreated){
+    if (airportChoicesContainer[inputSourceIdx].children.length < maxResult && newlyCreated){
         airportChoicesContainer[inputSourceIdx].appendChild(currentDiv);
     }
 }
@@ -229,7 +231,7 @@ function searchAirport(inputSourceIdx, substring) {
             // Handle the received JSON data here
             let i = 0;
             let filtered = 0;
-            while (data['index'][i] !== undefined && filtered < 10) {
+            while (data['index'][i] !== undefined && filtered < maxResult) {
                 if (data['iata'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['name'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['iso_country'][i].toLowerCase().includes(substring.toLowerCase()) ||

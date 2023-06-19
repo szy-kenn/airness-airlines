@@ -51,8 +51,9 @@
             border-bottom: 1px solid $lighter-primary-button;
 
             p {
-                font-size: 0.8rem;
-                color: $primary-color;
+                font-size: 1rem;
+                font-weight: 500;
+                color: rgba($primary-color, 0.7);
             }
 
             span {

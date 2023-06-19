@@ -153,8 +153,9 @@ input::-webkit-calendar-picker-indicator {
   border-bottom: 1px solid #b399b0;
 }
 .flight-location-form .flight-location-form__container__options p {
-  font-size: 0.8rem;
-  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
 }
 .flight-location-form .flight-location-form__container__options span {
   text-align: center;
