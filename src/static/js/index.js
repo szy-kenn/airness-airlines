@@ -1,7 +1,7 @@
 /******************
  *     NAVBAR     *
  ******************/
-let dateToday=document.getElementById("current-date");
+let dateToday=document.getElementById("current-date-navbar");
 
 let navBarToday = new Date();
 let day = `${navBarToday.getDate() < 10 ?  "0" : ""}${navBarToday.getDate()}`;
@@ -9,7 +9,7 @@ let month =`${(navBarToday.getMonth()+1) < 10 ? "0" : ""}${navBarToday.getMonth(
 let year = navBarToday.getFullYear();
 dateToday.textContent=`${day}/${month}/${year}`;
 
-let time=document.getElementById("current-time");
+let time=document.getElementById("current-time-navbar");
 setInterval(()=>{
     let d= new Date();
     time.innerHTML=d.toLocaleTimeString();

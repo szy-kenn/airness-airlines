@@ -402,7 +402,7 @@ input::-webkit-calendar-picker-indicator {
   justify-content: space-between;
 }
 
-.airline_name {
+.airline-name-navbar {
   color: white;
   margin-top: -25px;
   font-style: italic;
@@ -410,24 +410,18 @@ input::-webkit-calendar-picker-indicator {
   padding-left: -5px;
 }
 
-.logo {
+.logo-navbar {
   margin-left: 70px;
   align-items: center;
 }
 
-.about, .contact {
-  color: white;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-#current-time {
+#current-time-navbar {
   color: white;
   font-family: "Montserrat";
   margin-right: 30px;
 }
 
-#current-date {
+#current-date-navbar {
   color: white;
   font-family: "Montserrat";
   margin-right: 30px;
@@ -440,7 +434,7 @@ li {
   font-weight: bold;
 }
 
-button {
+.contact-button-navbar {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -450,9 +444,6 @@ button {
   cursor: pointer;
   transition: 0.5s;
   font-family: "Montserrat";
-}
-
-.contact_button {
   padding: 10px;
   padding-left: 27px;
   padding-right: 23px;
@@ -467,7 +458,16 @@ button {
   border: 3px solid rgb(217, 171, 53);
 }
 
-.about_button {
+.about-button-navbar {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: "Montserrat";
   padding: 10px;
   padding-left: 38px;
   padding-right: 38px;
@@ -481,12 +481,17 @@ button {
   border: 3px solid rgb(217, 171, 53);
 }
 
-button:hover {
+.contact-button-navbar:hover {
   color: white;
   background-color: rgb(217, 171, 53);
 }
 
-.airline-name {
+.about-button-navbar:hover {
+  color: white;
+  background-color: rgb(217, 171, 53);
+}
+
+.airline-name-navbar {
   color: white;
   margin-right: 190px;
   font-style: italic;
