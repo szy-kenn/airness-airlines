@@ -1,10 +1,32 @@
 import requests, requests_cache
+import sqlite3
+
+def _getSeconds(day: int):
+    return day * 24 * 60 * 60
+
+def _delete_cache(response):
+    print("deleting")
+    cache = requests_cache.get_cache().responses
+    key_delete = ""
+    for key, value in cache.items():
+        if value.url == response.url:
+            key_delete = key
+            break
+    
+    if len(key_delete) > 0:
+        with sqlite3.connect('api_cache.sqlite') as conn:
+            cursor  = conn.cursor()
+            cursor.execute(f"DELETE FROM responses WHERE key='{key_delete}'")
+            try:
+                conn.commit()
+                print("deleted")
+            except:
+                print('THERE IS A PROBLEM WITH THE DB CONNECTION RIGHT NOW')
 
 # caching api responses (cached for 1 day)
-requests_cache.install_cache('api_cache', expire_after=86400) 
+requests_cache.install_cache('api_cache', expire_after=_getSeconds(60)) 
 
 def request(origin, destination, departure_date) -> tuple:
-
     # url = "https://skyscanner44.p.rapidapi.com/search"
 
     url = "https://skyscanner44.p.rapidapi.com/search-extended"
@@ -24,7 +46,6 @@ def request(origin, destination, departure_date) -> tuple:
         "locale":"en-GB",
         "market":"PH"}
 
-
     # querystring = {
     #     "adults": 1,
     #     "origin": origin,
@@ -35,34 +56,34 @@ def request(origin, destination, departure_date) -> tuple:
     #     "market":"PH"}
 
     headers = {
-	    "X-RapidAPI-Key": "fd32d46d08msh3e5a5981b4f2bc5p13a8a7jsn21617cfcf8cf", # unique key
+	    "X-RapidAPI-Key": "8b69f50432msh68151090a94827ap16dfb8jsn45b1a96e70d9", # unique key
 	    "X-RapidAPI-Host": "skyscanner44.p.rapidapi.com"
     }
 
-    response = requests.get(url, headers=headers, params=querystring)
-    skyscanner_response = response.json()
-
-    # return skyscanner_response
-    
     try:
-        status = skyscanner_response['context']['status']
-    except:
-        return (0, ('Bad Request.', 'Try a different date or check all your inputs again.'))
+        response = requests.get(url, headers=headers, params=querystring)
+        skyscanner_response = response.json()
+        try:
+            status = skyscanner_response['context']['status']
+            if (status == 'incomplete'):
+                _delete_cache(response)
+        except:
+            print(skyscanner_response)
+            return (0, ('Bad Request', skyscanner_response['message']))
+    except Exception as error:
+        print(error)
+        return (0, ('Network Error', 'There seems to be a problem with your connection right now.'))
+    # return skyscanner_response
 
     if len(skyscanner_response['itineraries']['results']) == 0:
-        return (0, ('No Results Found.', 'Try a different departure date.'))
-
-    # try:
-    #     total_results = skyscanner_response['context']['totalResults']
-    #     if total_results == 0:
-    #         return (0, ('No Results Found.', 'Try a different departure date.'))
-    # except:
-    #     return (0, ('Bad Request.', 'Try a different date or check all your inputs again.'))
+        return (0, ('No Results Found', 'Try a different departure date.'))
 
     best = skyscanner_response['itineraries']['results']
 
     available_flights = {
-        "best" : []
+        "best" : [],
+        "status": skyscanner_response['context']['status'],
+        "totalResults": len(best)
     }
 
     i = 0
@@ -86,16 +107,17 @@ def request(origin, destination, departure_date) -> tuple:
             available_flights[key][i]['stops'][j]['arrival_time']                  = result['legs'][0]['segments'][j]['arrival']
             available_flights[key][i]['stops'][j]['departure_time']                = result['legs'][0]['segments'][j]['departure']
             available_flights[key][i]['stops'][j]['duration']                      = result['legs'][0]['segments'][j]['durationInMinutes']
+            available_flights[key][i]['stops'][j]['marketing_carrier']             = result['legs'][0]['segments'][j]['marketingCarrier']['name']
             available_flights[key][i]['stops'][j]['flight_number']                 = result['legs'][0]['segments'][j]['marketingCarrier']['alternate_di'] + result['legs'][0]['segments'][j]['flightNumber']
 
             available_flights[key][i]['stops'][j]['destination']                   = {} 
             available_flights[key][i]['stops'][j]['destination']['iata']           = result['legs'][0]['segments'][j]['destination']['flightPlaceId']
-            available_flights[key][i]['stops'][j]['destination']['name']           = result['legs'][0]['segments'][j]['destination']['name']
+            available_flights[key][i]['stops'][j]['destination']['name']           = result['legs'][0]['segments'][j]['destination']['name'] + ' ' + result['legs'][0]['segments'][j]['destination']['type']
             available_flights[key][i]['stops'][j]['destination']['municipality']   = result['legs'][0]['segments'][j]['destination']['parent']['name']
             
             available_flights[key][i]['stops'][j]['origin']                        = {} 
             available_flights[key][i]['stops'][j]['origin']['iata']                = result['legs'][0]['segments'][j]['origin']['flightPlaceId']
-            available_flights[key][i]['stops'][j]['origin']['name']                = result['legs'][0]['segments'][j]['origin']['name']
+            available_flights[key][i]['stops'][j]['origin']['name']                = result['legs'][0]['segments'][j]['origin']['name'] + ' ' + result['legs'][0]['segments'][j]['origin']['type']
             available_flights[key][i]['stops'][j]['origin']['municipality']        = result['legs'][0]['segments'][j]['origin']['parent']['name']
 
         i+=1
