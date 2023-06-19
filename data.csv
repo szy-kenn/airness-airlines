@@ -72,31 +72,31 @@ index,iata,name,iso_country,municipality
 70,JJN,Quanzhou Jinjiang International Airport,CN,Quanzhou
 71,BGY,Orio Al Serio International Airport,IT,Bergamo / Milan
 72,CEQ,Cannes - Mandelieu Airport,FR,Cannes
-73,DUS, Düsseldorf International Airport,DE,Duesseldorf
+73,DUS,Dusseldorf International Airport,DE,Duesseldorf
 74,KWI,Kuwait International Airport,KW,Kuwait
 75,LAS,Harry Reid International Airport,US,Nevada
 76,LHR,London Heathrow Airport,GB,London
-77,MCZ, Zumbi dos Palmares International Airport,BR,Maceio
+77,MCZ,Zumbi dos Palmares International Airport,BR,Maceio
 78,MAA,Chennai International Airport,IN,Madras(Chennai)
 79,MEX,Mexico City International Airport,MX,Mexico 
-80,NAT, Augusto Severo International Airport,BR,Natal 
+80,NAT,Augusto Severo International Airport,BR,Natal 
 81,CDG,Paris Charles de Gaulle Airport,FR,Paris
 82,KUF,Kurumoch International Airport,RU,Samara
 83,SVO,Sheremetyevo International Airport,RU,Moscow
-84,SJU, Luis Munoz Marin International Airport,PR,San Juan
+84,SJU,Luis Munoz Marin International Airport,PR,San Juan
 85,UIO,Mariscal Sucre International Airport,EC,Quito
 86,RAI,Nelson Mandela International Airport,CV,Praia
 87,FNJ,Sunan International Airport,KP,Pyongyang
 88,PUS,Gimhae International Airport,KR,Pu San(Busan)
-89,YQB,Québec City Jean Lesage International Airport,CA,Quebec 
+89,YQB,Quebec City Jean Lesage International Airport,CA,Quebec 
 90,MVD,Carrasco International Airport,UY,Montevideo
 91,MAR,La Chinita International Airport,VE,Maracaibo
 92,TLV,Ben Gurion International Airport,IL,Tel Aviv
-93,KRK,John Paul II Kraków-Balice International Airport,PL,Krakow
-94,KRT, Khartoum International Airport,SD,Khartoum
+93,KRK,John Paul II Krakow-Balice International Airport,PL,Krakow
+94,KRT,Khartoum International Airport,SD,Khartoum
 95,KTM,Tribhuvan International Airport,NP,Kathmandu
 96,KHI,Jinnah International Airport,PK,Karachi
-97,IAH, George Bush Intercontinental Airport,US,Houston
-98,GVA, Geneva-Cointrin International Airport,CH,Geneva
+97,IAH,George Bush Intercontinental Airport,US,Houston
+98,GVA,Geneva-Cointrin International Airport,CH,Geneva
 99,FRA,Frankfurt Airport,DE,Frankfurt
 100,FPO,Grand Bahama International Airport,BS,Freeport
