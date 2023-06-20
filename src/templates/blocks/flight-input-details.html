@@ -1,0 +1,24 @@
+<div class="flight-input-details">
+
+    <div class="flight-input-details__items from">
+        <i class="fa-sharp fa-solid fa-plane-departure"></i>
+        <div class="input-details">
+            <p>{{ form_part_one['from-json']['municipality'] }}</p>
+            <span>{{ form_part_one['from-json']['name']}} ({{ form_part_one['from-json']['iata']}})</span>
+        </div>
+    </div>
+    <div class="flight-input-details__items to">
+        <i class="fa-solid fa-plane-arrival"></i>
+        <div class="input-details">
+            <p>{{ form_part_one['to-json']['municipality'] }}</p>
+            <span>{{ form_part_one['to-json']['name']}} ({{ form_part_one['to-json']['iata']}})</span>
+        </div>
+    </div>
+    <div class="flight-input-details__items departure_date">
+        <i class="fa-solid fa-calendar"></i>
+        <div class="input-departure-date">
+            <p class="departure-date">{{ form_part_one['departure-date'] }}</p>
+            <span id="departureDay"></span>
+        </div>
+    </div>
+</div>

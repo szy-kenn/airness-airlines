@@ -20,8 +20,8 @@ def flights():
         form_part_one = session['form_part_one']
         return jsonify(form_part_one)
 
-    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json']);
-    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json']);
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
     # return session['form_part_one']
 
@@ -47,7 +47,11 @@ def selected_flight(flight):
 @view.route('/passenger-details', methods=['GET', 'POST'])
 def passenger_details():
     if request.method == 'POST':
-        return f"<p>{session['form_part_one']}<p> <p>{session['selected_flight']}</p>"
+
+        session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+        session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+
+        return render_template('passenger-details.html', selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
     return render_template('passenger-details.html')
 
 @view.route('/seats')

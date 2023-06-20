@@ -2,6 +2,28 @@
 {% block title %}Passenger Details{% endblock %}
 {% block booking %}
 
-<p>passenger details</p>
+{% include 'blocks/flight-input-details.html' %}
+<!-- <p> {{ form_part_one }} </p> -->
+
+
+    <div>
+        <form action="/">
+        <p>ADULTS</p>
+        {% for i in range (form_part_one['passenger-adult'] | int) %}
+            <p>PASSENGER {{ i + 1}} DETAILS</p>
+            <input type="text" name="p1Name" id="p1Name">
+        {% endfor %}
+        <p>CHILDREN</p>
+        {% for i in range (form_part_one['passenger-children'] | int) %}
+            <p>PASSENGER {{ i + 1}} DETAILS</p>
+            <input type="text" name="p1Name" id="p1Name">
+        {% endfor %}
+        <p>INFANTS</p>
+        {% for i in range (form_part_one['passenger-infant'] | int) %}
+            <p>PASSENGER {{ i + 1}} DETAILS</p>
+            <input type="text" name="p1Name" id="p1Name">
+        {% endfor %}
+        </form>
+    </div>
 
 {% endblock %}
