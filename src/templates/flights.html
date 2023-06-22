@@ -13,7 +13,7 @@
         <label for="best">Fastest</label>
         <input type="radio" name="flights-filter" id="fastest">
     </div> -->
-    <form action="/passenger-details" method="post"> 
+    <form action="/passenger-details" method="post" id="selectFlightForm"> 
     <div class="available-flights">
         {% if result_count  > 0 %}
             <p> Status: {{ available_flights['status'] }} </p> 
@@ -70,7 +70,7 @@
                 </div>
             <div class="available-flights__items__flight-price">
                 <p><span style="font-weight: 400; font-size: 1.1rem;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
-            <button class="form-btn" type="submit" onsubmit="selectFlight( {{ available_flights['best'][i] }})">Select</button>
+            <button class="form-btn" type="button" onclick="selectFlight( {{ available_flights['best'][i] }})" id="selectFlightBtn">Select</button>
         </form> 
             </div>
         </div>

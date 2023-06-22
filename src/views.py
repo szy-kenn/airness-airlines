@@ -51,7 +51,7 @@ def passenger_details():
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
-        print(session['selected_flight'])
+        # print(session['selected_flight'])
 
         return render_template('passenger-details.html', selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
     return render_template('passenger-details.html')

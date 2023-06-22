@@ -41,6 +41,7 @@ async function selectFlight(flight) {
     
         const result = await response.json();
         console.log("Success: ", result);
+        document.getElementById("selectFlightForm").submit();
     } catch (error) {
         console.error("Error: ", error);
     }
