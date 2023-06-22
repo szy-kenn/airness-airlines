@@ -21,10 +21,10 @@
                     <i class="fa-sharp fa-solid fa-chevron-down age-group-expand" id="{{ age_group.lower() + '_expand'}}"></i>
                 </div>
                 {% for i in range (idx.value, (form_part_one['passenger-' ~ age_group.lower()] | int) + idx.value)%}
-                    <div class="adult-passenger-details-container__items">
+                    <div class="adult-passenger-details-container__items" id="{{'p' ~ ((i+1)|int)}}">
                         <div class="passenger-number-container">
                             <p class="passenger-number">{{ '(' ~ age_group.upper() ~ ')'}} PASSENGER {{ i + 1}} DETAILS</p>
-                            <i class="fa-sharp fa-solid fa-chevron-down passenger-expand" id="{{ age_group.lower() ~ '_passenger' ~ (i + 1) ~ '_expand'}}"></i>
+                            <i class="fa-sharp fa-solid fa-chevron-down passenger-expand" id="{{ 'p' ~ ((i+1)|int) ~ '_expand'}}"></i>
                         </div>
                         <div class="passenger-full-name">
                             <div class="adult-passenger-details-container__items--info">
