@@ -840,6 +840,27 @@ body {
   background-color: #174885;
 }
 
+.passenger-details-wrapper {
+  display: block;
+  width: 65%;
+  margin: auto;
+}
+
+.adult-passenger-details-container {
+  border: 1px solid red;
+  position: relative;
+  flex: 0 0 25rem;
+}
+.adult-passenger-details-container__items .passenger-full-name {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.adult-passenger-details-container__items--info label {
+  display: block;
+}
+
 .main {
   display: grid;
   position: relative;

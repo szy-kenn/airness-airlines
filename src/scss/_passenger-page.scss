@@ -1,0 +1,25 @@
+.passenger-details-wrapper {
+    // border: 1px solid red;
+    display: block;
+    width: 65%;
+    margin: auto;
+    // @include flex(center);
+}
+
+.adult-passenger-details-container {
+    border: 1px solid red;
+    position: relative;
+    flex: 0 0 25rem;
+
+    &__items {
+
+        .passenger-full-name {
+            @include flex(space-around);
+            width: 100%;
+        }
+
+        &--info label{
+            display: block;
+        }
+    }
+}

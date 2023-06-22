@@ -5,14 +5,46 @@
 {% include 'blocks/flight-input-details.html' %}
 <!-- <p> {{ form_part_one }} </p> -->
 
-
-    <div>
+    <div class="passenger-details-wrapper">
         <form action="/">
         <p>ADULTS</p>
-        {% for i in range (form_part_one['passenger-adult'] | int) %}
-            <p>PASSENGER {{ i + 1}} DETAILS</p>
-            <input type="text" name="p1Name" id="p1Name">
-        {% endfor %}
+        <div class="adult-passenger-details-container">
+            {% for i in range ((form_part_one['passenger-adult'] | int) + 2) %}
+                <div class="adult-passenger-details-container__items">
+                    <p>PASSENGER {{ i + 1}} DETAILS</p>
+                    <div class="passenger-full-name">
+                        <div class="adult-passenger-details-container__items--info">
+                            <label for="{{'p' + ((i+1) | string) + 'Name'}}">First Name</label>
+                            <input type="text" name="{{'p' + ((i+1) | string) + 'FirstName'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                        </div>
+                        <div class="adult-passenger-details-container__items--info">
+                            <label for="{{'p' + ((i+1) | string) + 'Name'}}">Last Name</label>
+                            <input type="text" name="{{'p' + ((i+1) | string) + 'LastName'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                        </div>
+                        <div class="adult-passenger-details-container__items--info">
+                            <label for="{{'p' + ((i+1) | string) + 'Name'}}">Middle Name</label>
+                            <input type="text" name="{{'p' + ((i+1) | string) + 'MiddleName'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                        </div>
+                    </div>
+                    <div class="adult-passenger-details-container__items--info">
+                        <label for="{{'p' + ((i+1) | string) + 'Name'}}">Date of Birth</label>
+                        <input type="text" name="{{'p' + ((i+1) | string) + 'BirthDate'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                    </div>
+                    <div class="adult-passenger-details-container__items--info">
+                        <label for="{{'p' + ((i+1) | string) + 'Name'}}">Passport No</label>
+                        <input type="text" name="{{'p' + ((i+1) | string) + 'PassportNo'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                    </div>
+                    <div class="adult-passenger-details-container__items--info">
+                        <label for="{{'p' + ((i+1) | string) + 'Name'}}">Issue Date</label>
+                        <input type="text" name="{{'p' + ((i+1) | string) + 'IssueDate'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                    </div>
+                    <div class="adult-passenger-details-container__items--info">
+                        <label for="{{'p' + ((i+1) | string) + 'Name'}}">Exp Date</label>
+                        <input type="text" name="{{'p' + ((i+1) | string) + 'ExpDate'}}" id="{{'p' + ((i+1) | string) + 'Name'}}">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
         <p>CHILDREN</p>
         {% for i in range (form_part_one['passenger-children'] | int) %}
             <p>PASSENGER {{ i + 1}} DETAILS</p>
