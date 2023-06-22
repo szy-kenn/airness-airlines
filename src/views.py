@@ -51,11 +51,16 @@ def passenger_details():
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
+        print(session['selected_flight'])
+
         return render_template('passenger-details.html', selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
     return render_template('passenger-details.html')
 
-@view.route('/seats')
+@view.route('/seats', methods=['GET', 'POST'])
 def seats():
+    if request.method == 'POST':
+        return request.data
+    
     return render_template('seats.html')
 
 @view.route('/confirmation')

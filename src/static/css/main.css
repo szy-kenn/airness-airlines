@@ -18,7 +18,7 @@ a,
 }
 
 input::-webkit-calendar-picker-indicator {
-  font-size: 26px;
+  font-size: 20px;
   padding: 0.5rem;
 }
 
@@ -791,9 +791,11 @@ body {
 .available-flights__items__flight-details__stops .expand-flight-stops {
   cursor: pointer;
   color: #5d478b;
+  transition: transform 0.1s cubic-bezier(0.6, 0.04, 0.98, 0.335);
 }
 .available-flights__items__flight-details__stops .expand-flight-stops.expanded-btn {
   transform: rotate(180deg);
+  transition: transform 0.1s cubic-bezier(0.6, 0.04, 0.98, 0.335);
 }
 .available-flights__items__flight-details__stops div {
   display: flex;
@@ -843,22 +845,139 @@ body {
 .passenger-details-wrapper {
   display: block;
   width: 65%;
+  padding: 1rem 0;
   margin: auto;
+  position: relative;
 }
 
 .adult-passenger-details-container {
-  border: 1px solid red;
   position: relative;
-  flex: 0 0 25rem;
+  background-color: #174885;
+  box-shadow: 0 2px 10px 2px rgba(126, 126, 126, 0.6);
+  padding-bottom: 0.1rem;
+  margin-bottom: 1rem;
+  transition: height 0.2s ease-out;
 }
-.adult-passenger-details-container__items .passenger-full-name {
+.adult-passenger-details-container .age-group-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+.adult-passenger-details-container .age-group-container .age-group {
+  display: block;
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 1rem;
+}
+.adult-passenger-details-container .age-group-container .age-group-expand {
+  padding: 0 1rem;
+  color: white;
+  transform: rotate(180deg);
+  transition: transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.adult-passenger-details-container .age-group-container .age-group-expand.collapsed {
+  transform: rotate(0);
+  transition: transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.adult-passenger-details-container.collapsed {
+  height: 3rem;
+  transition: height 0.2s ease-out;
+}
+.adult-passenger-details-container.collapsed .adult-passenger-details-container__items {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s 0.1s ease-out;
+}
+.adult-passenger-details-container__items {
+  position: relative;
+  margin-bottom: 0rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  background-color: white;
+  height: 19rem;
+  opacity: 1;
+  pointer-events: all;
+}
+.adult-passenger-details-container__items.collapsed {
+  height: 2.7rem;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.6);
+}
+.adult-passenger-details-container__items.collapsed .adult-passenger-details-container__items--info {
+  opacity: 0;
+}
+.adult-passenger-details-container__items .passenger-number-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  background-color: rgba(126, 126, 126, 0.2);
+}
+.adult-passenger-details-container__items .passenger-number {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  padding: 0.8rem;
+}
+.adult-passenger-details-container__items .passenger-expand {
+  padding: 0 1.25rem;
+  transform: rotate(180deg);
+}
+.adult-passenger-details-container__items .passenger-expand.collapsed {
+  transform: rotate(0);
+}
+.adult-passenger-details-container__items .passenger-full-name,
+.adult-passenger-details-container__items .passenger-passport {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.adult-passenger-details-container__items .passenger-full-name input,
+.adult-passenger-details-container__items .passenger-passport input {
+  position: relative;
+}
+.adult-passenger-details-container__items .passenger-full-name input::-webkit-calendar-picker-indicator,
+.adult-passenger-details-container__items .passenger-passport input::-webkit-calendar-picker-indicator {
+  font-family: "Montserrat";
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  padding: 0;
+}
+.adult-passenger-details-container__items .passenger-birthdate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.adult-passenger-details-container__items .passenger-birthdate input::-webkit-calendar-picker-indicator {
+  font-family: "Montserrat";
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  padding: 0;
+}
+.adult-passenger-details-container__items--info {
+  position: relative;
+  padding: 1rem 1rem;
 }
 .adult-passenger-details-container__items--info label {
   display: block;
+}
+.adult-passenger-details-container__items--info input {
+  position: relative;
+  border: 1px solid rgba(126, 126, 126, 0.5);
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  width: 15rem;
+  height: 100%;
 }
 
 .main {
