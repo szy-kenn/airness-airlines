@@ -1190,6 +1190,10 @@ body {
     transform: rotate(360deg);
   }
 }
+.about-page-title {
+  color: red;
+}
+
 .main {
   display: grid;
   position: relative;
