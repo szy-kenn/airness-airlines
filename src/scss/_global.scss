@@ -25,3 +25,22 @@ input::-webkit-calendar-picker-indicator {
     font-size: 20px;
     padding: 0.5rem;
   }
+
+*::-webkit-scrollbar {
+    width: 17.5px;
+}
+
+*::-webkit-scrollbar-track {
+    margin: 10px 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: $lighter-primary-button;
+    border: 5px solid white;
+    border-radius: 100px;
+    // background-clip: border-box;
+
+    &:hover {
+        background: $primary-button;
+    }
+}

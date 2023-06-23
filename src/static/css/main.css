@@ -27,6 +27,23 @@ input::-webkit-calendar-picker-indicator {
   padding: 0.5rem;
 }
 
+*::-webkit-scrollbar {
+  width: 17.5px;
+}
+
+*::-webkit-scrollbar-track {
+  margin: 10px 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #b399b0;
+  border: 5px solid white;
+  border-radius: 100px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #174885;
+}
+
 .passenger-container h3, .passenger-container div {
   padding: 0.25rem 0;
 }
@@ -131,20 +148,6 @@ input::-webkit-calendar-picker-indicator {
   width: 200%;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-.flight-location-form .flight-location-form__container::-webkit-scrollbar {
-  width: 17.5px;
-}
-.flight-location-form .flight-location-form__container::-webkit-scrollbar-track {
-  margin: 10px 10px;
-}
-.flight-location-form .flight-location-form__container::-webkit-scrollbar-thumb {
-  background: #b399b0;
-  border: 5px solid white;
-  border-radius: 100px;
-}
-.flight-location-form .flight-location-form__container::-webkit-scrollbar-thumb:hover {
-  background: #174885;
 }
 .flight-location-form .flight-location-form__container__options {
   display: flex;
@@ -1020,7 +1023,6 @@ body {
   margin: auto;
   padding: 1rem 0;
   background-color: #ffdf29;
-  margin-bottom: 1rem;
 }
 .page-header-seats p {
   display: block;
@@ -1032,9 +1034,33 @@ body {
   color: #000000;
 }
 
+.extra-leg-room {
+  color: #5d478b;
+}
+
+.seat-hovered {
+  color: #174885;
+}
+
+.seat-selected {
+  color: rgb(255, 195, 85);
+}
+
+.seat-reserved {
+  color: rgb(0, 151, 0);
+}
+
+.seat-unavailable {
+  color: rgba(0, 0, 0, 0.25);
+}
+.seat-unavailable:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+
 .seats-page-wrapper {
   position: relative;
   height: 110%;
+  padding: 1rem;
   display: grid;
   grid-template-columns: 1.25fr 1.5fr 1fr;
 }
@@ -1048,17 +1074,40 @@ body {
   grid-auto-rows: 8%;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
+  padding: 0rem 1rem 1.75rem 1rem;
 }
-.seats-page-wrapper .selected-seats-container::-webkit-scrollbar {
+.seats-page-wrapper .selected-seats-container::-webkit-scrollbar-thumb {
+  border: 5px solid rgb(240, 231, 231);
+}
+.seats-page-wrapper .selected-seats-container .selected-seats-no-items {
+  display: flex;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.seats-page-wrapper .selected-seats-container .selected-seats-no-items.entered-items {
   display: none;
 }
+.seats-page-wrapper .selected-seats-container .selected-seats-no-items p {
+  display: block;
+  margin: auto;
+  padding-inline: 2rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000000;
+}
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat {
-  border-radius: 15px;
+  position: relative;
+  border-radius: 10px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
   padding: 0.5rem 1rem;
   height: 100%;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   cursor: pointer;
   animation: pop 0.2s ease forwards;
 }
@@ -1137,15 +1186,53 @@ body {
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats {
   padding: 0.5rem 0;
 }
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats svg.extra-leg-room,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats svg.extra-leg-room,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats svg.extra-leg-room {
-  color: #5d478b;
-}
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats svg:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats svg:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats svg:hover {
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats .standard:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats .extra-leg-room:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats .standard:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats .extra-leg-room:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats .standard:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats .extra-leg-room:hover {
+  cursor: pointer;
   color: #174885;
+}
+.seats-page-wrapper .seats-guide-wrapper {
+  display: grid;
+  margin: 0 auto;
+  background-color: white;
+  position: relative;
+  padding: 1rem;
+  width: 75%;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.seats-page-wrapper .seats-guide-wrapper .seats-guide-container {
+  display: block;
+}
+.seats-page-wrapper .seats-guide-wrapper .seats-guide-container .seats-guide-header {
+  text-align: left;
+  font-family: "Montserrat";
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000000;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  width: auto;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+.seats-page-wrapper .seats-guide-wrapper .seats-guide-container .seats-icon-legends-list {
+  padding: 1rem 0 0 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.seats-page-wrapper .seats-guide-wrapper .seats-guide-container .seats-icon-legends-list .legends-item {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }
 
 .sticky-passenger-list-container {
@@ -1171,7 +1258,7 @@ body {
 .sticky-passenger-list-container .extra-cost-container .extra-cost {
   display: grid;
   place-items: center;
-  padding: 1rem;
+  padding: 1.5rem;
   width: 100%;
   border-top-left-radius: 25px;
   background-color: #174885;
@@ -1199,9 +1286,6 @@ body {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   background: white;
-}
-.sticky-passenger-list-container .passenger-list::-webkit-scrollbar {
-  display: none;
 }
 .sticky-passenger-list-container .passenger-list .passenger-container {
   position: relative;
@@ -1239,8 +1323,7 @@ body {
 .snaps-inline {
   scroll-snap-type: inline mandatory;
 }
-
-.snaps-inline > * {
+.snaps-inline * {
   scroll-snap-align: start;
 }
 

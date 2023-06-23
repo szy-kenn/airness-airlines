@@ -46,6 +46,14 @@ function passengerSelectedSeatOnClick(element) {
 
 function createPassengerSelectedSeat(container) {
 
+    if (!document.querySelector(".selected-seats-no-items").classList.contains('entered-items')) {
+        document.querySelector(".selected-seats-no-items").classList.add('entered-items');
+    }
+
+    // setTimeout(() => {
+    //     document.querySelector(".selected-seats-no-items").style.display = 'none';
+    // }, 300);
+
     updateSelectedSeatsContainer();
 
     let passengerSelectedSeat = document.createElement("div");
