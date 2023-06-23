@@ -13,6 +13,10 @@ def home():
 
     return render_template('home.html')
 
+@view.route('/_loading')
+def _loading():
+    return render_template('loading-screen.html')
+
 @view.route('/about')
 def about():
     return render_template('about.html')
