@@ -108,3 +108,14 @@ adultPassengerContainer.forEach(container => {
         }
     })
 })
+
+childPassengerContainer.forEach(container => {
+    container.addEventListener('click', () => {
+        if (container.dataset.state === 'pending') {
+            createPassengerSelectedSeat(container);
+            container.dataset.state = 'added';
+        } else {
+            console.log("already added");
+        }
+    })
+});

@@ -1015,16 +1015,31 @@ body {
   width: 15rem;
 }
 
+.page-header-seats {
+  display: block;
+  margin: auto;
+  padding: 1rem 0;
+  background-color: #ffdf29;
+  margin-bottom: 1rem;
+}
+.page-header-seats p {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+}
+
 .seats-page-wrapper {
   position: relative;
-  height: 150%;
-  border: 1px solid red;
+  height: 110%;
   display: grid;
-  grid-template-columns: 1.5fr 3fr 1fr;
+  grid-template-columns: 1.25fr 1.5fr 1fr;
 }
 .seats-page-wrapper__item {
-  border: 1px solid red;
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 .seats-page-wrapper .selected-seats-container {
   display: grid;
@@ -1040,7 +1055,8 @@ body {
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat {
   border-radius: 15px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
+  height: 100%;
   display: grid;
   align-items: center;
   cursor: pointer;
@@ -1095,6 +1111,41 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: #ffdf29;
+}
+.seats-page-wrapper .airline-seats-wrapper {
+  display: flex;
+  position: relative;
+  background-color: white;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats {
+  padding: 0.5rem 0;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats svg.extra-leg-room,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats svg.extra-leg-room,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats svg.extra-leg-room {
+  color: #5d478b;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats svg:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats svg:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats svg:hover {
+  color: #174885;
 }
 
 .sticky-passenger-list-container {
