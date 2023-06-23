@@ -1015,6 +1015,181 @@ body {
   width: 15rem;
 }
 
+.seats-page-wrapper {
+  position: relative;
+  height: 150%;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 1fr;
+}
+.seats-page-wrapper__item {
+  border: 1px solid red;
+  padding: 1rem 2rem;
+}
+.seats-page-wrapper .selected-seats-container {
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: row;
+  grid-auto-rows: 8%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.seats-page-wrapper .selected-seats-container::-webkit-scrollbar {
+  display: none;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat {
+  background: linear-gradient(#5c67e6, #174885);
+  border-radius: 15px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
+  padding: 0.2rem 1rem;
+  display: grid;
+  align-items: center;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status p {
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i {
+  font-size: 1.25rem;
+  color: #ffffff;
+  animation: rotate360 0.4s linear infinite;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__number {
+  color: #ffffff;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value {
+  font-family: "Montserrat";
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value span {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffdf29;
+}
+
+.sticky-passenger-list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  left: 5%;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  width: 90%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+}
+.sticky-passenger-list-container .extra-cost-container {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 15%;
+  padding-right: 1rem;
+}
+.sticky-passenger-list-container .extra-cost-container .extra-cost {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  width: 100%;
+  border-top-left-radius: 25px;
+  background-color: #174885;
+}
+.sticky-passenger-list-container .extra-cost-container .extra-cost p {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0.2rem 0;
+}
+.sticky-passenger-list-container .extra-cost-container .extra-cost .extra-cost-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.sticky-passenger-list-container .passenger-list {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  display: grid;
+  gap: 0.5rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 12%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  background: white;
+}
+.sticky-passenger-list-container .passenger-list::-webkit-scrollbar {
+  display: none;
+}
+.sticky-passenger-list-container .passenger-list .passenger-container {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  place-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 7.5px;
+  background: rgba(23, 72, 133, 0.1);
+  transition: background 0.2s ease-out;
+  cursor: pointer;
+}
+.sticky-passenger-list-container .passenger-list .passenger-container:hover {
+  background: rgba(23, 72, 133, 0.175);
+  transition: background 0.2s ease-out;
+}
+.sticky-passenger-list-container .passenger-list .passenger-container i {
+  color: #5d478b;
+}
+.sticky-passenger-list-container .passenger-list .passenger-container p {
+  display: block;
+  font-family: "Montserrat";
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #5d478b;
+}
+.sticky-passenger-list-container .finish-btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.sticky-passenger-list-container .finish-btn .seats-done-btn {
+  width: 11rem;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .main {
   display: grid;
   position: relative;

@@ -1,0 +1,173 @@
+.seats-page-wrapper {
+    position: relative;
+    height: 150%;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1.5fr 3fr 1fr;
+
+    &__item {
+        border: 1px solid red;
+        padding: 1rem 2rem;
+    }
+
+    .selected-seats-container {
+
+        display: grid;
+        gap: 2rem;
+        grid-auto-flow: row;
+        grid-auto-rows: 8%;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .passenger-selected-seat {
+
+            // background-color: white;
+            background: linear-gradient(#5c67e6, $primary-button);
+            border-radius: 15px;
+            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 1rem;
+            display: grid;
+            align-items: center;
+
+            .select-seat-status {
+                @include flex;
+
+                p {
+                    text-transform: uppercase;
+                    @include font($primary-font, 1rem, 700, $secondary-color);
+                }
+
+                i {
+                    font-size: 1.25rem;
+                    color: $secondary-color;
+                    animation: rotate360 0.4s linear infinite;
+                }
+            }
+
+            .passenger-info-extra {
+                @include flex;
+
+                &__number {
+                    color: $secondary-color;
+                }
+
+                &__value {
+                    @include font($primary-font, 0.75rem, 400, $secondary-color);
+
+                    span {
+                        @include font($primary-font, 1rem, 700, $accent);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sticky-passenger-list-container {
+    @include flex(space-between);
+    position: sticky;
+    bottom: 0;
+    left: 5%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 90%;
+    background-color: $secondary-color;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+
+    .extra-cost-container {
+
+        display: flex;
+        position: relative;
+        height: 100%;
+        width: 15%;
+        padding-right: 1rem;
+
+        .extra-cost {
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+            width: 100%;
+            border-top-left-radius: 25px;
+            background-color: $primary-button;
+
+            p {
+                @include font($primary-font, 1rem, 500, $secondary-color);
+                padding: 0.2rem 0;
+            }
+
+            .extra-cost-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
+
+        }
+    }
+
+    .passenger-list {
+        position: relative;
+        width: 70%;
+        height: 100%;
+        display: grid;
+        gap: 0.5rem;
+        // border: 1px solid red;
+        grid-auto-flow: column;
+        grid-auto-columns: 12%;
+        
+        overflow-y: hidden;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        background: white;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .passenger-container {
+            position: relative;
+            display: grid;
+            gap: 0.5rem;
+            place-items: center;
+            padding: 0.8rem 1rem;
+            border-radius: 7.5px;
+            background: rgba($primary-button, 0.1);
+            transition: background 0.2s ease-out;
+            cursor: pointer;
+
+            &:hover {
+                background: rgba($primary-button, 0.175);
+                transition: background 0.2s ease-out;
+            }
+            
+            i {
+                color: $secondary-button;
+            }
+
+            p {
+                display: block;
+                @include font($primary-font, 0.8rem, 700, $secondary-button);
+            }
+
+        }
+    }   
+
+    .finish-btn {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        .seats-done-btn {
+            width: 11rem;
+        }
+    }
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+}
+
+.snaps-inline > * {
+    scroll-snap-align: start;
+}

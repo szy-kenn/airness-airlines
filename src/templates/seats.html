@@ -2,6 +2,57 @@
 {% block title %}Seats{% endblock %}
 {% block booking %}
 
-<p>Book a Seat</p>
+{% include 'blocks/selected-flight-details.html' %}
 
+
+<div class="seats-page-wrapper">
+    <div class="seats-page-wrapper__item selected-seats-container">
+        {% for i in range(50) %}
+            <div class="passenger-selected-seat">
+                <div class="select-seat-status">
+                    <p>Selecting...</p>
+                    <i class="fa-solid fa-spinner"></i>
+                    <!-- <i class="fa-solid fa-circle-check"></i> -->
+                </div>
+                <div class="passenger-info-extra">
+                    <p class="passenger-info-extra__number">Adult {{ i + 1 }}</p>
+                    <p class="passenger-info-extra__value">Extras:&nbsp&nbsp<span>PHP 0.00</span></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="seats-page-wrapper__item airline-seats-container">
+        <p>AIRLINE SEATS</p>
+    </div>
+
+    <div class="seats-page-wrapper__item seats-guide-container">
+        <p>SEATS GUIDE</p>
+    </div>
+</div>
+
+<div class="sticky-passenger-list-container snaps-inline">
+    <div class="extra-cost-container">
+        <div class="extra-cost">
+            <p class="extra-cost-title">Extra Cost:</p>
+            <p class="extra-cost-value">PHP 10.00</p>
+        </div>
+    </div>
+    <div class="passenger-list" style="--children-count: 5;">
+        {% for i in range(50) %}
+            <div class="passenger-container" tabindex="1" data-state="pending">
+                <i class="fa-solid fa-user"></i>
+                <p>Adult {{ i + 1 }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="finish-btn">
+        <button class="form-btn seats-done-btn">Done</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/seats.js')}}"></script>
 {% endblock %}
