@@ -1361,15 +1361,8 @@ body {
 }
 
 .about-page-title {
-<<<<<<< Updated upstream
-  color: blue font-size 100px font-weight bold;
-}
-
-.class-test {
-=======
   padding-bottom: 100px;
   text-align: left;
->>>>>>> Stashed changes
   color: red;
   font-weight: bold;
   font-size: 70px;
@@ -1377,13 +1370,16 @@ body {
 }
 
 .essay {
-  grid-area: main;
   text-align: center;
   line-height: 1.9;
   font-weight: 500;
   color: blue;
   font-size: 20px;
   font-family: "Montserrat";
+}
+
+.class-test {
+  color: red;
 }
 
 .main {
