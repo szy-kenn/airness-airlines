@@ -7,12 +7,12 @@
     <div class="passenger-details-wrapper">
         <form action="/seats" method="POST">
         {% set idx = {'value': 0} %}
-        {% for i in range(3) %}
-        {% if i == 0 %}
+        {% for n in range(3) %}
+        {% if n == 0 %}
         {% set age_group = 'Adult' %}
-        {% elif i == 1 %}
+        {% elif n == 1 %}
         {% set age_group = 'Children' %}
-        {% elif i == 2 %}
+        {% elif n == 2 %}
         {% set age_group = 'Infant' %}
         {% endif %}
             <div class="adult-passenger-details-container" id="{{ age_group.lower() ~ '_container'}}" data-count="{{ form_part_one['passenger-' ~ age_group.lower() ]}}">
@@ -24,7 +24,7 @@
                     <div class="adult-passenger-details-container__items" id="{{'p' ~ ((i+1)|int)}}">
                         <div class="passenger-number-container">
                             <p class="passenger-number">{{ '(' ~ age_group.upper() ~ ')'}} PASSENGER {{ i + 1}} DETAILS</p>
-                            <i class="fa-sharp fa-solid fa-chevron-down passenger-expand" id="{{ 'p' ~ ((i+1)|int) ~ '_expand'}}"></i>
+                            <i class="fa-sharp fa-solid fa-chevron-down passenger-expand" id="{{ 'p' ~ ((i+1)|int) ~ '_expand'}}" data-age="{{ n }}"></i>
                         </div>
                         <div class="passenger-full-name">
                             <div class="adult-passenger-details-container__items--info">

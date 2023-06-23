@@ -20,6 +20,14 @@ function expandForm(category, btn, container, ageGroup) {
             container.style.height = '3rem';
         } else {
             container.style.height = (container.dataset.count > 0) ? `${(19 * container.dataset.count) + 4}rem` : '3rem';
+        
+            passengerFormsExpandBtns.forEach(btn => {
+                if (parseInt(btn.dataset.age) === ageGroup) {
+                    if (btn.classList.contains('collapsed')) {
+                        container.style.height = `${parseFloat(container.style.height) - 16.3}rem`;
+                    }
+                } 
+            })
         }
     } else if (category == 'passenger') {
 
@@ -50,7 +58,7 @@ try {
         ageGroupExpandBtns[i][3].style.height = ageGroupExpandBtns[i][3].style.height = (ageGroupExpandBtns[i][3].dataset.count > 0) ? `${(19 * ageGroupExpandBtns[i][3].dataset.count) + 4}rem` : '3rem';
 
         ageGroupExpandBtns[i][2].addEventListener('click', () => {
-            expandForm('ageGroup', ageGroupExpandBtns[i][2], ageGroupExpandBtns[i][3], 0);
+            expandForm('ageGroup', ageGroupExpandBtns[i][2], ageGroupExpandBtns[i][3], i);
         });
 
         for (let j = 0; j < parseInt(ageGroupExpandBtns[i][3].dataset.count); j++) {
