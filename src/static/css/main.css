@@ -1,4 +1,9 @@
 @import url("https://meyerweb.com/eric/tools/css/reset/reset.css");
+html {
+  scroll-behavior: smooth !important;
+  padding: 0;
+}
+
 body {
   font-family: "Montserrat";
   box-sizing: border-box;
@@ -851,6 +856,8 @@ body {
   padding: 1rem 0;
   margin: auto;
   position: relative;
+  height: auto;
+  overflow: hidden;
 }
 
 .adult-passenger-details-container {
@@ -860,6 +867,9 @@ body {
   padding-bottom: 0.1rem;
   margin-bottom: 1rem;
   transition: height 0.2s ease-in;
+}
+.adult-passenger-details-container.contact-info {
+  padding-bottom: 0.75rem;
 }
 .adult-passenger-details-container .age-group-container {
   display: flex;
@@ -905,6 +915,17 @@ body {
   opacity: 1;
   pointer-events: all;
 }
+.adult-passenger-details-container__items.contact-info {
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.adult-passenger-details-container__items.contact-info.email-address {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .adult-passenger-details-container__items.collapsed {
   height: 2.7rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.6);
@@ -939,18 +960,21 @@ body {
   transition: transform 0.2s ease-out;
 }
 .adult-passenger-details-container__items .passenger-full-name,
-.adult-passenger-details-container__items .passenger-passport {
+.adult-passenger-details-container__items .passenger-passport,
+.adult-passenger-details-container__items .passenger-contact-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
 }
 .adult-passenger-details-container__items .passenger-full-name input,
-.adult-passenger-details-container__items .passenger-passport input {
+.adult-passenger-details-container__items .passenger-passport input,
+.adult-passenger-details-container__items .passenger-contact-info input {
   position: relative;
 }
 .adult-passenger-details-container__items .passenger-full-name input::-webkit-calendar-picker-indicator,
-.adult-passenger-details-container__items .passenger-passport input::-webkit-calendar-picker-indicator {
+.adult-passenger-details-container__items .passenger-passport input::-webkit-calendar-picker-indicator,
+.adult-passenger-details-container__items .passenger-contact-info input::-webkit-calendar-picker-indicator {
   font-family: "Montserrat";
   font-size: 1.05rem;
   font-weight: 500;
@@ -989,7 +1013,6 @@ body {
   font-weight: 500;
   color: rgba(0, 0, 0, 0.9);
   width: 15rem;
-  height: 100%;
 }
 
 .main {

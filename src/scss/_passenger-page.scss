@@ -5,6 +5,8 @@
     padding: 1rem 0;
     margin: auto;
     position: relative;
+    height: auto;
+    overflow: hidden;
 }
 
 .adult-passenger-details-container {
@@ -15,6 +17,10 @@
     padding-bottom: 0.1rem;
     margin-bottom: 1rem;
     transition: height 0.2s ease-in;
+
+    &.contact-info {
+        padding-bottom: 0.75rem;
+    }
 
     .age-group-container {
         @include flex(space-between);
@@ -67,6 +73,15 @@
         pointer-events: all;
         // border-radius: 5px;
 
+        &.contact-info {
+            height: 5.5rem;
+            @include flex(space-between);
+
+            &.email-address {
+                @include flex(flex-start);
+            }
+        }
+
         &.collapsed {
             height: 2.7rem;
             box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.6);
@@ -104,7 +119,8 @@
 
 
         .passenger-full-name,
-        .passenger-passport {
+        .passenger-passport,
+        .passenger-contact-info {
             @include flex(space-between);
             position: relative;
 
@@ -149,7 +165,7 @@
                 line-height: 1rem;
                 @include font($primary-font, 1rem, 500, rgba($primary-color, 0.9));
                 width: 15rem;
-                height: 100%;
+                // height: 100%;
             }
         }
     }
