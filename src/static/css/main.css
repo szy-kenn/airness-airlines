@@ -1270,6 +1270,10 @@ body {
   }
 }
 .about-page-title {
+  color: blue font-size 100px font-weight bold;
+}
+
+.class-test {
   color: red;
 }
 
