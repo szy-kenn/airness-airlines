@@ -901,14 +901,14 @@ body {
   margin-right: 0.1rem;
   background-color: white;
   height: 19rem;
-  transition: all 0.2s ease-in;
+  transition: height 0.1s ease-in;
   opacity: 1;
   pointer-events: all;
 }
 .adult-passenger-details-container__items.collapsed {
   height: 2.7rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.6);
-  transition: height 0.2s ease-out;
+  transition: height 0.1s ease-out;
 }
 .adult-passenger-details-container__items.collapsed .adult-passenger-details-container__items--info {
   opacity: 0;
@@ -974,7 +974,7 @@ body {
   opacity: 1;
   position: relative;
   padding: 1rem 1rem;
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0s 0.1s ease-out;
 }
 .adult-passenger-details-container__items--info label {
   display: block;
