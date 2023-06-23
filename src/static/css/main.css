@@ -1038,12 +1038,24 @@ body {
   display: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat {
-  background: linear-gradient(#5c67e6, #174885);
   border-radius: 15px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
   padding: 0.2rem 1rem;
   display: grid;
   align-items: center;
+  cursor: pointer;
+  animation: pop 0.2s ease forwards;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat:hover {
+  transform: scale(1.05);
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selecting {
+  background-color: #174885;
+  transition: background 0.2s ease-out;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.pending {
+  background-color: gray;
+  transition: background 0.2s ease-out;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status {
   display: flex;
@@ -1060,6 +1072,8 @@ body {
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i {
   font-size: 1.25rem;
   color: #ffffff;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i.selecting {
   animation: rotate360 0.4s linear infinite;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra {
@@ -1129,7 +1143,7 @@ body {
   display: grid;
   gap: 0.5rem;
   grid-auto-flow: column;
-  grid-auto-columns: 12%;
+  grid-auto-columns: 18%;
   overflow-y: hidden;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
@@ -1188,6 +1202,20 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 .about-page-title {

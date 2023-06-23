@@ -4,13 +4,12 @@
 
 {% include 'blocks/selected-flight-details.html' %}
 
-
 <div class="seats-page-wrapper">
-    <div class="seats-page-wrapper__item selected-seats-container">
-        {% for i in range(50) %}
-            <div class="passenger-selected-seat">
+    <div class="seats-page-wrapper__item selected-seats-container" data-currentlySelecting="">
+        {% for i in range(0) %}
+            <div class="passenger-selected-seat" data-state="Selecting...">
                 <div class="select-seat-status">
-                    <p>Selecting...</p>
+                    <p id="">Selecting...</p>
                     <i class="fa-solid fa-spinner"></i>
                     <!-- <i class="fa-solid fa-circle-check"></i> -->
                 </div>
@@ -39,12 +38,36 @@
         </div>
     </div>
     <div class="passenger-list" style="--children-count: 5;">
-        {% for i in range(50) %}
-            <div class="passenger-container" tabindex="1" data-state="pending">
+
+        {% for i in range((form_part_one['passenger-adult'] | int) + 10) %}
+            <div class="passenger-container" tabindex="1" 
+                data-state="pending" 
+                data-age="adult"
+                data-number="{{(i+1)}}"
+                id="{{'adultPassengerContainer' ~ (i+1)}}">
                 <i class="fa-solid fa-user"></i>
                 <p>Adult {{ i + 1 }}</p>
             </div>
         {% endfor %}
+
+        {% for i in range((form_part_one['passenger-children'] | int) + 5) %}
+        <div class="passenger-container" tabindex="1" 
+            data-state="pending" 
+            data-name="Child {{(i+1)}}"
+            id="{{'childPassengerContainer' ~ (i+1)}}">
+            <i class="fa-sharp fa-solid fa-child"></i>
+            <p>Child {{ i + 1 }}</p>
+        </div>
+        {% endfor %}
+
+        {#% for i in range((form_part_one['passenger-infant'] | int) + 7) %}
+        <div class="passenger-container" tabindex="1" data-state="pending" id="">
+            <i class="fa-solid fa-baby"></i>
+            <p>Infant {{ i + 1 }}</p>
+        </div>
+        {% endfor %#}
+
+
     </div>
     <div class="finish-btn">
         <button class="form-btn seats-done-btn">Done</button>

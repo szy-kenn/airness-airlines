@@ -25,13 +25,29 @@
 
         .passenger-selected-seat {
 
-            // background-color: white;
-            background: linear-gradient(#5c67e6, $primary-button);
             border-radius: 15px;
             box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
             padding: 0.2rem 1rem;
             display: grid;
             align-items: center;
+            cursor: pointer;
+            animation: pop 0.2s ease forwards;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &.selecting {
+                background-color: $primary-button;
+                // background: linear-gradient(#5c67e6, $primary-button);
+                transition: background .2s ease-out;
+            }
+
+            &.pending {
+                // background: linear-gradient(#a3a2a2, #6e6d6d);
+                background-color: gray;
+                transition: background 0.2s ease-out;
+            }
 
             .select-seat-status {
                 @include flex;
@@ -44,7 +60,10 @@
                 i {
                     font-size: 1.25rem;
                     color: $secondary-color;
-                    animation: rotate360 0.4s linear infinite;
+                    
+                    &.selecting {
+                        animation: rotate360 0.4s linear infinite;
+                    }
                 }
             }
 
@@ -115,7 +134,7 @@
         gap: 0.5rem;
         // border: 1px solid red;
         grid-auto-flow: column;
-        grid-auto-columns: 12%;
+        grid-auto-columns: 18%;
         
         overflow-y: hidden;
         overflow-x: auto;
