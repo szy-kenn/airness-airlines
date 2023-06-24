@@ -2,8 +2,6 @@ const selectedSeatsContainer = document.querySelector(".selected-seats-container
 const adultPassengerContainer = [] 
 const childPassengerContainer = []
 
-
-
 function getStatusText(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusText`);
 }
@@ -17,7 +15,21 @@ function getCurrentlySelecting() {
 }
 
 function makeSelected(element, seat) {
-    element.dataset.state = 'Selected';
+
+    if (seat.classList.contains('selected') || seat.classList.contains('reserved')) {
+        // forced make selecting
+        element.dataset.state = 'Selecting...';
+        element.classList.remove('selected', 'active');
+        element.classList.add('selecting');
+        getStatusText(element).textContent = element.dataset.state;
+        getStatusIcon(element).className = "fa-solid fa-spinner selecting";
+        return;
+    }
+
+    seat.dataset.passenger = element.dataset.age.charAt(0).toUpperCase() + element.dataset.number;
+    seat.classList.add('selected');
+
+    element.dataset.state = seat.id;
     element.classList.remove('selecting');
     element.classList.add('selected', 'active');
     getStatusText(element).textContent = 'Seat ' +  seat.id;
@@ -33,9 +45,16 @@ function makeInactive(element) {
         getStatusText(element).textContent = element.dataset.state;
         getStatusIcon(element).className = "fa-solid fa-pause";
 
-    } else if (element.classList.contains('selected')) {
+    } else if (element.classList.contains('selected') || element.classList.contains('confirmed')) {
         element.classList.remove('active');
         element.classList.add('inactive');
+
+        seat = document.getElementById(element.dataset.state);
+
+        if (seat.classList.contains("selected") || seat.classList.contains("reserved")) {
+            seat.classList.remove('active');
+            seat.classList.add('inactive');
+        }
     }
 }
 
@@ -48,25 +67,56 @@ function makeActive(element) {
         element.dataset.state = 'Selecting...';
         getStatusText(element).textContent = element.dataset.state;
         getStatusIcon(element).className = "fa-solid fa-spinner selecting";
-    } else if (element.classList.contains('selected')) {
+    } else if (element.classList.contains('selected') || element.classList.contains('confirmed')) {
         // selected -> active
         element.classList.remove('inactive');
         element.classList.add('active');
+        let seat = document.getElementById(element.dataset.state)
+        seat.classList.remove('inactive');
+        seat.classList.add('active');
     }
 
     selectedSeatsContainer.dataset.currentlySelecting = element.id;
 }
 
-function makeConfirmed(element) {
-    element.classList.remove('selected', 'active');
-    element.classList.add('confirmed');
-    getStatusIcon(element).className = "fa-regular fa-circle-check";
+function toggleConfirmed(element) {
+
+    if (element.classList.contains("selected")) {
+        element.classList.remove('selected', 'active');
+        element.classList.add('confirmed');
+        getStatusIcon(element).className = "fa-regular fa-circle-check";
+    
+        let seat = document.getElementById(element.dataset.state);
+        seat.classList.remove('selected', 'active');
+        seat.classList.add('reserved', 'active');
+
+    } else if (element.classList.contains("confirmed")) {
+
+        element.classList.remove('confirmed');
+        element.classList.add('selected', 'active');
+        getStatusIcon(element).className = "fa-solid fa-circle-check";
+    
+        let seat = document.getElementById(element.dataset.state);
+        seat.classList.remove('reserved', 'active');  
+        seat.classList.add('selected', 'active');
+    }
 }
 
 function selectSeat(seat) {
+
     const id = getCurrentlySelecting();
     if (id !== undefined) {
         const container = document.getElementById(id);
+
+        if (container.classList.contains("confirmed")) {
+            // confirmed passengers cant choose another seat
+            return;
+        }
+
+        if (container.dataset.state !== 'Selecting...') {
+            document.getElementById(container.dataset.state).classList.remove('selected');
+        }
+        
         makeSelected(container, seat);
 
     } else {
@@ -78,8 +128,8 @@ function selectSeat(seat) {
 function confirmSeat(icon) {
     if (icon.classList.contains("fa-circle-check")) {
         const container = icon.parentNode.parentNode;
-        makeConfirmed(container);
-    }
+        toggleConfirmed(container);
+    } 
 }
 
 function updateSelectedSeatsContainer() {

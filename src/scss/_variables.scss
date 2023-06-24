@@ -1,6 +1,7 @@
 $primary-color: #000000;
 $secondary-color: #ffffff;
 $primary-button: #174885;
+$lighter-blue: #3c87e2;
 $darker-blue: #0c2849;
 // $primary-button: #5d478b;
 $secondary-button: #5d478b;
@@ -8,5 +9,9 @@ $lighter-primary-button: #b399b0;
 $accent: #ffdf29;
 $invalid-color: rgb(245, 67, 67);
 $booking-process-bg-color: rgb(240, 231, 231);
+
+$clicked-seat: rgb(255, 195, 85);
+$reserved-seat: rgb(0, 151, 0);
+$unavailable: rgba(0, 0, 0, 0.25);
 
 $primary-font: 'Montserrat';

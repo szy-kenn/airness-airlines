@@ -12,8 +12,25 @@
     }
 }
 
-.extra-leg-room {
-    color: $secondary-button;
+.seats-legend {
+    padding: 0.5rem 0;
+    position: relative;
+    
+    &.extra-leg-room {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 7.5%;
+            right: 0;
+            bottom: 0;
+            width: 75%;
+            height: 50%;
+            border-top: 2px dotted black;
+            border-inline: 2px dotted black;
+            border-radius: 5px;
+        }
+    }
 }
 
 .seat-hovered {
@@ -21,18 +38,18 @@
 }
 
 .seat-selected {
-    color: rgb(255, 195, 85);
+    color: $clicked-seat;
 }
 
 .seat-reserved {
-    color: rgb(0, 151, 0);
+    color: $reserved-seat;
 }
 
 .seat-unavailable {
-    color: rgba(0, 0, 0, 0.25);
+    color: $unavailable;
 
     &:hover {
-        color: rgba(0, 0, 0, 0.25);
+        color: $unavailable;
     }
 }
 
@@ -97,11 +114,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            cursor: grab;
-            
-            &:hover {
-                cursor: grabbing;
-            }
+            cursor: pointer;   
 
             &.draggable-mirror {
                 height: auto;
@@ -148,6 +161,14 @@
             &.confirmed {
                 background-color:green;
                 transition: background .2s ease-out;
+
+                &.active {
+                    opacity: 1;
+                }
+
+                &.inactive {
+                    opacity: .5;
+                }
             }
 
 
@@ -214,14 +235,69 @@
                 .seats-columns {
 
                     .seats {
-                    padding: 0.5rem 0;
+                        padding: 0.5rem 0;
+                        position: relative;
 
-                        .standard,
-                        .extra-leg-room {
-                            
-                            &:hover {
-                                cursor: pointer;
-                                color: $primary-button;
+                        &.extra-leg-room {
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 7.5%;
+                                right: 0;
+                                bottom: 0;
+                                width: 75%;
+                                height: 50%;
+                                border-top: 2px dotted black;
+                                border-inline: 2px dotted black;
+                                border-radius: 5px;
+                            }
+                        }
+
+                        &.selected,
+                        &.reserved {
+                            &::before {
+                                content: attr(data-passenger);
+                                @include font('Roboto', 1rem, 500, $secondary-color);
+                                @include flex(center);
+                                position: absolute;
+                                top: 25%;
+                                left: 5%;
+                                padding: 0.2rem 0.15rem;
+                                background-color: $darker-blue;
+                                border-radius: 5px;
+                                width: 1.75rem;
+                                height: auto;
+                            }
+                        }
+                        
+                        &:hover {
+                            cursor: pointer;
+                            color: $primary-button;
+                        }
+
+                        &.selected {
+                            color: $clicked-seat;
+
+                            &.active {
+                                opacity: 1;
+                            }
+
+                            &.inactive {
+                                opacity: 0.5;
+                            }
+                        
+                        }
+
+                        &.reserved {
+                            color: $reserved-seat;
+
+                            &.active {
+                                opacity: 1;
+                            }
+
+                            &.inactive {
+                                opacity: .5;
                             }
                         }
                     }
