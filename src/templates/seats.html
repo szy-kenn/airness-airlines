@@ -34,8 +34,9 @@
 
     <div class="seats-page-wrapper__item airline-seats-wrapper">
         <div class="airline-seats-container">
+            {% set seat_column_letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'] %}
             <div class="seats-left-container">
-                {% for i in range(4) %}
+                {% for letter in range(0, 4) %}
                 <div class="seats-columns">
                     {% for i in range(12) %}
                     {% if i == 0 or i == 11 %}
@@ -44,7 +45,7 @@
                         {% set seat_class = 'standard' %}
                     {% endif %}
                     <div class="seats">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="sofa" width="36" onclick="console.log('hello')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="{{ '{:02d}'.format(i+1) ~ seat_column_letter[letter] }}" width="36" onclick="selectSeat(this)">
                             <!-- #0096e6 -->
                             <path fill="#fff" d="M43.92 7.39v11.59c0 .55-.44 1-1 1-.55 0-1-.45-1-1V7.39c0-1.84-1.13-3.39-2.48-3.39H12.75c-1.34 0-2.48 1.55-2.48 3.39v11.59c0 .55-.45 1-1 1s-1-.45-1-1V7.39C8.27 4.42 10.28 2 12.75 2h26.69c2.47 0 4.48 2.42 4.48 5.39zM39.33 24.16c-1.18-1.7-2.95-2.79-4.92-2.79h-17.3c-1.78 0-3.39.88-4.56 2.31-1.16 1.42-1.88 3.37-1.88 5.53v3.58a.966.966 0 0 0 .3.7c.18.18.43.29.7.29h28.18a.997.997 0 0 0 1-1v-3.57c0-1.92-.57-3.68-1.52-5.05zm-.48 7.62H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84v2.57z"></path>
                             <path fill="currentColor" d="M38.85 29.21v2.57H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84z"></path>
@@ -62,7 +63,7 @@
                 {% endfor %}
             </div>
             <div class="seats-mid-container">
-                {% for i in range(3) %}
+                {% for letter in range(4, 7) %}
                 <div class="seats-columns">
                     {% for i in range(12) %}
                     {% if i == 0 or i == 11 %}
@@ -71,7 +72,7 @@
                         {% set seat_class = 'standard' %}
                     {% endif %}
                     <div class="seats">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="sofa" width="36">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="{{ '{:02d}'.format(i+1) ~ seat_column_letter[letter] }}" width="36" onclick="selectSeat(this)">
                             <!-- #0096e6 -->
                             <path fill="#fff" d="M43.92 7.39v11.59c0 .55-.44 1-1 1-.55 0-1-.45-1-1V7.39c0-1.84-1.13-3.39-2.48-3.39H12.75c-1.34 0-2.48 1.55-2.48 3.39v11.59c0 .55-.45 1-1 1s-1-.45-1-1V7.39C8.27 4.42 10.28 2 12.75 2h26.69c2.47 0 4.48 2.42 4.48 5.39zM39.33 24.16c-1.18-1.7-2.95-2.79-4.92-2.79h-17.3c-1.78 0-3.39.88-4.56 2.31-1.16 1.42-1.88 3.37-1.88 5.53v3.58a.966.966 0 0 0 .3.7c.18.18.43.29.7.29h28.18a.997.997 0 0 0 1-1v-3.57c0-1.92-.57-3.68-1.52-5.05zm-.48 7.62H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84v2.57z"></path>
                             <path fill="currentColor" d="M38.85 29.21v2.57H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84z"></path>
@@ -89,7 +90,7 @@
                 {% endfor %}
             </div>
             <div class="seats-right-container">
-                {% for i in range(4) %}
+                {% for letter in range(7, 11) %}
                 <div class="seats-columns">
                     {% for i in range(12) %}
                     {% if i == 0 or i == 11 %}
@@ -98,7 +99,7 @@
                         {% set seat_class = 'standard' %}
                     {% endif %}
                     <div class="seats">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="sofa" width="36">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="{{ seat_class }}" viewBox="0 0 52 52" id="{{ '{:02d}'.format(i+1) ~ seat_column_letter[letter] }}" width="36" onclick="selectSeat(this)">
                             <!-- #0096e6 -->
                             <path fill="#fff" d="M43.92 7.39v11.59c0 .55-.44 1-1 1-.55 0-1-.45-1-1V7.39c0-1.84-1.13-3.39-2.48-3.39H12.75c-1.34 0-2.48 1.55-2.48 3.39v11.59c0 .55-.45 1-1 1s-1-.45-1-1V7.39C8.27 4.42 10.28 2 12.75 2h26.69c2.47 0 4.48 2.42 4.48 5.39zM39.33 24.16c-1.18-1.7-2.95-2.79-4.92-2.79h-17.3c-1.78 0-3.39.88-4.56 2.31-1.16 1.42-1.88 3.37-1.88 5.53v3.58a.966.966 0 0 0 .3.7c.18.18.43.29.7.29h28.18a.997.997 0 0 0 1-1v-3.57c0-1.92-.57-3.68-1.52-5.05zm-.48 7.62H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84v2.57z"></path>
                             <path fill="currentColor" d="M38.85 29.21v2.57H12.67v-2.57c0-3.17 2.03-5.84 4.44-5.84h17.3c2.4 0 4.44 2.67 4.44 5.84z"></path>
@@ -273,6 +274,14 @@
 {% endblock %}
 
 {% block script %}
+
+<script type="module">
+    import shopifydraggable from 'https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/+esm';
+
+    const sortable = new shopifydraggable.Sortable(document.querySelector('.selected-seats-container'), {
+                draggable: '.passenger-selected-seat'
+            });
+</script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/seats.js')}}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
 {% endblock %}

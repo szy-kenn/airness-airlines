@@ -2,6 +2,8 @@ const selectedSeatsContainer = document.querySelector(".selected-seats-container
 const adultPassengerContainer = [] 
 const childPassengerContainer = []
 
+
+
 function getStatusText(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusText`);
 }
@@ -10,38 +12,88 @@ function getStatusIcon(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusIcon`);
 }
 
+function getCurrentlySelecting() {
+    return selectedSeatsContainer.dataset.currentlySelecting;
+}
+
+function makeSelected(element, seat) {
+    element.dataset.state = 'Selected';
+    element.classList.remove('selecting');
+    element.classList.add('selected', 'active');
+    getStatusText(element).textContent = 'Seat ' +  seat.id;
+    getStatusIcon(element).className = "fa-solid fa-circle-check";
+}
+
+function makeInactive(element) {
+
+    if (element.classList.contains('selecting')) {
+        element.dataset.state = 'Pending...';
+        element.classList.remove('selecting', 'active');
+        element.classList.add('pending', 'inactive');
+        getStatusText(element).textContent = element.dataset.state;
+        getStatusIcon(element).className = "fa-solid fa-pause";
+
+    } else if (element.classList.contains('selected')) {
+        element.classList.remove('active');
+        element.classList.add('inactive');
+    }
+}
+
+function makeActive(element) {
+
+    if (element.classList.contains('pending') || element.classList.contains('new') ) {
+        // pending -> selecting
+        element.classList.remove('pending', 'inactive', 'new');
+        element.classList.add('selecting', 'active');
+        element.dataset.state = 'Selecting...';
+        getStatusText(element).textContent = element.dataset.state;
+        getStatusIcon(element).className = "fa-solid fa-spinner selecting";
+    } else if (element.classList.contains('selected')) {
+        // selected -> active
+        element.classList.remove('inactive');
+        element.classList.add('active');
+    }
+
+    selectedSeatsContainer.dataset.currentlySelecting = element.id;
+}
+
+function makeConfirmed(element) {
+    element.classList.remove('selected', 'active');
+    element.classList.add('confirmed');
+    getStatusIcon(element).className = "fa-regular fa-circle-check";
+}
+
+function selectSeat(seat) {
+    const id = getCurrentlySelecting();
+    if (id !== undefined) {
+        const container = document.getElementById(id);
+        makeSelected(container, seat);
+
+    } else {
+        console.log("Select a passenger first.");
+    }
+    
+}
+
+function confirmSeat(icon) {
+    if (icon.classList.contains("fa-circle-check")) {
+        const container = icon.parentNode.parentNode;
+        makeConfirmed(container);
+    }
+}
+
 function updateSelectedSeatsContainer() {
 
     selectedSeatsContainer.childNodes.forEach(child => {
         if (child.nodeName === 'DIV'){
-            if (child.dataset.state === 'Selecting...') {
-                child.dataset.state = 'Pending...';
-                child.classList.remove('selecting');
-                child.classList.add('pending');
-                getStatusText(child).textContent = child.dataset.state;
-                getStatusIcon(child).className = "fa-solid fa-pause";
-            }
+            makeInactive(child);
         }
     })
 }
 
-function updateCurrentlySelecting(element) {
-
-    if (element.classList.contains('pending')) {
-        element.classList.remove('pending');
-    }
-    element.classList.add('selecting');
-    element.dataset.state = 'Selecting...';
-    getStatusText(element).textContent = element.dataset.state;
-    getStatusIcon(element).classList.add("fa-solid", "fa-spinner", "selecting");
-
-    selectedSeatsContainer.dataset.currentlySelecting = element.id;
-    console.log(selectedSeatsContainer.dataset.currentlySelecting);
-}
-
 function passengerSelectedSeatOnClick(element) {
     updateSelectedSeatsContainer();
-    updateCurrentlySelecting(element);
+    makeActive(element);
 }
 
 function createPassengerSelectedSeat(container) {
@@ -50,17 +102,13 @@ function createPassengerSelectedSeat(container) {
         document.querySelector(".selected-seats-no-items").classList.add('entered-items');
     }
 
-    // setTimeout(() => {
-    //     document.querySelector(".selected-seats-no-items").style.display = 'none';
-    // }, 300);
-
     updateSelectedSeatsContainer();
 
     let passengerSelectedSeat = document.createElement("div");
     passengerSelectedSeat.dataset.age = container.dataset.age;
     passengerSelectedSeat.dataset.number = container.dataset.number;
     passengerSelectedSeat.id = container.dataset.age + container.dataset.number + 'passengerSelectedSeat';
-    passengerSelectedSeat.className = 'passenger-selected-seat selecting';
+    passengerSelectedSeat.className = 'passenger-selected-seat new';
 
     passengerSelectedSeat.addEventListener('click', () => passengerSelectedSeatOnClick(passengerSelectedSeat));
 
@@ -72,6 +120,11 @@ function createPassengerSelectedSeat(container) {
     passengerSeatStatusText.id = container.dataset.age + container.dataset.number + 'statusText';
 
     let passengerSeatStatusIcon = document.createElement("i");
+
+    passengerSeatStatusIcon.addEventListener('click', (event) => {
+        confirmSeat(event.target);
+    })
+
     passengerSeatStatusIcon.id = container.dataset.age + container.dataset.number + 'statusIcon';
 
     passengerSeatStatus.append(passengerSeatStatusText, passengerSeatStatusIcon);
@@ -91,7 +144,7 @@ function createPassengerSelectedSeat(container) {
     passengerSelectedSeat.append(passengerSeatStatus, passengerInfoExtra);
     selectedSeatsContainer.append(passengerSelectedSeat);
 
-    updateCurrentlySelecting(passengerSelectedSeat);
+    makeActive(passengerSelectedSeat);
 }
 
 let i = 1;

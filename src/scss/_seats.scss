@@ -36,7 +36,6 @@
     }
 }
 
-
 .seats-page-wrapper {
     position: relative;
     height: 110%;
@@ -98,37 +97,74 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            // align-items: center;
-            cursor: pointer;
-            animation: pop 0.2s ease forwards;
-
+            cursor: grab;
+            
             &:hover {
-                transform: scale(1.05);
+                cursor: grabbing;
             }
 
-            &.selecting {
-                background-color: $primary-button;
-                // background: linear-gradient(#5c67e6, $primary-button);
-                transition: background .2s ease-out;
+            &.draggable-mirror {
+                height: auto;
+                width: 20rem;
             }
 
             &.pending {
                 // background: linear-gradient(#a3a2a2, #6e6d6d);
                 background-color: gray;
                 transition: background 0.2s ease-out;
+                opacity: 0.5;
+
+                &.draggable--over {
+                    opacity: 0.85;
+                }
             }
+
+            &.selecting {
+                background-color: $primary-button;
+                // background: linear-gradient(#5c67e6, $primary-button);
+                transition: background .2s ease-out;
+                opacity: 1;
+            }
+
+            &.selected {
+                background-color: $darker-blue;
+                transition: background .2s ease-out;
+
+                &.active {
+                    opacity: 1;
+                    transition: opacity .2s ease-out;
+                }
+
+                &.inactive {
+                    opacity: 0.5;
+                    transition: opacity .2s ease-out;
+
+                    &.draggable--over {
+                        opacity: 0.85;
+                    }
+                }
+            }
+
+            &.confirmed {
+                background-color:green;
+                transition: background .2s ease-out;
+            }
+
 
             .select-seat-status {
                 @include flex;
+                position: relative;
 
                 p {
                     text-transform: uppercase;
                     @include font($primary-font, 1rem, 700, $secondary-color);
+                    user-select: none;
                 }
 
                 i {
                     font-size: 1.25rem;
                     color: $secondary-color;
+                    user-select: none;
                     
                     &.selecting {
                         animation: rotate360 0.4s linear infinite;
@@ -138,16 +174,20 @@
 
             .passenger-info-extra {
                 @include flex;
+                position: relative;
 
                 &__number {
                     color: $secondary-color;
+                    user-select: none;
                 }
 
                 &__value {
                     @include font($primary-font, 0.75rem, 400, $secondary-color);
+                    user-select: none;
 
                     span {
                         @include font($primary-font, 1rem, 700, $accent);
+                        user-select: none;
                     }
                 }
             }
