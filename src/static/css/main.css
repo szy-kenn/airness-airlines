@@ -1354,28 +1354,93 @@ body {
 }
 .bar {
   text-align: center;
-  color: yellow;
+  color: violet;
   font-weight: bold;
   font-size: 70px;
   font-family: "Montserrat";
 }
 
 .about-page-title {
-  padding-bottom: 100px;
   text-align: left;
-  color: red;
-  font-weight: bold;
-  font-size: 70px;
-  font-family: "Montserrat";
+  color: black;
+  font-weight: oblique;
+  font-size: 10vh;
+  font-family: fantasy;
+  padding-bottom: 40px;
 }
 
 .essay {
+  text-indent: 50px;
   text-align: center;
-  line-height: 1.9;
+  line-height: 1.3;
   font-weight: 500;
   color: blue;
-  font-size: 20px;
-  font-family: "Montserrat";
+  font-size: 3.5vh;
+  font-family: Georgia, serif;
+  position: relative;
+  padding-bottom: 30px;
+  white-space: nowrap;
+}
+
+.mission {
+  text-align: left;
+  color: black;
+  font-weight: oblique;
+  font-size: 10vh;
+  font-family: fantasy;
+  padding-bottom: 40px;
+}
+
+.mission-content {
+  text-indent: 50px;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 500;
+  color: blue;
+  font-size: 3.5vh;
+  font-family: Georgia, serif;
+  position: relative;
+  padding-bottom: 30px;
+  white-space: nowrap;
+}
+
+.vision {
+  text-align: left;
+  color: black;
+  font-weight: oblique;
+  font-size: 10vh;
+  font-family: fantasy;
+  padding-bottom: 40px;
+}
+
+.vision-content {
+  text-indent: 100px;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 500;
+  color: blue;
+  font-size: 3.5vh;
+  font-family: Georgia, serif;
+  position: relative;
+  padding-bottom: 30px;
+  white-space: nowrap;
+}
+
+.bg-container {
+  background-size: cover;
+  position: absolute;
+  opacity: 0.7;
+  margin: auto;
+  left: 20;
+  right: 0;
+  padding-top: 100;
+  bottom: 0;
+  height: 90%;
+  width: 70%;
+}
+
+.bg-image {
+  height: 70vh;
 }
 
 .class-test {
