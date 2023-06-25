@@ -265,7 +265,6 @@ childPassengerContainer.forEach(container => {
 });
 
 seatsDoneBtn.addEventListener('click', () => {
-
     fetch("/payment", {
         method: "POST",
         body: JSON.stringify(getAllBookedSeats())

@@ -27,8 +27,11 @@ def flights():
         form_part_one = session['form_part_one']
         return jsonify(form_part_one)
 
-    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
-    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    try:
+        session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+        session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    except:
+        return redirect(url_for('view.home'))
 
     # return session['form_part_one']
 
@@ -42,7 +45,10 @@ def flights():
     if available_flights[0] == 0:
         return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=available_flights[1])
 
-    return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights[1], result_count=available_flights[0])
+    try: 
+        return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights[1], result_count=available_flights[0])
+    except:
+        return redirect(url_for('view.home'))
 
 @view.route('/selected-flight/<path:flight>', methods=['POST', 'GET'])
 def selected_flight(flight):
@@ -59,7 +65,11 @@ def passenger_details():
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
         return render_template('passenger-details.html', selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
-    return render_template('passenger-details.html')
+    
+    try:
+        return render_template('passenger-details.html')
+    except:
+        return redirect(url_for('view.home'))
 
 @view.route('/seats', methods=['GET', 'POST'])
 def seats():
@@ -69,8 +79,11 @@ def seats():
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
         return render_template('seats.html', selected_flight=session['selected_flight'], form_part_one=session['form_part_one'])
-    
-    return render_template('seats.html')
+
+    try:
+        return render_template('seats.html')
+    except:
+        return redirect(url_for('view.home'))
 
 @view.route('/payment', methods=['GET', 'POST'])
 def payment():
@@ -78,7 +91,10 @@ def payment():
         session['booked_seats'] = json.loads(request.data)
         return jsonify({'status': 202})
 
-    return session['booked_seats']
+    try:
+        return session['booked_seats']
+    except:
+        return redirect(url_for('view.home'))
 
 @view.route('/confirmation')
 def confirmation():
