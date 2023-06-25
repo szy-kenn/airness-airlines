@@ -58,7 +58,7 @@
 }
 
 .form-btn {
-    @include form-button(25px, $secondary-button);
+    @include form-button(0px, $secondary-button);
     position: relative;
     display: flex;
     justify-content: center;

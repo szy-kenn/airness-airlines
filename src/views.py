@@ -72,6 +72,14 @@ def seats():
     
     return render_template('seats.html')
 
+@view.route('/payment', methods=['GET', 'POST'])
+def payment():
+    if request.method == 'POST':
+        session['booked_seats'] = json.loads(request.data)
+        return jsonify({'status': 202})
+
+    return session['booked_seats']
+
 @view.route('/confirmation')
 def confirmation():
     return render_template('ticket.html')

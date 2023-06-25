@@ -1,6 +1,12 @@
 const selectedSeatsContainer = document.querySelector(".selected-seats-container");
-const adultPassengerContainer = [] 
-const childPassengerContainer = []
+const seatsDoneBtn = document.querySelector(".seats-done-btn");
+const adultPassengerContainer = [];
+const childPassengerContainer = [];
+
+let completed = 0;
+let totalPassengers = document.querySelector('.sticky-passenger-list-container').dataset.totalpassengers;
+let infants = document.querySelector('.sticky-passenger-list-container').dataset.infants;
+let passengersToBook = totalPassengers - infants;
 
 function getStatusText(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusText`);
@@ -8,6 +14,18 @@ function getStatusText(element) {
 
 function getStatusIcon(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusIcon`);
+}
+
+function getAllBookedSeats() {
+    let bookedSeats = {};
+
+    selectedSeatsContainer.childNodes.forEach(child => {
+        if (child.nodeName === 'DIV' && child.dataset.state !== undefined){
+            bookedSeats[`${child.dataset.age + child.dataset.number}`] = child.dataset.state;
+        }
+    })
+
+    return bookedSeats;
 }
 
 function getCurrentlySelecting() {
@@ -90,6 +108,8 @@ function toggleConfirmed(element) {
         seat.classList.remove('selected', 'active');
         seat.classList.add('reserved', 'active');
 
+        checkCompletion(1);
+
     } else if (element.classList.contains("confirmed")) {
 
         element.classList.remove('confirmed');
@@ -99,6 +119,8 @@ function toggleConfirmed(element) {
         let seat = document.getElementById(element.dataset.state);
         seat.classList.remove('reserved', 'active');  
         seat.classList.add('selected', 'active');
+
+        checkCompletion(-1);
     }
 }
 
@@ -139,6 +161,17 @@ function updateSelectedSeatsContainer() {
             makeInactive(child);
         }
     })
+}
+
+function checkCompletion(add) {
+    completed += add;
+    if (completed === passengersToBook) {
+        console.log("all passengers have already booked a seat");
+        seatsDoneBtn.disabled = false;
+
+    } else {
+        console.log(`There are still ${passengersToBook - completed} with no booked seat.`);
+    }
 }
 
 function passengerSelectedSeatOnClick(element) {
@@ -230,3 +263,14 @@ childPassengerContainer.forEach(container => {
         }
     })
 });
+
+seatsDoneBtn.addEventListener('click', () => {
+
+    fetch("/payment", {
+        method: "POST",
+        body: JSON.stringify(getAllBookedSeats())
+    }).then((res) => {
+        window.location.href = '/payment';
+        console.log(res);
+    })
+})
