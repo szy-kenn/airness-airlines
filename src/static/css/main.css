@@ -6,7 +6,6 @@ html {
 
 body {
   font-family: "Montserrat";
-  box-sizing: border-box;
 }
 
 h1 {
@@ -560,8 +559,6 @@ input::-webkit-calendar-picker-indicator {
 
 body {
   background: #dde4ec;
-  height: 100vh;
-  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -1494,16 +1491,21 @@ body {
 }
 @keyframes pop {
   0% {
-    transform: scale(0);
+    transform: scale(1);
   }
   25% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
   50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes zoom {
+  to {
+    transform: scale(1.2);
   }
 }
 .bar {
@@ -2069,6 +2071,65 @@ body {
   margin-left: 150px;
 }
 
+.payment-page-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0.5fr 1.5fr 1fr;
+  padding: 2rem;
+}
+.payment-page-wrapper__item {
+  border: 1px solid red;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  place-items: center;
+}
+.payment-page-wrapper__item__text {
+  padding: 1rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000000;
+}
+.payment-page-wrapper .payment-pg-mode__list {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+}
+.payment-page-wrapper .payment-pg-mode__list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover {
+  animation: zoom 0.1s cubic-bezier(0.48, 0.12, 0.48, 0.81) forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.gcash {
+  background: linear-gradient(to right, rgba(111, 186, 247, 0.4), #002cb8);
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.maya {
+  background: linear-gradient(to right, rgba(45, 241, 157, 0.4), black);
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.paypal {
+  background: linear-gradient(to right, rgba(37, 59, 128, 0.4), rgba(23, 155, 215, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.mastercard {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.4), rgba(255, 165, 0, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.visa {
+  background: linear-gradient(to right, rgba(30, 37, 102, 0.8), rgba(4, 74, 156, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item img {
+  inline-size: 45%;
+  aspect-ratio: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .main {
   display: grid;
   position: relative;
@@ -2201,6 +2262,27 @@ body {
 .with-dropdown-select__container__options:hover {
   background: rgba(23, 72, 133, 0.5);
   color: #ffffff;
+}
+
+.input-field {
+  opacity: 1;
+  position: relative;
+  padding: 1rem 1rem;
+  transition: opacity 0s 0.1s ease-out;
+}
+.input-field label {
+  display: block;
+}
+.input-field input {
+  position: relative;
+  border: 1px solid rgba(126, 126, 126, 0.5);
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  width: 15rem;
 }
 
 @media screen and (max-width: 768px) {
