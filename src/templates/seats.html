@@ -2,16 +2,12 @@
 {% block title %}Seats{% endblock %}
 {% block booking %}
 
+{% set header = "Book A Seat" %}
 {% include 'blocks/flight-input-details.html' %}
-<br>
 
 {% set total_passengers = (form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int) + (form_part_one['passenger-infant'] | int) %}
 {% set infants = form_part_one['passenger-infant'] %}
 <!-- {% include 'blocks/selected-flight-details.html' %} -->
-
-<div class="page-header-seats">
-    <p>BOOK A SEAT</p>
-</div>
 
 <div class="seats-page-wrapper">
     <div class="seats-page-wrapper__item selected-seats-container" data-currentlySelecting="">

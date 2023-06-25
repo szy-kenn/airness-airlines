@@ -1,0 +1,10 @@
+{% extends "booking-process.html" %}
+{% block title %}Seats{% endblock %}
+{% block booking %}
+
+{% set header = "Choose a Payment" %}
+{% include 'blocks/flight-input-details.html' %}
+
+{{ booked_seats }}
+
+{% endblock %}

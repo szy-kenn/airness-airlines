@@ -1065,22 +1065,6 @@ body {
   width: 15rem;
 }
 
-.page-header-seats {
-  display: block;
-  margin: auto;
-  padding: 1rem 0;
-  background-color: #ffdf29;
-}
-.page-header-seats p {
-  display: block;
-  margin: auto;
-  text-align: center;
-  font-family: "Montserrat";
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #000000;
-}
-
 .seats-legend {
   padding: 0.5rem 0;
   position: relative;
@@ -2173,6 +2157,22 @@ body {
   bottom: 0;
   width: 2rem;
   height: 2rem;
+}
+
+.page-header {
+  display: block;
+  margin: auto;
+  padding: 1rem 0;
+  background-color: #ffdf29;
+}
+.page-header p {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
 }
 
 .with-dropdown-select {

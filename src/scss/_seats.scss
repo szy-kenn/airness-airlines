@@ -1,17 +1,3 @@
-.page-header-seats {
-    display: block;
-    margin: auto;
-    padding: 1rem 0;
-    background-color: $accent;
-
-    p {
-        display: block;
-        margin: auto;
-        text-align: center;
-        @include font($primary-font, 1.25rem, 700, $primary-color);
-    }
-}
-
 .seats-legend {
     padding: 0.5rem 0;
     position: relative;
