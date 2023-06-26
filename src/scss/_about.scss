@@ -5,6 +5,7 @@
     font-size: 70px;
     font-family : $primary-font;
 }
+
 .about-page-title
 { 
     padding-left: 0.75em;
@@ -98,7 +99,7 @@
   	top: 50%;
   	transform: translate(-50%, -50%);
   	z-index: -1;
-    opacity: 0.5;
+    opacity: 0.3;
     height: 70vh;
 }
   
