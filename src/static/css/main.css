@@ -6,6 +6,7 @@ html {
 
 body {
   font-family: "Montserrat";
+  background-color: #d5d9df;
 }
 
 h1 {
@@ -40,7 +41,7 @@ input::-webkit-calendar-picker-indicator {
   border-radius: 100px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #174885;
+  background: #0c2849;
 }
 
 .passenger-container h3, .passenger-container div {
@@ -48,68 +49,91 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .passenger-form {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: bold;
-  color: #000000;
+  font-family: "Montserrat";
   display: inline;
   position: relative;
 }
 .passenger-form::-webkit-inner-spin-button, .passenger-form::-webkit-outer-spin-button {
-  display: none;
+  margin: 0;
+  padding: 0;
+}
+.passenger-form h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  line-height: 2rem;
+  letter-spacing: -1;
 }
 .passenger-form__container {
+  position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  height: 4rem;
-  padding: 0 1rem;
+  align-items: stretch;
+  height: auto;
+  padding: 0.25rem 1rem;
 }
 .passenger-form__container i {
-  color: #174885;
+  padding: 0.25rem 1rem;
+  color: #d5d9df;
   display: inline-block;
   transform: scale(1.25);
   cursor: pointer;
 }
 .passenger-form__container .age-group-label {
-  font-family: "Montserrat";
   font-size: 1rem;
-  font-weight: 400;
-  color: #000000;
+  font-weight: 500;
+  font-family: "Montserrat";
+  letter-spacing: -1;
+  align-self: center;
+  text-align: left;
   width: 75px;
   display: inline-block;
 }
 .passenger-form__container__passenger-count {
+  font-size: 1rem;
+  font-weight: 500;
   font-family: "Montserrat";
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: #174885;
+  padding-left: 0.8rem;
   text-align: center;
-  width: 2rem;
+  background-color: transparent;
   border: none;
 }
 .passenger-form__container__passenger-count:focus {
   outline: none;
   border: none;
 }
+.passenger-form__container .passenger-count__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: black;
+  border: 1px solid #d5d9df;
+  flex: 1 1 auto;
+  align-self: stretch;
+}
+.passenger-form__container__btn-group {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+}
 .passenger-form__container__btn {
-  margin: 0 clamp(0.25rem, 2vw, 1.25rem);
   width: 2.5rem;
   height: 2.5rem;
-  border: none;
-  border-radius: 30px;
   text-align: center;
-  font-family: "Montserrat";
+  cursor: pointer;
   font-size: 1.25rem;
   font-weight: 400;
-  color: #ffffff;
-  background: #174885;
-  cursor: pointer;
+  font-family: "Montserrat";
+  background: #0c2849;
+  color: white;
   transition: all 0.1s ease-in-out;
 }
 .passenger-form__container__btn:disabled {
-  color: white;
-  background: #b399b0;
+  opacity: 0.3;
   transition: all 0.1s ease-in-out;
 }
 .passenger-form__container__airline-class {
@@ -121,7 +145,7 @@ input::-webkit-calendar-picker-indicator {
   text-align: center;
 }
 .passenger-form__container__airline-class .airline-class--selected:focus {
-  outline: 1px solid #174885;
+  outline: 1px solid #0c2849;
 }
 .passenger-form__container__airline-class p {
   text-align: center;
@@ -141,7 +165,7 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form .flight-location-form__container {
   display: block;
   position: absolute;
-  background: #ffffff;
+  background: white;
   border-radius: 10px;
   max-height: 20rem;
   width: 200%;
@@ -152,7 +176,8 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff;
+  background: white;
+  color: black;
   position: relative;
   width: 100%;
   height: 2rem;
@@ -162,6 +187,7 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form .flight-location-form__container__options p {
   font-size: 1rem;
   font-weight: 500;
+  font-family: "Montserrat";
   color: rgba(0, 0, 0, 0.7);
 }
 .flight-location-form .flight-location-form__container__options span {
@@ -169,24 +195,23 @@ input::-webkit-calendar-picker-indicator {
   width: 55px;
   padding: 0.4rem 0.4rem;
   margin-right: 10px;
-  background: #5d478b;
+  background: #d5d9df;
+  color: black;
   border-radius: 5px;
-  font-family: "Montserrat";
   font-size: 0.9rem;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Montserrat";
 }
 .flight-location-form .flight-location-form__container__options:hover {
-  background: #174885;
+  background: #0c2849;
 }
 .flight-location-form .flight-location-form__container__options:hover p {
-  color: #ffffff;
+  color: white;
 }
 .flight-location-form div {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #174885;
+  font-family: "Montserrat";
   width: 100%;
 }
 .flight-location-form div input {
@@ -195,10 +220,9 @@ input::-webkit-calendar-picker-indicator {
   outline: none;
   border: none;
   text-align: left;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
   z-index: 3;
   padding: 0;
 }
@@ -206,7 +230,7 @@ input::-webkit-calendar-picker-indicator {
   border-radius: 10px 0 0 10px;
 }
 .flight-location-form #from .flight-location-input__container {
-  border: 1px solid #174885;
+  border: 2px solid #d5d9df;
   border-radius: 10px 0 0 10px;
   width: 100%;
 }
@@ -238,7 +262,7 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 .flight-location-form #from.focused > div {
-  border: 2px solid #174885;
+  border: 2px solid #0c2849;
 }
 .flight-location-form #from.invalid::before {
   color: rgb(245, 67, 67);
@@ -246,10 +270,9 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form #from.invalid::after {
   content: "This field is required";
   position: absolute;
-  font-family: "Montserrat";
   font-size: 0.8rem;
   font-weight: 300;
-  color: rgb(245, 67, 67);
+  font-family: "Montserrat";
   top: 100%;
   bottom: 0;
   left: 5%;
@@ -268,7 +291,7 @@ input::-webkit-calendar-picker-indicator {
   left: -100%;
 }
 .flight-location-form #to .flight-location-input__container {
-  border: 1px solid #174885;
+  border: 2px solid #d5d9df;
   border-radius: 0 10px 10px 0;
   width: 100%;
 }
@@ -300,7 +323,7 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 .flight-location-form #to.focused > div {
-  border: 2px solid #174885;
+  border: 2px solid #0c2849;
 }
 .flight-location-form #to.invalid::before {
   color: rgb(245, 67, 67);
@@ -308,10 +331,9 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form #to.invalid::after {
   content: "This field is required";
   position: absolute;
-  font-family: "Montserrat";
   font-size: 0.8rem;
   font-weight: 300;
-  color: rgb(245, 67, 67);
+  font-family: "Montserrat";
   top: 100%;
   bottom: 0;
   left: 5%;
@@ -332,10 +354,9 @@ input::-webkit-calendar-picker-indicator {
   padding: 1.25em 0;
   margin: 0;
   z-index: 1;
-  font-family: "Montserrat";
   font-size: 0.7rem;
   font-weight: 300;
-  color: #174885;
+  font-family: "Montserrat";
 }
 .flight-date-form.focused::before {
   position: absolute;
@@ -349,10 +370,10 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 .flight-date-form.focused > div {
-  border: 2px solid #174885;
+  border: 2px solid #0c2849;
 }
 .flight-date-form .flight-date-form__container {
-  border: 1px solid #174885;
+  border: 2px solid #d5d9df;
   width: 100%;
 }
 .flight-date-form .flight-date-form__container__input {
@@ -363,10 +384,9 @@ input::-webkit-calendar-picker-indicator {
   border: none;
   padding: 0;
   text-align: left;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .flight-date-form div:nth-child(1) {
   border-radius: 10px 0 0 10px;
@@ -562,34 +582,14 @@ body {
   overflow-x: hidden;
 }
 
-.current-page-indicator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 65%;
-  color: #ffffff;
-  margin: auto;
-  padding: 1rem 0;
-}
-.current-page-indicator p {
-  font-family: "Montserrat";
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #000000;
-  text-align: center;
-  width: 13%;
-  background: #ffdf29;
-  padding: 0.75rem 0.5rem;
-}
-
 .flight-input-details {
   position: relative;
   width: 65%;
   height: 8%;
   margin: auto;
-  background: #174885;
+  background: #0c2849;
   padding: clamp(0.5rem, 1vw, 1rem) clamp(0.5rem, 1vw, 1rem);
-  color: #ffffff;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -608,17 +608,15 @@ body {
   display: block;
 }
 .flight-input-details__items .input-details p {
-  font-family: "Montserrat";
   font-size: clamp(0.75rem, 1.6vw, 1.4rem);
   font-weight: 400;
-  color: #ffffff;
+  font-family: "Montserrat";
   text-transform: uppercase;
 }
 .flight-input-details__items .input-details span {
-  font-family: "Montserrat";
   font-size: clamp(0.5rem, 0.85vw, 0.75rem);
   font-weight: 400;
-  color: #ffffff;
+  font-family: "Montserrat";
 }
 .flight-input-details__items .input-departure-date {
   display: block;
@@ -697,17 +695,15 @@ body {
   margin: 0.5rem 0;
 }
 .available-flights__items.no-result p {
-  font-family: "Montserrat";
   font-size: clamp(0.75rem, 1.6vw, 1.4rem);
   font-weight: 700;
-  color: #000000;
+  font-family: "Montserrat";
   padding: 0.1rem 0.5rem;
 }
 .available-flights__items.no-result span {
-  font-family: "Montserrat";
   font-size: clamp(0.5rem, 1vw, 1rem);
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .available-flights__items__flight-details {
   margin: clamp(0.5rem, 1vw, 1rem);
@@ -733,7 +729,7 @@ body {
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-timeline-p {
   font-weight: 700;
-  background-color: #174885;
+  background-color: #0c2849;
   color: white;
   padding: 0.75rem;
   border: 1px solid rgba(129, 129, 129, 0.2);
@@ -749,10 +745,9 @@ body {
   padding: 0.5rem 2rem;
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container p {
-  font-family: "Montserrat";
   font-size: 0.8rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
   width: 5rem;
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper {
@@ -770,20 +765,18 @@ body {
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper .route-from .iata,
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper .route-to .time,
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper .route-to .iata {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper .route-from .name,
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .flight-route-container .route-wrapper .route-to .name {
   width: 100%;
   text-align: left;
   padding: 0 0.5rem;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .footer {
   display: flex;
@@ -792,10 +785,9 @@ body {
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .footer p {
   padding: 1rem 2rem;
-  font-family: "Montserrat";
   font-size: 0.8rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .available-flights__items__flight-details.expanded-section .flight-timeline-wrapper .footer p span {
   font-weight: 700;
@@ -815,17 +807,15 @@ body {
   width: clamp(32px, 5vw, 70px);
 }
 .available-flights__items__flight-details__from p, .available-flights__items__flight-details__to p {
-  font-family: "Montserrat";
   font-size: clamp(1rem, 2vw, 1.75rem);
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.7);
+  font-family: "Montserrat";
   padding-bottom: 0.5rem;
 }
 .available-flights__items__flight-details__from span, .available-flights__items__flight-details__to span {
-  font-family: "Montserrat";
   font-size: clamp(0.5rem, 1vw, 1rem);
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.7);
+  font-family: "Montserrat";
   padding-bottom: 0.5rem;
 }
 .available-flights__items__flight-details__stops {
@@ -861,10 +851,9 @@ body {
   color: rgba(0, 0, 0, 0.3);
 }
 .available-flights__items__flight-details__stops p {
-  font-family: "Montserrat";
   font-size: clamp(0.6rem, 0.97vw, 0.85rem);
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.8);
+  font-family: "Montserrat";
   padding: 0.3rem 0;
 }
 .available-flights__items__flight-price {
@@ -882,10 +871,9 @@ body {
   border: none;
 }
 .available-flights__items__flight-price p {
-  font-family: "Montserrat";
   font-size: clamp(1rem, 1.6vw, 1.4rem);
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .available-flights__items__flight-price button {
   font-size: clamp(0.65rem, 1vw, 1rem);
@@ -894,7 +882,7 @@ body {
   margin: 0 auto;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #174885;
+  background-color: #0c2849;
 }
 
 .passenger-details-wrapper {
@@ -909,7 +897,8 @@ body {
 
 .adult-passenger-details-container {
   position: relative;
-  background-color: #174885;
+  background: #0c2849;
+  color: white;
   box-shadow: 0 2px 10px 2px rgba(126, 126, 126, 0.6);
   padding-bottom: 0.1rem;
   margin-bottom: 1rem;
@@ -925,10 +914,9 @@ body {
 }
 .adult-passenger-details-container .age-group-container .age-group {
   display: block;
-  font-family: "Montserrat";
   font-size: 1.2rem;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Montserrat";
   padding: 1rem;
 }
 .adult-passenger-details-container .age-group-container .age-group-expand {
@@ -961,6 +949,8 @@ body {
   transition: height 0.1s ease-in;
   opacity: 1;
   pointer-events: all;
+  background: white;
+  color: black;
 }
 .adult-passenger-details-container__items.contact-info {
   height: 5.5rem;
@@ -987,13 +977,13 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: rgba(126, 126, 126, 0.2);
+  background: #d5d9df;
+  color: black;
 }
 .adult-passenger-details-container__items .passenger-number {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 500;
-  color: #000000;
+  font-family: "Montserrat";
   padding: 0.8rem;
 }
 .adult-passenger-details-container__items .passenger-expand {
@@ -1022,10 +1012,9 @@ body {
 .adult-passenger-details-container__items .passenger-full-name input::-webkit-calendar-picker-indicator,
 .adult-passenger-details-container__items .passenger-passport input::-webkit-calendar-picker-indicator,
 .adult-passenger-details-container__items .passenger-contact-info input::-webkit-calendar-picker-indicator {
-  font-family: "Montserrat";
   font-size: 1.05rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat";
   padding: 0;
 }
 .adult-passenger-details-container__items .passenger-birthdate {
@@ -1035,10 +1024,9 @@ body {
   position: relative;
 }
 .adult-passenger-details-container__items .passenger-birthdate input::-webkit-calendar-picker-indicator {
-  font-family: "Montserrat";
   font-size: 1.05rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat";
   padding: 0;
 }
 .adult-passenger-details-container__items--info {
@@ -1055,10 +1043,9 @@ body {
   border: 1px solid rgba(126, 126, 126, 0.5);
   padding: 0.5rem 1rem;
   line-height: 1rem;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat";
   width: 15rem;
 }
 
@@ -1081,7 +1068,7 @@ body {
 }
 
 .seat-hovered {
-  color: #174885;
+  color: #0c2849;
 }
 
 .seat-selected {
@@ -1135,10 +1122,9 @@ body {
   display: block;
   margin: auto;
   padding-inline: 2rem;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 700;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat {
   position: relative;
@@ -1155,7 +1141,8 @@ body {
   width: 20rem;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.pending {
-  background-color: gray;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
   transition: background 0.2s ease-out;
   opacity: 0.5;
 }
@@ -1163,12 +1150,14 @@ body {
   opacity: 0.85;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.selecting {
-  background-color: #174885;
+  background: #0c2849;
+  color: white;
   transition: background 0.2s ease-out;
   opacity: 1;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected {
-  background-color: #0c2849;
+  background: #0c2849;
+  color: white;
   transition: background 0.2s ease-out;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected.active {
@@ -1183,7 +1172,8 @@ body {
   opacity: 0.85;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.confirmed {
-  background-color: green;
+  background: green;
+  color: white;
   transition: background 0.2s ease-out;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.confirmed.active {
@@ -1200,17 +1190,16 @@ body {
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status p {
   text-transform: uppercase;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Montserrat";
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i {
   font-size: 1.25rem;
-  color: #ffffff;
+  color: white;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -1225,25 +1214,23 @@ body {
   position: relative;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__number {
-  color: #ffffff;
+  color: white;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value {
-  font-family: "Montserrat";
   font-size: 0.75rem;
   font-weight: 400;
-  color: #ffffff;
+  font-family: "Montserrat";
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value span {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 700;
-  color: #ffdf29;
+  font-family: "Montserrat";
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -1295,10 +1282,9 @@ body {
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.selected::before,
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.reserved::before {
   content: attr(data-passenger);
-  font-family: "Roboto";
   font-size: 0.9rem;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Roboto";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1306,7 +1292,8 @@ body {
   top: 25%;
   left: 5%;
   padding: 0.1rem;
-  background-color: rgba(12, 40, 73, 0.75);
+  background: rgba(12, 40, 73, 0.75);
+  color: white;
   border-radius: 5px;
   width: 1.75rem;
   height: auto;
@@ -1315,7 +1302,7 @@ body {
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats:hover,
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats:hover {
   cursor: pointer;
-  color: #174885;
+  color: #0c2849;
 }
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.selected,
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.selected,
@@ -1363,10 +1350,9 @@ body {
 }
 .seats-page-wrapper .seats-guide-wrapper .seats-guide-container .seats-guide-header {
   text-align: left;
-  font-family: "Montserrat";
   font-size: 1.2rem;
   font-weight: 700;
-  color: #000000;
+  font-family: "Montserrat";
   padding-bottom: 1rem;
   padding-left: 1rem;
   width: auto;
@@ -1394,7 +1380,7 @@ body {
   bottom: 0;
   left: 5%;
   width: 90%;
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
 }
 .sticky-passenger-list-container .extra-cost-container {
@@ -1409,13 +1395,13 @@ body {
   place-items: center;
   padding: 1.5rem;
   width: 100%;
-  background-color: #174885;
+  background: #0c2849;
+  color: white;
 }
 .sticky-passenger-list-container .extra-cost-container .extra-cost p {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 500;
-  color: #ffffff;
+  font-family: "Montserrat";
   padding: 0.2rem 0;
 }
 .sticky-passenger-list-container .extra-cost-container .extra-cost .extra-cost-title {
@@ -1441,23 +1427,23 @@ body {
   gap: 0.5rem;
   place-items: center;
   padding: 0.8rem 1rem;
-  background: rgba(23, 72, 133, 0.1);
+  background: #d5d9df;
+  color: black;
   transition: background 0.2s ease-out;
   cursor: pointer;
 }
 .sticky-passenger-list-container .passenger-list .passenger-container:hover {
-  background: rgba(23, 72, 133, 0.175);
+  background: rgba(12, 40, 73, 0.175);
   transition: background 0.2s ease-out;
 }
 .sticky-passenger-list-container .passenger-list .passenger-container i {
-  color: #5d478b;
+  color: #0c2849;
 }
 .sticky-passenger-list-container .passenger-list .passenger-container p {
   display: block;
-  font-family: "Montserrat";
   font-size: 0.8rem;
   font-weight: 700;
-  color: #5d478b;
+  font-family: "Montserrat";
 }
 .sticky-passenger-list-container .finish-btn {
   padding-left: 1rem;
@@ -2095,10 +2081,9 @@ body {
 }
 .payment-page-wrapper__item__text {
   padding: 1rem;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 700;
-  color: #000000;
+  font-family: "Montserrat";
 }
 .payment-page-wrapper .payment-pg-mode__list {
   padding: 1rem;
@@ -2165,7 +2150,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffffff;
+  background: #d5d9df;
+  color: black;
   max-width: 100dvw;
   height: 50rem;
   z-index: 0;
@@ -2182,9 +2168,9 @@ body {
   height: -moz-fit-content;
   height: fit-content;
   padding: 2rem 2rem;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-  background: #ffffff;
+  background: white;
   z-index: 2;
 }
 
@@ -2192,12 +2178,12 @@ body {
   border: none;
   border-radius: 0px;
   text-transform: uppercase;
-  background: #5d478b;
+  background: #0c2849;
+  color: white;
   box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-  font-family: "Montserrat";
   font-size: 1em;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Montserrat";
   position: relative;
   display: flex;
   justify-content: center;
@@ -2214,12 +2200,12 @@ body {
   border: none;
   border-radius: 50px;
   text-transform: uppercase;
-  background: #174885;
+  background: #0c2849;
+  color: white;
   box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-  font-family: "Montserrat";
   font-size: 1em;
   font-weight: 700;
-  color: #ffffff;
+  font-family: "Montserrat";
   position: absolute;
   z-index: 4;
   top: 1.05rem;
@@ -2234,33 +2220,53 @@ body {
   display: block;
   margin: auto;
   padding: 1rem 0;
-  background-color: #ffdf29;
+  background: white;
+  color: black;
 }
 .page-header p {
   display: block;
   margin: auto;
   text-align: center;
-  font-family: "Montserrat";
   font-size: 1.25rem;
   font-weight: 700;
-  color: #000000;
+  font-family: "Montserrat";
+}
+
+.current-page-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+  color: white;
+  margin: auto;
+  padding: 1rem 0;
+}
+.current-page-indicator p {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-align: center;
+  width: 13%;
+  background: white;
+  color: black;
+  padding: 0.75rem 0.5rem;
 }
 
 .with-dropdown-select {
   position: relative;
 }
 .with-dropdown-select__input {
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 400;
-  color: #000000;
+  font-family: "Montserrat";
   border-radius: 5px;
   border: 1px solid #b399b0;
 }
 .with-dropdown-select__container {
   position: relative;
   display: block;
-  background: #ffffff;
+  background: white;
+  color: black;
   margin: 5px 0;
   border: 1px solid #b399b0;
   border-radius: 5px;
@@ -2269,11 +2275,6 @@ body {
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
-.with-dropdown-select__container__options:hover {
-  background: rgba(23, 72, 133, 0.5);
-  color: #ffffff;
-}
-
 .input-field {
   opacity: 1;
   position: relative;
@@ -2288,10 +2289,9 @@ body {
   border: 1px solid rgba(126, 126, 126, 0.5);
   padding: 0.5rem 1rem;
   line-height: 1rem;
-  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat";
   width: 15rem;
 }
 
@@ -2316,7 +2316,7 @@ body {
     padding: 1rem 2rem;
     border-radius: 20px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-    background: #ffffff;
+    background: white;
     z-index: 2;
   }
 }/*# sourceMappingURL=main.css.map */
