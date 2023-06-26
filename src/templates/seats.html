@@ -2,13 +2,12 @@
 {% block title %}Seats{% endblock %}
 {% block booking %}
 
+{% set header = "Book A Seat" %}
 {% include 'blocks/flight-input-details.html' %}
-<br>
-<!-- {% include 'blocks/selected-flight-details.html' %} -->
 
-<div class="page-header-seats">
-    <p>BOOK A SEAT</p>
-</div>
+{% set total_passengers = (form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int) + (form_part_one['passenger-infant'] | int) %}
+{% set infants = form_part_one['passenger-infant'] %}
+<!-- {% include 'blocks/selected-flight-details.html' %} -->
 
 <div class="seats-page-wrapper">
     <div class="seats-page-wrapper__item selected-seats-container" data-currentlySelecting="">
@@ -228,7 +227,7 @@
     </div>
 </div>
 
-<div class="sticky-passenger-list-container snaps-inline">
+<div class="sticky-passenger-list-container snaps-inline" data-totalpassengers="{{ total_passengers }}" data-infants="{{ infants }}">
     <div class="extra-cost-container">
         <div class="extra-cost">
             <p class="extra-cost-title">Extra Cost:</p>
@@ -237,7 +236,7 @@
     </div>
     <div class="passenger-list snaps-inline" style="--children-count: 5;">
 
-        {% for i in range((form_part_one['passenger-adult'] | int) + 10) %}
+        {% for i in range((form_part_one['passenger-adult'] | int)) %}
             <div class="passenger-container" tabindex="1" 
                 data-state="pending" 
                 data-age="adult"
@@ -248,7 +247,7 @@
             </div>
         {% endfor %}
 
-        {% for i in range((form_part_one['passenger-children'] | int) + 5) %}
+        {% for i in range((form_part_one['passenger-children'] | int)) %}
         <div class="passenger-container" tabindex="1" 
             data-state="pending" 
             data-age="child"
@@ -266,10 +265,9 @@
         </div>
         {% endfor %#}
 
-
     </div>
     <div class="finish-btn">
-        <button class="form-btn seats-done-btn">Done</button>
+        <button class="form-btn seats-done-btn" disabled>Done</button>
     </div>
 </div>
 

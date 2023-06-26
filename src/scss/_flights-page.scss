@@ -2,6 +2,7 @@ $width: 65%;
 
 body {
     background: $booking-process-bg-color;
+    overflow-x: hidden;
 }
 
 .current-page-indicator {
@@ -97,7 +98,7 @@ body {
         height: 11%;
         padding: 0.5rem 0;
         margin: 0.5rem 0;
-        border-radius: 20px;
+        // border-radius: 5px;
         border: 1px solid rgba(129, 129, 129, 0.2);
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
         background: white;

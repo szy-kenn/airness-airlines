@@ -6,7 +6,6 @@ html {
 
 body {
   font-family: "Montserrat";
-  box-sizing: border-box;
 }
 
 h1 {
@@ -401,26 +400,29 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 
+@font-face {
+  font-family: computer-says-no;
+  src: url(/static/fonts/computer-says-no.ttf);
+}
+@font-face {
+  font-family: citadel;
+  src: url(/static/fonts/citadel_script.ttf);
+}
+@font-face {
+  font-family: playfair;
+  src: url(/static/fonts/PlayfairDisplay-Regular.otf);
+}
 .navbar {
   background-color: #163976;
   height: 100px;
 }
 
 .navdiv {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.airline-name-navbar {
-  color: white;
-  margin-top: -25px;
-  font-style: italic;
-  font-weight: bold;
-  padding-left: -5px;
+  height: 95px;
 }
 
 .logo-navbar {
+  position: absolute;
   margin-left: 70px;
   align-items: center;
 }
@@ -428,23 +430,74 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-#current-time-navbar {
-  color: white;
-  font-family: "Montserrat";
-  margin-right: 30px;
+.menu-navbar {
+  margin-left: 169px;
+  width: 100%;
+  height: 100%;
 }
 
-#current-date-navbar {
-  color: white;
-  font-family: "Montserrat";
-  margin-right: 30px;
+.airline-name-div-navbar {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  text-align: left;
+  margin-top: 16px;
 }
 
-li {
-  list-style: none;
-  display: inline-block;
+.airline-name-navbar {
+  line-height: 0.5;
+  margin-top: 5px;
+  font-family: citadel;
+  color: white;
+  font-size: 50px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 2em;
+}
+
+.airlines-name-navbar {
+  margin-top: 0px;
+  font-family: playfair;
+  color: white;
   font-size: 20px;
-  font-weight: bold;
+  margin-top: 5px;
+  font-weight: lighter;
+  line-height: 0;
+}
+
+.buttons-div-navbar {
+  right: 60px;
+  position: absolute;
+  height: 94px;
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-button-navbar {
+  margin: 28px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: "Montserrat";
+  padding: 10px;
+  padding-left: 38px;
+  padding-right: 38px;
+  border-radius: 8px;
+  color: #212121;
+  font-weight: 600;
+  color: rgb(217, 171, 53);
+  border: 3px solid rgb(217, 171, 53);
+}
+
+.about-button-navbar:hover {
+  color: white;
+  background-color: rgb(217, 171, 53);
 }
 
 .contact-button-navbar {
@@ -463,33 +516,6 @@ li {
   border-radius: 8px;
   color: #212121;
   font-weight: 600;
-  margin: 0 15px;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-right: 50px;
-  color: rgb(217, 171, 53);
-  border: 3px solid rgb(217, 171, 53);
-}
-
-.about-button-navbar {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.5s;
-  font-family: "Montserrat";
-  padding: 10px;
-  padding-left: 38px;
-  padding-right: 38px;
-  border-radius: 8px;
-  color: #212121;
-  font-weight: 600;
-  margin: 0 15px;
-  margin-left: 20px;
-  margin-top: 20px;
   color: rgb(217, 171, 53);
   border: 3px solid rgb(217, 171, 53);
 }
@@ -499,22 +525,41 @@ li {
   background-color: rgb(217, 171, 53);
 }
 
-.about-button-navbar:hover {
-  color: white;
-  background-color: rgb(217, 171, 53);
+.time-div-navbar {
+  position: absolute;
+  height: 96px;
+  width: 150px;
+  margin-left: 570px;
 }
 
-.airline-name-navbar {
+#current-time-navbar {
+  text-align: center;
   color: white;
-  margin-right: 190px;
-  font-style: italic;
-  font-weight: bold;
-  font-family: "Pinyon Script", sans-serif;
-  font-size: 40px;
+  font-family: "Montserrat";
+  font-size: 20px;
+  margin-top: 37px;
+  font-weight: 600;
+}
+
+.date-div-navbar {
+  position: absolute;
+  height: 96px;
+  width: 150px;
+  margin-left: 420;
+}
+
+#current-date-navbar {
+  text-align: center;
+  color: white;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 37px;
 }
 
 body {
-  background: rgb(240, 231, 231);
+  background: #dde4ec;
+  overflow-x: hidden;
 }
 
 .current-page-indicator {
@@ -612,7 +657,6 @@ body {
   height: 11%;
   padding: 0.5rem 0;
   margin: 0.5rem 0;
-  border-radius: 20px;
   border: 1px solid rgba(129, 129, 129, 0.2);
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
   background: white;
@@ -1018,24 +1062,22 @@ body {
   width: 15rem;
 }
 
-.page-header-seats {
-  display: block;
-  margin: auto;
-  padding: 1rem 0;
-  background-color: #ffdf29;
+.seats-legend {
+  padding: 0.5rem 0;
+  position: relative;
 }
-.page-header-seats p {
-  display: block;
-  margin: auto;
-  text-align: center;
-  font-family: "Montserrat";
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #000000;
-}
-
-.extra-leg-room {
-  color: #5d478b;
+.seats-legend.extra-leg-room::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 7.5%;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  height: 50%;
+  border-top: 2px dotted black;
+  border-inline: 2px dotted black;
+  border-radius: 5px;
 }
 
 .seat-hovered {
@@ -1078,13 +1120,12 @@ body {
   padding: 0rem 1rem 1.75rem 1rem;
 }
 .seats-page-wrapper .selected-seats-container::-webkit-scrollbar-thumb {
-  border: 5px solid rgb(240, 231, 231);
+  border: 5px solid #dde4ec;
 }
 .seats-page-wrapper .selected-seats-container .selected-seats-no-items {
   display: flex;
   margin: 0 auto;
   background: white;
-  border-radius: 10px;
   box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 .seats-page-wrapper .selected-seats-container .selected-seats-no-items.entered-items {
@@ -1101,7 +1142,6 @@ body {
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat {
   position: relative;
-  border-radius: 10px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.4);
   padding: 0.5rem 1rem;
   height: 100%;
@@ -1109,23 +1149,54 @@ body {
   flex-direction: column;
   justify-content: space-around;
   cursor: pointer;
-  animation: pop 0.2s ease forwards;
 }
-.seats-page-wrapper .selected-seats-container .passenger-selected-seat:hover {
-  transform: scale(1.05);
-}
-.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selecting {
-  background-color: #174885;
-  transition: background 0.2s ease-out;
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.draggable-mirror {
+  height: auto;
+  width: 20rem;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat.pending {
   background-color: gray;
   transition: background 0.2s ease-out;
+  opacity: 0.5;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.pending.draggable--over {
+  opacity: 0.85;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selecting {
+  background-color: #174885;
+  transition: background 0.2s ease-out;
+  opacity: 1;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected {
+  background-color: #0c2849;
+  transition: background 0.2s ease-out;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected.active {
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected.inactive {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-out;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.selected.inactive.draggable--over {
+  opacity: 0.85;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.confirmed {
+  background-color: green;
+  transition: background 0.2s ease-out;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.confirmed.active {
+  opacity: 1;
+}
+.seats-page-wrapper .selected-seats-container .passenger-selected-seat.confirmed.inactive {
+  opacity: 0.5;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status p {
   text-transform: uppercase;
@@ -1133,10 +1204,16 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: #ffffff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i {
   font-size: 1.25rem;
   color: #ffffff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .select-seat-status i.selecting {
   animation: rotate360 0.4s linear infinite;
@@ -1145,21 +1222,31 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__number {
   color: #ffffff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value {
   font-family: "Montserrat";
   font-size: 0.75rem;
   font-weight: 400;
   color: #ffffff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .seats-page-wrapper .selected-seats-container .passenger-selected-seat .passenger-info-extra__value span {
   font-family: "Montserrat";
   font-size: 1rem;
   font-weight: 700;
   color: #ffdf29;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .seats-page-wrapper .airline-seats-wrapper {
   display: flex;
@@ -1185,15 +1272,80 @@ body {
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats,
 .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats {
   padding: 0.5rem 0;
+  position: relative;
 }
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats .standard:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats .extra-leg-room:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats .standard:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats .extra-leg-room:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats .standard:hover,
-.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats .extra-leg-room:hover {
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.extra-leg-room::after,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.extra-leg-room::after,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.extra-leg-room::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 7.5%;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  height: 50%;
+  border-top: 2px dotted black;
+  border-inline: 2px dotted black;
+  border-radius: 5px;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.selected::before, .seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.reserved::before,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.selected::before,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.reserved::before,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.selected::before,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.reserved::before {
+  content: attr(data-passenger);
+  font-family: "Roboto";
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  padding: 0.1rem;
+  background-color: rgba(12, 40, 73, 0.75);
+  border-radius: 5px;
+  width: 1.75rem;
+  height: auto;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats:hover,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats:hover {
   cursor: pointer;
   color: #174885;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.selected,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.selected,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.selected {
+  color: rgb(255, 195, 85);
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.selected.active,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.selected.active,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.selected.active {
+  opacity: 1;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.selected.inactive,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.selected.inactive,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.selected.inactive {
+  opacity: 0.5;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.reserved,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.reserved,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.reserved {
+  color: rgb(0, 151, 0);
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.reserved.active,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.reserved.active,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.reserved.active {
+  opacity: 1;
+}
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-left-container .seats-columns .seats.reserved.inactive,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-mid-container .seats-columns .seats.reserved.inactive,
+.seats-page-wrapper .airline-seats-wrapper .airline-seats-container .seats-right-container .seats-columns .seats.reserved.inactive {
+  opacity: 0.5;
 }
 .seats-page-wrapper .seats-guide-wrapper {
   display: grid;
@@ -1204,7 +1356,6 @@ body {
   width: 75%;
   height: -moz-fit-content;
   height: fit-content;
-  border-radius: 10px;
   box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 .seats-page-wrapper .seats-guide-wrapper .seats-guide-container {
@@ -1242,8 +1393,6 @@ body {
   position: sticky;
   bottom: 0;
   left: 5%;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
   width: 90%;
   background-color: #ffffff;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
@@ -1260,7 +1409,6 @@ body {
   place-items: center;
   padding: 1.5rem;
   width: 100%;
-  border-top-left-radius: 25px;
   background-color: #174885;
 }
 .sticky-passenger-list-container .extra-cost-container .extra-cost p {
@@ -1293,7 +1441,6 @@ body {
   gap: 0.5rem;
   place-items: center;
   padding: 0.8rem 1rem;
-  border-radius: 7.5px;
   background: rgba(23, 72, 133, 0.1);
   transition: background 0.2s ease-out;
   cursor: pointer;
@@ -1318,6 +1465,10 @@ body {
 }
 .sticky-passenger-list-container .finish-btn .seats-done-btn {
   width: 11rem;
+  margin: 0;
+}
+.sticky-passenger-list-container .finish-btn .seats-done-btn:disabled {
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .snaps-inline {
@@ -1340,16 +1491,21 @@ body {
 }
 @keyframes pop {
   0% {
-    transform: scale(0);
+    transform: scale(1);
   }
   25% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
   50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes zoom {
+  to {
+    transform: scale(1.2);
   }
 }
 .bar {
@@ -1443,8 +1599,535 @@ body {
   height: 70vh;
 }
 
-.class-test {
-  color: red;
+@font-face {
+  font-family: nourd;
+  src: url(/static/fonts/nourd_heavy.ttf);
+}
+@font-face {
+  font-family: computer-says-no;
+  src: url(/static/fonts/computer-says-no.ttf) format("truetype");
+}
+.ticket_div {
+  background-color: white;
+  margin-top: 50px;
+  margin-left: 200px;
+  height: 350px;
+  width: 950px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.vertical_dashed_ticket {
+  position: absolute;
+  margin-top: -58px;
+  margin-left: 620px;
+  border-left: 5px dashed black;
+  height: 348px;
+  width: 1px;
+}
+
+.ticket-top {
+  height: 60px;
+  width: 950px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: #163976;
+  margin-top: -13px;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-ticket {
+  margin-left: 20px;
+}
+
+.airline-name-ticket {
+  margin-left: 15px;
+  font-family: nourd;
+  color: white;
+}
+
+.b-pass-ticket {
+  margin-left: 170px;
+  font-family: nourd;
+  color: white;
+}
+
+/* start of information on the left*/
+.info-left-ticket {
+  position: absolute;
+  margin-left: 5px;
+  height: 275px;
+  width: 548px;
+}
+
+.world-map-ticket {
+  position: absolute;
+  margin-top: 12px;
+  margin-left: 50px;
+  height: 250px;
+  width: 530px;
+  opacity: 50%;
+}
+
+.class-ticket {
+  position: absolute;
+  font-family: computer-says-no;
+  margin-left: 400px;
+  font-size: 85px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 60px;
+  width: 210px;
+}
+
+.name-info-ticket {
+  margin-top: 10px;
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.name-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-name-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.boarding-info-ticket {
+  margin-left: 10px;
+  margin-top: 80px;
+  position: absolute;
+  width: 190px;
+  height: 50px;
+}
+
+.boarding-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.boarding-time-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.departure-info-ticket {
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 150px;
+}
+
+.departure-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.departure-time-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.from-info-ticket {
+  position: absolute;
+  width: 140px;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 220px;
+}
+
+.from-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-from-ticket {
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.date-info-ticket {
+  position: absolute;
+  width: 110px;
+  height: 50px;
+  margin-left: 270px;
+  margin-top: 10px;
+}
+
+.date-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.flight-date-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.seat-info-ticket {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin-left: 270px;
+  margin-top: 80px;
+}
+
+.seat-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-seat-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.flight-info-ticket {
+  position: absolute;
+  width: 90px;
+  height: 50px;
+  margin-left: 350px;
+  margin-top: 80px;
+}
+
+.flight-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-flight-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.to-info-ticket {
+  position: absolute;
+  width: 140px;
+  height: 50px;
+  margin-left: 270px;
+  margin-top: 220px;
+}
+
+.to-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-to-ticket {
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.ticketnumber-info-ticket {
+  position: absolute;
+  width: 140px;
+  height: 50px;
+  margin-left: 270px;
+  margin-top: 150px;
+}
+
+.ticketnumber-ticket {
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 12px;
+}
+
+.passenger-ticketnumber-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 32px;
+}
+
+.goldairplane-ticket {
+  position: absolute;
+  height: 70px;
+  width: 100px;
+  margin-top: 210px;
+  margin-left: 150px;
+}
+
+.barcode-left-ticket {
+  position: absolute;
+  height: 50px;
+  width: 160px;
+  margin-top: 220px;
+  margin-left: 420px;
+}
+
+/* end of information on the left*/
+/* start of information on the right*/
+.info-right-ticket {
+  position: absolute;
+  height: 280px;
+  width: 300px;
+  margin-left: 630px;
+}
+
+.copy-name-ticket {
+  height: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.cname-ticket {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-family: computer-says-no;
+  font-size: 35px;
+}
+
+.horizontal-dashed-line {
+  border-top: 3px dashed black;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.copy-from-info-ticket {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.copy-from-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-passenger-from-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-to-info-ticket {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  margin-top: 60px;
+  margin-left: 10px;
+}
+
+.copy-to-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-passenger-to-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-boarding-info-ticket {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  margin-top: 120px;
+  margin-left: 10px;
+}
+
+.copy-boarding-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-boarding-time-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-departure-info-ticket {
+  position: absolute;
+  width: 170px;
+  height: 45px;
+  margin-top: 180px;
+  margin-left: 10px;
+}
+
+.copy-departure-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-departure-time-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-date-info-ticket {
+  position: absolute;
+  width: 120px;
+  height: 45px;
+  margin-top: 10px;
+  margin-left: 190px;
+}
+
+.copy-date-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-flight-date-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-seat-info-ticket {
+  position: absolute;
+  width: 120px;
+  height: 45px;
+  margin-top: 60px;
+  margin-left: 190px;
+}
+
+.copy-seat-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-passenger-seat-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.copy-flight-info-ticket {
+  position: absolute;
+  width: 120px;
+  height: 45px;
+  margin-top: 120px;
+  margin-left: 190px;
+}
+
+.copy-flight-ticket {
+  font-weight: bold;
+  font-family: Poppins;
+  font-size: 12px;
+  margin-top: 0px;
+}
+
+.copy-passenger-flight-ticket {
+  font-weight: normal;
+  font-family: computer-says-no;
+  font-size: 30px;
+}
+
+.barcode-right-ticket {
+  position: absolute;
+  height: 30px;
+  width: 130px;
+  margin-top: 180px;
+  margin-left: 150px;
+}
+
+.payment-page-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 0.5fr 1.5fr 1fr;
+  padding: 2rem;
+}
+.payment-page-wrapper__item {
+  border: 1px solid red;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  place-items: center;
+}
+.payment-page-wrapper__item__text {
+  padding: 1rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000000;
+}
+.payment-page-wrapper .payment-pg-mode__list {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+}
+.payment-page-wrapper .payment-pg-mode__list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover {
+  animation: zoom 0.1s cubic-bezier(0.48, 0.12, 0.48, 0.81) forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.gcash {
+  background: linear-gradient(to right, rgba(111, 186, 247, 0.4), #002cb8);
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.maya {
+  background: linear-gradient(to right, rgba(45, 241, 157, 0.4), black);
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.paypal {
+  background: linear-gradient(to right, rgba(37, 59, 128, 0.4), rgba(23, 155, 215, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.mastercard {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.4), rgba(255, 165, 0, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item:hover.visa {
+  background: linear-gradient(to right, rgba(30, 37, 102, 0.8), rgba(4, 74, 156, 0.4));
+}
+.payment-page-wrapper .payment-pg-mode__list__item img {
+  inline-size: 45%;
+  aspect-ratio: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .main {
@@ -1497,7 +2180,7 @@ body {
 
 .form-btn {
   border: none;
-  border-radius: 25px;
+  border-radius: 0px;
   text-transform: uppercase;
   background: #5d478b;
   box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
@@ -1537,6 +2220,22 @@ body {
   height: 2rem;
 }
 
+.page-header {
+  display: block;
+  margin: auto;
+  padding: 1rem 0;
+  background-color: #ffdf29;
+}
+.page-header p {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-family: "Montserrat";
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+}
+
 .with-dropdown-select {
   position: relative;
 }
@@ -1563,6 +2262,27 @@ body {
 .with-dropdown-select__container__options:hover {
   background: rgba(23, 72, 133, 0.5);
   color: #ffffff;
+}
+
+.input-field {
+  opacity: 1;
+  position: relative;
+  padding: 1rem 1rem;
+  transition: opacity 0s 0.1s ease-out;
+}
+.input-field label {
+  display: block;
+}
+.input-field input {
+  position: relative;
+  border: 1px solid rgba(126, 126, 126, 0.5);
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+  width: 15rem;
 }
 
 @media screen and (max-width: 768px) {

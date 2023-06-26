@@ -1,0 +1,58 @@
+{% extends "booking-process.html" %}
+{% block title %}Seats{% endblock %}
+{% block booking %}
+
+{% set header = "Choose a Payment" %}
+{% include 'blocks/flight-input-details.html' %}
+
+{{ booked_seats }}
+
+<div class="payment-page-wrapper">
+    <div class="payment-page-wrapper__item payment-pg-mode">
+        <p class="payment-page-wrapper__item__text">Mode Of Payment</p>
+        <div class="payment-pg-mode__list">
+            <div class="payment-pg-mode__list__item gcash">
+                <img src="..\static\img\gcash.png" alt="Gcash">
+            </div>
+            <div class="payment-pg-mode__list__item maya">
+                <img src="..\static\img\maya.svg" alt="Maya">
+            </div>
+            <div class="payment-pg-mode__list__item paypal">
+                <img src="..\static\img\paypal.png" alt="Paypal">
+            </div>
+            <div class="payment-pg-mode__list__item mastercard">
+                <img src="..\static\img\mastercard.png" alt="Mastercard">
+            </div>
+            <div class="payment-pg-mode__list__item visa">
+                <img src="..\static\img\visa.png" alt="Visa">
+            </div>
+        </div>
+    </div>
+    <div class="payment-page-wrapper__item payment-pg-details"> 
+        <p class="payment-page-wrapper__item__text">Account Details</p>
+
+        <div class="payment-pg-details__container">
+            <div class="payment-pg-details__item input-field">
+                <label for="account-name">Account Name</label>
+                <input type="text" name="account-name" id="account-name">
+            </div>
+            <div class="payment-account-details">
+                <div class="payment-pg-details__item input-field">
+                    <label for="account-number">Account Number</label>
+                    <input type="text" name="account-number" id="account-number">
+                </div>
+                <div class="payment-pg-details__item input-field">
+                    <label for="account-exp-date">Account Exp Date</label>
+                    <input type="text" name="account-exp-date" id="account-exp-date">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="payment-page-wrapper__item payment-pg-summary">
+        <p class="payment-page-wrapper__item__text">Payment Summary</p>
+    </div>
+</div>
+
+{% endblock %}

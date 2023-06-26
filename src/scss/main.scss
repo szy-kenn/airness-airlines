@@ -2,7 +2,7 @@
         "../scss/config", "../scss/passenger-form", "../scss/flight-form", 
         "../scss/navbar", "../scss/flights-page", "../scss/passenger-page",
         "../scss/seats", "../scss/keyframes", "../scss/about", "../scss/ticket",
-        "../scss/loading-screen";
+        "../scss/loading-screen", "../scss/payment";
 
 .main {
     display: grid;
@@ -58,7 +58,7 @@
 }
 
 .form-btn {
-    @include form-button(25px, $secondary-button);
+    @include form-button(0px, $secondary-button);
     position: relative;
     display: flex;
     justify-content: center;
@@ -81,6 +81,20 @@
     bottom: 0;
     width: 2rem;
     height: 2rem;
+}
+
+.page-header {
+    display: block;
+    margin: auto;
+    padding: 1rem 0;
+    background-color: $accent;
+
+    p {
+        display: block;
+        margin: auto;
+        text-align: center;
+        @include font($primary-font, 1.25rem, 700, $primary-color);
+    }
 }
 
 .with-dropdown-select {
@@ -109,6 +123,27 @@
             background: rgba($primary-button, 0.5);
             color: $secondary-color;
         }
+    }
+}
+
+.input-field {
+            
+    opacity: 1;
+    position: relative;
+    padding: 1rem 1rem;
+    transition: opacity 0s 0.1s ease-out;
+
+    label{
+        display: block;
+    }
+    input {
+        position: relative;
+        border: 1px solid rgba(126, 126, 126, 0.5);
+        padding: 0.5rem 1rem;
+        line-height: 1rem;
+        @include font($primary-font, 1rem, 500, rgba($primary-color, 0.9));
+        width: 15rem;
+        // height: 100%;
     }
 }
 
