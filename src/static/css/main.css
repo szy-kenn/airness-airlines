@@ -6,7 +6,7 @@ html {
 
 body {
   font-family: "Montserrat";
-  background-color: #d5d9df;
+  background-color: #E4EEFD;
 }
 
 h1 {
@@ -76,7 +76,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .passenger-form__container i {
   padding: 0.25rem 1rem;
-  color: #d5d9df;
+  color: #E4EEFD;
   display: inline-block;
   transform: scale(1.25);
   cursor: pointer;
@@ -110,7 +110,7 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
   background: white;
   color: black;
-  border: 1px solid #d5d9df;
+  border: 1px solid #E4EEFD;
   flex: 1 1 auto;
   align-self: stretch;
 }
@@ -154,13 +154,13 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flight-location-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex: 1;
   position: relative;
-  padding-bottom: 1.25rem;
   z-index: 2;
-  gap: 1px;
+  display: grid;
+  padding: 2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 3.25fr 3.25fr 2.25fr 1.25fr;
 }
 .flight-location-form .flight-location-form__container {
   display: block;
@@ -195,7 +195,7 @@ input::-webkit-calendar-picker-indicator {
   width: 55px;
   padding: 0.4rem 0.4rem;
   margin-right: 10px;
-  background: #d5d9df;
+  background: #E4EEFD;
   color: black;
   border-radius: 5px;
   font-size: 0.9rem;
@@ -230,7 +230,7 @@ input::-webkit-calendar-picker-indicator {
   border-radius: 10px 0 0 10px;
 }
 .flight-location-form #from .flight-location-input__container {
-  border: 2px solid #d5d9df;
+  border: 2px solid #E4EEFD;
   border-radius: 10px 0 0 10px;
   width: 100%;
 }
@@ -291,8 +291,7 @@ input::-webkit-calendar-picker-indicator {
   left: -100%;
 }
 .flight-location-form #to .flight-location-input__container {
-  border: 2px solid #d5d9df;
-  border-radius: 0 10px 10px 0;
+  border: 2px solid #E4EEFD;
   width: 100%;
 }
 .flight-location-form #to input {
@@ -346,37 +345,36 @@ input::-webkit-calendar-picker-indicator {
   border: 2px solid rgb(245, 67, 67);
 }
 
-.flight-date-form {
+.home-page-search-flight {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   position: relative;
-  padding: 1.25em 0;
-  margin: 0;
-  z-index: 1;
+  grid-column: 4;
+}
+.home-page-search-flight button {
+  border-radius: 0 10px 10px 0;
+  flex-grow: 1;
+}
+
+.flight-date-form__container {
+  border: 2px solid #E4EEFD;
+  width: 100%;
+}
+.flight-date-form__container::before {
   font-size: 0.7rem;
   font-weight: 300;
   font-family: "Montserrat";
-}
-.flight-date-form.focused::before {
+  content: "Depart";
   position: absolute;
   pointer-events: none;
-  font-size: 0.7rem;
-  font-weight: 300;
-  top: 15%;
+  top: 10%;
   bottom: 0;
   left: 5%;
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-date-form.focused > div {
-  border: 2px solid #0c2849;
-}
-.flight-date-form .flight-date-form__container {
-  border: 2px solid #d5d9df;
-  width: 100%;
-}
-.flight-date-form .flight-date-form__container__input {
+.flight-date-form__container__input {
   width: 92.5%;
   height: 4rem;
   margin-left: 5%;
@@ -387,37 +385,6 @@ input::-webkit-calendar-picker-indicator {
   font-size: 1rem;
   font-weight: 400;
   font-family: "Montserrat";
-}
-.flight-date-form div:nth-child(1) {
-  border-radius: 10px 0 0 10px;
-}
-.flight-date-form div:nth-child(1)::before {
-  content: "Depart";
-  position: absolute;
-  pointer-events: none;
-  top: 10%;
-  bottom: 0;
-  left: 5%;
-  right: 0;
-  transition: all 0.15s ease-out;
-}
-.flight-date-form div:nth-child(2) {
-  border-radius: 0 10px 10px 0;
-}
-.flight-date-form div:nth-child(2) input {
-  color: #b399b0;
-}
-.flight-date-form div:nth-child(2)::before {
-  content: "Return";
-  position: absolute;
-  pointer-events: none;
-  font-size: 0.7rem;
-  font-weight: 300;
-  top: 15%;
-  bottom: 0;
-  left: 5%;
-  right: 0;
-  transition: all 0.15s ease-out;
 }
 
 @font-face {
@@ -433,69 +400,84 @@ input::-webkit-calendar-picker-indicator {
   src: url(/static/fonts/PlayfairDisplay-Regular.otf);
 }
 .navbar {
-  background-color: #163976;
-  height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: clamp(50px, 10vw, 100px);
+  width: calc(100vw - 10rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 5rem;
+  transition: background 0.5s ease;
+}
+.navbar.scrolled {
+  transition: background 0.2s ease;
+  background-color: #0c2849;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .navdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 95px;
+  width: 100%;
 }
 
 .logo-navbar {
-  position: absolute;
-  margin-left: 70px;
-  align-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto auto;
+  gap: 1rem;
 }
 .logo-navbar img {
   cursor: pointer;
 }
 
-.menu-navbar {
-  margin-left: 169px;
-  width: 100%;
-  height: 100%;
-}
-
 .airline-name-div-navbar {
-  position: absolute;
-  width: 200px;
   height: 80px;
   text-align: left;
-  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .airline-name-navbar {
-  line-height: 0.5;
-  margin-top: 5px;
-  font-family: citadel;
+  line-height: 0.75;
+  font-family: "Montserrat";
   color: white;
-  font-size: 50px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-bottom: 2em;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 26px;
+  text-transform: uppercase;
 }
 
 .airlines-name-navbar {
-  margin-top: 0px;
-  font-family: playfair;
+  font-family: "Montserrat";
   color: white;
-  font-size: 20px;
-  margin-top: 5px;
-  font-weight: lighter;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
   line-height: 0;
 }
 
+.menu-navbar {
+  position: relative;
+}
+
 .buttons-div-navbar {
-  right: 60px;
-  position: absolute;
-  height: 94px;
-  align-items: baseline;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  gap: 2.5rem;
+  grid-auto-flow: column;
+  grid-auto-columns: auto auto;
+  position: relative;
 }
 
 .about-button-navbar {
-  margin: 28px;
+  position: relative;
+  font-size: 1rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -505,22 +487,66 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
   transition: 0.5s;
   font-family: "Montserrat";
-  padding: 10px;
-  padding-left: 38px;
-  padding-right: 38px;
   border-radius: 8px;
   color: #212121;
   font-weight: 600;
-  color: rgb(217, 171, 53);
-  border: 3px solid rgb(217, 171, 53);
+  text-transform: uppercase;
+  color: white;
+}
+.about-button-navbar ::before {
+  content: "";
+  position: absolute;
+  top: 150%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #E4EEFD;
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.about-button-navbar:hover ::before {
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  width: 100%;
 }
 
-.about-button-navbar:hover {
+.home-button-navbar {
+  position: relative;
+  font-size: 1rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: "Montserrat";
+  border-radius: 8px;
+  font-weight: 600;
   color: white;
-  background-color: rgb(217, 171, 53);
+  text-transform: uppercase;
+}
+.home-button-navbar ::before {
+  content: "";
+  position: absolute;
+  top: 150%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #E4EEFD;
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.home-button-navbar:hover ::before {
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  width: 100%;
 }
 
 .contact-button-navbar {
+  position: relative;
+  font-size: 1rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -530,22 +556,35 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
   transition: 0.5s;
   font-family: "Montserrat";
-  padding: 10px;
-  padding-left: 27px;
-  padding-right: 23px;
   border-radius: 8px;
-  color: #212121;
   font-weight: 600;
-  color: rgb(217, 171, 53);
-  border: 3px solid rgb(217, 171, 53);
+  color: white;
+  text-transform: uppercase;
+}
+.contact-button-navbar ::before {
+  content: "";
+  position: absolute;
+  top: 150%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #E4EEFD;
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.contact-button-navbar:hover ::before {
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  width: 100%;
 }
 
-.contact-button-navbar:hover {
-  color: white;
-  background-color: rgb(217, 171, 53);
+.active-page ::before {
+  transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  width: 100%;
 }
 
 .time-div-navbar {
+  display: none;
   position: absolute;
   height: 96px;
   width: 150px;
@@ -562,6 +601,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .date-div-navbar {
+  display: none;
   position: absolute;
   height: 96px;
   width: 150px;
@@ -578,7 +618,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 body {
-  background: #dde4ec;
+  background: #E4EEFD;
   overflow-x: hidden;
 }
 
@@ -654,7 +694,7 @@ body {
   width: 100%;
   height: 11%;
   padding: 0.5rem 0;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   border: 1px solid rgba(129, 129, 129, 0.2);
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
   background: white;
@@ -977,7 +1017,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: #d5d9df;
+  background: #E4EEFD;
   color: black;
 }
 .adult-passenger-details-container__items .passenger-number {
@@ -1427,7 +1467,7 @@ body {
   gap: 0.5rem;
   place-items: center;
   padding: 0.8rem 1rem;
-  background: #d5d9df;
+  background: #E4EEFD;
   color: black;
   transition: background 0.2s ease-out;
   cursor: pointer;
@@ -2125,11 +2165,68 @@ body {
      object-fit: contain;
 }
 
-.main {
-  display: grid;
+.main-wrapper {
   position: relative;
-  max-width: 100vw;
-  max-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  flex-direction: column;
+}
+
+.home-welcome-section {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content auto;
+  position: relative;
+  top: -100px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/airline-main-2.png");
+  background-size: cover;
+  margin-bottom: -100px;
+}
+.home-welcome-section .welcome-text-container {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: auto;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content;
+  position: relative;
+  left: 5%;
+  top: 40%;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: max(400px, 50%);
+  align-items: center;
+}
+.home-welcome-section .welcome-text-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+.home-welcome-section .welcome-heading {
+  font-size: clamp(38px, 4.35vw, 5.75rem);
+  font-weight: 800;
+  font-family: "Montserrat";
+  color: white;
+  letter-spacing: -0.005em;
+  line-height: clamp(46px, 5vw, 122px);
+}
+.home-welcome-section .welcome-subheading {
+  font-size: clamp(0.75rem, 1.5vw, 1.5rem);
+  font-weight: 400;
+  font-family: "Montserrat";
+  line-height: clamp(1rem, 2.05vw, 1.75rem);
+  color: white;
+  letter-spacing: -0.02em;
+  width: max(300px, 70%);
+}
+.home-welcome-section .welcome-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .img-slideshow {
@@ -2144,34 +2241,30 @@ body {
   top: -40%;
 }
 
-.body {
-  position: absolute;
-  top: 90%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #d5d9df;
+.home-body {
+  position: relative;
+  width: 100dvw;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #E4EEFD;
   color: black;
-  max-width: 100dvw;
-  height: 50rem;
-  z-index: 0;
+  padding: 1rem 5rem;
 }
 
 .form-container {
-  display: inline-block;
-  position: absolute;
-  top: calc(75% - 1rem);
-  left: calc(30% - 2rem);
-  right: 0;
-  bottom: 0;
-  width: 40%;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 2rem 2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  flex: 1;
+  position: relative;
+  border-radius: 0;
+  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
   background: white;
-  z-index: 2;
+}
+@media screen and (max-width: 767px) {
+  .form-container {
+    height: 100%;
+  }
 }
 
 .form-btn {
@@ -2188,11 +2281,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12rem;
-  height: 3rem;
   padding: 0.75rem 1.25rem;
-  margin-left: auto;
-  margin-top: 2.5%;
   cursor: pointer;
 }
 

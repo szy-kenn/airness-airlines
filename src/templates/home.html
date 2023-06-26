@@ -17,20 +17,18 @@
                 <p>Experience flying with great nobility</p>
                 <p>and royalty here in the castle in the sky.</p>
             </div>
-    
-            <button class="form-btn welcome-button" onclick="location.href='#home-body'">Book Now</button>
+            
+            <div class="welcome-button">
+                <button class="form-btn welcome-button" onclick="location.href='#home-body'">Book Now</button>
+            </div>
     
         </div>
     </div>
-    <section></section>
     <div class="home-body" id="home-body">
         <div class="form-container">
             <form method="POST" id="form-pg-1">
                 {% include 'blocks/flight-form.html' %}
                 {% include 'blocks/passenger-form.html' %}
-                <div>
-                    <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
-                </div>
             </form>
         </div>
     </div>

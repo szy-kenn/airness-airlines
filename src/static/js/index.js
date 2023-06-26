@@ -19,7 +19,7 @@ let navbar = document.querySelector('.navbar');
 let homeBody = document.querySelector('.home-body');
 
 const options = {
-
+    threshold: 0.25
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
