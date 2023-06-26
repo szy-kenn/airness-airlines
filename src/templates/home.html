@@ -27,6 +27,25 @@
     <div class="home-body" id="home-body">
         <div class="form-container">
             <form method="POST" id="form-pg-1">
+                <div class="flight-passenger-class-info-container">
+                    <div class="info-container">
+                        <div class="info-item">
+                            <i class="fa-solid fa-plane"></i>
+                            <p>One-way</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-sharp fa-solid fa-person"></i>
+                            <p>1 Passenger</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-tag"></i>
+                            <p>Economy</p>
+                        </div>
+                    </div>
+                    <div class="info-powered-by">
+                        <p>Powered by: <span style="font-weight: 700;">Skyscanner</span></p>
+                    </div>
+                </div>
                 {% include 'blocks/flight-form.html' %}
                 {% include 'blocks/passenger-form.html' %}
             </form>

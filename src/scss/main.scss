@@ -92,18 +92,42 @@
 }
 
 .form-container {
-    flex: 1;
+    flex: 0.9;
     // @include flex(center, stretch);
     position: relative;
-    // padding: 2rem 2rem;
+    padding: 2rem 2rem;
     border-radius: 0;
     // border: 1px solid $primary-button;
     box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
     background: $secondary-color;
-
+    
     @media screen and (max-width: 767px) {
         height: 100%;
     }
+
+    .flight-passenger-class-info-container {
+        @include flex(space-between);
+        padding-inline: 2rem;
+        @include font(1rem, 500);
+    
+        .info-container {
+            flex-grow: 0.35;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 33.33%;
+
+            .info-item {
+                @include flex(flex-start);
+                gap: 1rem; 
+                color: $primary-button;
+
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
 }
 
 .form-btn {

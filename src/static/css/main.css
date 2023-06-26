@@ -619,7 +619,6 @@ input::-webkit-calendar-picker-indicator {
 
 body {
   background: #E4EEFD;
-  overflow-x: hidden;
 }
 
 .flight-input-details {
@@ -2255,8 +2254,9 @@ body {
 }
 
 .form-container {
-  flex: 1;
+  flex: 0.9;
   position: relative;
+  padding: 2rem 2rem;
   border-radius: 0;
   box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
   background: white;
@@ -2265,6 +2265,31 @@ body {
   .form-container {
     height: 100%;
   }
+}
+.form-container .flight-passenger-class-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+.form-container .flight-passenger-class-info-container .info-container {
+  flex-grow: 0.35;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 33.33%;
+}
+.form-container .flight-passenger-class-info-container .info-container .info-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  color: #0c2849;
+}
+.form-container .flight-passenger-class-info-container .info-container .info-item i {
+  font-size: 1.5rem;
 }
 
 .form-btn {
