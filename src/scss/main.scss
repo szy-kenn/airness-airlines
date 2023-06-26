@@ -34,7 +34,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: $secondary-color;
+    @include color($primary-color);
     max-width: 100dvw;
     height: 50rem;
     z-index: 0;
@@ -50,7 +50,7 @@
     width: 40%;
     height: fit-content;
     padding: 2rem 2rem;
-    border-radius: 25px;
+    border-radius: 15px;
     // border: 1px solid $primary-button;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
     background: $secondary-color;
@@ -58,7 +58,7 @@
 }
 
 .form-btn {
-    @include form-button(0px, $secondary-button);
+    @include form-button(0px, $primary-button);
     position: relative;
     display: flex;
     justify-content: center;
@@ -87,14 +87,31 @@
     display: block;
     margin: auto;
     padding: 1rem 0;
-    background-color: $accent;
+    @include color($secondary-color);
 
     p {
         display: block;
         margin: auto;
         text-align: center;
-        @include font($primary-font, 1.25rem, 700, $primary-color);
+        @include font(1.25rem, 700);
     }
+}
+
+.current-page-indicator {
+    @include flex;
+    width: $width;
+    color: $secondary-color;
+    margin: auto;
+    padding: 1rem 0;
+
+    p {
+        @include font(0.75rem, 700);
+        text-align: center;
+        width: 13%;
+        @include color($secondary-color);
+        padding: 0.75rem 0.5rem;
+    }
+
 }
 
 .with-dropdown-select {
@@ -102,7 +119,7 @@
     position: relative;
 
     &__input {
-        @include font($primary-font, 1rem, 400);
+        @include font(1rem, 400);
         border-radius: 5px;
         border: 1px solid $lighter-primary-button;
     }
@@ -110,7 +127,7 @@
     &__container {
         position: relative;
         display: block;
-        background: $secondary-color;
+        @include color($secondary-color);
         margin: 5px 0;
         border: 1px solid $lighter-primary-button;
         border-radius: 5px;
@@ -120,8 +137,8 @@
         @include transition-ease(0.1s);
 
         &__options:hover {
-            background: rgba($primary-button, 0.5);
-            color: $secondary-color;
+            // background: rgba($primary-button, 0.5);
+            // color: $secondary-color;
         }
     }
 }
@@ -141,7 +158,7 @@
         border: 1px solid rgba(126, 126, 126, 0.5);
         padding: 0.5rem 1rem;
         line-height: 1rem;
-        @include font($primary-font, 1rem, 500, rgba($primary-color, 0.9));
+        @include font(1rem, 500);
         width: 15rem;
         // height: 100%;
     }

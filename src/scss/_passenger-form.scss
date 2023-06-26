@@ -7,39 +7,56 @@
 
 .passenger-form {
 
-    @include font($primary-font, 1rem, bold);
+    @include font(1rem, bold);
     display: inline;
     position: relative;
 
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
-        display: none;
+        // display: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        line-height: 2rem;
+        letter-spacing: -1;
     }
 
     &__container {
-        @include flex(space-evenly);
-        height: 4rem;
+        position: relative;
+        @include flex(space-between);
+        align-items: stretch;
+        height: auto;
         // border: 1px solid black;
-        padding: 0 1rem;
+        padding: 0.25rem 1rem;
 
         i {
-            color: $primary-button;
+            padding: 0.25rem 1rem;
+            color: $primary-color;
             display: inline-block;
             transform: scale(1.25);
             cursor: pointer;
         }
 
         .age-group-label {
-            @include font($primary-font, 1rem, 400);
+            @include font(1rem, 500);
+            letter-spacing: -1;
+            align-self: center;
+            text-align: left;
             width: clamp(50px, 75px, 100px);
             display: inline-block;
         }
 
         &__passenger-count {
-            @include font($primary-font, 1.2rem, 300, $primary-button);
-            // padding-left: clamp(1px, 3px, 3px);
+            @include font(1rem, 500);
+            padding-left: 0.8rem;
             text-align: center;
-            width: clamp(1rem, 2rem, 2rem);
+            background-color: transparent;
+            // @include color($primary-color);
+            // width: clamp(1rem, 2rem, 2rem);
             border: none;
 
             &:focus {
@@ -48,21 +65,34 @@
             }
         }
 
+        .passenger-count__container {
+            @include flex(center);
+            @include color($secondary-color);
+            border: 1px solid $primary-color;
+            flex: 1 1 auto;
+            align-self: stretch;
+        }
+
+        &__btn-group {
+            @include flex(space-evenly);
+            // border: 1px solid red;
+            // @include color($primary-color);
+            width: 50%;
+        }
+
         &__btn {
-            margin: 0 clamp(0.25rem, 2vw, 1.25rem);
+            // margin: 0 clamp(0.25rem, 2vw, 1.25rem);
             width: 2.5rem;
             height: 2.5rem;
-            border: none;
-            border-radius: 30px;
             text-align: center;
-            @include font($primary-font, 1.25rem, 400, $secondary-color);
-            background: $primary-button;
             cursor: pointer;
+            @include font(1.25rem, 400);
+            @include color($primary-button);
             @include transition-ease(0.1s);
     
             &:disabled {
-                color: white;
-                background: $lighter-primary-button;
+                opacity: .3;
+                // border: none;
                 @include transition-ease(0.1s);
             }
         }

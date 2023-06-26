@@ -85,7 +85,7 @@
                 display: block;
                 margin: auto;
                 padding-inline: 2rem;
-                @include font($primary-font, 1rem, 700, $primary-color);
+                @include font(1rem, 700);
             }
         }
 
@@ -109,7 +109,7 @@
 
             &.pending {
                 // background: linear-gradient(#a3a2a2, #6e6d6d);
-                background-color: gray;
+                @include color($unavailable);
                 transition: background 0.2s ease-out;
                 opacity: 0.5;
 
@@ -119,14 +119,14 @@
             }
 
             &.selecting {
-                background-color: $primary-button;
+                @include color($primary-button);
                 // background: linear-gradient(#5c67e6, $primary-button);
                 transition: background .2s ease-out;
                 opacity: 1;
             }
 
             &.selected {
-                background-color: $darker-blue;
+                @include color($darker-blue);
                 transition: background .2s ease-out;
 
                 &.active {
@@ -145,7 +145,7 @@
             }
 
             &.confirmed {
-                background-color:green;
+                @include color(green);
                 transition: background .2s ease-out;
 
                 &.active {
@@ -164,7 +164,7 @@
 
                 p {
                     text-transform: uppercase;
-                    @include font($primary-font, 1rem, 700, $secondary-color);
+                    @include font(1rem, 700);
                     user-select: none;
                 }
 
@@ -189,11 +189,11 @@
                 }
 
                 &__value {
-                    @include font($primary-font, 0.75rem, 400, $secondary-color);
+                    @include font(0.75rem, 400);
                     user-select: none;
 
                     span {
-                        @include font($primary-font, 1rem, 700, $accent);
+                        @include font(1rem, 700);
                         user-select: none;
                     }
                 }
@@ -244,13 +244,13 @@
                         &.reserved {
                             &::before {
                                 content: attr(data-passenger);
-                                @include font('Roboto', 0.9rem, 700, $secondary-color);
+                                @include font(0.9rem, 700, 'Roboto');
                                 @include flex(center);
                                 position: absolute;
                                 top: 25%;
                                 left: 5%;
                                 padding: 0.1rem;
-                                background-color: rgba($darker-blue, 0.75);
+                                @include color(rgba($darker-blue, 0.75));
                                 border-radius: 5px;
                                 width: 1.75rem;
                                 height: auto;
@@ -310,7 +310,7 @@
 
             .seats-guide-header {
                 text-align: left;
-                @include font($primary-font, 1.2rem, 700, $primary-color);
+                @include font(1.2rem, 700);
                 padding-bottom: 1rem;
                 padding-left: 1rem;
                 width: auto;
@@ -358,10 +358,10 @@
             padding: 1.5rem;
             width: 100%;
             // border-top-left-radius: 25px;
-            background-color: $primary-button;
+            @include color($primary-button);
 
             p {
-                @include font($primary-font, 1rem, 500, $secondary-color);
+                @include font(1rem, 500);
                 padding: 0.2rem 0;
             }
 
@@ -396,7 +396,7 @@
             place-items: center;
             padding: 0.8rem 1rem;
             // border-radius: 7.5px;
-            background: rgba($primary-button, 0.1);
+            @include color($primary-color);
             transition: background 0.2s ease-out;
             cursor: pointer;
 
@@ -406,12 +406,12 @@
             }
             
             i {
-                color: $secondary-button;
+                color: $primary-button;
             }
 
             p {
                 display: block;
-                @include font($primary-font, 0.8rem, 700, $secondary-button);
+                @include font(0.8rem, 700);
             }
 
         }

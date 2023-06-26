@@ -8,20 +8,20 @@
     transition: all $speed $transition;
 }
 
-@mixin font($font-family, $font-size, $weight, $color: $primary-color) {
-    font-family: $font-family;
+
+@mixin font($font-size, $weight, $font-family: $primary-font) {
     font-size: $font-size;
     font-weight: $weight;
-    color: $color;
+    font-family: $font-family;
 }
 
 @mixin form-button($border-radius, $btn-color) {
     border: none;
     border-radius: $border-radius;
     text-transform: uppercase;
-    background: $btn-color;
+    @include color($btn-color);
     box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-    @include font($primary-font, 1em, 700, $secondary-color);
+    @include font(1em, 700);
 }
 
 @mixin focused($parent, $top: 15%, $left: 5%) {
@@ -42,4 +42,18 @@
         border: 2px solid $primary-button;
     }
 
+}
+
+@mixin color($bg) {
+    background: $bg;
+    color: text-color($bg);
+}
+
+@function text-color($background) {
+    @if (lightness($background) > 50) {
+        @return black;
+    }
+    @else {
+        @return white;
+    }
 }

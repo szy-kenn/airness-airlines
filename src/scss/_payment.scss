@@ -15,7 +15,7 @@
 
         &__text {
             padding: 1rem;
-            @include font($primary-font, 1rem, 700, $primary-color);
+            @include font(1rem, 700);
             // border: 1px solid red;
         }
     }

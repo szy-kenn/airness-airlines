@@ -24,7 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: $secondary-color;
+            @include color($secondary-color);
             position: relative;
             width: 100%;
             height: 2rem;
@@ -32,9 +32,8 @@
             border-bottom: 1px solid $lighter-primary-button;
 
             p {
-                font-size: 1rem;
-                font-weight: 500;
-                color: rgba($primary-color, 0.7);
+                @include font(1rem, 500);
+                color: rgba($text-color, 0.7);
             }
 
             span {
@@ -42,9 +41,10 @@
                 width: 55px;
                 padding: 0.4rem 0.4rem;
                 margin-right: 10px;
-                background: $secondary-button;
+                @include color($primary-color);
+                // background: $secondary-button;
                 border-radius: 5px;
-                @include font($primary-font, 0.9rem, 700, $secondary-color);
+                @include font(0.9rem, 700);
             }
 
             &:hover {
@@ -59,7 +59,7 @@
     }
 
     div {
-        @include font($primary-font, 1rem, 400, $primary-button);
+        @include font(1rem, 400);
         // background-color: black;
         width: 100%;
 
@@ -70,7 +70,7 @@
             // border: 1px solid red;
             border: none;
             text-align: left;
-            @include font($primary-font, 1rem, 400, $primary-color);
+            @include font(1rem, 400);
             z-index: 3;
             padding: 0;
         }
@@ -81,7 +81,7 @@
         
         .flight-location-input__container {
             // padding: 0 2rem 0 0;
-            border: 1px solid $primary-button;
+            border: 2px solid $primary-color;
             border-radius: 10px 0 0 10px;
             // padding: 0 0 0 2rem;
             width: 100%;
@@ -116,7 +116,7 @@
             &::after {
                 content: "This field is required";
                 position: absolute;
-                @include font($primary-font, 0.8rem, 300, $invalid-color);
+                @include font(0.8rem, 300);
                 top: 100%;
                 bottom: 0;
                 left: 5%;
@@ -142,7 +142,7 @@
 
         .flight-location-input__container {
             // padding: 0 0 0 2rem;
-            border: 1px solid $primary-button;
+            border: 2px solid $primary-color;
             border-radius: 0 10px 10px 0;
             width: 100%;
         }
@@ -177,7 +177,7 @@
             &::after {
                 content: 'This field is required';
                 position: absolute;
-                @include font($primary-font, 0.8rem, 300, $invalid-color);
+                @include font(0.8rem, 300);
                 top: 100%;
                 bottom: 0;
                 left: 5%;
@@ -200,13 +200,13 @@
     padding: 1.25em 0;
     margin: 0;
     z-index: 1;
-    @include font($primary-font, 0.7rem, 300, $primary-button);
+    @include font(0.7rem, 300);
     &.focused {
         @include focused('.flight-date-form');
     }
     
     #{&}__container {
-        border: 1px solid $primary-button;
+        border: 2px solid $primary-color;
         width: 100%;
         
         &__input {
@@ -218,7 +218,7 @@
             padding: 0;
             // border: 1px solid red;
             text-align: left;
-            @include font($primary-font, 1rem, 400, $primary-color);
+            @include font(1rem, 400);
         }
     }
 
