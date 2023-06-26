@@ -15,6 +15,25 @@ setInterval(()=>{
     time.innerHTML=d.toLocaleTimeString();
 },  1000)
 
+let navbar = document.querySelector('.navbar');
+let homeBody = document.querySelector('.home-body');
+
+const options = {
+
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    })
+}, options)
+
+observer.observe(homeBody);
+
 /******************
  * PASSENGER FORM *
  ******************/

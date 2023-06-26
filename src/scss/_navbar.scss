@@ -14,75 +14,104 @@
 }
 
 .navbar{
-    background-color: #163976;
-    height: 100px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    // background-color: #163976;
+    height: clamp(50px, 10vw, 100px);
+    width: calc(100vw - 10rem);
+    @include flex;
+    padding-inline: 5rem;
+    transition: background 0.5s ease;
+
+    &.scrolled {
+        transition: background 0.2s ease;
+        background-color: rgba($primary-button, 1);
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    }
 }
 
 .navdiv{
- 
+    @include flex(space-between);
     height: 95px;
+    width: 100%;
 }
 
 
 .logo-navbar{
-    position: absolute;
-    margin-left: 70px;
-    align-items: center;
+    // position: absolute;
+    // margin-left: 70px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: auto auto;
+    gap: 1rem;
+
     img {
         cursor: pointer;
     }
 }
 
-
-.menu-navbar{
-    margin-left: 169px;
-    width: 100%;
-    height:100%;
-}
-
 .airline-name-div-navbar{
-    position: absolute;
-
-    width: 200px;
+    // position: absolute;
     height: 80px;
     text-align: left;
-    margin-top: 16px;
+    @include flex(center);
+    flex-direction: column;
+    // width: 180px;
+    // margin-top: 16px;
 
 }
 
 .airline-name-navbar{
-    line-height:0.5;
-    margin-top: 5px;
-    font-family: citadel;
+    line-height:0.75;
+    // margin-top: 5px;
+    font-family: $primary-font;
+    // font-family: citadel;
     color: white;
-    font-size: 50px;
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-bottom: 2em;
-}
-.airlines-name-navbar{
-    margin-top: 0px;
-    font-family: playfair;
-    color: white;
-    font-size: 20px;
-    margin-top: 5px;
-    font-weight: lighter;
-    line-height: 0;
-   
+    font-weight: bold;
+    font-style: italic;
+    font-size: 26px;
+    text-transform: uppercase;
+    // margin-top: 5px;
+    // margin-left: 5px;
+    // margin-bottom: 2em;
 }
 
+.airlines-name-navbar{
+    font-family: $primary-font;
+    // font-family: playfair;
+    color: white;
+    font-size: 18px;
+    // margin-top: 5px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 0;
+}
+
+.menu-navbar{
+    // margin-left: 169px;
+    // border: 1px solid red;
+    position: relative;
+}
+
+
 .buttons-div-navbar{
-    right: 60px;
-    position: absolute;
-    height: 94px;
-    align-items: baseline;
-    display: flex;
-    justify-content: space-between;
+    // right: 60px;
+    // position: absolute;
+    // height: 94px;
+    // align-items: baseline;
+    display: grid;
+    gap: 2.5rem;
+    grid-auto-flow: column;
+    grid-auto-columns: auto auto;
+    position: relative;
 
 }
 
 .about-button-navbar{
-    margin: 28px;
+    position: relative;
+    font-size: 1rem;
+    // margin: 28px;
     appearance: none;
     background: none;
     border: none;
@@ -90,23 +119,81 @@
     cursor: pointer;
     transition: 0.5s;
     font-family: $primary-font;
-    padding:10px ;
-    padding-left:38px;
-    padding-right: 38px;
+    // padding: 10px;
+    // padding-left:38px;
+    // padding-right: 38px;
     border-radius: 8px;
-     color:#212121;
-     font-weight: 600;
+    color:#212121;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    // color:rgb(217, 171, 53);
+    // border: 3px solid  rgb(217, 171, 53);
 
-    color:rgb(217, 171, 53);
-    border: 3px solid  rgb(217, 171, 53);
+    ::before {
+        content: "";
+        position: absolute;
+        top: 150%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background-color: white;
+        transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &:hover {
+
+        ::before {
+            transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+            width: 100%;
+        }
+
+    }
 }
 
-.about-button-navbar:hover{
+.home-button-navbar {
+    position: relative;
+    font-size: 1rem;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: $primary-font;
+    border-radius: 8px;
+    font-weight: 600;
     color: white;
-    background-color: rgb(217, 171, 53);;
+    text-transform: uppercase;
+
+    ::before {
+        content: "";
+        position: absolute;
+        top: 150%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background-color: white;
+        transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &:hover {
+
+        ::before {
+            transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+            width: 100%;
+        }
+
+    }
 }
 
 .contact-button-navbar{
+    position: relative;
+    font-size: 1rem;
     appearance: none;
     background: none;
     border: none;
@@ -114,24 +201,42 @@
     cursor: pointer;
     transition: 0.5s;
     font-family: $primary-font;
-    padding:10px ;
-    padding-left:27px;
-    padding-right: 23px;
+    // padding:10px ;
+    // padding-left:27px;
+    // padding-right: 23px;
     border-radius: 8px;
-     color:#212121;
-     font-weight: 600;
-     color:rgb(217, 171, 53);
-    border: 3px solid  rgb(217, 171, 53);
-}
-
-
-
-.contact-button-navbar:hover{
+    font-weight: 600;
     color: white;
-    background-color: rgb(217, 171, 53);;
+    text-transform: uppercase;
+    //  color:rgb(217, 171, 53);
+    // border: 3px solid  rgb(217, 171, 53);
+
+    ::before {
+        content: "";
+        position: absolute;
+        top: 150%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background-color: white;
+        transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    &:hover {
+
+        ::before {
+            transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+            width: 100%;
+        }
+
+    }
 }
+
 
 .time-div-navbar{
+    display: none;
     position: absolute;
     height:96px;
     width:150px;
@@ -150,6 +255,7 @@
 }
 
 .date-div-navbar{
+    display: none;
     position: absolute;
     height:96px;
     width:150px;

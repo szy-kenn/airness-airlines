@@ -1,36 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Airness Airlines{% endblock %}
 
-{% include 'blocks/navbar.html' %}
-
 {% block content %}
 
-<div class="main">
-
-    <div>
-        <h1>
-           Welcome your AIRNESS
-        </h1>
-    </div>
-
-    <div class="img-slideshow">
-        <img src="{{ url_for('static', filename='img/paulo_jayr.jpg') }}" alt="Flight Attendant" id="img-slideshow__1">
-    </div>
-
-    <div class="form-container">
-        <form method="POST" id="form-pg-1">
-            {% include 'blocks/flight-form.html' %}
-            {% include 'blocks/passenger-form.html' %}
-            <div>
-                <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
+<div class="main-wrapper">
+    {% include 'blocks/navbar.html' %}
+    <div class="home-welcome-section">
+        <div class="welcome-text-container">
+    
+            <div class="welcome-heading">
+                <p>Welcome,</p>
+                <p>your Airness.</p>
             </div>
-        </form>
+    
+            <div class="welcome-subheading">
+                <p>Experience flying with great nobility</p>
+                <p>and royalty here in the castle in the sky.</p>
+            </div>
+    
+            <button class="form-btn welcome-button" onclick="location.href='#home-body'">Book Now</button>
+    
+        </div>
     </div>
-
-    <div class="body">
-        
+    <section></section>
+    <div class="home-body" id="home-body">
+        <div class="form-container">
+            <form method="POST" id="form-pg-1">
+                {% include 'blocks/flight-form.html' %}
+                {% include 'blocks/passenger-form.html' %}
+                <div>
+                    <button type="submit" class="form-btn" id="continue-btn-pg-1">Continue</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+    <!-- <div class="img-slideshow">
+        <img src="{{ url_for('static', filename='img/paulo_jayr.jpg') }}" alt="Flight Attendant" id="img-slideshow__1">
+    </div> -->
+
+
+
 {% endblock %}
 {% block script %}
 <script type="text/javascript" src="{{ url_for('static', filename='js/index.js')}}"></script>

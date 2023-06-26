@@ -1,7 +1,7 @@
 $width: 65%;
 
 body {
-    background: $booking-process-bg-color;
+    background: $primary-color;
     overflow-x: hidden;
 }
 
@@ -80,7 +80,7 @@ body {
         width: 100%;
         height: 11%;
         padding: 0.5rem 0;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
         // border-radius: 5px;
         border: 1px solid rgba(129, 129, 129, 0.2);
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
