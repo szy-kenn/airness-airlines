@@ -2,6 +2,7 @@
 html {
   scroll-behavior: smooth !important;
   padding: 0;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -23,8 +24,8 @@ a,
 }
 
 input::-webkit-calendar-picker-indicator {
-  font-size: 20px;
-  padding: 0.5rem;
+  font-size: 18px;
+  padding-inline: 1rem;
 }
 
 *::-webkit-scrollbar {
@@ -52,48 +53,35 @@ input::-webkit-calendar-picker-indicator {
   font-size: 1rem;
   font-weight: bold;
   font-family: "Montserrat";
-  display: inline;
+  display: grid;
   position: relative;
+  align-self: stretch;
+  gap: 0.5rem;
+  padding-inline: 2rem;
+  padding-bottom: 0.5rem;
 }
 .passenger-form::-webkit-inner-spin-button, .passenger-form::-webkit-outer-spin-button {
   margin: 0;
   padding: 0;
 }
-.passenger-form h3 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  line-height: 2rem;
-  letter-spacing: -1;
-}
 .passenger-form__container {
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   align-items: stretch;
-  height: auto;
-  padding: 0.25rem 1rem;
-}
-.passenger-form__container i {
-  padding: 0.25rem 1rem;
-  color: #E4EEFD;
-  display: inline-block;
-  transform: scale(1.25);
-  cursor: pointer;
 }
 .passenger-form__container .age-group-label {
-  font-size: 1rem;
+  align-self: center;
+  font-size: 0.75rem;
   font-weight: 500;
   font-family: "Montserrat";
   letter-spacing: -1;
-  align-self: center;
-  text-align: left;
-  width: 75px;
-  display: inline-block;
+  flex-grow: 1;
 }
 .passenger-form__container__passenger-count {
+  color: #0c2849;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   font-family: "Montserrat";
   padding-left: 0.8rem;
   text-align: center;
@@ -110,19 +98,17 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
   background: white;
   color: black;
-  border: 1px solid #E4EEFD;
-  flex: 1 1 auto;
   align-self: stretch;
 }
 .passenger-form__container__btn-group {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 50%;
 }
 .passenger-form__container__btn {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 30px;
   text-align: center;
   cursor: pointer;
   font-size: 1.25rem;
@@ -137,15 +123,35 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.1s ease-in-out;
 }
 .passenger-form__container__airline-class {
-  transform: translateY(4.9rem);
+  border: 2px solid #E4EEFD;
+  padding: 0;
+}
+.passenger-form__container__airline-class .airline-class__group-choices {
+  top: 100%;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  border: 2px solid #E4EEFD;
+}
+.passenger-form__container__airline-class .airline-class--choices {
+  position: relative;
+  width: 100%;
+}
+.passenger-form__container__airline-class .airline-class--choices:hover {
+  background: #0c2849;
+  color: white;
 }
 .passenger-form__container__airline-class .airline-class--selected {
-  width: 7rem;
-  padding: 0.6rem 0.6rem;
-  text-align: center;
+  margin: 0;
+  padding-left: 10%;
+  text-align: left;
 }
 .passenger-form__container__airline-class .airline-class--selected:focus {
-  outline: 1px solid #0c2849;
+  outline: 2px solid #0c2849;
 }
 .passenger-form__container__airline-class p {
   text-align: center;
@@ -154,23 +160,28 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flight-location-form {
-  flex: 1;
+  flex-grow: 1;
+  align-self: stretch;
   position: relative;
   z-index: 2;
   display: grid;
-  padding: 2rem;
-  grid-auto-flow: column;
-  grid-auto-columns: 3.25fr 3.25fr 2.25fr 1.25fr;
+  grid-template-rows: repeat(4, auto);
+  place-content: stretch;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  gap: 1em;
 }
 .flight-location-form .flight-location-form__container {
   display: block;
   position: absolute;
+  top: 100%;
   background: white;
   border-radius: 10px;
   max-height: 20rem;
-  width: 200%;
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  z-index: 999;
 }
 .flight-location-form .flight-location-form__container__options {
   display: flex;
@@ -180,25 +191,26 @@ input::-webkit-calendar-picker-indicator {
   color: black;
   position: relative;
   width: 100%;
-  height: 2rem;
+  height: 1rem;
   padding: 1.25rem 0rem;
-  border-bottom: 1px solid #b399b0;
+  border-radius: 0;
+  border-bottom: 1px solid #E4EEFD;
 }
 .flight-location-form .flight-location-form__container__options p {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
   font-family: "Montserrat";
   color: rgba(0, 0, 0, 0.7);
 }
 .flight-location-form .flight-location-form__container__options span {
   text-align: center;
-  width: 55px;
-  padding: 0.4rem 0.4rem;
+  width: 35px;
+  padding: 0.25rem 0.25rem;
   margin-right: 10px;
   background: #E4EEFD;
   color: black;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 700;
   font-family: "Montserrat";
 }
@@ -209,77 +221,62 @@ input::-webkit-calendar-picker-indicator {
   color: white;
 }
 .flight-location-form div {
+  background-color: white;
+  border-radius: 10px;
+  flex-grow: 1;
+  align-self: stretch;
+  position: relative;
   font-size: 1rem;
   font-weight: 400;
   font-family: "Montserrat";
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 .flight-location-form div input {
-  width: 85%;
-  height: 4rem;
+  width: 100%;
+  position: relative;
+  margin-left: 10%;
+  align-self: stretch;
+  background-color: transparent;
   outline: none;
   border: none;
   text-align: left;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   font-family: "Montserrat";
   z-index: 3;
-  padding: 0;
-}
-.flight-location-form #from {
-  border-radius: 10px 0 0 10px;
 }
 .flight-location-form #from .flight-location-input__container {
   border: 2px solid #E4EEFD;
-  border-radius: 10px 0 0 10px;
-  width: 100%;
 }
-.flight-location-form #from input {
-  border-radius: 10px 0 0 10px;
-  margin-left: 5%;
-  margin-right: 11%;
-}
-.flight-location-form #from::before {
+.flight-location-form #from::after {
   content: "From";
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
   top: 35%;
   bottom: 0;
-  left: 5%;
+  left: 10%;
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #from.focused::before {
+.flight-location-form #from.focused::after {
   position: absolute;
   pointer-events: none;
   font-size: 0.7rem;
   font-weight: 300;
   top: 15%;
   bottom: 0;
-  left: 5%;
+  left: 10%;
   right: 0;
   transition: all 0.15s ease-out;
 }
 .flight-location-form #from.focused > div {
-  border: 2px solid #0c2849;
+  border: 2px solid #E4EEFD;
 }
 .flight-location-form #from.invalid::before {
   color: rgb(245, 67, 67);
-}
-.flight-location-form #from.invalid::after {
-  content: "This field is required";
-  position: absolute;
-  font-size: 0.8rem;
-  font-weight: 300;
-  font-family: "Montserrat";
-  top: 100%;
-  bottom: 0;
-  left: 5%;
-  right: 0;
-  z-index: -1;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
 }
 .flight-location-form #from.invalid .flight-location-input__container {
   border: 2px solid rgb(245, 67, 67);
@@ -287,79 +284,49 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form #to {
   border-radius: 0 10px 10px 0;
 }
-.flight-location-form #to .flight-location-form__container {
-  left: -100%;
-}
 .flight-location-form #to .flight-location-input__container {
   border: 2px solid #E4EEFD;
-  width: 100%;
 }
 .flight-location-form #to input {
   border-radius: 0 20px 10px 0;
-  margin-left: 11%;
-  margin-right: 5%;
 }
-.flight-location-form #to::before {
+.flight-location-form #to::after {
   content: "To";
   position: absolute;
   pointer-events: none;
   font-size: 1rem;
   top: 35%;
   bottom: 0;
-  left: 2rem;
+  left: 10%;
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #to.focused::before {
+.flight-location-form #to.focused::after {
   position: absolute;
   pointer-events: none;
   font-size: 0.7rem;
   font-weight: 300;
   top: 15%;
   bottom: 0;
-  left: 2rem;
+  left: 10%;
   right: 0;
   transition: all 0.15s ease-out;
 }
 .flight-location-form #to.focused > div {
-  border: 2px solid #0c2849;
+  border: 2px solid #E4EEFD;
 }
 .flight-location-form #to.invalid::before {
   color: rgb(245, 67, 67);
-}
-.flight-location-form #to.invalid::after {
-  content: "This field is required";
-  position: absolute;
-  font-size: 0.8rem;
-  font-weight: 300;
-  font-family: "Montserrat";
-  top: 100%;
-  bottom: 0;
-  left: 5%;
-  right: 0;
-  z-index: -1;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
 }
 .flight-location-form #to.invalid .flight-location-input__container {
   border: 2px solid rgb(245, 67, 67);
 }
 
-.home-page-search-flight {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  position: relative;
-  grid-column: 4;
-}
-.home-page-search-flight button {
-  border-radius: 0 10px 10px 0;
-  flex-grow: 1;
-}
-
 .flight-date-form__container {
   border: 2px solid #E4EEFD;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .flight-date-form__container::before {
   font-size: 0.7rem;
@@ -375,9 +342,6 @@ input::-webkit-calendar-picker-indicator {
   transition: all 0.15s ease-out;
 }
 .flight-date-form__container__input {
-  width: 92.5%;
-  height: 4rem;
-  margin-left: 5%;
   outline: none;
   border: none;
   padding: 0;
@@ -403,25 +367,29 @@ input::-webkit-calendar-picker-indicator {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: clamp(50px, 10vw, 100px);
+  height: 64px;
   width: calc(100vw - 10rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 5rem;
   transition: background 0.5s ease;
+  opacity: 1;
 }
 .navbar.scrolled {
   transition: background 0.2s ease;
   background-color: #0c2849;
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.navbar.hidden > .navdiv {
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .navdiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 95px;
+  height: 64px;
   width: 100%;
 }
 
@@ -429,6 +397,7 @@ input::-webkit-calendar-picker-indicator {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: auto auto;
+  align-items: center;
   gap: 1rem;
 }
 .logo-navbar img {
@@ -436,7 +405,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .airline-name-div-navbar {
-  height: 80px;
+  height: 64px;
   text-align: left;
   display: flex;
   justify-content: center;
@@ -450,14 +419,14 @@ input::-webkit-calendar-picker-indicator {
   color: white;
   font-weight: bold;
   font-style: italic;
-  font-size: 26px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
 .airlines-name-navbar {
   font-family: "Montserrat";
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   font-style: italic;
   line-height: 0;
@@ -477,7 +446,7 @@ input::-webkit-calendar-picker-indicator {
 
 .about-button-navbar {
   position: relative;
-  font-size: 1rem;
+  font-size: 0.8rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -512,7 +481,7 @@ input::-webkit-calendar-picker-indicator {
 
 .home-button-navbar {
   position: relative;
-  font-size: 1rem;
+  font-size: 0.8rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -546,7 +515,7 @@ input::-webkit-calendar-picker-indicator {
 
 .contact-button-navbar {
   position: relative;
-  font-size: 1rem;
+  font-size: 0.8rem;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -619,6 +588,7 @@ input::-webkit-calendar-picker-indicator {
 
 body {
   background: #E4EEFD;
+  overflow-x: hidden;
 }
 
 .flight-input-details {
@@ -2168,22 +2138,24 @@ body {
   position: relative;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
   margin: 0;
   flex-direction: column;
+  width: 100dvw;
 }
 
 .home-welcome-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: min-content auto;
   position: relative;
-  top: -100px;
+  top: -64px;
   width: 100vw;
   height: 100vh;
   background-image: url("../img/airline-main-2.png");
   background-size: cover;
-  margin-bottom: -100px;
 }
 .home-welcome-section .welcome-text-container {
   display: grid;
@@ -2241,37 +2213,95 @@ body {
 }
 
 .home-body {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
+  height: calc(100vh - 64px);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 24% 76%;
   width: 100dvw;
-  height: -moz-fit-content;
-  height: fit-content;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background: #E4EEFD;
   color: black;
-  padding: 1rem 5rem;
+}
+
+#form-pg-1 {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .form-container {
-  flex: 0.9;
+  width: 100%;
   position: relative;
-  padding: 2rem 2rem;
   border-radius: 0;
   box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
   background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
 }
-@media screen and (max-width: 767px) {
-  .form-container {
-    height: 100%;
-  }
+.form-container .vector-airplane {
+  position: absolute;
+  top: 0%;
+  right: -20%;
+  bottom: 10%;
+  display: flex;
+  opacity: 0.3;
+}
+.form-container .form-heading {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  color: #0c2849;
+  letter-spacing: -0.03em;
+  padding-block: 1rem 0.5rem;
+}
+.form-container .one-way-container {
+  position: relative;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: 2rem;
+  padding-block: 0.5rem;
+  gap: 1rem;
+}
+.form-container .one-way-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.35rem 0.2rem;
+  border-radius: 10px;
+  background: #0c2849;
+  color: white;
+  cursor: pointer;
+}
+.form-container .one-way-container div p {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.form-container .one-way-container .round-trip {
+  background-color: white;
+  color: rgba(12, 40, 73, 0.4);
+  border: 2px solid #E4EEFD;
+  cursor: not-allowed;
 }
 .form-container .flight-passenger-class-info-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 2rem;
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-family: "Montserrat";
 }
@@ -2290,6 +2320,36 @@ body {
 }
 .form-container .flight-passenger-class-info-container .info-container .info-item i {
   font-size: 1.5rem;
+}
+
+.home-page-search-flight {
+  align-self: stretch;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0c2849;
+  color: white;
+  position: relative;
+}
+.home-page-search-flight button {
+  position: relative;
+  border: none;
+  background: #0c2849;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  letter-spacing: -0.01rem;
+  text-transform: uppercase;
+}
+
+#globe-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  display: flex;
 }
 
 .form-btn {
@@ -2320,7 +2380,6 @@ body {
   font-size: 1em;
   font-weight: 700;
   font-family: "Montserrat";
-  position: absolute;
   z-index: 4;
   top: 1.05rem;
   left: calc(50% - 1rem);
@@ -2419,18 +2478,11 @@ body {
     left: -50%;
   }
   .form-container {
-    position: absolute;
-    top: 75vh;
-    left: calc(12.5% - 2rem);
-    right: 0;
-    bottom: 0;
-    display: inline-block;
-    width: 75%;
-    height: 100%;
-    padding: 1rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-    background: white;
-    z-index: 2;
+    width: 100%;
+  }
+  .home-body {
+    width: 100%;
+    grid-auto-columns: 100%;
+    grid-auto-flow: row;
   }
 }/*# sourceMappingURL=main.css.map */

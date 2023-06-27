@@ -8,8 +8,13 @@
 .passenger-form {
 
     @include font(1rem, bold);
-    display: inline;
+    // display: inline;
+    display: grid;
     position: relative;
+    align-self: stretch;
+    gap: 0.5rem;
+    padding-inline: 2rem;
+    padding-bottom: 0.5rem;
 
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
@@ -18,40 +23,22 @@
         padding: 0;
     }
 
-    h3 {
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        line-height: 2rem;
-        letter-spacing: -1;
-    }
-
     &__container {
+        // border: 1px solid red;
         position: relative;
-        @include flex(space-between);
-        align-items: stretch;
-        height: auto;
-        // border: 1px solid black;
-        padding: 0.25rem 1rem;
+        @include flex(space-between, stretch);
 
-        i {
-            padding: 0.25rem 1rem;
-            color: $primary-color;
-            display: inline-block;
-            transform: scale(1.25);
-            cursor: pointer;
-        }
 
         .age-group-label {
-            @include font(1rem, 500);
-            letter-spacing: -1;
             align-self: center;
-            text-align: left;
-            width: clamp(50px, 75px, 100px);
-            display: inline-block;
+            @include font(0.75rem, 500);
+            letter-spacing: -1;
+            flex-grow: 1;
         }
 
         &__passenger-count {
-            @include font(1rem, 500);
+            color: $primary-button;
+            @include font(1rem, 700);
             padding-left: 0.8rem;
             text-align: center;
             background-color: transparent;
@@ -68,8 +55,8 @@
         .passenger-count__container {
             @include flex(center);
             @include color($secondary-color);
-            border: 1px solid $primary-color;
-            flex: 1 1 auto;
+            // border: 1px solid $primary-color;
+            // flex: 1 1 auto;
             align-self: stretch;
         }
 
@@ -77,13 +64,13 @@
             @include flex(space-evenly);
             // border: 1px solid red;
             // @include color($primary-color);
-            width: 50%;
         }
 
         &__btn {
             // margin: 0 clamp(0.25rem, 2vw, 1.25rem);
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 30px;
             text-align: center;
             cursor: pointer;
             @include font(1.25rem, 400);
@@ -98,19 +85,39 @@
         }
         
         &__airline-class {
-            
-            transform: translateY(4.9rem);
 
-            .airline-class--selected {
-                width: 7rem;
-                padding: 0.6rem 0.6rem;
-                text-align: center;
+            border: 2px solid $primary-color;
+            padding: 0;
 
-                &:focus {
-                    outline: 1px solid $primary-button;
+            .airline-class__group-choices {
+                top: 100%;
+                width: 100%;
+                z-index: 99;
+                @include flex(space-around);
+                flex-direction: column;
+                position: absolute;
+                border: 2px solid $primary-color;
+            }
+
+            .airline-class--choices {
+                position: relative;
+                width: 100%;
+
+                &:hover {
+                    @include color($primary-button);
                 }
             }
 
+            .airline-class--selected {
+                margin: 0;
+                padding-left: 10%;
+                text-align: left;
+
+                &:focus {
+                    outline: 2px solid $primary-button;
+                }
+            }
+        
             p {
                 text-align: center;
                 padding: 1rem;

@@ -18,22 +18,28 @@
     top: 0;
     z-index: 100;
     // background-color: #163976;
-    height: clamp(50px, 10vw, 100px);
+    height: 64px;
     width: calc(100vw - 10rem);
     @include flex;
     padding-inline: 5rem;
     transition: background 0.5s ease;
+    opacity: 1;
 
     &.scrolled {
         transition: background 0.2s ease;
         background-color: rgba($primary-button, 1);
-        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+        // box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    &.hidden > .navdiv {
+        opacity: 0;
+        transition: opacity .5s ease;
     }
 }
 
 .navdiv{
     @include flex(space-between);
-    height: 95px;
+    height: 64px;
     width: 100%;
 }
 
@@ -44,6 +50,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto auto;
+    align-items: center;
     gap: 1rem;
 
     img {
@@ -53,7 +60,7 @@
 
 .airline-name-div-navbar{
     // position: absolute;
-    height: 80px;
+    height: 64px;
     text-align: left;
     @include flex(center);
     flex-direction: column;
@@ -70,7 +77,7 @@
     color: white;
     font-weight: bold;
     font-style: italic;
-    font-size: 26px;
+    font-size: 20px;
     text-transform: uppercase;
     // margin-top: 5px;
     // margin-left: 5px;
@@ -81,7 +88,7 @@
     font-family: $primary-font;
     // font-family: playfair;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
     // margin-top: 5px;
     font-weight: bold;
     font-style: italic;
@@ -110,7 +117,7 @@
 
 .about-button-navbar{
     position: relative;
-    font-size: 1rem;
+    font-size: 0.8rem;
     // margin: 28px;
     appearance: none;
     background: none;
@@ -155,7 +162,7 @@
 
 .home-button-navbar {
     position: relative;
-    font-size: 1rem;
+    font-size: 0.8rem;
     appearance: none;
     background: none;
     border: none;
@@ -193,7 +200,7 @@
 
 .contact-button-navbar{
     position: relative;
-    font-size: 1rem;
+    font-size: 0.8rem;
     appearance: none;
     background: none;
     border: none;

@@ -1,25 +1,39 @@
 // FLIGHT FORM IN THE HOME PAGE
 .flight-location-form {
-    flex: 1;
+    flex-grow: 1;
+    align-self: stretch;
     position: relative;
     z-index: 2;
     // @include flex(space-around);
     display: grid;
-    padding: 2rem;
-    grid-auto-flow: column;
-    grid-auto-columns: 3.25fr 3.25fr 2.25fr 1.25fr;
+    // grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    place-content: stretch;
+    // display: flex;
+    // flex-direction: column;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    gap: 1em;
+    // border: 1px solid red;
+    // gap: 1rem;
+
+    * {
+        // border: 1px solid red;
+    }
 
     .flight-location-form__container {
 
         display: block;
         position: absolute;
+        top: 100%;
         background: $secondary-color;
         // border: 1px solid $primary-button;
         border-radius: 10px;
         max-height: 20rem;
-        width: 200%;
+        width: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
+        z-index: 999;
 
         &__options {
             display: flex;
@@ -28,24 +42,25 @@
             @include color($secondary-color);
             position: relative;
             width: 100%;
-            height: 2rem;
+            height: 1rem;
             padding: 1.25rem 0rem;
-            border-bottom: 1px solid $lighter-primary-button;
+            border-radius: 0;
+            border-bottom: 1px solid $primary-color;
 
             p {
-                @include font(1rem, 500);
+                @include font(0.85rem, 500);
                 color: rgba($text-color, 0.7);
             }
 
             span {
                 text-align: center;
-                width: 55px;
-                padding: 0.4rem 0.4rem;
+                width: 35px;
+                padding: 0.25rem 0.25rem;
                 margin-right: 10px;
                 @include color($primary-color);
                 // background: $secondary-button;
                 border-radius: 5px;
-                @include font(0.9rem, 700);
+                @include font(0.75rem, 700);
             }
 
             &:hover {
@@ -60,48 +75,46 @@
     }
 
     div {
+        background-color: white;
+        border-radius: 10px;
+        flex-grow: 1;
+        align-self: stretch;
+        position: relative;
         @include font(1rem, 400);
-        // background-color: black;
-        width: 100%;
+        @include flex(center, stretch);
 
         input {
-            width: 85%;
-            height: 4rem;
+            width: 100%;
+            position: relative;
+            margin-left: 10%;
+            align-self: stretch;
+            background-color: transparent;
             outline: none;
-            // border: 1px solid red;
             border: none;
             text-align: left;
-            @include font(1rem, 400);
+            @include font(1rem, 700);
             z-index: 3;
-            padding: 0;
         }
     }
 
     #from {
-        border-radius: 10px 0 0 10px;
+        // border: 1px solid red;
+        // border-radius: 10px 0 0 10px;
         
         .flight-location-input__container {
-            // padding: 0 2rem 0 0;
             border: 2px solid $primary-color;
-            border-radius: 10px 0 0 10px;
-            // padding: 0 0 0 2rem;
-            width: 100%;
+            // border-radius: 10px 0 0 10px;
+            // width: 100%;
         }
 
-        input {
-            border-radius: 10px 0 0 10px;
-            margin-left: 5%;
-            margin-right: 11%;
-        }
-
-        &::before {
+        &::after {
             content: 'From';
             position: absolute;
             pointer-events: none;
             font-size: 1rem;
             top: 35%;
             bottom: 0;
-            left: 5%;
+            left: 10%;
             right: 0;
             @include transition-ease(0.15s, ease-out);
         }
@@ -114,18 +127,18 @@
             &::before {
                 color: $invalid-color;
             }
-            &::after {
-                content: "This field is required";
-                position: absolute;
-                @include font(0.8rem, 300);
-                top: 100%;
-                bottom: 0;
-                left: 5%;
-                right: 0;
-                z-index: -1;
-                padding-top: 0.3rem;
-                padding-bottom: 0.3rem;
-            }
+            // &::after {
+            //     content: "This field is required";
+            //     position: absolute;
+            //     @include font(0.8rem, 300);
+            //     top: 62.5%;
+            //     bottom: 0;
+            //     left: 10%;
+            //     right: 0;
+            //     z-index: -1;
+            //     padding-top: 0.3rem;
+            //     padding-bottom: 0.3rem;
+            // }
             
             .flight-location-input__container {
                 border: 2px solid $invalid-color;
@@ -134,40 +147,34 @@
     }
 
     #to {
-
         border-radius: 0 10px 10px 0;
-
-        .flight-location-form__container { 
-            left: -100%;
-        }
 
         .flight-location-input__container {
             // padding: 0 0 0 2rem;
             border: 2px solid $primary-color;
             // border-radius: 0 10px 10px 0;
-            width: 100%;
         }
 
         input {       
             border-radius: 0 20px 10px 0;
-            margin-left: 11%;
-            margin-right: 5%;
+            // margin-left: 11%;
+            // margin-right: 5%;
         }
 
-        &::before {
+        &::after {
             content: 'To';
             position: absolute;
             pointer-events: none;
             font-size: 1rem;
             top: 35%;
             bottom: 0;
-            left: 2rem;
+            left: 10%;
             right: 0;
             @include transition-ease(0.15s, ease-out);
         }
 
         &.focused {
-            @include focused(&, $left: 2rem);
+            @include focused(&);
         }
 
         &.invalid {
@@ -175,18 +182,18 @@
                 color: $invalid-color;
             }
 
-            &::after {
-                content: 'This field is required';
-                position: absolute;
-                @include font(0.8rem, 300);
-                top: 100%;
-                bottom: 0;
-                left: 5%;
-                right: 0;
-                z-index: -1;
-                padding-top: 0.3rem;
-                padding-bottom: 0.3rem;
-            }
+            // &::after {
+            //     content: 'This field is required';
+            //     position: absolute;
+            //     @include font(0.8rem, 300);
+            //     top: 62.5%;
+            //     bottom: 0;
+            //     left: 10%;
+            //     right: 0;
+            //     z-index: -1;
+            //     padding-top: 0.3rem;
+            //     padding-bottom: 0.3rem;
+            // }
 
             .flight-location-input__container {
                 border: 2px solid $invalid-color;
@@ -195,20 +202,11 @@
     }
 }
 
-.home-page-search-flight {
-    @include flex($align-items: stretch);
-    position: relative;
-    grid-column: 4;
-
-    button {
-        border-radius: 0 10px 10px 0;
-        flex-grow: 1;
-    }
-}
     
 .flight-date-form__container {
     border: 2px solid $primary-color;
-    width: 100%;
+    // width: 100%;
+    @include flex(center);
     
     &::before {
         @include font(0.7rem, 300);
@@ -223,9 +221,11 @@
     }
 
     &__input {
-        width: 92.5%;
-        height: 4rem;
-        margin-left: 5%;
+        // align-self: stretch;
+        // flex-grow: 1;
+        // width: 92.5%;
+        // height: 4rem;
+        // margin-left: 5%;
         outline: none;
         border: none;
         padding: 0;

@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth !important;
     padding: 0;
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -22,8 +23,8 @@ a,
 }
 
 input::-webkit-calendar-picker-indicator {
-    font-size: 20px;
-    padding: 0.5rem;
+    font-size: 18px;
+    padding-inline: 1rem;
   }
 
 *::-webkit-scrollbar {

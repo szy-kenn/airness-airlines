@@ -10,9 +10,12 @@
             </div> -->
         </div>
     </div>
-    <!-- <button class="swap-btn" type="button">
-        <i class="fa-solid fa-arrow-right-arrow-left"></i>
-    </button> -->
+    <!-- <div class="swap-flights">
+        <button class="swap-btn" type="button">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+        </button>
+    </div> -->
+
     <div class="with-dropdown-select" id="to">
         <div class="flight-location-input__container">
             <input type="text" tabindex="0" class="with-dropdown-select__input" name="to" id="to-flight-location"  oninput="showChoices('airport', 1)" required="">
@@ -24,8 +27,19 @@
     <div class="with-dropdown-select flight-date-form__container">
         <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" name="departure-date" id="departureDate" required="">
     </div>
-    <div class="home-page-search-flight">
-        <button type="submit" class="form-btn" id="continue-btn-pg-1">Search</button>
+    <div class="with-dropdown-select passenger-form__container__airline-class">
+        <input type="text" class="with-dropdown-select__input airline-class--selected" name="airline-class3" value="Economy" onclick="showChoices('airline-class', 0)" readonly>
+            <div class="with-dropdown-select__container airline-class__group-choices">
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'Economy')">
+                    <p>Economy</p>
+                </div>
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'Business')">
+                    <p>Business</p>
+                </div>
+                <div class="with-dropdown-select__container__options airline-class--choices" onclick="selectAirlineClass(0, 'First-Class')">
+                    <p>First-Class</p>
+                </div>
+            </div>
     </div>
 </div>
 
