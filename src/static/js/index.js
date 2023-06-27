@@ -65,13 +65,13 @@ root.setThemes([
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
-  panX: "rotateX",
-  panY: "rotateY",
+  panX: "none",
+  panY: "none",
   wheelY: "none",
   pinchZoom: false,
   maxPanOut: 0,
-  zoomLevel: 2,
-  minZoomLevel: 2,
+  zoomLevel: 1,
+  minZoomLevel: 1,
   maxZoomLevel: 16,
   projection: am5map.geoOrthographic(),
   //projection: am5map.geoMercator(),

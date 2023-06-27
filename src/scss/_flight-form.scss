@@ -9,17 +9,9 @@
     // grid-template-columns: 1fr;
     grid-template-rows: repeat(4, auto);
     place-content: stretch;
-    // display: flex;
-    // flex-direction: column;
     padding-inline: 2rem;
     padding-block: 1rem;
     gap: 1em;
-    // border: 1px solid red;
-    // gap: 1rem;
-
-    * {
-        // border: 1px solid red;
-    }
 
     .flight-location-form__container {
 

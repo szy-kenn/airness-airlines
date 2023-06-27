@@ -56,19 +56,22 @@ body {
 }
 
 .available-flights {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-auto-rows: auto;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+    // align-items: center;
+    height: 100%;
     width: calc($width + 2rem);
     position: relative;
-    height: auto;
     padding: 0rem 0;
-    margin: auto;
+    // margin: auto;
+    gap: 0.25rem;
 
     &__container-expandable {
         display: block;
-        position: relative;
+        position: absolute;
         width: 100%;
         margin: auto;
         // border: 2px solid red;
@@ -77,14 +80,19 @@ body {
     &__items {
         position: relative;
         @include flex;
-        width: 100%;
-        height: 11%;
-        padding: 0.5rem 0;
-        margin: 1rem 0;
-        // border-radius: 5px;
+        // width: 100%;
+        padding: 1.5rem;
+        // padding: 0.5rem 0;
+        // margin: 1rem 0;
+        border-radius: 20px;
         border: 1px solid rgba(129, 129, 129, 0.2);
-        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 5px 0 rgba($primary-button, 0.1);
         background: white;
+
+        &:hover {
+            transition: all 0.2s ease;
+            box-shadow: 0 0 5px 0 rgba($primary-button, 0.3);
+        }
 
         &.expanded {
             margin-bottom: 0;
