@@ -50,7 +50,7 @@ bodyObserver.observe(homeBody);
 
 // MAP CODE
 
-am5.ready(function() {
+// am5.ready(function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
@@ -68,11 +68,13 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   panY: "rotateY",
   wheelY: "none",
+  pinchZoom: false,
+  maxPanOut: 0,
   zoomLevel: 1,
-  minZoomLevel: 1.25,
   maxZoomLevel: 16,
   projection: am5map.geoOrthographic(),
   //projection: am5map.geoMercator(),
+//   homeGeoPoint: {longitude: 121, latitude: 13}
   homeGeoPoint: { latitude: 2, longitude: 2 }
 }));
 
@@ -86,6 +88,7 @@ chart.events.on("wheel", function(ev) {
     }
   });
 
+chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // Create curtain + message to show when wheel is used over chart without CTRL
 let overlay = root.container.children.push(am5.Container.new(root, {
@@ -159,6 +162,16 @@ var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   exclude: ["AQ"]
 }));
 
+polygonSeries.mapPolygons.template.setAll({
+    tooltipText: "{name}",
+    interactive: true
+});
+
+polygonSeries.mapPolygons.template.states.create("active", {
+    fill: "#FFD700"
+})
+
+
 let graticuleSeries = chart.series.unshift(
     am5map.GraticuleSeries.new(root, {
       step: 8  
@@ -185,13 +198,13 @@ var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 pointSeries.bullets.push(function() {
   var circle = am5.Circle.new(root, {
     radius: 7,
-    tooltipText: "Drag me!",
+    // tooltipText: "{name}",
     cursorOverStyle: "pointer",
     tooltipY: 0,
     fill: am5.color(0xffba00), // points
     stroke: root.interfaceColors.get("background"),
     strokeWidth: 2,
-    draggable: true
+    draggable: false
   });
 
   circle.events.on("dragged", function(event) {
@@ -210,12 +223,24 @@ pointSeries.bullets.push(function() {
   });
 });
 
+// polygonSeries.mapPolygons.template.events.on("click", function(ev) {
+//     var dataItem = polygonSeries.getDataItemById("FR");
+//     console.log(dataItem)
+//     polygonSeries.zoomToDataItem(dataItem, 3);
+//   });
+
+
+
+// chart.events.on("click", function(ev) {
+//     polygonSeries.zoomToDataItem(ev.target.dataItem, 3.5)
+//   });
+
 var paris = addCity({ latitude: 48.8567, longitude: 2.351 }, "Paris");
 var toronto = addCity({ latitude: 43.8163, longitude: -79.4287 }, "Toronto");
 var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
 var havana = addCity({ latitude: 23, longitude: -82 }, "Havana");
 
-var fromLocation = addCity({}, )
+// var fromLocation = addCity({}, )
 //var toLocation = 
 
 var lineDataItem = lineSeries.pushDataItem({
@@ -272,11 +297,13 @@ function addCity(coords, title) {
     longitude: coords.longitude
   });
 }
-
 // Make stuff animate on load
-chart.appear(1000, 100);
+// chart.appear(1000, 100);
 
-}); // end am5.ready()
+// }); 
+// end am5.ready()
+
+
 
 
 
@@ -470,13 +497,15 @@ function createChoice(inputSourceIdx, newChoiceData, choiceIdx) {
         img.style.paddingLeft = '1rem';
         const span = document.createElement("span");
         span.innerHTML = newChoiceData['iata'];
-        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, newChoiceData));
+        airportAddEventListener(currentDiv, inputSourceIdx, newChoiceData, choiceIdx);
+        // currentDiv.addEventListener('click', (event) => selectAirportChoice(event.target, inputSourceIdx, newChoiceData, choiceIdx), { once: true });
         currentDiv.setAttribute('role', 'button');
         currentDiv.setAttribute('tabIndex', '0');
         currentDiv.append(img, newP, span);
     }
     else {
-        currentDiv.addEventListener('click', () => selectAirportChoice(inputSourceIdx, newChoiceData));
+        airportAddEventListener(currentDiv, inputSourceIdx, newChoiceData, choiceIdx);
+        // currentDiv.addEventListener('click', (event) => selectAirportChoice(event.target, inputSourceIdx, newChoiceData, choiceIdx), { once: true });
         currentDiv.appendChild(newP);
     }
     
@@ -543,7 +572,38 @@ function searchAirport(inputSourceIdx, substring) {
 
 }
 
+const airportDivListeners = {}
+
+function airportAddEventListener(airportDiv, inputSourceIdx, newChoiceData, choiceIdx) {
+    if (airportDivListeners[choiceIdx] !== undefined) {
+        airportDiv.removeEventListener('click', airportDivListeners[choiceIdx]);
+        airportDivListeners[choiceIdx] = () => { selectAirportChoice(inputSourceIdx, newChoiceData) };
+        airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+    } else {
+        airportDivListeners[choiceIdx] = () => { selectAirportChoice(inputSourceIdx, newChoiceData) };
+        airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+    }
+}
+
 function selectAirportChoice(inputSourceIdx, newChoiceData) {
+
+    let polygonIndex = newChoiceData['iso_country']
+    let dataItem = polygonSeries.getDataItemById(newChoiceData['iso_country'])
+
+    polygonSeries.zoomToDataItem(dataItem, 4);
+    dataItem._settings.mapPolygon
+    // console.log(polygonSeries.mapPolygons.template)
+    let polygon = dataItem.get('mapPolygon');
+
+    polygon.setAll({
+        active: true
+    })
+
+    // console.log(polygon.get('template'))
+    
+    // console.log(polygon.template.set)
+
+
     if (inputSourceIdx === 0) {
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         fromJSON.value = JSON.stringify(newChoiceData);
