@@ -70,7 +70,8 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   wheelY: "none",
   pinchZoom: false,
   maxPanOut: 0,
-  zoomLevel: 1,
+  zoomLevel: 2,
+  minZoomLevel: 2,
   maxZoomLevel: 16,
   projection: am5map.geoOrthographic(),
   //projection: am5map.geoMercator(),
@@ -88,7 +89,7 @@ chart.events.on("wheel", function(ev) {
     }
   });
 
-chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+// chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // Create curtain + message to show when wheel is used over chart without CTRL
 let overlay = root.container.children.push(am5.Container.new(root, {
@@ -134,7 +135,6 @@ let overlay = root.container.children.push(am5.Container.new(root, {
     }
   });
 
-
 // Create series for background fill
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
 var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -153,6 +153,15 @@ backgroundSeries.data.push({
   geometry: am5map.getGeoRectangle(90, 180, -90, -180)
 });
 
+// Rotate animation
+chart.animate({
+    key: "rotationX",
+    from: 0,
+    to: 360,
+    duration: 30000,
+    loops: Infinity
+  });
+
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -168,7 +177,15 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 polygonSeries.mapPolygons.template.states.create("active", {
-    fill: "#FFD700"
+    // fill: "#FFD700"
+    fillGradient: am5.LinearGradient.new(root, {
+        stops: [{
+            color: am5.color("#ff0000")
+          }, {
+            color: am5.color("#FFA500")
+          }],
+          rotation: 90
+    })
 })
 
 
@@ -538,7 +555,8 @@ function searchAirport(inputSourceIdx, substring) {
                                     'name':         data['name'][i],
                                     'iata':         data['iata'][i],
                                     'iso_country':  data['iso_country'][i],
-                                    'municipality': data['municipality'][i]
+                                    'municipality': data['municipality'][i],
+                                    'url':          data['url'][i]
                                 }
                                 createChoice(inputSourceIdx, newChoiceData, filtered);
                                 filtered++;
@@ -585,30 +603,45 @@ function airportAddEventListener(airportDiv, inputSourceIdx, newChoiceData, choi
     }
 }
 
-function selectAirportChoice(inputSourceIdx, newChoiceData) {
+let currentFrom = null
+let currentTo = null
+const imagePopupContainer = document.querySelector(".image-popup-container");
+const imagePopupElement = document.getElementById("image-popup-element");
 
-    let polygonIndex = newChoiceData['iso_country']
-    let dataItem = polygonSeries.getDataItemById(newChoiceData['iso_country'])
-
-    polygonSeries.zoomToDataItem(dataItem, 4);
-    dataItem._settings.mapPolygon
-    // console.log(polygonSeries.mapPolygons.template)
+function highlightCountry (previous_country, iso_country) {
+    let dataItem = polygonSeries.getDataItemById(iso_country);
     let polygon = dataItem.get('mapPolygon');
 
+    polygonSeries.zoomToDataItem(dataItem, 4);
     polygon.setAll({
         active: true
     })
-
-    // console.log(polygon.get('template'))
     
-    // console.log(polygon.template.set)
+    if (previous_country !== null) {
+        let prevDataItem = polygonSeries.getDataItemById(previous_country);
+        let prevPolygon = prevDataItem.get('mapPolygon');
 
+        prevPolygon.setAll({
+            active: false
+        })
+    } 
+}
 
+function selectAirportChoice(inputSourceIdx, newChoiceData) {
+    console.log(`${newChoiceData['name']}`)
+    imagePopupContainer.style.setProperty("--contentname", `"${newChoiceData['name']}"`);
+    imagePopupContainer.classList.add("popped");
+    imagePopupElement.src = newChoiceData['url'];
+    
     if (inputSourceIdx === 0) {
+        highlightCountry(currentFrom, newChoiceData['iso_country'])
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
+        currentFrom = newChoiceData['iso_country'];
         fromJSON.value = JSON.stringify(newChoiceData);
     } else {
+        highlightCountry(currentTo, newChoiceData['iso_country'])
         toLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
+        currentTo = newChoiceData['iso_country'];
         toJSON.value = JSON.stringify(newChoiceData);
     }
 }

@@ -2351,6 +2351,40 @@ body {
   align-self: center;
   display: flex;
 }
+#globe-container .image-popup-container {
+  --contentname: "";
+  transform: scale(0);
+  position: absolute;
+  z-index: 99;
+  right: 2%;
+  bottom: 2%;
+}
+#globe-container .image-popup-container::before {
+  content: var(--contentname);
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(228, 238, 253, 0.9);
+  color: black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 1px solid red;
+}
+#globe-container .image-popup-container.popped {
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  opacity: 0.9;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 
 .form-btn {
   border: none;
