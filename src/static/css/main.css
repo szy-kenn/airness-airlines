@@ -2076,6 +2076,79 @@ body {
   margin-left: 150px;
 }
 
+body {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plane-route {
+  width: 327px;
+  height: 327px;
+  border: 8px dashed lightgray;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  animation: spin 12s linear 0s infinite;
+}
+
+.plane {
+  width: 100px;
+  height: 100px;
+  background: url(../img/loading-plane.png);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow: hidden;
+  animation: circle 10s linear infinite;
+}
+
+.earth {
+  display: flex;
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: url(../img/loading-map.png);
+  background-size: cover;
+  transition: 0.5s;
+  animation: animate 18s linear infinite;
+}
+@keyframes circle {
+  from {
+    transform: rotate(0deg) translate(-165px);
+  }
+  to {
+    transform: rotate(360deg) translate(-165px);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes animate {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
 .payment-page-wrapper {
   display: grid;
   grid-auto-flow: column;
