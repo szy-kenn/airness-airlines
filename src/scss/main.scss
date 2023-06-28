@@ -1,8 +1,6 @@
-@import "../scss/_reset", "../scss/variables", "../scss/global", 
-        "../scss/config", "../scss/passenger-form", "../scss/flight-form", 
-        "../scss/navbar", "../scss/flights-page", "../scss/passenger-page",
-        "../scss/seats", "../scss/keyframes", "../scss/about", "../scss/ticket",
-        "../scss/loading-screen", "../scss/payment";
+@import "../scss/_reset", "../scss/variables", "../scss/global", "../scss/config", "../scss/keyframes";
+
+$_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
 
 .main-wrapper {
     position: relative;
@@ -15,9 +13,10 @@
 .home-welcome-section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: min-content auto;
+    @include flex(flex-start);
+    // display: grid;
+    // grid-auto-flow: row;
+    // grid-auto-rows: auto auto;
     position: relative;
     top: -64px;
     width: 100vw;
@@ -27,19 +26,22 @@
     // margin-bottom: -100px;
 
     .welcome-text-container {
+        position: relative;
         display: grid;
         gap: 2.5rem;
-        grid-template-columns: auto;
         grid-auto-flow: row;
-        grid-auto-rows: min-content;
+        grid-auto-rows: auto;
         position: relative;
-        left: 5%;
-        top: 40%;
+        // left: 5%;
+        // top: 40%;
+        padding: clamp(1em, 1.25vw, 2rem);
         height: fit-content;
-        width: max(400px, 50%);
+        width: 100%;
+        // width: max(400px, 50%);
         align-items: center;
 
         div {
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,7 +50,7 @@
     }
 
     .welcome-heading {
-        @include font(clamp(38px, 4.35vw, 5.75rem), 800);
+        @include font(clamp(2em, 4.35vw, 5.75rem), 800);
         color: $secondary-color;
         // text-transform: uppercase;
         letter-spacing: -0.005em;
@@ -56,11 +58,11 @@
     }
 
     .welcome-subheading {
-        @include font(clamp(0.75rem, 1.5vw, 1.5rem), 400);
+        @include font(clamp(1em, 1.25vw, 2rem), 400);
         line-height: clamp(1rem, 2.05vw, 1.75rem);
         color: $secondary-color;
         letter-spacing: -0.02em;
-        width: max(300px, 70%);
+        // width: max(300px, 70%);
     }
 
     .welcome-button {
@@ -93,8 +95,7 @@
     display: grid;
     // padding-top: 2rem;
     // padding: 2rem 1rem;
-    grid-auto-flow: column;
-    grid-auto-columns: 24% 76%;
+    grid-template-columns: 24% 76%;
     // align-items: stretch;
     // align-items: stretch;
     width: 100dvw;
@@ -102,19 +103,22 @@
     @include color($primary-color);
 }
 
-#form-pg-1 {
+.sidebar {
     width: 100%;
     position: relative;
-    @include flex(space-between);
-    flex-direction: column;
-    // gap: 1.25rem;
-    // padding-top: 1rem;
+    height: 100%;
     // border: 1px solid red;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 0.5fr 0.35fr 3.75fr 2.5fr 1.5fr;
+    gap: clamp(0.25rem, 0.9vw, 1.5rem);
+    // padding-top: clamp(0.5rem, 1vw, 1rem);
 }
 
 .form-container {
-    width: 100%;
     position: relative;
+    height: 100%;
+    width: 100%;
     // padding: 1.5rem 2rem;
     border-radius: 0;
     // height: 10rem;
@@ -134,13 +138,13 @@
         opacity: 0.3;
     }
     
-    .form-heading {
+    .sidebar-heading {
         // border: 1px solid red;
-        @include flex(center, stretch);
-        @include font(1.2rem, 700);
+        @include flex(center);
+        @include font(clamp(1em, 1.5vw, 2em), 700);
         color: $primary-button;
         letter-spacing: -0.03em;
-        padding-block: 1rem 0.5rem;
+        // padding-block: 1rem 0.5rem;
     }
 
     .one-way-container {
@@ -150,8 +154,8 @@
         // flex-grow: 1;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        padding-inline: 2rem;
-        padding-block: 0.5rem;
+        padding-inline: $_sidebar-padding-inline;
+        padding-block: 0rem;
         gap: 1rem;
 
         div {
@@ -179,7 +183,7 @@
 
     .flight-passenger-class-info-container {
         @include flex(space-between);
-        padding-inline: 2rem;
+        padding-inline: $_sidebar-padding-inline;
         @include font(0.75rem, 500);
     
         .info-container {
@@ -201,7 +205,7 @@
     }
 }
 
-.home-page-search-flight {
+.sidebar-btn-container {
     // flex-grow: 1;
     align-self: stretch;
     padding: 1rem;
@@ -213,7 +217,7 @@
         position: relative;
         border: none;
         @include color($primary-button);
-        @include font(1.25rem, 700);
+        @include font(clamp(1em, 1.75vw, 2em), 700);
         letter-spacing: -0.01rem;
         text-transform: uppercase;
     }
@@ -360,9 +364,15 @@
         padding: 0.5rem 1rem;
         line-height: 1rem;
         @include font(1rem, 500);
-        width: 15rem;
+        // width: 15rem;
+
         // height: 100%;
     }
 }
+
+@import "../scss/passenger-form", "../scss/flight-form", 
+        "../scss/navbar", "../scss/flights-page", "../scss/passenger-page",
+        "../scss/seats", "../scss/about", "../scss/ticket",
+        "../scss/loading-screen", "../scss/payment";
 
 @import "../scss/responsive";

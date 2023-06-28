@@ -12,8 +12,8 @@
     display: grid;
     position: relative;
     align-self: stretch;
-    gap: 0.5rem;
-    padding-inline: 2rem;
+    gap: clamp(0.25rem, 0.85vw, 2rem);
+    padding-inline: $_sidebar-padding-inline;
     padding-bottom: 0.5rem;
 
     &::-webkit-inner-spin-button,
@@ -26,12 +26,12 @@
     &__container {
         // border: 1px solid red;
         position: relative;
-        @include flex(space-between, stretch);
+        @include flex(space-between);
 
 
         .age-group-label {
             align-self: center;
-            @include font(0.75rem, 500);
+            @include font(clamp(0.75em, 0.95vw, 1.25em), 500);
             letter-spacing: -1;
             flex-grow: 1;
         }

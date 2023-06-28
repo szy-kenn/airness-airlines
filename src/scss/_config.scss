@@ -24,12 +24,12 @@
     @include font(1em, 700);
 }
 
-@mixin focused($parent, $top: 15%, $left: 10%) {
+@mixin focused($parent, $top: 10%, $left: 10%) {
 
     &::after {
         position: absolute;
         pointer-events: none;
-        font-size: 0.7rem;
+        font-size: clamp(0.25em, 0.65vw, 1em);
         font-weight: 300;
         top: $top;
         bottom: 0;

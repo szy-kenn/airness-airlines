@@ -1,7 +1,7 @@
 html {
     scroll-behavior: smooth !important;
     padding: 0;
-    scroll-snap-type: y mandatory;
+    // scroll-snap-type: y mandatory;
 }
 
 body {
@@ -20,28 +20,4 @@ select,
 a,
 .airline-class__group-choices {
     -webkit-tap-highlight-color: transparent;
-}
-
-input::-webkit-calendar-picker-indicator {
-    font-size: 18px;
-    padding-inline: 1rem;
-  }
-
-*::-webkit-scrollbar {
-    width: 17.5px;
-}
-
-*::-webkit-scrollbar-track {
-    margin: 10px 10px;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: $lighter-primary-button;
-    border: 5px solid white;
-    border-radius: 100px;
-    // background-clip: border-box;
-
-    &:hover {
-        background: $primary-button;
-    }
 }

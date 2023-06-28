@@ -1,5 +1,3 @@
-$width: 65%;
-
 body {
     background: $primary-color;
     overflow-x: hidden;
@@ -325,4 +323,39 @@ body {
             }
         }
     }
+}
+
+.flight-wrapper {
+    margin-top: 64px;
+    // border: 1px solid red;
+
+    .home-body {
+        display: grid;
+        // grid-template-rows: 100%;
+        grid-template-columns: 24% 76%;
+    }
+
+    .sidebar {
+        position: relative;
+        height: 100%;
+        border: 1px solid red;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 0.75fr 0.75fr 3.25fr 3.25fr 2fr;
+    }
+
+    .flights-pg-location-form {
+        grid-row: 3;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .filter-flights-btn-container {
+        grid-row: 5;
+        
+        button {
+            @include font(clamp(1em, 1.75vw, 2em), 700);
+        }
+    };
 }

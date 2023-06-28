@@ -2,7 +2,6 @@
 html {
   scroll-behavior: smooth !important;
   padding: 0;
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -23,26 +22,400 @@ a,
   -webkit-tap-highlight-color: transparent;
 }
 
-input::-webkit-calendar-picker-indicator {
-  font-size: 18px;
-  padding-inline: 1rem;
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoom {
+  to {
+    transform: scale(1.2);
+  }
+}
+.main-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0;
+  flex-direction: column;
+  width: 100dvw;
 }
 
-*::-webkit-scrollbar {
-  width: 17.5px;
+.home-welcome-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  top: -64px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/airline-main-2.png");
+  background-size: cover;
+}
+.home-welcome-section .welcome-text-container {
+  position: relative;
+  display: grid;
+  gap: 2.5rem;
+  grid-auto-flow: row;
+  grid-auto-rows: auto;
+  position: relative;
+  padding: clamp(1em, 1.25vw, 2rem);
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  align-items: center;
+}
+.home-welcome-section .welcome-text-container div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+.home-welcome-section .welcome-heading {
+  font-size: clamp(2em, 4.35vw, 5.75rem);
+  font-weight: 800;
+  font-family: "Montserrat";
+  color: white;
+  letter-spacing: -0.005em;
+  line-height: clamp(46px, 5vw, 122px);
+}
+.home-welcome-section .welcome-subheading {
+  font-size: clamp(1em, 1.25vw, 2rem);
+  font-weight: 400;
+  font-family: "Montserrat";
+  line-height: clamp(1rem, 2.05vw, 1.75rem);
+  color: white;
+  letter-spacing: -0.02em;
+}
+.home-welcome-section .welcome-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-*::-webkit-scrollbar-track {
-  margin: 10px 10px;
+.img-slideshow {
+  max-width: 100%;
+  height: 50%;
+  border: 1px solid red;
+  z-index: -1;
+  overflow: hidden;
+}
+.img-slideshow img {
+  position: relative;
+  top: -40%;
 }
 
-*::-webkit-scrollbar-thumb {
-  background: #b399b0;
-  border: 5px solid white;
-  border-radius: 100px;
+.home-body {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  height: calc(100vh - 64px);
+  display: grid;
+  grid-template-columns: 24% 76%;
+  width: 100dvw;
+  background: #E4EEFD;
+  color: black;
 }
-*::-webkit-scrollbar-thumb:hover {
+
+.sidebar {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 0.5fr 0.35fr 3.75fr 2.5fr 1.5fr;
+  gap: clamp(0.25rem, 0.9vw, 1.5rem);
+}
+
+.form-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.form-container .vector-airplane {
+  position: absolute;
+  top: 0%;
+  right: -20%;
+  bottom: 10%;
+  display: flex;
+  opacity: 0.3;
+}
+.form-container .sidebar-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1em, 1.5vw, 2em);
+  font-weight: 700;
+  font-family: "Montserrat";
+  color: #0c2849;
+  letter-spacing: -0.03em;
+}
+.form-container .one-way-container {
+  position: relative;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: clamp(1.5rem, 2.35vw, 3rem);
+  padding-block: 0rem;
+  gap: 1rem;
+}
+.form-container .one-way-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.35rem 0.2rem;
+  border-radius: 10px;
   background: #0c2849;
+  color: white;
+  cursor: pointer;
+}
+.form-container .one-way-container div p {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.form-container .one-way-container .round-trip {
+  background-color: white;
+  color: rgba(12, 40, 73, 0.4);
+  border: 2px solid #E4EEFD;
+  cursor: not-allowed;
+}
+.form-container .flight-passenger-class-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: clamp(1.5rem, 2.35vw, 3rem);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+.form-container .flight-passenger-class-info-container .info-container {
+  flex-grow: 0.35;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 33.33%;
+}
+.form-container .flight-passenger-class-info-container .info-container .info-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  color: #0c2849;
+}
+.form-container .flight-passenger-class-info-container .info-container .info-item i {
+  font-size: 1.5rem;
+}
+
+.sidebar-btn-container {
+  align-self: stretch;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0c2849;
+  color: white;
+  position: relative;
+}
+.sidebar-btn-container button {
+  position: relative;
+  border: none;
+  background: #0c2849;
+  color: white;
+  font-size: clamp(1em, 1.75vw, 2em);
+  font-weight: 700;
+  font-family: "Montserrat";
+  letter-spacing: -0.01rem;
+  text-transform: uppercase;
+}
+
+#globe-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  display: flex;
+}
+#globe-container .image-popup-container {
+  --contentname: "";
+  transform: scale(0);
+  position: absolute;
+  z-index: 99;
+  right: 2%;
+  bottom: 2%;
+}
+#globe-container .image-popup-container::before {
+  content: var(--contentname);
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(228, 238, 253, 0.9);
+  color: black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 1px solid red;
+}
+#globe-container .image-popup-container.popped {
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  opacity: 0.9;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.form-btn {
+  border: none;
+  border-radius: 0px;
+  text-transform: uppercase;
+  background: #0c2849;
+  color: white;
+  box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  font-weight: 700;
+  font-family: "Montserrat";
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+
+.swap-btn {
+  border: none;
+  border-radius: 50px;
+  text-transform: uppercase;
+  background: #0c2849;
+  color: white;
+  box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  font-weight: 700;
+  font-family: "Montserrat";
+  z-index: 4;
+  top: 1.05rem;
+  left: calc(50% - 1rem);
+  right: 0;
+  bottom: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.page-header {
+  display: block;
+  margin: auto;
+  padding: 1rem 0;
+  background: white;
+  color: black;
+}
+.page-header p {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+}
+
+.current-page-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 65%;
+  color: white;
+  margin: auto;
+  padding: 1rem 0;
+}
+.current-page-indicator p {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-align: center;
+  width: 13%;
+  background: white;
+  color: black;
+  padding: 0.75rem 0.5rem;
+}
+
+.with-dropdown-select {
+  position: relative;
+}
+.with-dropdown-select__input {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Montserrat";
+  border-radius: 5px;
+  border: 1px solid #b399b0;
+}
+.with-dropdown-select__container {
+  position: relative;
+  display: block;
+  background: white;
+  color: black;
+  margin: 5px 0;
+  border: 1px solid #b399b0;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.input-field {
+  opacity: 1;
+  position: relative;
+  padding: 1rem 1rem;
+  transition: opacity 0s 0.1s ease-out;
+}
+.input-field label {
+  display: block;
+}
+.input-field input {
+  position: relative;
+  border: 1px solid rgba(126, 126, 126, 0.5);
+  padding: 0.5rem 1rem;
+  line-height: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Montserrat";
 }
 
 .passenger-container h3, .passenger-container div {
@@ -56,8 +429,8 @@ input::-webkit-calendar-picker-indicator {
   display: grid;
   position: relative;
   align-self: stretch;
-  gap: 0.5rem;
-  padding-inline: 2rem;
+  gap: clamp(0.25rem, 0.85vw, 2rem);
+  padding-inline: clamp(1.5rem, 2.35vw, 3rem);
   padding-bottom: 0.5rem;
 }
 .passenger-form::-webkit-inner-spin-button, .passenger-form::-webkit-outer-spin-button {
@@ -68,11 +441,11 @@ input::-webkit-calendar-picker-indicator {
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
 }
 .passenger-form__container .age-group-label {
   align-self: center;
-  font-size: 0.75rem;
+  font-size: clamp(0.75em, 0.95vw, 1.25em);
   font-weight: 500;
   font-family: "Montserrat";
   letter-spacing: -1;
@@ -160,16 +533,15 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .flight-location-form {
-  flex-grow: 1;
   align-self: stretch;
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-rows: repeat(4, auto);
   place-content: stretch;
-  padding-inline: 2rem;
-  padding-block: 1rem;
-  gap: 1em;
+  padding-block: clamp(0.25rem, 0.5vw, 2rem);
+  padding-inline: clamp(1.5rem, 2.35vw, 3rem);
+  gap: clamp(0.25rem, 0.85vw, 2rem);
 }
 .flight-location-form .flight-location-form__container {
   display: block;
@@ -242,8 +614,8 @@ input::-webkit-calendar-picker-indicator {
   outline: none;
   border: none;
   text-align: left;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: clamp(0.75rem, 1vw, 1.25rem);
+  font-weight: 500;
   font-family: "Montserrat";
   z-index: 3;
 }
@@ -264,9 +636,9 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form #from.focused::after {
   position: absolute;
   pointer-events: none;
-  font-size: 0.7rem;
+  font-size: clamp(0.25em, 0.65vw, 1em);
   font-weight: 300;
-  top: 15%;
+  top: 10%;
   bottom: 0;
   left: 10%;
   right: 0;
@@ -304,9 +676,9 @@ input::-webkit-calendar-picker-indicator {
 .flight-location-form #to.focused::after {
   position: absolute;
   pointer-events: none;
-  font-size: 0.7rem;
+  font-size: clamp(0.25em, 0.65vw, 1em);
   font-weight: 300;
-  top: 15%;
+  top: 10%;
   bottom: 0;
   left: 10%;
   right: 0;
@@ -329,7 +701,7 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 .flight-date-form__container::before {
-  font-size: 0.7rem;
+  font-size: clamp(0.25em, 0.65vw, 1em);
   font-weight: 300;
   font-family: "Montserrat";
   content: "Depart";
@@ -391,6 +763,16 @@ input::-webkit-calendar-picker-indicator {
   align-items: center;
   height: 64px;
   width: 100%;
+}
+
+.responsive-navdiv {
+  height: 64px;
+  width: 100%;
+  display: none;
+}
+
+.hamburger-navbar {
+  color: white;
 }
 
 .logo-navbar {
@@ -892,6 +1274,36 @@ body {
   cursor: pointer;
   border-radius: 5px;
   background-color: #0c2849;
+}
+
+.flight-wrapper {
+  margin-top: 64px;
+}
+.flight-wrapper .home-body {
+  display: grid;
+  grid-template-columns: 24% 76%;
+}
+.flight-wrapper .sidebar {
+  position: relative;
+  height: 100%;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 0.75fr 0.75fr 3.25fr 3.25fr 2fr;
+}
+.flight-wrapper .flights-pg-location-form {
+  grid-row: 3;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+.flight-wrapper .filter-flights-btn-container {
+  grid-row: 5;
+}
+.flight-wrapper .filter-flights-btn-container button {
+  font-size: clamp(1em, 1.75vw, 2em);
+  font-weight: 700;
+  font-family: "Montserrat";
 }
 
 .passenger-details-wrapper {
@@ -1473,36 +1885,6 @@ body {
   scroll-snap-align: start;
 }
 
-@keyframes rotate360 {
-  0% {
-    transform: rotate(0);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes zoom {
-  to {
-    transform: scale(1.2);
-  }
-}
 .bar {
   text-align: center;
   color: violet;
@@ -2076,7 +2458,7 @@ body {
   margin-left: 150px;
 }
 
-body {
+.plane-route-container {
   min-height: 100vh;
   background-color: white;
   display: flex;
@@ -2207,374 +2589,6 @@ body {
      object-fit: contain;
 }
 
-.main-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin: 0;
-  flex-direction: column;
-  width: 100dvw;
-}
-
-.home-welcome-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  display: grid;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content auto;
-  position: relative;
-  top: -64px;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("../img/airline-main-2.png");
-  background-size: cover;
-}
-.home-welcome-section .welcome-text-container {
-  display: grid;
-  gap: 2.5rem;
-  grid-template-columns: auto;
-  grid-auto-flow: row;
-  grid-auto-rows: min-content;
-  position: relative;
-  left: 5%;
-  top: 40%;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: max(400px, 50%);
-  align-items: center;
-}
-.home-welcome-section .welcome-text-container div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-}
-.home-welcome-section .welcome-heading {
-  font-size: clamp(38px, 4.35vw, 5.75rem);
-  font-weight: 800;
-  font-family: "Montserrat";
-  color: white;
-  letter-spacing: -0.005em;
-  line-height: clamp(46px, 5vw, 122px);
-}
-.home-welcome-section .welcome-subheading {
-  font-size: clamp(0.75rem, 1.5vw, 1.5rem);
-  font-weight: 400;
-  font-family: "Montserrat";
-  line-height: clamp(1rem, 2.05vw, 1.75rem);
-  color: white;
-  letter-spacing: -0.02em;
-  width: max(300px, 70%);
-}
-.home-welcome-section .welcome-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.img-slideshow {
-  max-width: 100%;
-  height: 50%;
-  border: 1px solid red;
-  z-index: -1;
-  overflow: hidden;
-}
-.img-slideshow img {
-  position: relative;
-  top: -40%;
-}
-
-.home-body {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  height: calc(100vh - 64px);
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 24% 76%;
-  width: 100dvw;
-  background: #E4EEFD;
-  color: black;
-}
-
-#form-pg-1 {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-.form-container {
-  width: 100%;
-  position: relative;
-  border-radius: 0;
-  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: stretch;
-}
-.form-container .vector-airplane {
-  position: absolute;
-  top: 0%;
-  right: -20%;
-  bottom: 10%;
-  display: flex;
-  opacity: 0.3;
-}
-.form-container .form-heading {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  font-size: 1.2rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-  color: #0c2849;
-  letter-spacing: -0.03em;
-  padding-block: 1rem 0.5rem;
-}
-.form-container .one-way-container {
-  position: relative;
-  align-self: stretch;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-inline: 2rem;
-  padding-block: 0.5rem;
-  gap: 1rem;
-}
-.form-container .one-way-container div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.35rem 0.2rem;
-  border-radius: 10px;
-  background: #0c2849;
-  color: white;
-  cursor: pointer;
-}
-.form-container .one-way-container div p {
-  text-align: center;
-  font-size: 0.65rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-.form-container .one-way-container .round-trip {
-  background-color: white;
-  color: rgba(12, 40, 73, 0.4);
-  border: 2px solid #E4EEFD;
-  cursor: not-allowed;
-}
-.form-container .flight-passenger-class-info-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 2rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-family: "Montserrat";
-}
-.form-container .flight-passenger-class-info-container .info-container {
-  flex-grow: 0.35;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 33.33%;
-}
-.form-container .flight-passenger-class-info-container .info-container .info-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
-  color: #0c2849;
-}
-.form-container .flight-passenger-class-info-container .info-container .info-item i {
-  font-size: 1.5rem;
-}
-
-.home-page-search-flight {
-  align-self: stretch;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #0c2849;
-  color: white;
-  position: relative;
-}
-.home-page-search-flight button {
-  position: relative;
-  border: none;
-  background: #0c2849;
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-  letter-spacing: -0.01rem;
-  text-transform: uppercase;
-}
-
-#globe-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  align-self: center;
-  display: flex;
-}
-#globe-container .image-popup-container {
-  --contentname: "";
-  transform: scale(0);
-  position: absolute;
-  z-index: 99;
-  right: 2%;
-  bottom: 2%;
-}
-#globe-container .image-popup-container::before {
-  content: var(--contentname);
-  position: absolute;
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(228, 238, 253, 0.9);
-  color: black;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1rem;
-  padding: 1rem;
-  border-radius: 1px solid red;
-}
-#globe-container .image-popup-container.popped {
-  transform: scale(1);
-  transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-  opacity: 0.9;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.form-btn {
-  border: none;
-  border-radius: 0px;
-  text-transform: uppercase;
-  background: #0c2849;
-  color: white;
-  box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-  font-size: 1em;
-  font-weight: 700;
-  font-family: "Montserrat";
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  cursor: pointer;
-}
-
-.swap-btn {
-  border: none;
-  border-radius: 50px;
-  text-transform: uppercase;
-  background: #0c2849;
-  color: white;
-  box-shadow: 0px 2px 0.3rem 0 rgba(0, 0, 0, 0.5);
-  font-size: 1em;
-  font-weight: 700;
-  font-family: "Montserrat";
-  z-index: 4;
-  top: 1.05rem;
-  left: calc(50% - 1rem);
-  right: 0;
-  bottom: 0;
-  width: 2rem;
-  height: 2rem;
-}
-
-.page-header {
-  display: block;
-  margin: auto;
-  padding: 1rem 0;
-  background: white;
-  color: black;
-}
-.page-header p {
-  display: block;
-  margin: auto;
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-}
-
-.current-page-indicator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 65%;
-  color: white;
-  margin: auto;
-  padding: 1rem 0;
-}
-.current-page-indicator p {
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-family: "Montserrat";
-  text-align: center;
-  width: 13%;
-  background: white;
-  color: black;
-  padding: 0.75rem 0.5rem;
-}
-
-.with-dropdown-select {
-  position: relative;
-}
-.with-dropdown-select__input {
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: "Montserrat";
-  border-radius: 5px;
-  border: 1px solid #b399b0;
-}
-.with-dropdown-select__container {
-  position: relative;
-  display: block;
-  background: white;
-  color: black;
-  margin: 5px 0;
-  border: 1px solid #b399b0;
-  border-radius: 5px;
-  opacity: 0;
-  pointer-events: none;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
-}
-.input-field {
-  opacity: 1;
-  position: relative;
-  padding: 1rem 1rem;
-  transition: opacity 0s 0.1s ease-out;
-}
-.input-field label {
-  display: block;
-}
-.input-field input {
-  position: relative;
-  border: 1px solid rgba(126, 126, 126, 0.5);
-  padding: 0.5rem 1rem;
-  line-height: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Montserrat";
-  width: 15rem;
-}
-
 @media screen and (max-width: 768px) {
   .img-slideshow {
     max-height: -moz-fit-content;
@@ -2584,15 +2598,57 @@ body {
     top: 0%;
     left: -50%;
   }
-  .form-container {
-    height: calc(100% - 64px);
+  .navbar {
+    padding-inline: 2rem;
+    width: calc(100vw - 4rem);
   }
-  .home-body {
-    width: 100%;
-    height: -moz-max-content;
-    height: max-content;
-    grid-template-columns: 100%;
-    grid-auto-flow: row;
-    grid-template-rows: 100% 100%;
+  .navbar .navdiv {
+    display: none;
+  }
+  .navbar .responsive-navdiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-wrapper .home-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-wrapper .home-body .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: auto;
+  }
+  .main-wrapper .home-body .form-container .vector-airplane {
+    right: 0;
+  }
+  .main-wrapper .home-body .form-container .sidebar {
+    align-self: stretch;
+    grid-template-rows: 0.75fr 0.5fr 3fr 2fr 0.75fr;
+  }
+  .main-wrapper .home-body #globe-container {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  input::-webkit-calendar-picker-indicator {
+    font-size: 18px;
+    padding-inline: 1rem;
+  }
+  *::-webkit-scrollbar {
+    width: 17.5px;
+  }
+  *::-webkit-scrollbar-track {
+    margin: 10px 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #b399b0;
+    border: 5px solid white;
+    border-radius: 100px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #0c2849;
   }
 }/*# sourceMappingURL=main.css.map */

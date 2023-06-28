@@ -5,6 +5,51 @@
 <div class="wrapper">
     {% set header = "Select A Flight" %}
     {% include 'blocks/flight-input-details.html' %}
+</div>
+
+<div class="main-wrapper flight-wrapper">
+    <div class="home-body">
+        <div class="form-container">
+            <div class="vector-airplane">
+                <img src="..\static\img\vector-airplane.png" alt="Vector Airplane">
+            </div>
+            <div class="sidebar">
+                <div class="sidebar-heading">
+                    <p>Choose your Flight</p>
+                </div>
+                <div class="flight-location-form flights-pg-location-form">
+                    <div class="with-dropdown-select focused" id="from">
+                        <div class="flight-location-input__container">
+                            <input type="text" tabindex="0" class="with-dropdown-select__input" value="{{ form_part_one['from'] }}" readonly>
+                        </div>
+                    </div>
+                    <div class="with-dropdown-select focused" id="to">
+                        <div class="flight-location-input__container">
+                            <input type="text" tabindex="0" class="with-dropdown-select__input" value="{{ form_part_one['to'] }}" readonly>
+                        </div>
+                    </div>
+                    <div class="with-dropdown-select flight-date-form__container">
+                        <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" value="{{ form_part_one['departure-date'] }}" readonly>
+                    </div>
+                </div>
+
+                <div class="sidebar-btn-container filter-flights-btn-container">
+                    <button id="filter-flights-btn">
+                        <i class="fa-solid fa-filter"></i> &nbsp&nbspFilter Results
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="globe-container">
+            <div class="image-popup-container">
+                <img src="" alt="" width="320px" height="216px" id="image-popup-element">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
         <!-- 
     <div class="filter">
         <label for="best">Best</label>
@@ -14,6 +59,8 @@
         <label for="best">Fastest</label>
         <input type="radio" name="flights-filter" id="fastest">
     </div> -->
+
+
     <form action="/passenger-details" method="post" id="selectFlightForm"> 
     <div class="available-flights">
         {% if result_count  > 0 %}

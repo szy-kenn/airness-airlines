@@ -1,6 +1,6 @@
 // FLIGHT FORM IN THE HOME PAGE
 .flight-location-form {
-    flex-grow: 1;
+    // flex-grow: 1;
     align-self: stretch;
     position: relative;
     z-index: 2;
@@ -9,9 +9,10 @@
     // grid-template-columns: 1fr;
     grid-template-rows: repeat(4, auto);
     place-content: stretch;
-    padding-inline: 2rem;
-    padding-block: 1rem;
-    gap: 1em;
+    padding-block: clamp(0.25rem, 0.5vw, 2rem);
+    padding-inline: $_sidebar-padding-inline;
+    // padding-block: 1rem;
+    gap: clamp(0.25rem, 0.85vw, 2rem);
 
     .flight-location-form__container {
 
@@ -84,7 +85,7 @@
             outline: none;
             border: none;
             text-align: left;
-            @include font(1rem, 700);
+            @include font(clamp(0.75rem, 1vw, 1.25rem), 500);
             z-index: 3;
         }
     }
@@ -201,7 +202,7 @@
     @include flex(center);
     
     &::before {
-        @include font(0.7rem, 300);
+        @include font(clamp(0.25em, 0.65vw, 1em), 300);
         content: 'Depart';
         position: absolute;
         pointer-events: none;

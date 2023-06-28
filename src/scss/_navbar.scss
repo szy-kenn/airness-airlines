@@ -43,6 +43,15 @@
     width: 100%;
 }
 
+.responsive-navdiv {
+    height: 64px;
+    width: 100%;
+    display: none;
+}
+
+.hamburger-navbar {
+    color: $secondary-color;
+}
 
 .logo-navbar{
     // position: absolute;
