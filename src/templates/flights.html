@@ -17,7 +17,19 @@
                 <div class="sidebar-heading">
                     <p>Choose your Flight</p>
                 </div>
-                <div class="flight-location-form flights-pg-location-form">
+                <div class="flight-passenger-class-info-container">
+                    <div class="info-container">
+                        <div class="info-item">
+                            <i class="fa-sharp fa-solid fa-person"></i>
+                            <p>1 Passenger</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-tag"></i>
+                            <p>Economy</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="flight-location-form flights-pg-location-form">
                     <div class="with-dropdown-select focused" id="from">
                         <div class="flight-location-input__container">
                             <input type="text" tabindex="0" class="with-dropdown-select__input" value="{{ form_part_one['from'] }}" readonly>
@@ -31,6 +43,42 @@
                     <div class="with-dropdown-select flight-date-form__container">
                         <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" value="{{ form_part_one['departure-date'] }}" readonly>
                     </div>
+                </div> -->
+
+                <div class="filter-section-sidebar">
+                    <div class="filter-heading">
+                        <p>Filters</p>
+                        <span>Select the filter according to your preferences</span>
+                    </div>
+                    <div class="sort-by-btns-container">
+                        <button class="sort-by-btn airness-btn">Best</button>
+                        <button class="sort-by-btn airness-btn">Cheapest</button>
+                        <button class="sort-by-btn airness-btn">Fastest</button>
+                    </div>
+                    <div class="stops-btns-container">
+                        <button class="stops-btn radio-btn airness-btn">Direct</button>
+                        <button class="stops-btn radio-btn airness-btn">1 Stop</button>
+                        <button class="stops-btn radio-btn airness-btn">2+ Stops</button>
+                    </div>
+                    <div class="departure-time-slider-container filter-subsection-container">
+                        <div class="departure-time-slider-heading filter-subsection-heading-container">
+                            <p class="filter-subsection__heading">Departure Time</p>
+                            <p class="fiter-subsection__subheading">00:00 - 23:59</p>
+                        </div>
+                        <div class="departure-time-slider-element slider">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="duration-slider-container filter-subsection-container">
+                        <div class="duration-slider-heading filter-subsection-heading-container">
+                            <p class="filter-subsection__heading">Duration</p>
+                            <p class="fiter-subsection__subheading">x hrs to y hrs</p>
+                        </div>
+                        <div class="duration-slider-element slider">
+                            <hr>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="sidebar-btn-container filter-flights-btn-container">
@@ -40,9 +88,11 @@
                 </div>
             </div>
         </div>
-        <div id="globe-container">
-            <div class="image-popup-container">
-                <img src="" alt="" width="320px" height="216px" id="image-popup-element">
+        <div class="available-flights-test">
+            <div class="flight-container closed">
+                <div class="flight-stops-section"><p>DIRECT</p></div>
+                <div class="flight-details-section"><p>FLIGHT DETAILS</p></div>
+                <div class="flight-price-section"><p>PHP 49,814</p></div>
             </div>
         </div>
     </div>
@@ -62,8 +112,9 @@
 
 
     <form action="/passenger-details" method="post" id="selectFlightForm"> 
-    <div class="available-flights">
-        {% if result_count  > 0 %}
+    <!-- <div class="available-flights"> -->
+
+        {#% if result_count  > 0 %}
             <p> Status: {{ available_flights['status'] }} </p> 
             <p> Results: {{ available_flights['totalResults'] }} </p> 
         {% endif %}
@@ -180,13 +231,16 @@
             </div>
         </div>
 
-        {% endif %}
+        {% endif %#}
 
-    </div>
-</div>
+    <!-- </div> -->
 
 {% endblock %}
 
 {% block script %}
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
 {% endblock %}

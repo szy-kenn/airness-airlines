@@ -32,3 +32,45 @@
         transform: scale(1.2);
     }
 }
+
+@keyframes openFlightContainer {
+    to {
+        height: 80dvh;
+    }
+}
+
+@keyframes openFlightContainer2 {
+    0% {
+        width: 20%;
+    }
+    100% {
+        width: 30%;
+    }
+}
+
+@keyframes panImage {
+    from {
+        background-position: 0% 20%;
+    }
+    to {
+        background-position: 20% 20%;
+    }
+}
+
+@keyframes closeFlightContainer {
+    from {
+        height: 80dvh;
+    }
+    to {
+        height: 17.5dvh;
+    }
+}
+
+@keyframes closeFlightContainer2 {
+    0% {
+        width: 30%;
+    }
+    100% {
+        width: 20%;
+    }
+}

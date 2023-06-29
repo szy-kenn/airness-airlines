@@ -579,7 +579,7 @@ function highlightCountry (previous_country, iso_country) {
 
 function selectAirportChoice(inputSourceIdx, newChoiceData) {
     console.log(`${newChoiceData['name']}`)
-    imagePopupContainer.style.setProperty("--contentname", `"${newChoiceData['name']}"`);
+    imagePopupContainer.style.setProperty("--contentname", `"${newChoiceData['municipality']}"`);
     imagePopupContainer.classList.add("popped");
     imagePopupElement.src = newChoiceData['url'];
     

@@ -1,4 +1,4 @@
-@import "../scss/_reset", "../scss/variables", "../scss/global", "../scss/config", "../scss/keyframes";
+@import "../scss/_reset",  "../scss/clamping", "../scss/variables", "../scss/global", "../scss/config", "../scss/keyframes";
 
 $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
 
@@ -184,21 +184,24 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
     .flight-passenger-class-info-container {
         @include flex(space-between);
         padding-inline: $_sidebar-padding-inline;
-        @include font(0.75rem, 500);
+        @include font(clamp(0.75em, 1.25vw, 1.5em), 500);
     
         .info-container {
-            flex-grow: 0.35;
+            flex-grow: 1;
             display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: 33.33%;
+            grid-template-rows: 100%;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+            align-items: center;
 
             .info-item {
-                @include flex(flex-start);
-                gap: 1rem; 
+                @include flex(space-between);
                 color: $primary-button;
+                text-align: center;
+                gap: clamp(0.25rem, 0.5vw, 0.75rem);
 
                 i {
-                    font-size: 1.5rem;
+                    font-size: clamp(0.75em, 1.25vw, 1.5em);
                 }
             }
         }
@@ -242,14 +245,19 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
         &::before {
             content: var(--contentname);
             position: absolute;
-            @include font(0.75rem, 700);
+            @include font(1.25rem, 700);
             @include flex(center);
-            @include color(rgba($primary-color, 0.9));
+            color: $secondary-color;
+            overflow: hidden;
+            background-color: rgba($primary-button, 0.875);
+            // background-blend-mode: overlay;
+            // mix-blend-mode: overlay;
+            // @include color(rgba($primary-button, 0.8));
             bottom: 0;
             left: 0;
             right: 0;
-            height: 1rem;
-            padding: 1rem;
+            height: 20%;
+            padding: 0.25rem;
             border-radius: 1px solid red;
         }
 
@@ -346,6 +354,13 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
             // color: $secondary-color;
         }
     }
+}
+
+.airness-btn {
+    border: none;
+    outline: none;
+    @include color($primary-button);
+    border-radius: 10px;
 }
 
 .input-field {
