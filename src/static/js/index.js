@@ -391,6 +391,27 @@ const airportChoicesContainer = document.querySelectorAll(".flight-location-form
 
 const maxResult = 100
 
+let currentFrom = null
+let currentTo = null
+
+function getCurrentFrom(value) {
+    try {
+        return JSON.parse(fromJSON.value)[`${value}`];
+    }
+    catch {
+        return undefined;
+    }
+}
+
+function getCurrentTo(value) {
+    try {
+        return JSON.parse(toJSON.value)[`${value}`];
+    }
+    catch {
+        return undefined;
+    }
+}
+
 function flightFormUpdate(event, container) {
     let i = null;
     (container === fromContainer) ? i = 0 : i = 1;
@@ -499,8 +520,9 @@ function searchAirport(inputSourceIdx, substring) {
                     data['iso_country'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['municipality'][i].toLowerCase().includes(substring.toLowerCase())
                     ) {
-                        if ((inputSourceIdx === 1 && fromLocation.value !== data['iata'][i]) ||
-                            inputSourceIdx === 0) {
+                        if ((inputSourceIdx === 1 && getCurrentFrom('iata') !== data['iata'][i]) ||
+                            (inputSourceIdx === 0 && getCurrentTo('iata') !== data['iata'][i])) {
+                                
                                 let newChoiceData = {
                                     'name':         data['name'][i],
                                     'iata':         data['iata'][i],
@@ -553,8 +575,6 @@ function airportAddEventListener(airportDiv, inputSourceIdx, newChoiceData, choi
     }
 }
 
-let currentFrom = null
-let currentTo = null
 const imagePopupContainer = document.querySelector(".image-popup-container");
 const imagePopupElement = document.getElementById("image-popup-element");
 
@@ -566,8 +586,12 @@ function highlightCountry (previous_country, iso_country) {
     polygon.setAll({
         active: true
     })
-    
-    if (previous_country !== null) {
+
+    if (previous_country !== undefined) {
+        if (previous_country === iso_country) {
+            return;
+        }
+
         let prevDataItem = polygonSeries.getDataItemById(previous_country);
         let prevPolygon = prevDataItem.get('mapPolygon');
 
@@ -578,20 +602,19 @@ function highlightCountry (previous_country, iso_country) {
 }
 
 function selectAirportChoice(inputSourceIdx, newChoiceData) {
-    console.log(`${newChoiceData['name']}`)
     imagePopupContainer.style.setProperty("--contentname", `"${newChoiceData['municipality']}"`);
     imagePopupContainer.classList.add("popped");
     imagePopupElement.src = newChoiceData['url'];
     
     if (inputSourceIdx === 0) {
-        highlightCountry(currentFrom, newChoiceData['iso_country'])
+        highlightCountry(getCurrentFrom('iso_country'), newChoiceData['iso_country'])
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
-        currentFrom = newChoiceData['iso_country'];
+        // currentFrom = newChoiceData['iso_country'];
         fromJSON.value = JSON.stringify(newChoiceData);
     } else {
-        highlightCountry(currentTo, newChoiceData['iso_country'])
+        highlightCountry(getCurrentTo('iso_country'), newChoiceData['iso_country'])
         toLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
-        currentTo = newChoiceData['iso_country'];
+        // currentTo = newChoiceData['iso_country'];
         toJSON.value = JSON.stringify(newChoiceData);
     }
 }

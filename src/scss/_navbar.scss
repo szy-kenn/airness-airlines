@@ -19,9 +19,11 @@
     z-index: 100;
     // background-color: #163976;
     height: 64px;
-    width: calc(100vw - 10rem);
+    width: 90%;
+    // width: calc(100vw - calc(2 * clamp(1rem, 2.34vw, 3rem)));
     @include flex;
-    padding-inline: 5rem;
+    padding-inline: 5%;
+    // padding-inline: clamp(1rem, 2.34vw, 3rem);
     transition: background 0.5s ease;
     opacity: 1;
 

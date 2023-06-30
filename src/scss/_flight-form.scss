@@ -14,6 +14,8 @@
     // padding-block: 1rem;
     gap: clamp(0.25rem, 0.85vw, 2rem);
 
+    @include custom-scrollbar($secondary-color);
+
     .flight-location-form__container {
 
         display: block;

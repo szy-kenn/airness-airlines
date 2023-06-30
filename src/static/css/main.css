@@ -66,11 +66,8 @@ a,
   }
 }
 @keyframes panImage {
-  from {
-    background-position: 0% 20%;
-  }
   to {
-    background-position: 20% 20%;
+    background-position: 50% 50%;
   }
 }
 @keyframes closeFlightContainer {
@@ -119,10 +116,11 @@ a,
   grid-auto-flow: row;
   grid-auto-rows: auto;
   position: relative;
-  padding: clamp(1em, 1.25vw, 2rem);
+  left: 5%;
+  padding-block: clamp(1rem, 2.34vw, 3rem);
   height: -moz-fit-content;
   height: fit-content;
-  width: 100%;
+  width: 95%;
   align-items: center;
 }
 .home-welcome-section .welcome-text-container div {
@@ -186,6 +184,9 @@ a,
   grid-template-columns: 100%;
   grid-template-rows: 0.5fr 0.35fr 3.75fr 2.5fr 1.5fr;
   gap: clamp(0.25rem, 0.9vw, 1.5rem);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .form-container {
@@ -281,7 +282,6 @@ a,
 
 .sidebar-btn-container {
   align-self: stretch;
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,7 +298,13 @@ a,
   font-weight: 700;
   font-family: "Montserrat";
   letter-spacing: -0.01rem;
+  flex-grow: 1;
+  align-self: stretch;
   text-transform: uppercase;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 
 #globe-container {
@@ -592,6 +598,24 @@ a,
   padding-inline: clamp(1.5rem, 2.35vw, 3rem);
   gap: clamp(0.25rem, 0.85vw, 2rem);
 }
+.flight-location-form input::-webkit-calendar-picker-indicator {
+  font-size: 18px;
+  padding-inline: 1rem;
+}
+.flight-location-form *::-webkit-scrollbar {
+  width: 17.5px;
+}
+.flight-location-form *::-webkit-scrollbar-track {
+  margin: 10px 10px;
+}
+.flight-location-form *::-webkit-scrollbar-thumb {
+  background: #b399b0;
+  border: 5px solid white;
+  border-radius: 100px;
+}
+.flight-location-form *::-webkit-scrollbar-thumb:hover {
+  background: #0c2849;
+}
 .flight-location-form .flight-location-form__container {
   display: block;
   position: absolute;
@@ -789,11 +813,11 @@ a,
   top: 0;
   z-index: 100;
   height: 64px;
-  width: calc(100vw - 10rem);
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 5rem;
+  padding-inline: 5%;
   transition: background 0.5s ease;
   opacity: 1;
 }
@@ -1020,6 +1044,7 @@ a,
 body {
   background: #E4EEFD;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .flight-input-details {
@@ -1422,13 +1447,26 @@ body {
 .available-flights-test .flight-container.opened {
   animation: openFlightContainer 0.3s ease-out forwards;
 }
+.available-flights-test .flight-container.opened .globe-flight-details-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  background-color: white;
+}
 .available-flights-test .flight-container.opened .flight-price-section {
-  transition: background-color 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+  background-size: cover;
   background-color: rgba(12, 40, 73, 0.5);
-  background-image: url(../img/City.jpg);
   background-blend-mode: overlay;
   filter: contrast(1.3);
-  animation: openFlightContainer2 0.3s ease-in forwards, panImage 1.5s ease-out forwards;
+  animation: openFlightContainer2 0.3s ease-in forwards, panImage 1s ease-out forwards;
+}
+.available-flights-test .flight-container.opened .flight-price-section button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .available-flights-test .flight-container div, .available-flights-test .flight-container p {
   pointer-events: none;
@@ -1436,10 +1474,22 @@ body {
      -moz-user-select: none;
           user-select: none;
 }
+.available-flights-test .flight-container .globe-flight-details-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
 .available-flights-test .flight-container .flight-details-section {
   flex-grow: 1;
   align-self: stretch;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 .available-flights-test .flight-container .flight-price-section {
   animation: closeFlightContainer2 0.3s ease-out forwards;
@@ -1458,6 +1508,9 @@ body {
   font-size: 1.5em;
   font-weight: 700;
   font-family: "Montserrat";
+}
+.available-flights-test .flight-container .flight-price-section button {
+  display: none;
 }
 
 .passenger-details-wrapper {
@@ -2784,25 +2837,5 @@ body {
   }
   .main-wrapper .home-body #globe-container {
     display: none;
-  }
-}
-@media screen and (min-width: 1024px) {
-  input::-webkit-calendar-picker-indicator {
-    font-size: 18px;
-    padding-inline: 1rem;
-  }
-  *::-webkit-scrollbar {
-    width: 17.5px;
-  }
-  *::-webkit-scrollbar-track {
-    margin: 10px 10px;
-  }
-  *::-webkit-scrollbar-thumb {
-    background: #b399b0;
-    border: 5px solid white;
-    border-radius: 100px;
-  }
-  *::-webkit-scrollbar-thumb:hover {
-    background: #0c2849;
   }
 }/*# sourceMappingURL=main.css.map */

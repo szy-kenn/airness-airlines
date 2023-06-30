@@ -1,6 +1,7 @@
 body {
     background: $primary-color;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .flight-input-details {
@@ -430,13 +431,24 @@ body {
         &.opened {
             animation: openFlightContainer 0.3s ease-out forwards;
 
+                .globe-flight-details-container {
+                    @include flex(stretch, stretch);
+                    background-color: $secondary-color;
+                }
+
             .flight-price-section {
-                transition: background-color 0.5s ease;
+                display: flex;
+                flex-direction: column;
+                transition: background-color 0.3s ease;
+                background-size: cover;
                 background-color: rgba($primary-button, 0.5);
-                background-image: url(../img/City.jpg);
                 background-blend-mode: overlay;
                 filter: contrast(1.3);
-                animation: openFlightContainer2 0.3s ease-in forwards, panImage 1.5s ease-out forwards;
+                animation: openFlightContainer2 0.3s ease-in forwards, panImage 1s ease-out forwards;
+                
+                button {
+                    @include flex(center);
+                }
             }
         }
         div, p {
@@ -444,11 +456,22 @@ body {
             user-select: none;
         }
 
+        .globe-flight-details-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            // border: 1px solid red;
+            border-radius: 20px 0 0 20px;
+        }
+
         .flight-details-section {
             flex-grow: 1;
             align-self: stretch;
-            // border: 1px solid red;
-            overflow: hidden;
+            @include flex(space-between);
+            position: relative;
         }
 
         .flight-price-section {
@@ -463,6 +486,10 @@ body {
 
             p {
                 @include font(1.5em, 700);
+            }
+            
+            button {
+                display: none;
             }
         }
     }

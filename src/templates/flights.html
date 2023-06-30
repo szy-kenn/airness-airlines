@@ -90,9 +90,16 @@
         </div>
         <div class="available-flights-test">
             <div class="flight-container closed">
-                <div class="flight-stops-section"><p>DIRECT</p></div>
-                <div class="flight-details-section"><p>FLIGHT DETAILS</p></div>
-                <div class="flight-price-section"><p>PHP 49,814</p></div>
+                <div class="globe-flight-details-container">
+                </div>
+                <div class="flight-details-section">
+                    <p>DIRECT</p>
+                    <p>FLIGHT DETAILS</p>
+                </div>
+                <div class="flight-price-section" style="background-image: url( {{ form_part_one['to-json']['url'] }} );">
+                    <p>PHP 49,814</p>
+                    <button>Select</button>
+                </div>
             </div>
         </div>
     </div>
@@ -241,6 +248,7 @@
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/geodata/data/countries2.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
 {% endblock %}
