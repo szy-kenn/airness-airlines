@@ -137,6 +137,7 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
         bottom: 10%;
         display: flex;
         opacity: 0.3;
+        user-select: none;
     }
     
     .sidebar-heading {

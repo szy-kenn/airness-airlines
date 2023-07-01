@@ -1,7 +1,12 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify
 import pandas as pd
 
+
 api = Blueprint('api', __name__)
+
+# @api.route('/geocode')
+# def geocode():
+#     return jsonify({'response': location})
 
 @api.route('/iata-codes')
 def iata():

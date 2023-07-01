@@ -21,6 +21,8 @@ def _loading():
 def about():
     return render_template('about.html')
 
+
+
 @view.route('/flights', methods=['GET', 'POST'])
 def flights():
     if request.method  == 'POST':

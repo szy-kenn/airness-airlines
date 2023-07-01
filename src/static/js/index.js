@@ -196,8 +196,6 @@ pointSeries.bullets.push(function() {
 //     polygonSeries.zoomToDataItem(dataItem, 3);
 //   });
 
-
-
 // chart.events.on("click", function(ev) {
 //     polygonSeries.zoomToDataItem(ev.target.dataItem, 3.5)
 //   });

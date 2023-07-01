@@ -89,18 +89,20 @@
             </div>
         </div>
         <div class="available-flights-test">
+            {% for i in range(3) %}
             <div class="flight-container closed">
                 <div class="globe-flight-details-container">
                 </div>
                 <div class="flight-details-section">
                     <p>DIRECT</p>
                     <p>FLIGHT DETAILS</p>
-                </div>
-                <div class="flight-price-section" style="background-image: url( {{ form_part_one['to-json']['url'] }} );">
+                </div>  
+                <div class="flight-price-section" style="--bg-url: url({{ form_part_one['to-json']['url'] }});">
                     <p>PHP 49,814</p>
                     <button>Select</button>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -250,5 +252,5 @@
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/data/countries2.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
+<script type="module" src="{{ url_for('static', filename='js/flights.js')}}"></script>
 {% endblock %}
