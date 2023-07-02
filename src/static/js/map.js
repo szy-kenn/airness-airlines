@@ -15,7 +15,8 @@ export class Map {
         this.planeDataItem = null;
     }
 
-    ready(container) {
+    ready(container, projection, panX, panY, wheelY, graticulate, mapOpacity) {
+        this.projection = projection;
 
         if (this.root?.container != null) {
             this.root.dispose();
@@ -34,15 +35,76 @@ export class Map {
         // Create the map chart
         // https://www.amcharts.com/docs/v5/charts/map-chart/
         this.chart = this.root.container.children.push(am5map.MapChart.new(this.root, {
-            panX: "rotateX",
-            panY: "none",
+            panX: panX,
+            panY: panY,
+            wheelX: "none",
+            wheelY: "none",
+            pinchZoom: "none",
             x: 0,
             y: 0,
             zoomLevel: 1,
-            projection: am5map.geoEquirectangular(),
+            projection: this.projection,
+            // projection: am5map.geoEquirectangular(),
             // projection: am5map.geoNaturalEarth1(),
             homeGeoPoint: { latitude: 14.5995, longitude: 120.9842 }
         }));
+
+
+        this.chart.events.on("wheel", (ev) => {
+            if (ev.originalEvent.ctrlKey) {
+              ev.originalEvent.preventDefault();
+              this.chart.set("wheelY", "zoom");
+            }
+            else {
+              this.chart.set("wheelY", "none");
+            }
+          });
+        
+        this.chart.set("zoomControl", am5map.ZoomControl.new(this.root, {}));
+        
+        // Create curtain + message to show when wheel is used over chart without CTRL
+        this.overlay = this.root.container.children.push(am5.Container.new(this.root, {
+            width: am5.p100,
+            height: am5.p100,
+            layer: 100,
+            visible: false
+          }));
+                                                     
+        this.curtain = this.overlay.children.push(am5.Rectangle.new(this.root, {
+            x: am5.p0,
+            y: am5.p50,
+            fill: am5.color("#0C2849"),
+            fillOpacity: 0.3
+          }));
+          
+          this.message = this.overlay.children.push(am5.Label.new(this.root, {
+            text: "Use CTRL + Scroll to zoom",
+            fontSize: 30,
+            fill: "#E4EEFD",
+            x: am5.p50,
+            y: am5.p50,
+            background: am5.Rectangle.new(this.root, {
+                fill: am5.color("#0C2849"),
+                fillOpacity: 0.3
+            }),
+            centerX: am5.p50,
+            centerY: am5.p50
+          }));
+          
+          this.chart.events.on("wheel", (ev) => {
+            // Show overlay when wheel is used over chart
+            if (ev.originalEvent.ctrlKey) {
+              ev.originalEvent.preventDefault();
+              this.chart.set("wheelY", "zoom");
+            }
+            else {
+              this.chart.set("wheelY", "none");
+              this.overlay.show();
+              this.overlay.setTimeout(() => {
+                this.overlay.hide()
+              }, 800);
+            }
+          });
 
         // Create series for background fill
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
@@ -66,13 +128,85 @@ export class Map {
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
         this.polygonSeries = this.chart.series.push(am5map.MapPolygonSeries.new(this.root, {
             fill: "#0C2849",
-            opacity: .4,
+            opacity: mapOpacity,
             geoJSON: am5geodata_worldLow,
             exclude: ["AQ"]
         }));
 
+        // for tooltip hover
+        // this.polygonSeries.mapPolygons.template.setAll({
+        //     tooltipText: "{name}",
+        //     color: "#fff",
+        //     interactive: true
+        // });
+
+        // Create point series for markers
+        // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+        this.pointSeries = this.chart.series.push(am5map.MapPointSeries.new(this.root, {}));
+
+        this.polygonSeries.mapPolygons.template.states.create("active", {
+            // fill: "#FFD700"
+            fillGradient: am5.LinearGradient.new(this.root, {
+                stops: [{
+                    color: am5.color("#ff0000")
+                  }, {
+                    color: am5.color("#FFA500")
+                  }],
+                  rotation: 90
+            })
+        })
+
+        if (graticulate) {
+            let graticuleSeries = this.chart.series.unshift(
+                am5map.GraticuleSeries.new(this.root, {
+                step: 8  
+                })
+            );
+
+            graticuleSeries.mapLines.template.setAll({
+                stroke: am5.color("#0C2849"),
+                strokeOpacity: 0.1
+            });
+        }
+
         // Make stuff animate on load
         this.chart.appear(1000, 100)
+    }
+
+    setSource(longitude, latitude, name) {
+        this.createPoints() 
+        this.fromLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name) 
+    }
+
+    setDestination(longitude, latitude, name) {
+        this.toLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name)
+    }
+
+    createPoints() {
+        this.pointSeries.bullets.push(() => {
+
+            this.circle = am5.Circle.new(this.root, {
+                radius: 10,
+                name: "point",
+                tooltipText: "{title}",
+                cursorOverStyle: "pointer",
+                tooltipY: 0,
+                fill: am5.color(0xffba00),
+                stroke: this.root.interfaceColors.get("background"),
+                strokeWidth: 2,
+                draggable: false
+            });
+
+            return am5.Bullet.new(this.root, {
+                sprite: this.circle
+            });
+        });
+    }
+
+    removePoint() {
+        // console.log(this.pointSeries.dataItems)
+        this.pointSeries.pop()
+        this.pointSeries.bullets.pop()
     }
 
     createTrajectoryLines() {
@@ -84,41 +218,6 @@ export class Map {
             stroke: this.root.interfaceColors.get("alternativeBackground"),
             strokeOpacity: 0.3
         });
-
-        // Create point series for markers
-        // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
-        this.pointSeries = this.chart.series.push(am5map.MapPointSeries.new(this.root, {}));
-
-        this.pointSeries.bullets.push(() => {
-            this.circle = am5.Circle.new(this.root, {
-                radius: 7,
-                tooltipText: "Drag me!",
-                cursorOverStyle: "pointer",
-                tooltipY: 0,
-                fill: am5.color(0xffba00),
-                stroke: this.root.interfaceColors.get("background"),
-                strokeWidth: 2,
-                draggable: true
-            });
-
-            this.circle.events.on("dragged", (event) => {
-                var dataItem = event.target.dataItem;
-                var projection = this.chart.get("projection");
-                var geoPoint = this.chart.invert({ x: circle.x(), y: circle.y() });
-
-                dataItem.setAll({
-                    longitude: geoPoint.longitude,
-                    latitude: geoPoint.latitude
-                });
-            });
-
-            return am5.Bullet.new(this.root, {
-                sprite: this.circle
-            });
-        });
-        
-        this.fromLocationPoint = this.addCity({ latitude: 14.5995, longitude: 120.9842 }, "Manila") 
-        this.toLocationPoint = this.addCity({ latitude: 49.2827, longitude: -123.1207 }, "Vancouver")
 
         this.lineDataItem = this.lineSeries.pushDataItem({
             pointsToConnect: [this.fromLocationPoint, this.toLocationPoint]
@@ -181,10 +280,11 @@ export class Map {
         // this.polygonSeries.zoomToGeoPoint({latitude: lat, longitude: long}, 3);
     }
 
-    addCity(coords, title) {
+    #addCity(coords, title) {
         return this.pointSeries.pushDataItem({
             latitude: coords.latitude,
-            longitude: coords.longitude
+            longitude: coords.longitude,
+            title: title
         });
     }
 }

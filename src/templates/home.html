@@ -2,7 +2,6 @@
 {% block title %}Airness Airlines{% endblock %}
 
 {% block content %}
-
 <div class="main-wrapper">
     {% include 'blocks/navbar.html' %}
     <div class="home-welcome-section">
@@ -105,5 +104,5 @@
     })
 </script> -->
 
-<script type="text/javascript" src="{{ url_for('static', filename='js/index.js')}}"></script>
+<script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
 {% endblock %}

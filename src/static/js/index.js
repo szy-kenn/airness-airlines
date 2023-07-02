@@ -4,274 +4,185 @@
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("globe-container");
+// var root = am5.Root.new("globe-container");
 
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+// // Set themes
+// // https://www.amcharts.com/docs/v5/concepts/themes/
+// root.setThemes([
+//   am5themes_Animated.new(root)
+// ]);
 
-// Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
-var chart = root.container.children.push(am5map.MapChart.new(root, {
-  panX: "none",
-  panY: "none",
-  wheelY: "none",
-  pinchZoom: false,
-  maxPanOut: 0,
-  zoomLevel: 1,
-  minZoomLevel: 1,
-  maxZoomLevel: 16,
-  projection: am5map.geoOrthographic(),
-  //projection: am5map.geoMercator(),
-//   homeGeoPoint: {longitude: 121, latitude: 13}
-  homeGeoPoint: { latitude: 2, longitude: 2 }
-}));
-
-chart.events.on("wheel", function(ev) {
-    if (ev.originalEvent.ctrlKey) {
-      ev.originalEvent.preventDefault();
-      chart.set("wheelY", "zoom");
-    }
-    else {
-      chart.set("wheelY", "none");
-    }
-  });
-
-// chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-
-// Create curtain + message to show when wheel is used over chart without CTRL
-let overlay = root.container.children.push(am5.Container.new(root, {
-    width: am5.p100,
-    height: am5.p100,
-    layer: 100,
-    visible: false
-  }));
-                                             
-//   let curtain = overlay.children.push(am5.Rectangle.new(root, {
-//     x: am5.p0,
-//     y: am5.p50,
-//     fill: am5.color("#0C2849"),
-//     fillOpacity: 0.3
-//   }));
-  
-  let message = overlay.children.push(am5.Label.new(root, {
-    text: "Use CTRL + Scroll to zoom",
-    fontSize: 30,
-    fill: "#E4EEFD",
-    x: am5.p50,
-    y: am5.p50,
-    background: am5.Rectangle.new(root, {
-        fill: am5.color("#0C2849"),
-        fillOpacity: 0.3
-    }),
-    centerX: am5.p50,
-    centerY: am5.p50
-  }));
-  
-  chart.events.on("wheel", function(ev) {
-    // Show overlay when wheel is used over chart
-    if (ev.originalEvent.ctrlKey) {
-      ev.originalEvent.preventDefault();
-      chart.set("wheelY", "zoom");
-    }
-    else {
-      chart.set("wheelY", "none");
-      overlay.show();
-      overlay.setTimeout(function() {
-        overlay.hide()
-      }, 800);
-    }
-  });
-
-// Create series for background fill
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
-var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-    //   fill: "#fff"
-}));
-
-backgroundSeries.mapPolygons.template.setAll({
-  fill: root.interfaceColors.get("alternativeBackground"),
-  fillOpacity: 0,
-  strokeOpacity: 0
-});
-
-// Add background polygon
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
-backgroundSeries.data.push({
-  geometry: am5map.getGeoRectangle(90, 180, -90, -180)
-});
-
-// Rotate animation
-chart.animate({
-    key: "rotationX",
-    from: 0,
-    to: 360,
-    duration: 30000,
-    loops: Infinity
-  });
-
-// Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-  geoJSON: am5geodata_worldLow,
-  fill: "#0C2849",
-//   fill: "#A3AAB4",
-  exclude: ["AQ"]
-}));
-
-polygonSeries.mapPolygons.template.setAll({
-    tooltipText: "{name}",
-    interactive: true
-});
-
-polygonSeries.mapPolygons.template.states.create("active", {
-    // fill: "#FFD700"
-    fillGradient: am5.LinearGradient.new(root, {
-        stops: [{
-            color: am5.color("#ff0000")
-          }, {
-            color: am5.color("#FFA500")
-          }],
-          rotation: 90
-    })
-})
+// // Create the map chart
+// // https://www.amcharts.com/docs/v5/charts/map-chart/
+// var chart = root.container.children.push(am5map.MapChart.new(root, {
+//   panX: "none",
+//   panY: "none",
+//   wheelY: "none",
+//   pinchZoom: false,
+//   maxPanOut: 0,
+//   zoomLevel: 1,
+//   minZoomLevel: 1,
+//   maxZoomLevel: 16,
+//   projection: am5map.geoOrthographic(),
+//   //projection: am5map.geoMercator(),
+// //   homeGeoPoint: {longitude: 121, latitude: 13}
+//   homeGeoPoint: { latitude: 2, longitude: 2 }
+// }));
 
 
-let graticuleSeries = chart.series.unshift(
-    am5map.GraticuleSeries.new(root, {
-      step: 8  
-    })
-);
+// // Create series for background fill
+// // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+//     //   fill: "#fff"
+// }));
 
-graticuleSeries.mapLines.template.setAll({
-stroke: am5.color("#0C2849"),
-strokeOpacity: 0.1
-});
+// backgroundSeries.mapPolygons.template.setAll({
+//   fill: root.interfaceColors.get("alternativeBackground"),
+//   fillOpacity: 0,
+//   strokeOpacity: 0
+// });
 
-// Create line series for trajectory lines
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
-var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-lineSeries.mapLines.template.setAll({
-  stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.3
-});
+// // Add background polygon
+// // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// backgroundSeries.data.push({
+//   geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+// });
 
-// Create point series for markers
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
-var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
-
-pointSeries.bullets.push(function() {
-  var circle = am5.Circle.new(root, {
-    radius: 7,
-    // tooltipText: "{name}",
-    cursorOverStyle: "pointer",
-    tooltipY: 0,
-    fill: am5.color(0xffba00), // points
-    stroke: root.interfaceColors.get("background"),
-    strokeWidth: 2,
-    draggable: false
-  });
-
-  circle.events.on("dragged", function(event) {
-    var dataItem = event.target.dataItem;
-    var projection = chart.get("projection");
-    var geoPoint = chart.invert({ x: circle.x(), y: circle.y() });
-
-    dataItem.setAll({
-      longitude: geoPoint.longitude,
-      latitude: geoPoint.latitude
-    });
-  });
-
-  return am5.Bullet.new(root, {
-    sprite: circle
-  });
-});
-
-// polygonSeries.mapPolygons.template.events.on("click", function(ev) {
-//     var dataItem = polygonSeries.getDataItemById("FR");
-//     console.log(dataItem)
-//     polygonSeries.zoomToDataItem(dataItem, 3);
+// // Rotate animation
+// chart.animate({
+//     key: "rotationX",
+//     from: 0,
+//     to: 360,
+//     duration: 30000,
+//     loops: Infinity
 //   });
 
-// chart.events.on("click", function(ev) {
-//     polygonSeries.zoomToDataItem(ev.target.dataItem, 3.5)
+// // Create line series for trajectory lines
+// // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+// var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+// lineSeries.mapLines.template.setAll({
+//   stroke: root.interfaceColors.get("alternativeBackground"),
+//   strokeOpacity: 0.3
+// });
+
+// // Create point series for markers
+// // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+// pointSeries.bullets.push(function() {
+//   var circle = am5.Circle.new(root, {
+//     radius: 7,
+//     // tooltipText: "{name}",
+//     cursorOverStyle: "pointer",
+//     tooltipY: 0,
+//     fill: am5.color(0xffba00), // points
+//     stroke: root.interfaceColors.get("background"),
+//     strokeWidth: 2,
+//     draggable: false
 //   });
 
-var paris = addCity({ latitude: 48.8567, longitude: 2.351 }, "Paris");
-var toronto = addCity({ latitude: 43.8163, longitude: -79.4287 }, "Toronto");
-var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
-var havana = addCity({ latitude: 23, longitude: -82 }, "Havana");
+//   circle.events.on("dragged", function(event) {
+//     var dataItem = event.target.dataItem;
+//     var projection = chart.get("projection");
+//     var geoPoint = chart.invert({ x: circle.x(), y: circle.y() });
 
-// var fromLocation = addCity({}, )
-//var toLocation = 
+//     dataItem.setAll({
+//       longitude: geoPoint.longitude,
+//       latitude: geoPoint.latitude
+//     });
+//   });
 
-var lineDataItem = lineSeries.pushDataItem({
-   pointsToConnect: [paris, toronto, la, havana]
-});
+//   return am5.Bullet.new(root, {
+//     sprite: circle
+//   });
+// });
 
-var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+// // polygonSeries.mapPolygons.template.events.on("click", function(ev) {
+// //     var dataItem = polygonSeries.getDataItemById("FR");
+// //     console.log(dataItem)
+// //     polygonSeries.zoomToDataItem(dataItem, 3);
+// //   });
 
-var plane = am5.Graphics.new(root, {
-  svgPath:
-    "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-  scale: 0.06,
-  centerY: am5.p50,
-  centerX: am5.p50,
-  fill: am5.color(0x000000)
-});
+// // chart.events.on("click", function(ev) {
+// //     polygonSeries.zoomToDataItem(ev.target.dataItem, 3.5)
+// //   });
 
-planeSeries.bullets.push(function() {
-  var container = am5.Container.new(root, {});
-  container.children.push(plane);
-  return am5.Bullet.new(root, { sprite: container });
-});
+// var paris = addCity({ latitude: 48.8567, longitude: 2.351 }, "Paris");
+// var toronto = addCity({ latitude: 43.8163, longitude: -79.4287 }, "Toronto");
+// var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
+// var havana = addCity({ latitude: 23, longitude: -82 }, "Havana");
+
+// // var fromLocation = addCity({}, )
+// //var toLocation = 
+
+// var lineDataItem = lineSeries.pushDataItem({
+//    pointsToConnect: [paris, toronto, la, havana]
+// });
+
+// var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+// var plane = am5.Graphics.new(root, {
+//   svgPath:
+//     "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
+//   scale: 0.06,
+//   centerY: am5.p50,
+//   centerX: am5.p50,
+//   fill: am5.color(0x000000)
+// });
+
+// planeSeries.bullets.push(function() {
+//   var container = am5.Container.new(root, {});
+//   container.children.push(plane);
+//   return am5.Bullet.new(root, { sprite: container });
+// });
 
 
-var planeDataItem = planeSeries.pushDataItem({
-  lineDataItem: lineDataItem,
-  positionOnLine: 0,
-  autoRotate: true
-});
-planeDataItem.dataContext = {};
+// var planeDataItem = planeSeries.pushDataItem({
+//   lineDataItem: lineDataItem,
+//   positionOnLine: 0,
+//   autoRotate: true
+// });
+// planeDataItem.dataContext = {};
 
-planeDataItem.animate({
-  key: "positionOnLine",
-  to: 1,
-  duration: 10000,
-  loops: Infinity,
-  easing: am5.ease.yoyo(am5.ease.linear)
-});
+// planeDataItem.animate({
+//   key: "positionOnLine",
+//   to: 1,
+//   duration: 10000,
+//   loops: Infinity,
+//   easing: am5.ease.yoyo(am5.ease.linear)
+// });
 
-planeDataItem.on("positionOnLine", (value) => {
-  if (planeDataItem.dataContext.prevPosition < value) {
-    plane.set("rotation", 0);
-  }
+// planeDataItem.on("positionOnLine", (value) => {
+//   if (planeDataItem.dataContext.prevPosition < value) {
+//     plane.set("rotation", 0);
+//   }
 
-  if (planeDataItem.dataContext.prevPosition > value) {
-    plane.set("rotation", -180);
-  }
-  planeDataItem.dataContext.prevPosition = value;
-});
+//   if (planeDataItem.dataContext.prevPosition > value) {
+//     plane.set("rotation", -180);
+//   }
+//   planeDataItem.dataContext.prevPosition = value;
+// });
 
-function addCity(coords, title) {
-  return pointSeries.pushDataItem({
-    latitude: coords.latitude,
-    longitude: coords.longitude
-  });
-}
+// function addCity(coords, title) {
+//   return pointSeries.pushDataItem({
+//     latitude: coords.latitude,
+//     longitude: coords.longitude
+//   });
+// }
 // Make stuff animate on load
 // chart.appear(1000, 100);
 
 // }); 
 // end am5.ready()
 
+import { Map } from '../js/Map.js';
+import { getGeoCode} from '../js/geocode.js';
 
+const map = new Map();
 
-
-
+map.ready("globe-container", am5map.geoOrthographic(), 
+            'rotateX', 'rotateY',
+            'zoom', true, 1);
 
 /******************
  * PASSENGER FORM *
@@ -280,8 +191,9 @@ const passengerCount = document.querySelectorAll('.passenger-form__container__pa
     // passengerCount[0] = adult, [1] = children, [2] = infant
 const btnDown = document.querySelectorAll('.btn-down');
 const btnUp = document.querySelectorAll('.btn-up');
-const airlineClassSelected = document.querySelectorAll('.airline-class--selected');
+const airlineClassSelected = document.querySelector('.airline-class--selected');
 const airlineClassChoices = document.querySelectorAll('.airline-class__group-choices')
+const airlineChoicesDiv = document.querySelectorAll('.airline-class--choices')
 const airlineClassContainer = document.querySelectorAll('.passenger-form__container__airline-class');
 
 // maximum adult + children, excluding infants
@@ -346,31 +258,35 @@ function passengerBtnOnClick(btnType, idx) {
     btnStateUpdate();
 }
 
-function selectAirlineClass(index, airlineClass) {
-    airlineClassSelected[index].value = airlineClass;
+export function selectAirlineClass(airlineClass) {
+    airlineClassSelected.value = airlineClass;
 }
 
-function showChoices(choicesType, index) {
+export function showChoices(choicesType, index) {
 
     if (choicesType === "airline-class") {
-        airlineClassChoices[index].style.opacity = 1;
-        airlineClassChoices[index].style.pointerEvents = 'all';
-        airlineClassContainer[index].style.zIndex = 3;
+        airlineClassChoices.style.opacity = 1;
+        airlineClassChoices.style.pointerEvents = 'all';
+        airlineClassContainer.style.zIndex = 3;
     } else if (choicesType === 'airport') {
         airportChoicesContainer[index].style.opacity = 1;
         airportChoicesContainer[index].style.pointerEvents = 'all';
     }
 }
 
-for (let i = 0; i < airlineClassSelected.length; i++) {
-    airlineClassSelected[i].addEventListener('blur', () => {
-        airlineClassChoices[i].style.opacity = 0;
-        setTimeout(() => {
-            airlineClassChoices[i].style.pointerEvents = 'none';
-            airlineClassContainer[i].style.zIndex = 0;
-        }, 100);
-    });
-}
+airlineChoicesDiv.forEach(choice => {
+    choice.addEventListener('click', () => selectAirlineClass(choice.data.airlineClass))
+})
+
+airlineClassSelected.addEventListener('blur', () => {
+    airlineClassChoices.style.opacity = 0;
+    setTimeout(() => {
+        airlineClassChoices.style.pointerEvents = 'none';
+        airlineClassContainer.style.zIndex = 0;
+    }, 100);
+});
+
+airlineClassSelected.addEventListener("click", () => showChoices('airline-class', 0))
 
 btnStateUpdate();
 
@@ -386,24 +302,23 @@ const toContainer = document.getElementById("to");
 const fromJSON = document.getElementById("fromJSON");
 const toJSON = document.getElementById("toJSON");
 const airportChoicesContainer = document.querySelectorAll(".flight-location-form__container");
-
 const maxResult = 100
 
 let currentFrom = null
 let currentTo = null
 
-function getCurrentFrom(value) {
+function getCurrentFrom() {
     try {
-        return JSON.parse(fromJSON.value)[`${value}`];
+        return JSON.parse(fromJSON.value);
     }
     catch {
         return undefined;
     }
 }
 
-function getCurrentTo(value) {
+function getCurrentTo() {
     try {
-        return JSON.parse(toJSON.value)[`${value}`];
+        return JSON.parse(toJSON.value);
     }
     catch {
         return undefined;
@@ -575,27 +490,40 @@ function airportAddEventListener(airportDiv, inputSourceIdx, newChoiceData, choi
 
 const imagePopupContainer = document.querySelector(".image-popup-container");
 const imagePopupElement = document.getElementById("image-popup-element");
+const access_token = "AAPK0935c5e69f6b41209b83b65c6d1142c8RhIxwlDmGo6x9fm-BgdVEy711mRD4k4MKxOqiivNeSOTM9ek-MzTAqTjql9L-kZj"
 
-function highlightCountry (previous_country, iso_country) {
-    let dataItem = polygonSeries.getDataItemById(iso_country);
+function highlightCountry (previous_country, iso_country, municipality) {    
+    let dataItem = map.polygonSeries.getDataItemById(iso_country);
     let polygon = dataItem.get('mapPolygon');
 
-    polygonSeries.zoomToDataItem(dataItem, 4);
-    polygon.setAll({
-        active: true
-    })
+    fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${municipality}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            const address = data['candidates'][0]
+            console.log(address.location.x, address.location.y)
+            map.setSource(address.location.x, address.location.y, address.address)
+            map.chart.zoomToGeoPoint({longitude: address.location.x, latitude: address.location.y}, 3, true, 2000, -address.location.x)
+            polygon.setAll({
+                active: true
+            })
+        })
+        .catch(error => console.error(error))
 
     if (previous_country !== undefined) {
-        if (previous_country === iso_country) {
+        if (previous_country['iso_country'] === iso_country) {
             return;
         }
 
-        let prevDataItem = polygonSeries.getDataItemById(previous_country);
+        let prevDataItem = map.polygonSeries.getDataItemById(previous_country['iso_country']);
         let prevPolygon = prevDataItem.get('mapPolygon');
 
         prevPolygon.setAll({
             active: false
         })
+
+        map.removePoint()
+
     } 
 }
 
@@ -605,12 +533,12 @@ function selectAirportChoice(inputSourceIdx, newChoiceData) {
     imagePopupElement.src = newChoiceData['url'];
     
     if (inputSourceIdx === 0) {
-        highlightCountry(getCurrentFrom('iso_country'), newChoiceData['iso_country'])
+        highlightCountry(getCurrentFrom(), newChoiceData['iso_country'], newChoiceData['name'])
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentFrom = newChoiceData['iso_country'];
         fromJSON.value = JSON.stringify(newChoiceData);
     } else {
-        highlightCountry(getCurrentTo('iso_country'), newChoiceData['iso_country'])
+        highlightCountry(getCurrentTo(), newChoiceData['iso_country'], newChoiceData['name'])
         toLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentTo = newChoiceData['iso_country'];
         toJSON.value = JSON.stringify(newChoiceData);
@@ -626,6 +554,9 @@ fromLocation.addEventListener("focus", event => flightFormUpdate(event, fromCont
 fromLocation.addEventListener("blur", event => flightFormUpdate(event, fromContainer));
 toLocation.addEventListener("focus", event => flightFormUpdate(event, toContainer));
 toLocation.addEventListener("blur", event => flightFormUpdate(event, toContainer));
+
+fromLocation.addEventListener("input", () => showChoices('airport', 0));
+toLocation.addEventListener("input", () => showChoices('airport', 1));
 
 fromLocation.addEventListener("input", () => searchAirport(0, fromLocation.value));
 toLocation.addEventListener("input", () => searchAirport(1, toLocation.value));

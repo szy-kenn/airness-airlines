@@ -62,25 +62,25 @@ function getFlightContainersGlobe(container) {
             }
         }
     }
-}
+} 
 
 import { Map } from '../js/Map.js';
 
 let map = new Map();
-const access_token = "AAPK0935c5e69f6b41209b83b65c6d1142c8RhIxwlDmGo6x9fm-BgdVEy711mRD4k4MKxOqiivNeSOTM9ek-MzTAqTjql9L-kZj"
 
-async function createGlobe(container) {
-    map.ready(container);
-        setTimeout(() => {
-        map.zoomToCity("PH", 2);
-    }, 300);
+function createGlobe(container) {
+    map.ready(container, am5map.geoEquirectangular(),
+                'none', 'none', 'none', false, 0.4);
+    //     setTimeout(() => {
+    //     map.zoomToCity("PH", 2);
+    // }, 300);
 
-    fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${place}`)
-        .then(response => response.json())
-        .then(data => {
+    // fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${place}`)
+    //     .then(response => response.json())
+    //     .then(data => {
             
-        })
-        .catch(error => console.error(error))
+    //     })
+    //     .catch(error => console.error(error))
 }
 
 flightContainers.forEach(container => {
