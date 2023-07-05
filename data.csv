@@ -14,13 +14,13 @@ index,iata,name,iso_country,municipality,url
 12,HNL,Daniel K Inouye International Airport,US,Honolulu,https://a.cdn-hotels.com/gdcs/production11/d1732/5cdbe484-fc40-4518-8ffe-f2841f424e2e.jpg
 13,TPE,Taiwan Taoyuan International Airport,TW,Taipei,"https://res.klook.com/image/upload/c_fill,w_750,h_500/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nrvernjjs6kv0hbw1sdy.jpg"
 14,NRT,Narita International Airport,JP,Tokyo (Narita),https://i.pinimg.com/564x/3d/e3/66/3de36648251a3aae498969e00882b62c.jpg
-15,KIX,Kansai International Airport,JP,Osaka,
-16,CTS,New Chitose Airport,JP,Chitose,
-17,FUK,Fukuoka Airport,JP,Fukuoka,
-18,NGO,Chubu Centrair International Airport,JP,Tokoname,
-19,HND,Tokyo Haneda International Airport,JP,Tokyo (Haneda),
-20,PUS,Gimhae International Airport,KR,Busan,
-21,ICN,Incheon International Airport,KR,Seoul,
+15,KIX,Kansai International Airport,JP,Osaka,https://i.pinimg.com/564x/6e/43/2e/6e432eb3ae60fb4a7e83fc4ff34eabdf.jpg
+16,CTS,New Chitose Airport,JP,Chitose,https://rimage.gnst.jp/livejapan.com/public/article/detail/a/10/00/a1000096/img/en/a1000096_parts_5b303da1f063b.jpg?20220308150500&q=80
+17,FUK,Fukuoka Airport,JP,Fukuoka,https://i.pinimg.com/564x/73/cc/ed/73cced03bb9d1b588d633dec45aa310d.jpg
+18,NGO,Chubu Centrair International Airport,JP,Tokoname,https://i.pinimg.com/564x/5f/b9/c6/5fb9c645ace6e715478f0055e9ae6280.jpg
+19,HND,Tokyo Haneda International Airport,JP,Tokyo (Haneda),https://content.api.news/v3/images/bin/19baaccb3d706775bb9c3bbe2f946bb3
+20,PUS,Gimhae International Airport,KR,Busan,https://a.cdn-hotels.com/gdcs/production144/d1960/191730c7-8e21-4540-825c-65954ae4d132.jpg?impolicy=fcrop&w=800&h=533&q=medium
+21,ICN,Incheon International Airport,KR,Seoul,https://travel.usnews.com/images/gettyimages-516351649_rQXknmO.jpg
 22,CRK,Clark International Airport,PH,Mabalacat,
 23,LAO,Laoag International Airport,PH,Laoag,
 24,MNL,Ninoy Aquino International Airport,PH,Manila,
