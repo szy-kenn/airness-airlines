@@ -495,17 +495,23 @@ const imagePopupContainer = document.querySelector(".image-popup-container");
 const imagePopupElement = document.getElementById("image-popup-element");
 const access_token = "AAPK0935c5e69f6b41209b83b65c6d1142c8RhIxwlDmGo6x9fm-BgdVEy711mRD4k4MKxOqiivNeSOTM9ek-MzTAqTjql9L-kZj"
 
-function highlightCountry (previous_country, iso_country, municipality) {    
+function highlightCountry (inputSourceIdx, previous_country, iso_country, municipality) {    
     let dataItem = map.polygonSeries.getDataItemById(iso_country);
     let polygon = dataItem.get('mapPolygon');
 
     fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${municipality}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             const address = data['candidates'][0]
-            console.log(address.location.x, address.location.y)
-            map.setSource(address.location.x, address.location.y, address.address)
+            // console.log(address.location.x, address.location.y)
+            
+            if (inputSourceIdx === 0) {
+                map.setSource(address.location.x, address.location.y, address.address);
+            } else {
+                map.setDestination(address.location.x, address.location.y, address.address);
+            }
+            
             map.chart.zoomToGeoPoint({longitude: address.location.x, latitude: address.location.y}, 3, true, 2000, -address.location.x)
             polygon.setAll({
                 active: true
@@ -524,9 +530,6 @@ function highlightCountry (previous_country, iso_country, municipality) {
         prevPolygon.setAll({
             active: false
         })
-
-        map.removePoint()
-
     } 
 }
 
@@ -536,12 +539,12 @@ function selectAirportChoice(inputSourceIdx, newChoiceData) {
     imagePopupElement.src = newChoiceData['url'];
     
     if (inputSourceIdx === 0) {
-        highlightCountry(getCurrentFrom(), newChoiceData['iso_country'], newChoiceData['name'])
+        highlightCountry(inputSourceIdx, getCurrentFrom(), newChoiceData['iso_country'], newChoiceData['name'])
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentFrom = newChoiceData['iso_country'];
         fromJSON.value = JSON.stringify(newChoiceData);
     } else {
-        highlightCountry(getCurrentTo(), newChoiceData['iso_country'], newChoiceData['name'])
+        highlightCountry(inputSourceIdx, getCurrentTo(), newChoiceData['iso_country'], newChoiceData['name'])
         toLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentTo = newChoiceData['iso_country'];
         toJSON.value = JSON.stringify(newChoiceData);

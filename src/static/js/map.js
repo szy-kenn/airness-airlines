@@ -144,6 +144,25 @@ export class Map {
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
         this.pointSeries = this.chart.series.push(am5map.MapPointSeries.new(this.root, {}));
 
+        this.pointSeries.bullets.push(() => {
+
+            this.circle = am5.Circle.new(this.root, {
+                radius: 10,
+                name: "point",
+                tooltipText: "{title}",
+                cursorOverStyle: "pointer",
+                tooltipY: 0,
+                fill: am5.color(0xffba00),
+                stroke: this.root.interfaceColors.get("background"),
+                strokeWidth: 2,
+                draggable: false
+            });
+
+            return am5.Bullet.new(this.root, {
+                sprite: this.circle
+            });
+        });
+
         this.polygonSeries.mapPolygons.template.states.create("active", {
             // fill: "#FFD700"
             fillGradient: am5.LinearGradient.new(this.root, {
@@ -169,72 +188,43 @@ export class Map {
             });
         }
 
-        this.createPoints();
         // Make stuff animate on load
         this.chart.appear(1000, 100)
     }
 
     setSource(longitude, latitude, name) {
-        console.log(this.fromLocationPoint)
         if (this.fromLocationPoint != null) {
-            this.fromLocationPoint.remove();
+            this.removePoint(this.fromLocationPoint);
         }
         this.fromLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name) 
-        this.createPoints() 
+        if (this.fromLocationPoint != null && this.toLocationPoint != null) {
+            this.createTrajectoryLines();
+        }
     }
 
     setDestination(longitude, latitude, name) {
+        if (this.toLocationPoint != null) {
+            this.removePoint(this.toLocationPoint);
+        }
         this.toLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name)
+        if (this.fromLocationPoint != null && this.toLocationPoint != null) {
+            this.createTrajectoryLines();
+        }
     }
 
-    createPoints() {
-        this.pointSeries.bullets.push(() => {
-
-            this.circle = am5.Circle.new(this.root, {
-                radius: 10,
-                name: "point",
-                tooltipText: "{title}",
-                cursorOverStyle: "pointer",
-                tooltipY: 0,
-                fill: am5.color(0xffba00),
-                stroke: this.root.interfaceColors.get("background"),
-                strokeWidth: 2,
-                draggable: false
-            });
-
-            return am5.Bullet.new(this.root, {
-                sprite: this.circle
-            });
-        });
-    }
-
-    getAllFuncs(toCheck) {
-        const props = [];
-        let obj = toCheck;
-        do {
-            props.push(...Object.getOwnPropertyNames(obj));
-        } while (obj = Object.getPrototypeOf(obj));
-        
-        return props.sort().filter((e, i, arr) => { 
-           if (e!=arr[i+1] && typeof toCheck[e] == 'function') return true;
-        });
-    }
-
-    removePoint() {
-        // console.log(this.pointSeries.dataItems)
-        // this.pointSeries.pop()
-        // console.log(this.getAllFuncs(this.pointSeries));
-        // this.pointSeries.bullets.removeIndex(this.fromLocationPoint)
+    removePoint(dataItem) {
+        this.pointSeries.disposeDataItem(dataItem);
     }
 
     createTrajectoryLines() {
-
         // Create line series for trajectory lines
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
         this.lineSeries = this.chart.series.push(am5map.MapLineSeries.new(this.root, {}));
-            this.lineSeries.mapLines.template.setAll({
-            stroke: this.root.interfaceColors.get("alternativeBackground"),
-            strokeOpacity: 0.3
+        
+        this.lineSeries.mapLines.template.setAll({
+            stroke: am5.color(0xffba00),
+            // stroke: this.root.interfaceColors.get("alternativeBackground"),
+            strokeOpacity: 1
         });
 
         this.lineDataItem = this.lineSeries.pushDataItem({
@@ -303,6 +293,18 @@ export class Map {
             latitude: coords.latitude,
             longitude: coords.longitude,
             title: title
+        });
+    }
+
+    #getAllFuncs(toCheck) {
+        const props = [];
+        let obj = toCheck;
+        do {
+            props.push(...Object.getOwnPropertyNames(obj));
+        } while (obj = Object.getPrototypeOf(obj));
+        
+        return props.sort().filter((e, i, arr) => { 
+           if (e!=arr[i+1] && typeof toCheck[e] == 'function') return true;
         });
     }
 }
