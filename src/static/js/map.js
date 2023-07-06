@@ -169,13 +169,18 @@ export class Map {
             });
         }
 
+        this.createPoints();
         // Make stuff animate on load
         this.chart.appear(1000, 100)
     }
 
     setSource(longitude, latitude, name) {
-        this.createPoints() 
+        console.log(this.fromLocationPoint)
+        if (this.fromLocationPoint != null) {
+            this.fromLocationPoint.remove();
+        }
         this.fromLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name) 
+        this.createPoints() 
     }
 
     setDestination(longitude, latitude, name) {
@@ -203,10 +208,23 @@ export class Map {
         });
     }
 
+    getAllFuncs(toCheck) {
+        const props = [];
+        let obj = toCheck;
+        do {
+            props.push(...Object.getOwnPropertyNames(obj));
+        } while (obj = Object.getPrototypeOf(obj));
+        
+        return props.sort().filter((e, i, arr) => { 
+           if (e!=arr[i+1] && typeof toCheck[e] == 'function') return true;
+        });
+    }
+
     removePoint() {
         // console.log(this.pointSeries.dataItems)
-        this.pointSeries.pop()
-        this.pointSeries.bullets.pop()
+        // this.pointSeries.pop()
+        // console.log(this.getAllFuncs(this.pointSeries));
+        // this.pointSeries.bullets.removeIndex(this.fromLocationPoint)
     }
 
     createTrajectoryLines() {
