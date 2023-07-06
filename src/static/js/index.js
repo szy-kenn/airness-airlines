@@ -431,6 +431,7 @@ function searchAirport(inputSourceIdx, substring) {
                 if (data['iata'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['name'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['iso_country'][i].toLowerCase().includes(substring.toLowerCase()) ||
+                    data['country_name'][i].toLowerCase().includes(substring.toLowerCase()) ||
                     data['municipality'][i].toLowerCase().includes(substring.toLowerCase())
                     ) {
                         if ((inputSourceIdx === 1 && getCurrentFrom('iata') !== data['iata'][i]) ||
@@ -440,6 +441,7 @@ function searchAirport(inputSourceIdx, substring) {
                                     'name':         data['name'][i],
                                     'iata':         data['iata'][i],
                                     'iso_country':  data['iso_country'][i],
+                                    'country_name': data['country_name'][i],
                                     'municipality': data['municipality'][i],
                                     'url':          data['url'][i]
                                 }
@@ -456,6 +458,7 @@ function searchAirport(inputSourceIdx, substring) {
                     'name':         'No matches found',
                     'iata':         0,
                     'iso_country':  '',
+                    'country_name': '',
                     'municipality': ''
                 }
 
