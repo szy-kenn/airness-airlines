@@ -48,7 +48,9 @@ async function selectFlight(flight) {
 }
 
 const flightContainers = document.querySelectorAll(".flight-container");
-const flightContainerGlobe = document.querySelector(".globe-flight-details-container")
+const flightContainerGlobe = document.querySelector(".map-flight-details-container")
+const popupWrapper = document.querySelector(".popup-wrapper");
+const popupContainer = document.querySelector(".popup-selected-details");
 
 function getFlightContainersGlobe(container) {
 
@@ -70,7 +72,7 @@ let map = new Map();
 
 function createGlobe(container) {
     map.ready(container, am5map.geoEquirectangular(),
-                'none', 'none', 'none', false, 0.4);
+                'none', 'none', 'none', false, "#E4EEFD", 1);
     //     setTimeout(() => {
     //     map.zoomToCity("PH", 2);
     // }, 300);
@@ -83,13 +85,25 @@ function createGlobe(container) {
     //     .catch(error => console.error(error))
 }
 
+createGlobe(flightContainerGlobe);
+
+let searched_flights = null
+
+fetch('/api/searched-flights')
+    .then(response => response.json())
+    .then(data => searched_flights = data)
+    .catch(error => console.error(error))
+
 flightContainers.forEach(container => {
-    container.addEventListener('click', (event) => {
-    //   console.log(event.target)
-        event.target.classList.toggle('opened');
-        event.target.classList.toggle('closed');
-        if (event.target.classList.contains('opened')) {
-            createGlobe(getFlightContainersGlobe(event.target));
-        }
+    container.addEventListener('click', () => {
+        popupWrapper.classList.add('selected');
+        document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][container.dataset.index]['departure_time']).substring(11, 16);
+        document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][container.dataset.index]['arrival_time']).substring(11, 16);
     })
+})
+
+popupWrapper.addEventListener('click', (event) => {
+    if (event.target.classList.contains('popup-wrapper')) {
+        popupWrapper.classList.remove('selected');
+    }
 })

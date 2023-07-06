@@ -15,7 +15,7 @@ export class Map {
         this.planeDataItem = null;
     }
 
-    ready(container, projection, panX, panY, wheelY, graticulate, mapOpacity) {
+    ready(container, projection, panX, panY, wheelY, graticulate, mapColor, mapOpacity) {
         this.projection = projection;
 
         if (this.root?.container != null) {
@@ -46,7 +46,7 @@ export class Map {
             projection: this.projection,
             // projection: am5map.geoEquirectangular(),
             // projection: am5map.geoNaturalEarth1(),
-            homeGeoPoint: { latitude: 14.5995, longitude: 120.9842 }
+            // homeGeoPoint: { latitude: 14.5995, longitude: 120.9842 }
         }));
 
 
@@ -127,7 +127,7 @@ export class Map {
         // Create main polygon series for countries
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
         this.polygonSeries = this.chart.series.push(am5map.MapPolygonSeries.new(this.root, {
-            fill: "#0C2849",
+            fill: mapColor,
             opacity: mapOpacity,
             geoJSON: am5geodata_worldLow,
             exclude: ["AQ"]

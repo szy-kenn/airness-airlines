@@ -88,17 +88,84 @@
                 </div>
             </div>
         </div>
-        <div class="available-flights-test">
-            {% for i in range(3) %}
-            <div class="flight-container closed">
-                <div class="globe-flight-details-container">
+        
+        <div class="popup-wrapper">
+            <div class="popup-selected-details">
+                <div class="popup-body">
+                    <div class="flight-details-text">
+                        <div class="map-flights-from">
+                            <p class="map-flights-from__time">TIME</p>
+                            <span>{{ form_part_one['from-json']['iata'] }}</span>
+                        </div>
+                        <div class="map-flights-plane">
+                            <div class="airplane-track"></div>
+                            <i class="fa-solid fa-plane"></i> 
+                        </div>
+                        <div class="map-flights-to">
+                            <p class="map-flights-to__time">TIME</p>
+                            <span>{{ form_part_one['to-json']['iata'] }}</span>
+                        </div>
+                    </div>
+                    <div class="map-flight-details-container">
+
+                    </div>
                 </div>
+                <div class="popup-sidebar" style="--bg-url: url({{ form_part_one['to-json']['url'] }});">
+                    <p>sidebar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="available-flights-test">
+
+            {% if result_count  > 0 %} 
+                <p>Showing {{ available_flights['totalResults'] }} flights from Skyscanner API. ({{ available_flights['status'] }})</p>
+            {% endif %}
+            
+            {% for i in range(result_count) %}
+        
+                {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
+                {% set hours = duration_in_min // 60 %}
+                {% set min = duration_in_min % 60 %}
+                {% if hours > 0 and min > 0 %}
+                    {% set duration = hours ~ 'h ' ~ min ~ 'm' %}
+                {% elif hours > 0 and min == 0 %}
+                    {% set duration = hours ~ 'h' %}
+                {% elif hours == 0 and min > 0 %}
+                    {% set duration = min ~ 'm' %}
+                {% endif %}
+        
+                {% set stop_count = available_flights['best'][i]['stop_count'] %}
+                {% if stop_count > 1 %}
+                    {% set stops = stop_count ~ ' stops' %}
+                {% elif stop_count == 1 %}
+                    {% set stops = stop_count ~ ' stop' %}
+                {% else %}
+                    {% set stops = 'Direct' %}
+                {% endif %}
+
+            <div class="flight-container closed" data-index="{{ i }}">
                 <div class="flight-details-section">
-                    <p>DIRECT</p>
-                    <p>FLIGHT DETAILS</p>
+                    <div class="flight-details-subsection stops">
+                        <p>{{ stops }}</p>
+                    </div>
+                    <div class="flight-details-subsection details">
+                        <div class="time-location from">
+                            <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
+                            <span>{{ form_part_one['from-json']['iata'] }}</span>
+                        </div>
+                        <div class="airplane-track-container">
+                            <div class="airplane-track"></div>
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <div class="time-location to">
+                            <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
+                            <span>{{ form_part_one['to-json']['iata'] }}</span>
+                        </div>
+                    </div>
                 </div>  
-                <div class="flight-price-section" style="--bg-url: url({{ form_part_one['to-json']['url'] }});">
-                    <p>PHP 49,814</p>
+                <div class="flight-price-section">
+                    <p><span style="font-size: 0.75em;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
                     <button>Select</button>
                 </div>
             </div>
@@ -106,9 +173,6 @@
         </div>
     </div>
 </div>
-
-
-
         <!-- 
     <div class="filter">
         <label for="best">Best</label>

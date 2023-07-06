@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, session, flash
 from . import mysql
 import json
+import requests
 from . import skyscanner
 
 view = Blueprint('view', __name__)
@@ -21,8 +22,6 @@ def _loading():
 def about():
     return render_template('about.html')
 
-
-
 @view.route('/flights', methods=['GET', 'POST'])
 def flights():
     if request.method  == 'POST':
@@ -41,7 +40,8 @@ def flights():
     destination = session['form_part_one']['to-json']['iata'],
     departure_date = session['form_part_one']['departure-date'],
     
-    available_flights = skyscanner.request(origin, destination, departure_date)
+    available_flights = skyscanner.skyscanner.request(origin, destination, departure_date)
+    requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
     # return jsonify(available_flights)
 
     if available_flights[0] == 0:

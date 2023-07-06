@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect, jsonify
+from flask import Blueprint, render_template, request, url_for, redirect, jsonify, session
 import pandas as pd
 
 
@@ -55,3 +55,16 @@ def iata():
 
     return dataframe.to_json()
     # return render_template('api.html', results=results)
+
+global searched_flights_res
+searched_flights_res = {}
+
+@api.route('/searched-flights', methods=['GET', 'POST'])
+def searched_flights():
+    global searched_flights_res
+    if request.method == 'POST':
+        searched_flights_res = request.get_json()
+        return jsonify({})
+    
+    print("searched!!")
+    return searched_flights_res[1]

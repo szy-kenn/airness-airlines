@@ -182,7 +182,7 @@ const map = new Map();
 
 map.ready("globe-container", am5map.geoOrthographic(), 
             'rotateX', 'rotateY',
-            'zoom', true, 1);
+            'zoom', true, "#0C2849", 1);
 
 /******************
  * PASSENGER FORM *
