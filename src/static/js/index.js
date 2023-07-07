@@ -520,7 +520,7 @@ function highlightCountry (inputSourceIdx, previous_country, iso_country, munici
         .catch(error => console.error(error))
 
     if (previous_country !== undefined) {
-        if (previous_country['iso_country'] === iso_country) {
+        if (previous_country['iso_country'] === getCurrentFrom()['iso_country'] || previous_country['iso_country'] === getCurrentTo()['iso_country']) {
             return;
         }
 

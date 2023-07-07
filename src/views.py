@@ -11,7 +11,6 @@ def home():
     if request.method == 'POST':
         session['form_part_one'] = request.form
         return redirect(url_for('.flights'))
-
     return render_template('home.html')
 
 @view.route('/_loading')

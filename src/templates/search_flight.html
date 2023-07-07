@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>SEARCH FLIGHTS</p>
+<input type="text" id="search-flight">
+<table class="results"></table>
+
+<script>
+    var searchFlight = document.getElementById("search-flight");
+    var results = document.querySelector('.results')
+
+    function clearChildren(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    fetch('/query/create-airport-table')
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+    searchFlight.addEventListener('input', async (event) => {
+        var input = event.target.value;
+        fetch('/query/search-airports', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({query : input})
+        })
+        .then(response => response.json())
+        .then(data => { 
+            console.log(data)
+            clearChildren(results);
+            if (data.length > 100) {
+                 return;
+             }
+             for (let i = 0; i < data.length; i++) {
+                const tr = document.createElement("tr");
+                for (let j = 0; j < data[i].length; j++) {
+                    const td = document.createElement("td");
+                    td.textContent = data[i][j];
+                    td.style.padding = '1rem';
+                    tr.appendChild(td);
+                }
+                results.appendChild(tr);
+             }
+        })
+        .catch(error => {
+            console.error(error);
+        })
+
+    })
+</script>
+{% endblock %}

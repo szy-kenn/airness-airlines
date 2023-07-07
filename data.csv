@@ -1,102 +1,102 @@
-index,iata,name,iso_country,country_name,municipality,url
-0,POM,Port Moresby Jacksons International Airport,PG,Papua New Guinea,Port Moresby,https://upload.wikimedia.org/wikipedia/commons/6/6a/Port_Moresby_Town2_Mschlauch.jpg
-1,YVR,Vancouver International Airport,CA,Canada,Vancouver,https://upload.wikimedia.org/wikipedia/commons/5/57/Concord_Pacific_Master_Plan_Area.jpg
-2,YYZ,Lester B. Pearson International Airport,CA,Canada,Toronto,https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQKjCXgFVcYAJRAlHbxrKbfgasFPFqhh-2fMtSuwYHO9EdVw_qVHqUFY3Wk4N2b8GS9bZ-4yaJDCn9-A2Dz1B15DjANDg
-3,JFK,John F Kennedy International Airport,US,United States,New York,https://www.agoda.com/wp-content/uploads/2020/07/Statue-of-Liberty-things-to-do-in-new-york-USA.jpg
-4,LAX,Los Angeles International Airport,US,United States,Los Angeles,https://media.tacdn.com/media/attractions-splice-spp-674x446/07/3b/4c/fe.jpg
-5,SFO,San Francisco International Airport,US,United States,San Francisco,https://lh5.googleusercontent.com/p/AF1QipN0-mJ4M1ftzod1vtrdwMyE2fmmqxGdPxnvQMH4=w548-h318-n-k-no
-6,DMM,King Fahd International Airport,SA,Saudi Arabia,Dammam,https://lh5.googleusercontent.com/p/AF1QipOUymr6rWEWqKUR6_BwZuzkU-3fFBP7Fk-b21xQ=w548-h318-n-k-no
-7,RUH,King Khaled International Airport,SA,Saudi Arabia,Riyadh,https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg
-8,DXB,Dubai International Airport,AE,United Arab Emirates,Dubai,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS89A5I7OLZvglO6vNDZwSvqBOjOZW5dVSruS8A9ub-DGb6zVcehY3H5Su_CRQ8D7SBbA73YuB9m8HSZD18MSLSTzomew
-9,DOH,Hamad International Airport,QA,Qatar,Doha,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg/1280px-Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg
-10,GUM,Antonio B. Won Pat International Airport,GU,Guam,Guam,https://i.pinimg.com/736x/ec/ef/f0/eceff0bfb58b496a2c8fd8f800a08f7b.jpg
-11,CGY,Laguindingan Airport,PH,Philippines,Cagayan de Oro,https://aboutcagayandeoro.com/wp-content/uploads/2018/01/sinulom-falls.jpg
-12,HNL,Daniel K Inouye International Airport,US,United States,Honolulu,https://a.cdn-hotels.com/gdcs/production11/d1732/5cdbe484-fc40-4518-8ffe-f2841f424e2e.jpg
-13,TPE,Taiwan Taoyuan International Airport,TW,Taiwan,Taipei,"https://res.klook.com/image/upload/c_fill,w_750,h_500/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nrvernjjs6kv0hbw1sdy.jpg"
-14,NRT,Narita International Airport,JP,Japan,Tokyo (Narita),https://i.pinimg.com/564x/3d/e3/66/3de36648251a3aae498969e00882b62c.jpg
-15,KIX,Kansai International Airport,JP,Japan,Osaka,https://i.pinimg.com/564x/6e/43/2e/6e432eb3ae60fb4a7e83fc4ff34eabdf.jpg
-16,CTS,New Chitose Airport,JP,Japan,Chitose,https://rimage.gnst.jp/livejapan.com/public/article/detail/a/10/00/a1000096/img/en/a1000096_parts_5b303da1f063b.jpg?20220308150500&q=80
-17,FUK,Fukuoka Airport,JP,Japan,Fukuoka,https://i.pinimg.com/564x/73/cc/ed/73cced03bb9d1b588d633dec45aa310d.jpg
-18,NGO,Chubu Centrair International Airport,JP,Japan,Tokoname,https://i.pinimg.com/564x/5f/b9/c6/5fb9c645ace6e715478f0055e9ae6280.jpg
-19,HND,Tokyo Haneda International Airport,JP,Japan,Tokyo (Haneda),https://content.api.news/v3/images/bin/19baaccb3d706775bb9c3bbe2f946bb3
-20,PUS,Gimhae International Airport,KR,South Korea,Busan,https://a.cdn-hotels.com/gdcs/production144/d1960/191730c7-8e21-4540-825c-65954ae4d132.jpg?impolicy=fcrop&w=800&h=533&q=medium
-21,ICN,Incheon International Airport,KR,South Korea,Seoul,https://travel.usnews.com/images/gettyimages-516351649_rQXknmO.jpg
-22,CRK,Clark International Airport,PH,Philippines,Mabalacat,
-23,LAO,Laoag International Airport,PH,Philippines,Laoag,
-24,MNL,Ninoy Aquino International Airport,PH,Philippines,Manila,
-25,CBO,Awang Airport,PH,Philippines,Cotabato,
-26,DVO,Francisco Bangoy International Airport,PH,Philippines,Davao,
-27,BXU,Bancasi Airport,PH,Philippines,Butuan,
-28,DPL,Dipolog Airport,PH,Philippines,Dipolog,
-29,CGM,Camiguin Airport,PH,Philippines,Mambajao,
-30,TWT,Sanga Sanga Airport,PH,Philippines,Tawi-tawi,
-31,OZC,Labo Airport,PH,Philippines,Ozamiz,
-32,PAG,Pagadian Airport,PH,Philippines,Pagadian,
-33,GES,General Santos International Airport,PH,Philippines,General Santos,
-34,ZAM,Zamboanga International Airport,PH,Philippines,Zamboanga,
-35,IAO,Siargao Airport,PH,Philippines,Del Carmen,
-36,SWL,San Vicente Airport,PH,Philippines,San Vicente,
-37,BSO,Basco Airport,PH,Philippines,Basco,
-38,TAC,Daniel Z. Romualdez Airport,PH,Philippines,Tacloban,
-39,BCD,Bacolod-Silay Airport,PH,Philippines,Bacolod,
-40,CYP,Calbayog Airport,PH,Philippines,Calbayod,
-41,DGT,Sibulan Airport,PH,Philippines,Dumaguete,
-42,MPH,Godofredo P. Ramos Airport,PH,Philippines,Malay,
-43,CRM,Catarman National Airport,PH,Philippines,Catarman,
-44,ILO,Iloilo International Airport,PH,Philippines,Iloilo,
-45,KLO,Kalibo International Airport,PH,Philippines,Kalibo,
-46,CEB,Mactan Cebu International Airport,PH,Philippines,Lapu-Lapu,
-47,PPS,Puerto Princesa Airport,PH,Philippines,Puerto Princesa,
-48,RXS,Roxas Airport,PH,Philippines,Roxas,
-49,EUQ,Evelio Javier Airport,PH,Philippines,San Jose,
-50,TAG,Tagbilaran Airport,PH,Philippines,Tagbilaran,
-51,USU,Francisco B. Reyes Airport,PH,Philippines,Coron,
-52,PNH,Phnom Penh International Airport,KH,Cambodia,Phnom Penh,
-53,HKG,Hong Kong International Airport Kai Tak,HK,Hong Kong,Hong Kong,
-54,MFM,Macau International Airport,MO,Macau,Macau,
-55,BKK,Suvarnabhumi Airport,TH,Thailand,Bangkok,
-56,HAN,Noi Bai International Airport,VN,Vietnam,Hanoi,
-57,SGN,Tan Son Nhat International Airport,VN,Vietnam,Ho Chi Minh,
-58,DPS,Ngurah Rai (Bali) International Airport,ID,Indonesia,Bali,
-59,CGK,Soekarno-Hatta International Airport,ID,Indonesia,Jakarta,
-60,KUL,Kuala Lumpur International Airport,MY,Malaysia,Kuala Lumpur,
-61,SIN,Singapore Changi Airport,SG,Singapore,Singapore,
-62,BNE,Brisbane International Airport,AU,Australia,Brisbane,
-63,MEL,Melbourne International Airport,AU,Australia,Melbourne,
-64,PER,Perth International Airport,AU,Australia,Perth,
-65,SYD,Sydney Kingsford Smith International Airport,AU,Australia,Sydney,
-66,PEK,Beijing Capital International Airport,CN,China,Beijing,
-67,CAN,Guangzhou Baiyun International Airport,CN,China,Guangzhou,
-68,XMN,Xiamen Gaoqi International Airport,CN,China,Xiamen,
-69,PVG,Shanghai Pudong International Airport,CN,China,Shanghai,
-70,JJN,Quanzhou Jinjiang International Airport,CN,China,Quanzhou,
-71,BGY,Orio Al Serio International Airport,IT,Italy,Bergamo / Milan,
-72,CEQ,Cannes - Mandelieu Airport,FR,France,Cannes,
-73,DUS,Dusseldorf International Airport,DE,Germany,Duesseldorf,
-74,KWI,Kuwait International Airport,KW,Kuwait,Kuwait,
-75,LAS,Harry Reid International Airport,US,United States,Nevada,
-76,LHR,London Heathrow Airport,GB,United Kingdom,London,
-77,MCZ,Zumbi dos Palmares International Airport,BR,Brazil,Maceio,
-78,MAA,Chennai International Airport,IN,India,Madras(Chennai),
-79,MEX,Mexico City International Airport,MX,Mexico,Mexico ,
-80,NAT,Augusto Severo International Airport,BR,Brazil,Natal ,
-81,CDG,Paris Charles de Gaulle Airport,FR,France,Paris,
-82,KUF,Kurumoch International Airport,RU,Russia,Samara,
-83,SVO,Sheremetyevo International Airport,RU,Russia,Moscow,
-84,SJU,Luis Munoz Marin International Airport,PR,Puerto Rico,San Juan,
-85,UIO,Mariscal Sucre International Airport,EC,Ecuador,Quito,
-86,RAI,Nelson Mandela International Airport,CV,Cape Verde,Praia,
-87,FNJ,Sunan International Airport,KP,North Korea,Pyongyang,
-88,PUS,Gimhae International Airport,KR,South Korea,Pu San(Busan),
-89,YQB,Quebec City Jean Lesage International Airport,CA,Canada,Quebec ,
-90,MVD,Carrasco International Airport,UY,Uruguay,Montevideo,
-91,MAR,La Chinita International Airport,VE,Venezuela,Maracaibo,
-92,TLV,Ben Gurion International Airport,IL,Israel,Tel Aviv,
-93,KRK,John Paul II Krakow-Balice International Airport,PL,Poland,Krakow,
-94,KRT,Khartoum International Airport,SD,Sudan,Khartoum,
-95,KTM,Tribhuvan International Airport,NP,Nepal,Kathmandu,
-96,KHI,Jinnah International Airport,PK,Pakistan,Karachi,
-97,IAH,George Bush Intercontinental Airport,US,United States,Houston,
-98,GVA,Geneva-Cointrin International Airport,CH,Switzerland,Geneva,
-99,FRA,Frankfurt Airport,DE,Germany,Frankfurt,
-100,FPO,Grand Bahama International Airport,BS,Bahamas,Freeport,
+iata,name,municipality,country_code,country_name,continent_name,continent_code,longitude,latitude,url
+POM,Port Moresby Jacksons International Airport,Port Moresby,PG,Papua New Guinea,,,,,https://upload.wikimedia.org/wikipedia/commons/6/6a/Port_Moresby_Town2_Mschlauch.jpg
+YVR,Vancouver International Airport,Vancouver,CA,Canada,,,,,https://upload.wikimedia.org/wikipedia/commons/5/57/Concord_Pacific_Master_Plan_Area.jpg
+YYZ,Lester B. Pearson International Airport,Toronto,CA,Canada,,,,,https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQKjCXgFVcYAJRAlHbxrKbfgasFPFqhh-2fMtSuwYHO9EdVw_qVHqUFY3Wk4N2b8GS9bZ-4yaJDCn9-A2Dz1B15DjANDg
+JFK,John F Kennedy International Airport,New York,US,United States,,,,,https://www.agoda.com/wp-content/uploads/2020/07/Statue-of-Liberty-things-to-do-in-new-york-USA.jpg
+LAX,Los Angeles International Airport,Los Angeles,US,United States,,,,,https://media.tacdn.com/media/attractions-splice-spp-674x446/07/3b/4c/fe.jpg
+SFO,San Francisco International Airport,San Francisco,US,United States,,,,,https://lh5.googleusercontent.com/p/AF1QipN0-mJ4M1ftzod1vtrdwMyE2fmmqxGdPxnvQMH4=w548-h318-n-k-no
+DMM,King Fahd International Airport,Dammam,SA,Saudi Arabia,,,,,https://lh5.googleusercontent.com/p/AF1QipOUymr6rWEWqKUR6_BwZuzkU-3fFBP7Fk-b21xQ=w548-h318-n-k-no
+RUH,King Khaled International Airport,Riyadh,SA,Saudi Arabia,,,,,https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg
+DXB,Dubai International Airport,Dubai,AE,United Arab Emirates,,,,,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS89A5I7OLZvglO6vNDZwSvqBOjOZW5dVSruS8A9ub-DGb6zVcehY3H5Su_CRQ8D7SBbA73YuB9m8HSZD18MSLSTzomew
+DOH,Hamad International Airport,Doha,QA,Qatar,,,,,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg/1280px-Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg
+GUM,Antonio B. Won Pat International Airport,Guam,GU,Guam,,,,,https://i.pinimg.com/736x/ec/ef/f0/eceff0bfb58b496a2c8fd8f800a08f7b.jpg
+CGY,Laguindingan Airport,Cagayan de Oro,PH,Philippines,,,,,https://aboutcagayandeoro.com/wp-content/uploads/2018/01/sinulom-falls.jpg
+HNL,Daniel K Inouye International Airport,Honolulu,US,United States,,,,,https://a.cdn-hotels.com/gdcs/production11/d1732/5cdbe484-fc40-4518-8ffe-f2841f424e2e.jpg
+TPE,Taiwan Taoyuan International Airport,Taipei,TW,Taiwan,,,,,"https://res.klook.com/image/upload/c_fill,w_750,h_500/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nrvernjjs6kv0hbw1sdy.jpg"
+NRT,Narita International Airport,Tokyo (Narita),JP,Japan,,,,,https://i.pinimg.com/564x/3d/e3/66/3de36648251a3aae498969e00882b62c.jpg
+KIX,Kansai International Airport,Osaka,JP,Japan,,,,,https://i.pinimg.com/564x/6e/43/2e/6e432eb3ae60fb4a7e83fc4ff34eabdf.jpg
+CTS,New Chitose Airport,Chitose,JP,Japan,,,,,https://rimage.gnst.jp/livejapan.com/public/article/detail/a/10/00/a1000096/img/en/a1000096_parts_5b303da1f063b.jpg?20220308150500&q=80
+FUK,Fukuoka Airport,Fukuoka,JP,Japan,,,,,https://i.pinimg.com/564x/73/cc/ed/73cced03bb9d1b588d633dec45aa310d.jpg
+NGO,Chubu Centrair International Airport,Tokoname,JP,Japan,,,,,https://i.pinimg.com/564x/5f/b9/c6/5fb9c645ace6e715478f0055e9ae6280.jpg
+HND,Tokyo Haneda International Airport,Tokyo (Haneda),JP,Japan,,,,,https://content.api.news/v3/images/bin/19baaccb3d706775bb9c3bbe2f946bb3
+PUS,Gimhae International Airport,Busan,KR,South Korea,,,,,https://a.cdn-hotels.com/gdcs/production144/d1960/191730c7-8e21-4540-825c-65954ae4d132.jpg?impolicy=fcrop&w=800&h=533&q=medium
+ICN,Incheon International Airport,Seoul,KR,South Korea,,,,,https://travel.usnews.com/images/gettyimages-516351649_rQXknmO.jpg
+CRK,Clark International Airport,Mabalacat,PH,Philippines,,,,,
+LAO,Laoag International Airport,Laoag,PH,Philippines,,,,,
+MNL,Ninoy Aquino International Airport,Manila,PH,Philippines,,,,,
+CBO,Awang Airport,Cotabato,PH,Philippines,,,,,
+DVO,Francisco Bangoy International Airport,Davao,PH,Philippines,,,,,
+BXU,Bancasi Airport,Butuan,PH,Philippines,,,,,
+DPL,Dipolog Airport,Dipolog,PH,Philippines,,,,,
+CGM,Camiguin Airport,Mambajao,PH,Philippines,,,,,
+TWT,Sanga Sanga Airport,Tawi-tawi,PH,Philippines,,,,,
+OZC,Labo Airport,Ozamiz,PH,Philippines,,,,,
+PAG,Pagadian Airport,Pagadian,PH,Philippines,,,,,
+GES,General Santos International Airport,General Santos,PH,Philippines,,,,,
+ZAM,Zamboanga International Airport,Zamboanga,PH,Philippines,,,,,
+IAO,Siargao Airport,Del Carmen,PH,Philippines,,,,,
+SWL,San Vicente Airport,San Vicente,PH,Philippines,,,,,
+BSO,Basco Airport,Basco,PH,Philippines,,,,,
+TAC,Daniel Z. Romualdez Airport,Tacloban,PH,Philippines,,,,,
+BCD,Bacolod-Silay Airport,Bacolod,PH,Philippines,,,,,
+CYP,Calbayog Airport,Calbayod,PH,Philippines,,,,,
+DGT,Sibulan Airport,Dumaguete,PH,Philippines,,,,,
+MPH,Godofredo P. Ramos Airport,Malay,PH,Philippines,,,,,
+CRM,Catarman National Airport,Catarman,PH,Philippines,,,,,
+ILO,Iloilo International Airport,Iloilo,PH,Philippines,,,,,
+KLO,Kalibo International Airport,Kalibo,PH,Philippines,,,,,
+CEB,Mactan Cebu International Airport,Lapu-Lapu,PH,Philippines,,,,,
+PPS,Puerto Princesa Airport,Puerto Princesa,PH,Philippines,,,,,
+RXS,Roxas Airport,Roxas,PH,Philippines,,,,,
+EUQ,Evelio Javier Airport,San Jose,PH,Philippines,,,,,
+TAG,Tagbilaran Airport,Tagbilaran,PH,Philippines,,,,,
+USU,Francisco B. Reyes Airport,Coron,PH,Philippines,,,,,
+PNH,Phnom Penh International Airport,Phnom Penh,KH,Cambodia,,,,,
+HKG,Hong Kong International Airport Kai Tak,Hong Kong,HK,Hong Kong,,,,,
+MFM,Macau International Airport,Macau,MO,Macau,,,,,
+BKK,Suvarnabhumi Airport,Bangkok,TH,Thailand,,,,,
+HAN,Noi Bai International Airport,Hanoi,VN,Vietnam,,,,,
+SGN,Tan Son Nhat International Airport,Ho Chi Minh,VN,Vietnam,,,,,
+DPS,Ngurah Rai (Bali) International Airport,Bali,ID,Indonesia,,,,,
+CGK,Soekarno-Hatta International Airport,Jakarta,ID,Indonesia,,,,,
+KUL,Kuala Lumpur International Airport,Kuala Lumpur,MY,Malaysia,,,,,
+SIN,Singapore Changi Airport,Singapore,SG,Singapore,,,,,
+BNE,Brisbane International Airport,Brisbane,AU,Australia,,,,,
+MEL,Melbourne International Airport,Melbourne,AU,Australia,,,,,
+PER,Perth International Airport,Perth,AU,Australia,,,,,
+SYD,Sydney Kingsford Smith International Airport,Sydney,AU,Australia,,,,,
+PEK,Beijing Capital International Airport,Beijing,CN,China,,,,,
+CAN,Guangzhou Baiyun International Airport,Guangzhou,CN,China,,,,,
+XMN,Xiamen Gaoqi International Airport,Xiamen,CN,China,,,,,
+PVG,Shanghai Pudong International Airport,Shanghai,CN,China,,,,,
+JJN,Quanzhou Jinjiang International Airport,Quanzhou,CN,China,,,,,
+BGY,Orio Al Serio International Airport,Bergamo / Milan,IT,Italy,,,,,
+CEQ,Cannes - Mandelieu Airport,Cannes,FR,France,,,,,
+DUS,Dusseldorf International Airport,Duesseldorf,DE,Germany,,,,,
+KWI,Kuwait International Airport,Kuwait,KW,Kuwait,,,,,
+LAS,Harry Reid International Airport,Nevada,US,United States,,,,,
+LHR,London Heathrow Airport,London,GB,United Kingdom,,,,,
+MCZ,Zumbi dos Palmares International Airport,Maceio,BR,Brazil,,,,,
+MAA,Chennai International Airport,Madras(Chennai),IN,India,,,,,
+MEX,Mexico City International Airport,Mexico ,MX,Mexico,,,,,
+NAT,Augusto Severo International Airport,Natal ,BR,Brazil,,,,,
+CDG,Paris Charles de Gaulle Airport,Paris,FR,France,,,,,
+KUF,Kurumoch International Airport,Samara,RU,Russia,,,,,
+SVO,Sheremetyevo International Airport,Moscow,RU,Russia,,,,,
+SJU,Luis Munoz Marin International Airport,San Juan,PR,Puerto Rico,,,,,
+UIO,Mariscal Sucre International Airport,Quito,EC,Ecuador,,,,,
+RAI,Nelson Mandela International Airport,Praia,CV,Cape Verde,,,,,
+FNJ,Sunan International Airport,Pyongyang,KP,North Korea,,,,,
+PUS,Gimhae International Airport,Pu San(Busan),KR,South Korea,,,,,
+YQB,Quebec City Jean Lesage International Airport,Quebec ,CA,Canada,,,,,
+MVD,Carrasco International Airport,Montevideo,UY,Uruguay,,,,,
+MAR,La Chinita International Airport,Maracaibo,VE,Venezuela,,,,,
+TLV,Ben Gurion International Airport,Tel Aviv,IL,Israel,,,,,
+KRK,John Paul II Krakow-Balice International Airport,Krakow,PL,Poland,,,,,
+KRT,Khartoum International Airport,Khartoum,SD,Sudan,,,,,
+KTM,Tribhuvan International Airport,Kathmandu,NP,Nepal,,,,,
+KHI,Jinnah International Airport,Karachi,PK,Pakistan,,,,,
+IAH,George Bush Intercontinental Airport,Houston,US,United States,,,,,
+GVA,Geneva-Cointrin International Airport,Geneva,CH,Switzerland,,,,,
+FRA,Frankfurt Airport,Frankfurt,DE,Germany,,,,,
+FPO,Grand Bahama International Airport,Freeport,BS,Bahamas,,,,,

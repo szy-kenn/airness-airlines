@@ -85,6 +85,10 @@ function createGlobe(container) {
     //     .catch(error => console.error(error))
 }
 
+function createPoints() {
+    map.setSource()
+}
+
 createGlobe(flightContainerGlobe);
 
 let searched_flights = null
@@ -99,6 +103,8 @@ flightContainers.forEach(container => {
         popupWrapper.classList.add('selected');
         document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][container.dataset.index]['departure_time']).substring(11, 16);
         document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][container.dataset.index]['arrival_time']).substring(11, 16);
+        console.log(searched_flights['best'][container.dataset.index]['stops'])
+        // createPoints();
     })
 })
 
