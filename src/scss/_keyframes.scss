@@ -27,9 +27,22 @@
     }
 }
 
-@keyframes zoom {
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
     to {
-        transform: scale(1.2);
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleDown {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
     }
 }
 

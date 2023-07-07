@@ -548,6 +548,17 @@ body {
 
     &.selected {
         display: block;
+
+        .popup-selected-details {
+            animation: scaleUp 0.1s ease-out forwards;
+        }
+    }
+
+    &.closing {
+        display: block;
+        .popup-selected-details {
+            animation: scaleDown 0.1s ease-in forwards;
+        }
     }
 }
 
@@ -610,18 +621,74 @@ body {
         filter: contrast(1.3);
         @include flex(center);
         flex-direction: column;
+        gap: 0.25rem;
+        padding-block: 1rem;
 
         &-text {
-            border: 1px solid red;
+            // border: 1px solid red;
             @include flex(center);
             flex-direction: column;
             flex-grow: 1;
+            align-self: stretch;
+            gap: 0.35rem;
+
+            p {
+                color: $secondary-color;
+            }
+
+            &__municipality {
+                @include font(1.625em, 700);
+                text-transform: uppercase;
+                letter-spacing: -0.005em;
+            }
+
+            &__desc {
+                @include font(0.8em, 400);
+            }
+        }
+
+        &-price {
+            // border: 1px solid red;
+            @include flex(center);
+            flex-direction: column;
+            align-self: stretch;
+            gap: 0.1rem;
+
+            p {
+                color: $secondary-color;
+            }
+
+            &__price {
+                @include font(1.25em, 500);
+                text-transform: uppercase;
+                letter-spacing: -0.01em; 
+            }
+
+            &__desc {
+                @include font(0.8em, 400);
+            }
         }
 
         &-button {
             @include flex(center);
-            border: 1px solid greenyellow;
+            // border: 1px solid greenyellow;
             align-self: stretch;
+            position: relative;
+            padding: 1rem;
+
+            button {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                padding: 0.5rem;
+                text-transform: uppercase;
+                @include font(1em, 700);
+                color: $primary-button;
+                border-radius: 0px;
+                border: none;
+                outline: none;
+            }
+            // padding: 1rem;
         }
     }
 }

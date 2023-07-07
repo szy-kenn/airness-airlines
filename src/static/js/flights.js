@@ -111,5 +111,9 @@ flightContainers.forEach(container => {
 popupWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('popup-wrapper')) {
         popupWrapper.classList.remove('selected');
+        popupWrapper.classList.add('closing');
+        setTimeout(() => {
+            popupWrapper.classList.remove('closing');
+        }, 100);
     }
 })

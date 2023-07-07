@@ -48,9 +48,20 @@ a,
     transform: scale(1);
   }
 }
-@keyframes zoom {
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
   to {
-    transform: scale(1.2);
+    transform: scale(1);
+  }
+}
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
   }
 }
 @keyframes panImage {
@@ -1532,6 +1543,15 @@ body {
 .popup-wrapper.selected {
   display: block;
 }
+.popup-wrapper.selected .popup-selected-details {
+  animation: scaleUp 0.1s ease-out forwards;
+}
+.popup-wrapper.closing {
+  display: block;
+}
+.popup-wrapper.closing .popup-selected-details {
+  animation: scaleDown 0.1s ease-in forwards;
+}
 
 .popup-selected-details {
   position: absolute;
@@ -1597,21 +1617,77 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 0.25rem;
+  padding-block: 1rem;
 }
 .popup-selected-details .popup-sidebar-text {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
+  align-self: stretch;
+  gap: 0.35rem;
+}
+.popup-selected-details .popup-sidebar-text p {
+  color: white;
+}
+.popup-selected-details .popup-sidebar-text__municipality {
+  font-size: 1.625em;
+  font-weight: 700;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+.popup-selected-details .popup-sidebar-text__desc {
+  font-size: 0.8em;
+  font-weight: 400;
+  font-family: "Montserrat";
+}
+.popup-selected-details .popup-sidebar-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 0.1rem;
+}
+.popup-selected-details .popup-sidebar-price p {
+  color: white;
+}
+.popup-selected-details .popup-sidebar-price__price {
+  font-size: 1.25em;
+  font-weight: 500;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.popup-selected-details .popup-sidebar-price__desc {
+  font-size: 0.8em;
+  font-weight: 400;
+  font-family: "Montserrat";
 }
 .popup-selected-details .popup-sidebar-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid greenyellow;
   align-self: stretch;
+  position: relative;
+  padding: 1rem;
+}
+.popup-selected-details .popup-sidebar-button button {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: "Montserrat";
+  color: #0c2849;
+  border-radius: 0px;
+  border: none;
+  outline: none;
 }
 
 .passenger-details-wrapper {

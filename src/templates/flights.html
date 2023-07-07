@@ -113,7 +113,11 @@
                 <div class="popup-sidebar" style="--bg-url: url({{ form_part_one['to-json']['url'] }});">
                     <div class="popup-sidebar-text">
                         <p class="popup-sidebar-text__municipality">{{ form_part_one['to-json']['municipality'] }}</p>
-                        <p>Destination</p>
+                        <p class="popup-sidebar-text__desc">Destination</p>
+                    </div>
+                    <div class="popup-sidebar-price">
+                        <p class="popup-sidebar-price__price">PHP {{ "{:,}".format(available_flights['best'][0]['price']) }}</p>
+                        <p class="popup-sidebar-price__desc">/per person</p>
                     </div>
                     <div class="popup-sidebar-button">
                         <button type="button">Continue</button>
