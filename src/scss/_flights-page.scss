@@ -608,11 +608,20 @@ body {
         background-color: rgba($primary-button, 0.5);
         background-blend-mode: overlay;
         filter: contrast(1.3);
+        @include flex(center);
+        flex-direction: column;
 
         &-text {
             border: 1px solid red;
             @include flex(center);
             flex-direction: column;
+            flex-grow: 1;
+        }
+
+        &-button {
+            @include flex(center);
+            border: 1px solid greenyellow;
+            align-self: stretch;
         }
     }
 }

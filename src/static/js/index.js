@@ -419,37 +419,41 @@ function searchAirport(inputSourceIdx, substring) {
 
     let container = null;
     (inputSourceIdx === 0) ? container = fromContainer : container = toContainer;
-    flightFormUpdate('focus', container)
+    flightFormUpdate('focus', container);
 
-    fetch('/api/iata-codes')
+    fetch('/query/search-airports', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({query : substring})
+    })
         .then(response => response.json())
         .then(data => {
             // Handle the received JSON data here
             let i = 0;
             let filtered = 0;
-            while (data['index'][i] !== undefined && filtered < maxResult) {
-                if (data['iata'][i].toLowerCase().includes(substring.toLowerCase()) ||
-                    data['name'][i].toLowerCase().includes(substring.toLowerCase()) ||
-                    data['iso_country'][i].toLowerCase().includes(substring.toLowerCase()) ||
-                    data['country_name'][i].toLowerCase().includes(substring.toLowerCase()) ||
-                    data['municipality'][i].toLowerCase().includes(substring.toLowerCase())
-                    ) {
-                        if ((inputSourceIdx === 1 && getCurrentFrom('iata') !== data['iata'][i]) ||
-                            (inputSourceIdx === 0 && getCurrentTo('iata') !== data['iata'][i])) {
-                                
-                                let newChoiceData = {
-                                    'name':         data['name'][i],
-                                    'iata':         data['iata'][i],
-                                    'iso_country':  data['iso_country'][i],
-                                    'country_name': data['country_name'][i],
-                                    'municipality': data['municipality'][i],
-                                    'url':          data['url'][i]
-                                }
-                                createChoice(inputSourceIdx, newChoiceData, filtered);
-                                filtered++;
-                            }
+            // console.log(data);
+            
+            for (let row of data) {
+
+                    if ((inputSourceIdx === 1 && getCurrentFrom() != null && getCurrentFrom()['iata'] === row[0]) ||
+                        (inputSourceIdx === 0 && getCurrentTo() != null && getCurrentTo()['iata'] === row[0])) {
+                            continue;
+                        }
+
+                let newChoiceData = {
+                    'iata': row[0],
+                    'name': row[1],
+                    'municipality': row[2],
+                    'iso_country': row[3],
+                    'country_name': row[4],
+                    'url': row[9]
                 }
-                i++;
+
+                createChoice(inputSourceIdx, newChoiceData, filtered);
+                filtered++;
+
             }
             
             if (filtered === 0) {
