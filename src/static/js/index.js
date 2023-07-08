@@ -180,6 +180,10 @@ import { getGeoCode} from '../js/geocode.js';
 
 const map = new Map();
 
+// create new airport_t table   
+fetch('/query/create-airport-table')
+    .then(response => response.json())
+
 map.ready("globe-container", am5map.geoOrthographic(), 
             'rotateX', 'rotateY',
             'zoom', true, "#0C2849", 1);
