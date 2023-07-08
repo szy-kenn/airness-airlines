@@ -507,6 +507,7 @@ body {
                             @include font(1.85em, 700);
                             color: $primary-button;
                             letter-spacing: -0.01em;
+                            font-family: $secondary-font;
                         }
                         span {
                             @include font(1em, 400);
@@ -575,33 +576,112 @@ body {
 
     display: grid;
     grid-template-columns: 72% 28%;
+    transform: scale(0);
 
     .popup-body {
-        .flight-details-text {
+
+        .flight-details-text-container {
+
             position: absolute;
+            display: grid;
             z-index: 9999;
-            @include flex;
-            
-            .map-flights-from,
-            .map-flights-to {
+            width: 37.5%;
+            grid-template-columns: 100%;
+            grid-template-rows: 1fr auto;
+            padding: 1rem;
+            gap: 1rem;
 
-                @include flex(center);
-                flex-direction: column;
-                padding: 1rem;
-                color: $primary-button;
+            .flight-details-text {
+                position: relative;
+                // z-index: 9999;
+                display: grid;
+                width: 100%;
+                grid-template-columns: auto 1fr auto;
+                gap: 0.5rem;
 
-                p {
-                    @include font(1.75em, 700);
+                .map-flights-plane {
+                    
+                    position: relative;
+                    width: 100%;
+                    @include flex;
+                    gap: 0.25rem;
+
+                    i {
+                        font-size: 1.5em;
+                    }
+    
+                    .airplane-track {
+                        position: relative;
+                        height: 2px;
+                        width: 100%;
+                        background: rgba($primary-button, 0.4);
+                    }
+
                 }
-
-                span {
-                    @include font(1em, 500);
+                
+                .map-flights-from,
+                .map-flights-to {
+    
+                    @include flex(center, flex-start);
+                    flex-direction: column;
+                    // padding: 1rem;
+                    color: $primary-button;
+    
+                    p {
+                        @include font(2em, 700, $secondary-font);
+                    }
+    
+                    span {
+                        @include font(1em, 500, $secondary-font);
+                    }
                 }
-
             }
 
+            .flight-stops-details {
+                @include flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                // padding: 1rem;
+                position: relative;
+                width: 65%;
+
+                .flight-stop-container {
+                    display: grid;
+                    grid-template-columns: repeat(4, auto);
+                    position: relative;
+                    // height: 100%;
+                    width: 100%;
+                    place-items: center;
+
+                    .flight-stop-circle {
+                        position: relative;
+                        height: 90%;
+                        // width: 100%;
+                        aspect-ratio: 1;
+                        background-color: rgba($primary-button, 0.5);
+                        border-radius: 100px;
+                        @include flex;
+                    }
+
+                    .flight-stop-departure,
+                    .flight-stop-arrival {
+                        @include flex(space-evenly);
+                        position: relative;
+                        gap: 0.25rem;
+                        color: rgba($primary-button, 0.8);
+
+                        &--time {
+                            @include font(0.9em, 700, $secondary-font);
+                        }
+
+                        &--loc {
+                            @include font(0.9em, 500, $secondary-font);
+                        }
+                    }
+                }
+            }
         }
-    
+
         .map-flight-details-container {
             @include flex(stretch, stretch);
             background: $secondary-color;
@@ -691,4 +771,8 @@ body {
             // padding: 1rem;
         }
     }
+}
+
+.icon-plane {
+    color: rgba($primary-button, 0.4);
 }

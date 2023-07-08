@@ -189,7 +189,7 @@ export class Map {
         }
 
         // Make stuff animate on load
-        this.chart.appear(1000, 100)
+        this.chart.appear(500, 100)
     }
 
     setSource(longitude, latitude, name) {
@@ -212,8 +212,16 @@ export class Map {
         }
     }
 
+    addPoint(latitude, longitude) {
+        
+    }
+
     removePoint(dataItem) {
         this.pointSeries.disposeDataItem(dataItem);
+    }
+
+    clearPoints() {
+        this.pointSeries.clear();
     }
 
     createTrajectoryLines() {

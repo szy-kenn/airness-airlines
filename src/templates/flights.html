@@ -92,18 +92,36 @@
         <div class="popup-wrapper">
             <div class="popup-selected-details">
                 <div class="popup-body">
-                    <div class="flight-details-text">
-                        <div class="map-flights-from">
-                            <p class="map-flights-from__time">TIME</p>
-                            <span>{{ form_part_one['from-json']['iata'] }}</span>
+                    <div class="flight-details-text-container">
+                        <div class="flight-details-text">
+                            <div class="map-flights-from">
+                                <p class="map-flights-from__time">TIME</p>
+                                <span>{{ form_part_one['from-json']['iata'] }}</span>
+                            </div>
+                            <div class="map-flights-plane">
+                                <div class="airplane-track"></div>
+                                <i class="fa-solid fa-plane icon-plane"></i> 
+                            </div>
+                            <div class="map-flights-to">
+                                <p class="map-flights-to__time">TIME</p>
+                                <span>{{ form_part_one['to-json']['iata'] }}</span>
+                            </div>
                         </div>
-                        <div class="map-flights-plane">
-                            <div class="airplane-track"></div>
-                            <i class="fa-solid fa-plane"></i> 
-                        </div>
-                        <div class="map-flights-to">
-                            <p class="map-flights-to__time">TIME</p>
-                            <span>{{ form_part_one['to-json']['iata'] }}</span>
+                        <div class="flight-stops-details">
+                            {% for x in range(5) %}
+                            <div class="flight-stop-container">
+                                <div class="flight-stop-circle"></div>
+                                <div class="flight-stop-departure">
+                                    <p class="flight-stop-departure--time">00:50</p>
+                                    <p class="flight-stop-departure--loc">MNL</p>
+                                </div>
+                                <i class="fa-solid fa-plane icon-plane"></i> 
+                                <div class="flight-stop-arrival">
+                                    <p class="flight-stop-arrival--time">11:50</p>
+                                    <p class="flight-stop-arrival--loc">YVR</p>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="map-flight-details-container">

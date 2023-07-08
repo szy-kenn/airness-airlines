@@ -48,7 +48,7 @@ async function selectFlight(flight) {
 }
 
 const flightContainers = document.querySelectorAll(".flight-container");
-const flightContainerGlobe = document.querySelector(".map-flight-details-container")
+const flightContainerMap = document.querySelector(".map-flight-details-container")
 const popupWrapper = document.querySelector(".popup-wrapper");
 const popupContainer = document.querySelector(".popup-selected-details");
 
@@ -69,8 +69,9 @@ function getFlightContainersGlobe(container) {
 import { Map } from '../js/Map.js';
 
 let map = new Map();
+let mapCreated = false;
 
-function createGlobe(container) {
+function createMap(container) {
     map.ready(container, am5map.geoEquirectangular(),
                 'none', 'none', 'none', false, "#E4EEFD", 1);
     //     setTimeout(() => {
@@ -89,8 +90,6 @@ function createPoints() {
     map.setSource()
 }
 
-createGlobe(flightContainerGlobe);
-
 let searched_flights = null
 
 fetch('/api/searched-flights')
@@ -101,9 +100,22 @@ fetch('/api/searched-flights')
 flightContainers.forEach(container => {
     container.addEventListener('click', () => {
         popupWrapper.classList.add('selected');
+        
+        if (!mapCreated) {
+            setTimeout(() => {
+                createMap(flightContainerMap);
+                mapCreated = true;
+            }, 100);
+        }
+
         document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][container.dataset.index]['departure_time']).substring(11, 16);
         document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][container.dataset.index]['arrival_time']).substring(11, 16);
-        console.log(searched_flights['best'][container.dataset.index]['stops'])
+        console.log(searched_flights['best'][container.dataset.index]['stops']);
+        let stops = searched_flights['best'][container.dataset.index]['stops'];
+
+        for (let i = 0; i < stops.length; i++) {
+            const circle = document.createElement("div");
+        }
         // createPoints();
     })
 })

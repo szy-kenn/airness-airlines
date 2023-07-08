@@ -607,6 +607,7 @@ a,
   position: absolute;
   top: 100%;
   background: white;
+  border: 2px solid #E4EEFD;
   border-radius: 10px;
   max-height: 20rem;
   width: 100%;
@@ -703,8 +704,8 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #from.focused > div {
-  border: 2px solid #E4EEFD;
+.flight-location-form #from.focused .flight-location-input__container {
+  border: 2px solid #0c2849;
 }
 .flight-location-form #from.invalid::before {
   color: rgb(245, 67, 67);
@@ -743,8 +744,8 @@ a,
   right: 0;
   transition: all 0.15s ease-out;
 }
-.flight-location-form #to.focused > div {
-  border: 2px solid #E4EEFD;
+.flight-location-form #to.focused .flight-location-input__container {
+  border: 2px solid #0c2849;
 }
 .flight-location-form #to.invalid::before {
   color: rgb(245, 67, 67);
@@ -1503,6 +1504,7 @@ body {
   font-family: "Montserrat";
   color: #0c2849;
   letter-spacing: -0.01em;
+  font-family: "Inter";
 }
 .available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .time-location span {
   font-size: 1em;
@@ -1567,34 +1569,108 @@ body {
           user-select: none;
   display: grid;
   grid-template-columns: 72% 28%;
+  transform: scale(0);
 }
-.popup-selected-details .popup-body .flight-details-text {
+.popup-selected-details .popup-body .flight-details-text-container {
   position: absolute;
+  display: grid;
   z-index: 9999;
+  width: 37.5%;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr auto;
+  padding: 1rem;
+  gap: 1rem;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-plane {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-plane i {
+  font-size: 1.5em;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-plane .airplane-track {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: rgba(12, 40, 73, 0.4);
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-from,
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-to {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: #0c2849;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-from p,
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-to p {
+  font-size: 2em;
+  font-weight: 700;
+  font-family: "Inter";
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-from span,
+.popup-selected-details .popup-body .flight-details-text-container .flight-details-text .map-flights-to span {
+  font-size: 1em;
+  font-weight: 500;
+  font-family: "Inter";
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  width: 65%;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  position: relative;
+  width: 100%;
+  place-items: center;
+}
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-circle {
+  position: relative;
+  height: 90%;
+  aspect-ratio: 1;
+  background-color: rgba(12, 40, 73, 0.5);
+  border-radius: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.popup-selected-details .popup-body .flight-details-text .map-flights-from,
-.popup-selected-details .popup-body .flight-details-text .map-flights-to {
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-departure,
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-arrival {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
-  padding: 1rem;
-  color: #0c2849;
+  position: relative;
+  gap: 0.25rem;
+  color: rgba(12, 40, 73, 0.8);
 }
-.popup-selected-details .popup-body .flight-details-text .map-flights-from p,
-.popup-selected-details .popup-body .flight-details-text .map-flights-to p {
-  font-size: 1.75em;
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-departure--time,
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-arrival--time {
+  font-size: 0.9em;
   font-weight: 700;
-  font-family: "Montserrat";
+  font-family: "Inter";
 }
-.popup-selected-details .popup-body .flight-details-text .map-flights-from span,
-.popup-selected-details .popup-body .flight-details-text .map-flights-to span {
-  font-size: 1em;
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-departure--loc,
+.popup-selected-details .popup-body .flight-details-text-container .flight-stops-details .flight-stop-container .flight-stop-arrival--loc {
+  font-size: 0.9em;
   font-weight: 500;
-  font-family: "Montserrat";
+  font-family: "Inter";
 }
 .popup-selected-details .popup-body .map-flight-details-container {
   display: flex;
@@ -1688,6 +1764,10 @@ body {
   border-radius: 0px;
   border: none;
   outline: none;
+}
+
+.icon-plane {
+  color: rgba(12, 40, 73, 0.4);
 }
 
 .passenger-details-wrapper {
