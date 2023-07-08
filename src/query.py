@@ -11,8 +11,8 @@ def _debug_bracket():
 @query.route('/create-airport-table')
 def create_airport_table():
 
-    print(f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/csv/data.csv file to {app.config['MYSQL_DIR']}/Uploads")
-    copy(f"{app.config['REPO_DIR']}/csv/data.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
+    print(f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/csv/available_airports.csv file to {app.config['MYSQL_DIR']}/Uploads")
+    copy(f"{app.config['REPO_DIR']}/csv/available_airports.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
     print(f"{_debug_bracket()} Copied successfully.")
 
     cursor = mysql.connection.cursor()
@@ -49,9 +49,9 @@ def create_airport_table():
     
     print(f"{_debug_bracket()} Successfully created the airport table")
     
-    print(f"{_debug_bracket()} Populating the table with the data from data.csv...")
+    print(f"{_debug_bracket()} Populating the table with the data from available_airports.csv...")
     cursor.execute('''
-                LOAD DATA INFILE "../Uploads/data.csv" IGNORE 
+                LOAD DATA INFILE "../Uploads/available_airports.csv" IGNORE 
                 INTO TABLE airport_t
                 FIELDS TERMINATED BY ',' 
                 LINES TERMINATED BY '\n';
