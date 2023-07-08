@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Queries</title>
+    <style>
+        #response {
+            display: grid;
+        }
+
+        #response.column {
+            grid-template-rows: 100%;
+            grid-template-columns: repeat(7, auto);
+        }
+
+        #response.row {
+            grid-template-columns: 100%;
+            grid-template-rows: repeat(7, auto);
+        }
+
+        .table-response-div {
+            border: 0.5px solid black;
+            padding: 0.5rem;
+        }
+        .table-response-div > p {
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+    <p>Create tables in one click.</p>
+    <button onclick="createAllTables()">Create ALL tables</button>
+    <button onclick="createTable('airport')" disabled>Available Airports Table</button>
+    <button onclick="createTable('all-airport')" disabled>All Airports Table</button>
+    <button onclick="createTable('passenger')" disabled>Passengers Table</button>
+    <button onclick="createTable('flight')" disabled>Flights Table</button>
+    <button onclick="createTable('seat')" disabled>Seats Table</button>
+    <button onclick="createTable('ticket')" disabled>Tickets Table</button>
+    <button onclick="createTable('reservation')" disabled>Reservation Table (main table)</button>
+    <p>Response: </p>
+    <button onclick="rowTable()">Row</button>
+    <button onclick="columnTable()">Column</button>
+    <div id="response" class="column"></div>
+</body>
+<script>
+    var response = document.getElementById("response");
+
+    function createTable(endpoint) {
+        fetch(`/query/create-${endpoint}-table`)
+            .then(response => response.json())
+            .then(data => {
+                while (response.firstChild) {
+                    response.removeChild(response.firstChild);
+                }
+
+                for (let i = 0; i < data.response[0].length; i++) {
+                    const p = document.createElement("p");
+                    p.textContent = data['response'][0][i];
+                    response.append(p);
+                }
+            })
+            .catch(error => console.error(error))
+    }
+    function createAllTables() {
+
+        while (response.firstChild) {
+            response.removeChild(response.firstChild);
+        }
+
+        var endpoints = ['airport', 'all-airport', 'passenger', 'flight',
+                         'seat', 'ticket', 'reservation'];
+        for (let i = 0; i < endpoints.length; i++) {
+            fetch(`/query/create-${endpoints[i]}-table`)
+            .then(response => response.json())
+            .then(data => {
+                const div = document.createElement("div");
+                const header = document.createElement("h3");
+                header.textContent = endpoints[i];
+                header.style.textTransform = 'uppercase';
+                header.style.textAlign = 'center';
+                div.append(header);
+                div.classList.add('table-response-div')
+                for (let i = 0; i < data.response[0].length; i++) {
+                    const p = document.createElement("p");
+                    p.textContent = data['response'][0][i];
+                    div.append(p);
+                }
+                response.append(div);
+            })
+            .catch(error => console.error(error))
+        }
+    }
+
+    function rowTable() {
+        response.classList.remove('column');
+        response.classList.add('row');
+    }
+
+    function columnTable() {
+        response.classList.remove('row');
+        response.classList.add('column');
+    }
+</script>
+</html>

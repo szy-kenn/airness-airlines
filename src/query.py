@@ -8,28 +8,115 @@ query = Blueprint('query', __name__)
 def _debug_bracket():
     return f"[DEBUG {datetime.now().time().strftime('%H:%M:%S')}]"
 
-@query.route('/create-airport-table')
-def create_airport_table():
+def create_table(table_name: str, create_table_query: str, csv_filename: str = None, drop_if_exists: bool = True):
+    
+    responses = []
 
-    print(f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/csv/available_airports.csv file to {app.config['MYSQL_DIR']}/Uploads")
-    copy(f"{app.config['REPO_DIR']}/csv/available_airports.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
-    print(f"{_debug_bracket()} Copied successfully.")
+    if (csv_filename != None):
+        response = f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/csv/{csv_filename}.csv file to {app.config['MYSQL_DIR']}/Uploads"
+        responses.append(response)
+        print(response)
+        try:
+            copy(f"{app.config['REPO_DIR']}/csv/{csv_filename}.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
+            response = f"{_debug_bracket()} Copied successfully."
+            responses.append(response)
+            print(response)
+        except Exception as e:
+            response = f"{_debug_bracket()} Something went wrong while copying the files: {e}"
+            responses.append(response)
+            print(response)
+            return jsonify({'response': [responses]})
 
     cursor = mysql.connection.cursor()
+    response = f"{_debug_bracket()} Checking for an existing table named '{table_name}'..."
+    responses.append(response)
+    print(response)
+    cursor.execute(f''' SHOW TABLES LIKE '{table_name}'; ''')
+    table = cursor.fetchall()
 
-    print(f"{_debug_bracket()} Checking for an existing table named 'airport_t'...")
-    cursor.execute(''' SHOW TABLES LIKE 'airport_t'; ''')
-    tables = cursor.fetchall()
-    
-    if (len(tables) > 0):
-        print(f"{_debug_bracket()} Existing table airport_t found. Dropping the table...")
-        cursor.execute(''' DROP TABLE airport_t; ''')
-        print(f"{_debug_bracket()} Table dropped successfully.")
+    if (table):
+        response = f"{_debug_bracket()} Existing table {table_name} found."
+        responses.append(response)
+        print(response)
+
+        if (drop_if_exists):
+            response = f"{_debug_bracket()} Dropping `{table_name}` table..."
+            responses.append(response)
+            print(response)
+            try:
+                cursor.execute(f''' DROP TABLE {table_name}; ''')
+                response = f"{_debug_bracket()} `{table_name}` dropped successfully."
+                responses.append(response)
+                print(response)
+            except Exception as e:
+                response = f"{_debug_bracket()} `{table_name}` cannot be dropped: {e}"
+                responses.append(response)
+                print(response)
+                return jsonify({'response': [responses]})
+        else:
+            response = f"{_debug_bracket()} `drop_if_exists` is set to false, table creation will now be terminated."
+            responses.append(response)
+            print(response)
+            return jsonify({'response': [responses]})
     else:
-        print(f"{_debug_bracket()} No existing table found. Proceeding to table creation...")
+        response = f"{_debug_bracket()}  No existing table found. Proceeding to table creation..."
+        responses.append(response)
+        print(response)
+    
+    response = f"{_debug_bracket()} Creating the table..."
+    responses.append(response)
+    print(response)
 
-    print(f"{_debug_bracket()} Creating the table...")
-    cursor.execute(f'''
+    try:
+        cursor.execute(create_table_query)
+        response = f"{_debug_bracket()} Successfully created the {table_name} table"
+        responses.append(response)
+        print(response)
+    except Exception as e:
+        response = f"{_debug_bracket()} Something went wrong while creating the table. Check the query and try again: {e}" 
+        responses.append(response)
+        print(response)
+        return jsonify({'response': [responses]})
+
+    if (csv_filename):
+        response = f"{_debug_bracket()} Populating the table with the data from {csv_filename}.csv..."
+        responses.append(response)
+        print(response)
+        
+        try:
+            cursor.execute(f'''
+                    LOAD DATA INFILE "../Uploads/{csv_filename}.csv" IGNORE 
+                    INTO TABLE airport_t
+                    FIELDS TERMINATED BY ',' 
+                    LINES TERMINATED BY '\n';
+                        ''')
+        except Exception as e:
+            response = f"{_debug_bracket()} Something went wrong while loading the data from {app.config['MYSQL_DIR']}/Uploads/{csv_filename}.csv: {e}"
+            responses.append(response)
+            print(response)
+            return jsonify({'response': [responses]})
+        
+        response = f"{_debug_bracket()} Table populated successfully."
+        responses.append(response)
+        print(response)
+    else:
+        response = f"{_debug_bracket()} No csv file provided to populate the table."
+        responses.append(response)
+        print(response)
+
+    mysql.connection.commit()
+    response = f"{_debug_bracket()} Changes committed."
+    responses.append(response)
+    print(response)
+    return jsonify({'response': [responses]})
+    
+@query.route('/')
+def query_home():
+    return render_template('query_home.html')
+
+@query.route('/create-airport-table')
+def create_airport_table():
+    return create_table('airport_t', f'''
                     CREATE TABLE {app.config['MYSQL_DB']}.`airport_t` (
                         `airport_code` CHAR(3) NOT NULL,
                         `name` VARCHAR(100) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NULL,
@@ -45,26 +132,117 @@ def create_airport_table():
                     ENGINE = InnoDB
                     DEFAULT CHARACTER SET = utf8mb4
                     COLLATE = utf8mb4_0900_ai_ci;
-                    ''')
-    
-    print(f"{_debug_bracket()} Successfully created the airport table")
-    
-    print(f"{_debug_bracket()} Populating the table with the data from available_airports.csv...")
-    cursor.execute('''
-                LOAD DATA INFILE "../Uploads/available_airports.csv" IGNORE 
-                INTO TABLE airport_t
-                FIELDS TERMINATED BY ',' 
-                LINES TERMINATED BY '\n';
-                    ''')
-    
-    print(f"{_debug_bracket()} Selecting all rows...")
-    cursor.execute('''
-                    SELECT *
-                    FROM airport_t;   
-                    ''')
-    mysql.connection.commit()
-    print(f"{_debug_bracket()} DONE.")
-    return jsonify(cursor.fetchall())
+                    ''', 'available_airports', True)
+
+@query.route('/create-all-airport-table')
+def create_all_airport_table():
+    return create_table('all_airport_t', f'''
+                    CREATE TABLE `{app.config['MYSQL_DB']}`.`all_airport_t` (
+                    `id` VARCHAR(45) NOT NULL,
+                    `ident` VARCHAR(45) NULL,
+                    `type` VARCHAR(45) NULL,
+                    `name` VARCHAR(255) NULL,
+                    `latitude_deg` VARCHAR(45) NULL,
+                    `longitude_deg` VARCHAR(45) NULL,
+                    `continent` VARCHAR(45) NULL,
+                    `iso_country` VARCHAR(45) NULL,
+                    `municipality` VARCHAR(45) NULL,
+                    `gps_code` VARCHAR(45) NULL,
+                    `iata_code` VARCHAR(45) NULL,
+                    `local_code` VARCHAR(45) NULL,
+                    `keywords` VARCHAR(45) NULL,
+                    PRIMARY KEY (`id`))
+                    ENGINE = InnoDB
+                    DEFAULT CHARACTER SET = utf8mb4
+                    COLLATE = utf8mb4_0900_ai_ci;
+                    ''', 'all_airports', True)
+
+@query.route('/create-passenger-table')
+def create_passenger_table():
+    return create_table('passenger_t', f'''
+                        CREATE TABLE `{app.config['MYSQL_DB']}`.`passenger_t` (
+                            `passengerId` CHAR(4) NOT NULL,
+                            `firstName` VARCHAR(30) NOT NULL,
+                            `middleName` VARCHAR(20) NULL,
+                            `lastName` VARCHAR(20) NOT NULL,
+                            `passportNo` VARCHAR(16) NULL,
+                            `issueDate` DATE NULL,
+                            `expDate` DATE NULL,
+                            `birthDate` DATE NOT NULL,
+                            `ageGroup` CHAR(6) NOT NULL,
+                            PRIMARY KEY (`passengerId`),
+                            UNIQUE INDEX `passportNo_UNIQUE` (`passportNo` ASC) VISIBLE)
+                        ENGINE = InnoDB
+                        DEFAULT CHARACTER SET = utf8mb4
+                        COLLATE = utf8mb4_0900_ai_ci;
+                        ''', None, False)
+
+@query.route('/create-flight-table')
+def create_flight_table():
+    return create_table('flight_t', f'''
+                        CREATE TABLE `{app.config['MYSQL_DB']}`.`flight_t` (
+                        `flightNo` CHAR(7) NOT NULL,
+                        `ETA` DATE NOT NULL,
+                        `ETD` DATE NOT NULL,
+                        `duration` TIME NOT NULL,
+                        `source` CHAR(3) NOT NULL,
+                        `destination` CHAR(3) NOT NULL,
+                        PRIMARY KEY (`flightNo`),
+                        FOREIGN KEY (`source`) REFERENCES `airport_t`(`airport_code`))
+                        ENGINE = InnoDB
+                        DEFAULT CHARACTER SET = utf8mb4
+                        COLLATE = utf8mb4_0900_ai_ci;
+                        ''', None, False)
+
+@query.route('/create-seat-table')
+def create_seat_table():
+    return create_table('seat_t', f'''
+                        CREATE TABLE `{app.config['MYSQL_DB']}`.`seat_t` (
+                        `seatId` CHAR(4) NOT NULL,
+                        `airlineClass` CHAR(8) NOT NULL,
+                        `extras` CHAR(8) NULL,
+                        PRIMARY KEY (`seatId`))
+                        ENGINE = InnoDB
+                        DEFAULT CHARACTER SET = utf8mb4
+                        COLLATE = utf8mb4_0900_ai_ci;
+                        ''', None, False)
+
+@query.route('/create-ticket-table')
+def create_ticket_table():
+    return create_table('ticket_t', f'''
+                        CREATE TABLE `{app.config['MYSQL_DB']}`.`ticket_t` (
+                        `ticketId` CHAR(4) NOT NULL,
+                        `accountName` VARCHAR(70) NOT NULL,
+                        `modeOfPayment` CHAR(10) NOT NULL,
+                        `accountNumber` VARCHAR(16) NOT NULL,
+                        `expDate` DATE NULL,
+                        `contactNo` VARCHAR(15) NOT NULL,
+                        `passengerCount` INT NOT NULL,
+                        `totalFare` DECIMAL(10,2) NOT NULL,
+                        `flightNo` CHAR(7) NOT NULL,
+                        `flightDate` DATE NOT NULL,
+                        PRIMARY KEY (`ticketId`),
+                        FOREIGN KEY (`flightNo`) REFERENCES `flight_t`(`flightNo`))
+                        ENGINE = InnoDB
+                        DEFAULT CHARACTER SET = utf8mb4
+                        COLLATE = utf8mb4_0900_ai_ci;                        
+                        ''')
+
+@query.route('/create-reservation-table')
+def create_reservation_table():
+    return create_table('reservation_t', f'''
+                        CREATE TABLE `flask_test`.`reservation_t` (
+                            `passengerId` CHAR(4) NOT NULL,
+                            `ticketId` CHAR(4) NOT NULL,
+                            `seatId` CHAR(4) NOT NULL,
+                            PRIMARY KEY (`passengerId`, `ticketId`, `seatId`),
+                            FOREIGN KEY (`passengerId`) REFERENCES `passenger_t`(`passengerId`),
+                            FOREIGN KEY (`ticketId`) REFERENCES `ticket_t`(`ticketId`),
+                            FOREIGN KEY (`seatId`) REFERENCES `seat_t`(`seatId`))
+                        ENGINE = InnoDB
+                        DEFAULT CHARACTER SET = utf8mb4
+                        COLLATE = utf8mb4_0900_ai_ci;
+                        ''', None, False)
 
 @query.route('/search-airports', methods=['POST'])
 def search_airports():
@@ -81,5 +259,6 @@ def search_airports():
                         OR airport_code LIKE '%{input}%'
                     ORDER BY municipality
                     ''')
+                    
     returned = cursor.fetchall()
     return jsonify(returned)
