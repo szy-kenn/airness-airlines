@@ -20,7 +20,8 @@ The application requires `db.yaml` to be present on your local machine to connec
 | DB_USER:  |  *your-db-user*    |
 | DB_PASS:  |  *your-password*   |
 | DB_NAME:  |  *your-db-name*    |
-
+| MYSQL_DIR:|  *mysql-programdata-dir* |
+| REPO_DIR: |  *airness-airlines-dir* |
   
 ## Database Structure
 To create the database needed in the application, run the following SQL queries in any of your preferred workbench or SQL editor:

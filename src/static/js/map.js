@@ -194,9 +194,9 @@ export class Map {
 
     setSource(longitude, latitude, name) {
         if (this.fromLocationPoint != null) {
-            this.removePoint(this.fromLocationPoint);
+            this.removePoint('from', this.fromLocationPoint);
         }
-        this.fromLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name) 
+        this.fromLocationPoint = this.addPoint(latitude, longitude, name);
         if (this.fromLocationPoint != null && this.toLocationPoint != null) {
             this.createTrajectoryLines();
         }
@@ -204,20 +204,25 @@ export class Map {
 
     setDestination(longitude, latitude, name) {
         if (this.toLocationPoint != null) {
-            this.removePoint(this.toLocationPoint);
+            this.removePoint('to', this.toLocationPoint);
         }
-        this.toLocationPoint = this.#addCity({ latitude: latitude, longitude: longitude }, name)
+        this.toLocationPoint = this.addPoint(latitude, longitude, name)
         if (this.fromLocationPoint != null && this.toLocationPoint != null) {
             this.createTrajectoryLines();
         }
     }
 
-    addPoint(latitude, longitude) {
-        
+    addPoint(latitude, longitude, name) {
+        return this.#addCity({ latitude: latitude, longitude: longitude }, name) 
     }
 
-    removePoint(dataItem) {
+    removePoint(fromTo, dataItem) {
         this.pointSeries.disposeDataItem(dataItem);
+        if (fromTo === 'from') {
+            this.fromLocationPoint = null;
+        } else if (fromTo === 'to') {
+            this.toLocationPoint = null;
+        }
     }
 
     clearPoints() {
@@ -225,6 +230,8 @@ export class Map {
     }
 
     createTrajectoryLines() {
+        console.log(this.pointSeries)
+        console.log('From:', this.fromLocationPoint._settings['title'], 'To:', this.toLocationPoint._settings['title'])
         // Create line series for trajectory lines
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
         this.lineSeries = this.chart.series.push(am5map.MapLineSeries.new(this.root, {}));

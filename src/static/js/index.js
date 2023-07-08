@@ -362,6 +362,11 @@ function flightFormUpdate(event, container) {
         // check if the input is valid
 
         if (event.target.value === '') {
+            if (i === 0 && getCurrentFrom() !== undefined) {
+                map.removePoint('from', map.fromLocationPoint);
+            } else if (i === 1 && getCurrentTo() !== undefined) {
+                map.removePoint('to', map.toLocationPoint);
+            }
             return;
         }
 
@@ -370,7 +375,7 @@ function flightFormUpdate(event, container) {
         } else if (i === 1 && getCurrentTo() !== undefined) {
             event.target.value = `${getCurrentTo()['municipality']} (${getCurrentTo()['iata']})`;
         } else {
-            event.target.value = '';
+            event.target.value = '';            
         }
     }
 }
@@ -546,9 +551,19 @@ function highlightCountry (inputSourceIdx, previous_country, iso_country, munici
         .catch(error => console.error(error))
 
     if (previous_country !== undefined) {
-        if (previous_country['iso_country'] === getCurrentFrom()['iso_country'] || previous_country['iso_country'] === getCurrentTo()['iso_country']) {
-            return;
+        if (inputSourceIdx === 0) {
+            if (getCurrentTo() !== undefined && (previous_country['iso_country'] === getCurrentTo()['iso_country'])) {
+                return;
+            }
+        } else {
+            if (getCurrentFrom() !== undefined && (previous_country['iso_country'] === getCurrentFrom()['iso_country'])) {
+                return;
+            }
         }
+        
+        // if (previous_country['iso_country'] === getCurrentFrom()['iso_country'] || previous_country['iso_country'] === getCurrentTo()['iso_country']) {
+        //     return;
+        // }
 
         let prevDataItem = map.polygonSeries.getDataItemById(previous_country['iso_country']);
         let prevPolygon = prevDataItem.get('mapPolygon');
@@ -585,11 +600,19 @@ function invalidInput(event, element) {
 fromLocation.addEventListener("focus", event => flightFormUpdate(event, fromContainer));
 fromLocation.addEventListener("focus", () => showChoices('airport', 0));
 fromLocation.addEventListener("focus", () => searchAirport(0, fromLocation.value));
-fromLocation.addEventListener("blur", event => flightFormUpdate(event, fromContainer));
+fromLocation.addEventListener("blur", event => {
+    setTimeout(() => {
+        flightFormUpdate(event, fromContainer);
+    }, 100);
+});
 toLocation.addEventListener("focus", event => flightFormUpdate(event, toContainer));
 toLocation.addEventListener("focus", () => showChoices('airport', 1));
 toLocation.addEventListener("focus", () => searchAirport(1, toLocation.value));
-toLocation.addEventListener("blur", event => flightFormUpdate(event, toContainer));
+toLocation.addEventListener("blur", event => {
+    setTimeout(() => {
+        flightFormUpdate(event, toContainer);
+    }, 100);
+});
 
 fromLocation.addEventListener("input", () => showChoices('airport', 0));
 toLocation.addEventListener("input", () => showChoices('airport', 1));
