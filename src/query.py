@@ -71,7 +71,7 @@ def search_airports():
     input = request.get_json()['query']
 
     cursor = mysql.connection.cursor()
-    cursor.execute(f'''SELECT name,CONCAT_WS(', ',municipality,country_name)
+    cursor.execute(f'''SELECT *
                       FROM airport_t 
                       WHERE country_name LIKE '%{input}%'
                             OR municipality LIKE '%{input}%' 
