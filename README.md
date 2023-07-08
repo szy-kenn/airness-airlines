@@ -16,11 +16,11 @@ The application requires `db.yaml` to be present on your local machine to connec
 **db.yaml** should contain:
 |  **KEY**  |      **VALUE**     |
 |-----------|--------------------|
-| HOSTNAME: |  *your-host-name*  |
-| DB_USER:  |  *your-db-user*    |
-| DB_PASS:  |  *your-password*   |
-| DB_NAME:  |  *your-db-name*    |
-| MYSQL_DIR:|  *usually in C://ProgramData/MySQL/MySQL Server <version-number>* |
+| HOSTNAME: |  *your-host-name (usually localhost)* |
+| DB_USER:  |  *your-db-user (usually rot)* |
+| DB_PASS:  |  *your-password* |
+| DB_NAME:  |  *your-db-name (schema name)* |
+| MYSQL_DIR:|  *usually in C:/ProgramData/MySQL/MySQL Server* |
 | REPO_DIR: |  *where you store the clone of this repository* |
   
 ## Database Structure
