@@ -71,13 +71,15 @@ def search_airports():
     input = request.get_json()['query']
 
     cursor = mysql.connection.cursor()
-    cursor.execute(f'''SELECT *
-                      FROM airport_t 
-                      WHERE country_name LIKE '%{input}%'
-                            OR municipality LIKE '%{input}%' 
-                            OR name LIKE '%{input}%'
-                            OR continent_name LIKE '%{input}%' 
-                            OR airport_code LIKE '%{input}%'
-                       ORDER BY name ''')
+    cursor.execute(f'''
+                    SELECT *
+                    FROM airport_t 
+                    WHERE country_name LIKE '%{input}%'
+                        OR municipality LIKE '%{input}%' 
+                        OR name LIKE '%{input}%'
+                        OR continent_name LIKE '%{input}%' 
+                        OR airport_code LIKE '%{input}%'
+                    ORDER BY municipality
+                    ''')
     returned = cursor.fetchall()
     return jsonify(returned)

@@ -38,10 +38,12 @@
         @include transition-ease(0.15s, ease-out);
     }
 
-    & > div {
-        border: 2px solid $primary-color;
-    }
+    & {
 
+        .flight-location-input__container {
+            border: 2px solid $primary-button;
+        }
+    }
 }
 
 @mixin color($bg) {

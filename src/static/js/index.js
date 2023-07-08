@@ -358,8 +358,20 @@ function flightFormUpdate(event, container) {
                 }
             }
         }, 100);
+        
         // check if the input is valid
-        event.target.value = '';
+
+        if (event.target.value === '') {
+            return;
+        }
+
+        if (i === 0 && getCurrentFrom() !== undefined) {
+            event.target.value = `${getCurrentFrom()['municipality']} (${getCurrentFrom()['iata']})`;
+        } else if (i === 1 && getCurrentTo() !== undefined) {
+            event.target.value = `${getCurrentTo()['municipality']} (${getCurrentTo()['iata']})`;
+        } else {
+            event.target.value = '';
+        }
     }
 }
 
@@ -367,7 +379,6 @@ function createChoice(inputSourceIdx, newChoiceData, choiceIdx) {
 
     let currentDiv = null;
     let newlyCreated = false;
-
     if (newChoiceData['iata'] === 0) {
         currentDiv = airportChoicesContainer[inputSourceIdx].children[choiceIdx];
     }
@@ -430,7 +441,7 @@ function searchAirport(inputSourceIdx, substring) {
         headers: {
             'Content-Type': 'application/json'
             },
-        body: JSON.stringify({query : substring})
+        body: JSON.stringify({query : substring.trim()})
     })
         .then(response => response.json())
         .then(data => {
@@ -467,7 +478,8 @@ function searchAirport(inputSourceIdx, substring) {
                     'iata':         0,
                     'iso_country':  '',
                     'country_name': '',
-                    'municipality': ''
+                    'municipality': 'No matches found',
+                    'url': ''
                 }
 
                 createChoice(inputSourceIdx, newChoiceData, 0);
@@ -489,13 +501,19 @@ function searchAirport(inputSourceIdx, substring) {
 const airportDivListeners = {}
 
 function airportAddEventListener(airportDiv, inputSourceIdx, newChoiceData, choiceIdx) {
+
     if (airportDivListeners[choiceIdx] !== undefined) {
         airportDiv.removeEventListener('click', airportDivListeners[choiceIdx]);
         airportDivListeners[choiceIdx] = () => { selectAirportChoice(inputSourceIdx, newChoiceData) };
-        airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+        if (newChoiceData['iata'] !== 0) {
+            airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+        }
+        
     } else {
         airportDivListeners[choiceIdx] = () => { selectAirportChoice(inputSourceIdx, newChoiceData) };
-        airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+        if (newChoiceData['iata'] !== 0) {
+            airportDiv.addEventListener('click', airportDivListeners[choiceIdx]);
+        }
     }
 }
 
@@ -565,8 +583,12 @@ function invalidInput(event, element) {
 }
 
 fromLocation.addEventListener("focus", event => flightFormUpdate(event, fromContainer));
+fromLocation.addEventListener("focus", () => showChoices('airport', 0));
+fromLocation.addEventListener("focus", () => searchAirport(0, fromLocation.value));
 fromLocation.addEventListener("blur", event => flightFormUpdate(event, fromContainer));
 toLocation.addEventListener("focus", event => flightFormUpdate(event, toContainer));
+toLocation.addEventListener("focus", () => showChoices('airport', 1));
+toLocation.addEventListener("focus", () => searchAirport(1, toLocation.value));
 toLocation.addEventListener("blur", event => flightFormUpdate(event, toContainer));
 
 fromLocation.addEventListener("input", () => showChoices('airport', 0));
