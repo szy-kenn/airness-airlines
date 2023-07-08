@@ -32,7 +32,7 @@ def create_airport_table():
     cursor.execute(f'''
                     CREATE TABLE {app.config['MYSQL_DB']}.`airport_t` (
                         `airport_code` CHAR(3) NOT NULL,
-                        `name` VARCHAR(70) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NULL,
+                        `name` VARCHAR(100) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NULL,
                         `municipality` VARCHAR(50) NULL,
                         `country_code` CHAR(2) NULL,
                         `country_name` VARCHAR(60) NULL,
@@ -40,7 +40,7 @@ def create_airport_table():
                         `continent_code` CHAR(2) NULL,
                         `longitude` VARCHAR(45) NULL,
                         `latitude` VARCHAR(45) NULL,
-                        `url` VARCHAR(150) NULL,
+                        `url` VARCHAR(512) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci',
                         PRIMARY KEY (`airport_code`))
                     ENGINE = InnoDB
                     DEFAULT CHARACTER SET = utf8mb4
