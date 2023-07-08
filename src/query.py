@@ -11,8 +11,8 @@ def _debug_bracket():
 @query.route('/create-airport-table')
 def create_airport_table():
 
-    print(f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/data.csv file to {app.config['MYSQL_DIR']}/Uploads")
-    copy(f"{app.config['REPO_DIR']}/data.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
+    print(f"{_debug_bracket()} Copying {app.config['REPO_DIR']}/csv/data.csv file to {app.config['MYSQL_DIR']}/Uploads")
+    copy(f"{app.config['REPO_DIR']}/csv/data.csv", f"{app.config['MYSQL_DIR']}/Uploads" )
     print(f"{_debug_bracket()} Copied successfully.")
 
     cursor = mysql.connection.cursor()

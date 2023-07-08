@@ -17,7 +17,7 @@ The application requires `db.yaml` to be present on your local machine to connec
 |  **KEY**  |      **VALUE**     |
 |-----------|--------------------|
 | HOSTNAME: |  *your-host-name (usually localhost)* |
-| DB_USER:  |  *your-db-user (usually rot)* |
+| DB_USER:  |  *your-db-user (usually root)* |
 | DB_PASS:  |  *your-password* |
 | DB_NAME:  |  *your-db-name (schema name)* |
 | MYSQL_DIR:|  *usually in C:/ProgramData/MySQL/MySQL Server* |
