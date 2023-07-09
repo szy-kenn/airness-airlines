@@ -468,6 +468,10 @@ function searchAirport(inputSourceIdx, substring) {
                     'municipality': row[2],
                     'iso_country': row[3],
                     'country_name': row[4],
+                    'continent_name': row[5],
+                    'continent_code': row[6],
+                    'longitude': row[7],
+                    'latitude': row[8],
                     'url': row[9]
                 }
 
@@ -479,11 +483,15 @@ function searchAirport(inputSourceIdx, substring) {
             if (filtered === 0) {
 
                 let newChoiceData = {
-                    'name':         'No matches found',
-                    'iata':         0,
-                    'iso_country':  '',
-                    'country_name': '',
+                    'iata': 0,
+                    'name': 'No matches found',
                     'municipality': 'No matches found',
+                    'iso_country': '',
+                    'country_name': '',
+                    'continent_name': '',
+                    'continent_code': '',
+                    'longitude': '',
+                    'latitude': '',
                     'url': ''
                 }
 
@@ -526,29 +534,22 @@ const imagePopupContainer = document.querySelector(".image-popup-container");
 const imagePopupElement = document.getElementById("image-popup-element");
 const access_token = "AAPK0935c5e69f6b41209b83b65c6d1142c8RhIxwlDmGo6x9fm-BgdVEy711mRD4k4MKxOqiivNeSOTM9ek-MzTAqTjql9L-kZj"
 
-function highlightCountry (inputSourceIdx, previous_country, iso_country, municipality) {    
-    let dataItem = map.polygonSeries.getDataItemById(iso_country);
+function highlightCountry (inputSourceIdx, previous_country, newChoiceData) {    
+    let dataItem = map.polygonSeries.getDataItemById(newChoiceData['iso_country']);
     let polygon = dataItem.get('mapPolygon');
 
-    fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${municipality}`)
-        .then(response => response.json())
-        .then(data => {
-            // console.log(data)
-            const address = data['candidates'][0]
-            // console.log(address.location.x, address.location.y)
-            
-            if (inputSourceIdx === 0) {
-                map.setSource(address.location.x, address.location.y, address.address);
-            } else {
-                map.setDestination(address.location.x, address.location.y, address.address);
-            }
-            
-            map.chart.zoomToGeoPoint({longitude: address.location.x, latitude: address.location.y}, 3, true, 2000, -address.location.x)
-            polygon.setAll({
-                active: true
-            })
-        })
-        .catch(error => console.error(error))
+    const address = {'longitude': newChoiceData['longitude'], 'latitude': newChoiceData['latitude']};
+
+    if (inputSourceIdx === 0) {
+        map.setSource(address.longitude, address.latitude, newChoiceData['name']);
+    } else {
+        map.setDestination(address.longitude, address.latitude, newChoiceData['name']);
+    }
+    
+    map.chart.zoomToGeoPoint({longitude: address.longitude, latitude: address.latitude}, 3, true, 2000, -address.longitude)
+    polygon.setAll({
+        active: true
+    })
 
     if (previous_country !== undefined) {
         if (inputSourceIdx === 0) {
@@ -580,12 +581,12 @@ function selectAirportChoice(inputSourceIdx, newChoiceData) {
     imagePopupElement.src = newChoiceData['url'];
     
     if (inputSourceIdx === 0) {
-        highlightCountry(inputSourceIdx, getCurrentFrom(), newChoiceData['iso_country'], newChoiceData['name'])
+        highlightCountry(inputSourceIdx, getCurrentFrom(), newChoiceData)
         fromLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentFrom = newChoiceData['iso_country'];
         fromJSON.value = JSON.stringify(newChoiceData);
     } else {
-        highlightCountry(inputSourceIdx, getCurrentTo(), newChoiceData['iso_country'], newChoiceData['name'])
+        highlightCountry(inputSourceIdx, getCurrentTo(), newChoiceData)
         toLocation.value = `${newChoiceData['municipality']} (${newChoiceData['iata']})`;
         // currentTo = newChoiceData['iso_country'];
         toJSON.value = JSON.stringify(newChoiceData);

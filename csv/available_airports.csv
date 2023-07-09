@@ -1,101 +1,100 @@
-iata,name,municipality,country_code,country_name,continent_name,continent_code,longitude,latitude,url
-POM,Port Moresby Jacksons International Airport,Port Moresby,PG,Papua New Guinea,,,,,https://upload.wikimedia.org/wikipedia/commons/6/6a/Port_Moresby_Town2_Mschlauch.jpg
-YVR,Vancouver International Airport,Vancouver,CA,Canada,,,,,https://upload.wikimedia.org/wikipedia/commons/5/57/Concord_Pacific_Master_Plan_Area.jpg
-YYZ,Lester B. Pearson International Airport,Toronto,CA,Canada,,,,,https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQKjCXgFVcYAJRAlHbxrKbfgasFPFqhh-2fMtSuwYHO9EdVw_qVHqUFY3Wk4N2b8GS9bZ-4yaJDCn9-A2Dz1B15DjANDg
-JFK,John F Kennedy International Airport,New York,US,United States,,,,,https://www.agoda.com/wp-content/uploads/2020/07/Statue-of-Liberty-things-to-do-in-new-york-USA.jpg
-LAX,Los Angeles International Airport,Los Angeles,US,United States,,,,,https://media.tacdn.com/media/attractions-splice-spp-674x446/07/3b/4c/fe.jpg
-SFO,San Francisco International Airport,San Francisco,US,United States,,,,,https://lh5.googleusercontent.com/p/AF1QipN0-mJ4M1ftzod1vtrdwMyE2fmmqxGdPxnvQMH4=w548-h318-n-k-no
-DMM,King Fahd International Airport,Dammam,SA,Saudi Arabia,,,,,https://lh5.googleusercontent.com/p/AF1QipOUymr6rWEWqKUR6_BwZuzkU-3fFBP7Fk-b21xQ=w548-h318-n-k-no
-RUH,King Khaled International Airport,Riyadh,SA,Saudi Arabia,,,,,https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg
-DXB,Dubai International Airport,Dubai,AE,United Arab Emirates,,,,,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS89A5I7OLZvglO6vNDZwSvqBOjOZW5dVSruS8A9ub-DGb6zVcehY3H5Su_CRQ8D7SBbA73YuB9m8HSZD18MSLSTzomew
-DOH,Hamad International Airport,Doha,QA,Qatar,,,,,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg/1280px-Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg
-GUM,Antonio B. Won Pat International Airport,Guam,GU,Guam,,,,,https://i.pinimg.com/736x/ec/ef/f0/eceff0bfb58b496a2c8fd8f800a08f7b.jpg
-CGY,Laguindingan Airport,Cagayan de Oro,PH,Philippines,,,,,https://aboutcagayandeoro.com/wp-content/uploads/2018/01/sinulom-falls.jpg
-HNL,Daniel K Inouye International Airport,Honolulu,US,United States,,,,,https://a.cdn-hotels.com/gdcs/production11/d1732/5cdbe484-fc40-4518-8ffe-f2841f424e2e.jpg
-TPE,Taiwan Taoyuan International Airport,Taipei,TW,Taiwan,,,,,"https://res.klook.com/image/upload/c_fill,w_750,h_500/q_80/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nrvernjjs6kv0hbw1sdy.jpg"
-NRT,Narita International Airport,Tokyo (Narita),JP,Japan,,,,,https://i.pinimg.com/564x/3d/e3/66/3de36648251a3aae498969e00882b62c.jpg
-KIX,Kansai International Airport,Osaka,JP,Japan,,,,,https://i.pinimg.com/564x/6e/43/2e/6e432eb3ae60fb4a7e83fc4ff34eabdf.jpg
-CTS,New Chitose Airport,Chitose,JP,Japan,,,,,https://rimage.gnst.jp/livejapan.com/public/article/detail/a/10/00/a1000096/img/en/a1000096_parts_5b303da1f063b.jpg?20220308150500&q=80
-FUK,Fukuoka Airport,Fukuoka,JP,Japan,,,,,https://www.planetware.com/photos-large/JPN/japan-fukuoka-nanzoin-temple-reclining-buddha.jpg
-NGO,Chubu Centrair International Airport,Tokoname,JP,Japan,,,,,https://i.pinimg.com/564x/5f/b9/c6/5fb9c645ace6e715478f0055e9ae6280.jpg
-HND,Tokyo Haneda International Airport,Tokyo (Haneda),JP,Japan,,,,,https://content.api.news/v3/images/bin/19baaccb3d706775bb9c3bbe2f946bb3
-PUS,Gimhae International Airport,Busan,KR,South Korea,,,,,https://a.cdn-hotels.com/gdcs/production144/d1960/191730c7-8e21-4540-825c-65954ae4d132.jpg?impolicy=fcrop&w=800&h=533&q=medium
-ICN,Incheon International Airport,Seoul,KR,South Korea,,,,,https://travel.usnews.com/images/gettyimages-516351649_rQXknmO.jpg
-CRK,Clark International Airport,Mabalacat,PH,Philippines,,,,,https://upload.wikimedia.org/wikipedia/commons/4/48/Mt_Pinatubo_trekking_-_panoramio_%285%29.jpg
-LAO,Laoag International Airport,Laoag,PH,Philippines,,,,,https://www.bria.com.ph/wp-content/uploads/2022/06/Ilocos-Norte-Tourist-Spots.jpg
-MNL,Ninoy Aquino International Airport,Manila,PH,Philippines,,,,,https://www.discoverthephilippines.com/wp-content/uploads/2020/04/article-cover-photo-attraction-template-b.jpg
-CBO,Awang Airport,Cotabato,PH,Philippines,,,,,https://4.bp.blogspot.com/-e0Hn4Mwbplo/VLEfqCT2zaI/AAAAAAAABDg/BVphkUQGQ4k/w1200-h630-p-k-no-nu/Cotabato-Golden-Mosque.jpg
-DVO,Francisco Bangoy International Airport,Davao,PH,Philippines,,,,,https://lh3.googleusercontent.com/p/AF1QipPGBmjo0YcnHSWEyXpw5R5bL4aeXPx6z7rc0JSl=s680-w680-h510
-BXU,Bancasi Airport,Butuan,PH,Philippines,,,,,https://www.camella.com.ph/wp-content/uploads/2022/09/Cruising-Agusan-River-Photo-from-MindaWow-1024x685.jpg
-DPL,Dipolog Airport,Dipolog,PH,Philippines,,,,,https://danielsecotravels.com/wp-content/uploads/2020/03/Capture.jpg
-CGM,Camiguin Airport,Mambajao,PH,Philippines,,,,,https://villagepipol.com/wp-content/uploads/2022/07/white-beach-camiguin.png
-TWT,Sanga Sanga Airport,Tawi-tawi,PH,Philippines,,,,,https://www.vigattintourism.com/assets/article_main_photos/optimize/1346038711MY3dGUzt.jpg
-OZC,Labo Airport,Ozamiz,PH,Philippines,,,,,https://www.asterra.com.ph/wp-content/uploads/2023/05/Ozamiz-Photo-from-Pinoy-Adventurista.jpeg
-PAG,Pagadian Airport,Pagadian,PH,Philippines,,,,,https://4.bp.blogspot.com/-VFQk6ysFKDI/UeMOMT8PYEI/AAAAAAAANlg/CjbYN-aTvtc/s1600/P1000294.JPG
-GES,General Santos International Airport,General Santos,PH,Philippines,,,,,https://media-cdn.tripadvisor.com/media/photo-c/2560x500/0a/05/29/b1/sarangani-island.jpg
-ZAM,Zamboanga International Airport,Zamboanga,PH,Philippines,,,,,https://lh3.googleusercontent.com/p/AF1QipMBFCSxhQn-Etk59e_As6PvslCjs4lb3axarAC3=s680-w680-h510
-IAO,Siargao Airport,Del Carmen,PH,Philippines,,,,,https://www.weseektravel.com/wp-content/uploads/2021/11/siargao-lighthouse-pacifico-beach-1.jpg
-SWL,San Vicente Airport,San Vicente,PH,Philippines,,,,,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQx-pA7PyFMhoj0wnLFK-4CzPfOJR7qAcgp0pyBjQbC_O7IEeEm9uXRpVTazsJHdkeW-Ly_yvm1YBFpjp3t4oYFxKYJGw
-BSO,Basco Airport,Basco,PH,Philippines,,,,,https://upload.wikimedia.org/wikipedia/commons/9/97/Sabtang_Batanes.jpg
-TAC,Daniel Z. Romualdez Airport,Tacloban,PH,Philippines,,,,,https://i0.wp.com/outoftownblog.com/wp-content/uploads/2018/06/Visit-MacArthur-Park-photo-by-Ken-Rai-Lang-via-Instagram.jpg?fit=1192%2C896&ssl=1
-BCD,Bacolod-Silay Airport,Bacolod,PH,Philippines,,,,,https://jontotheworld.com/wp-content/uploads/2022/06/The-Ruins.jpg
-CYP,Calbayog Airport,Calbayog,PH,Philippines,,,,,https://2.bp.blogspot.com/-rpM7xXnsvPg/VV6aVGXdFTI/AAAAAAAAE3s/eiSSPfDSF9I/s1600/cathedral.jpg
-DGT,Sibulan Airport,Dumaguete,PH,Philippines,,,,,https://www.travelmyglobe.com/images/Uploaded/philippines/Philippines_Campanario%20de%20Dumaguete2.jpg
-MPH,Godofredo P. Ramos Airport,Malay,PH,Philippines,,,,,https://itsmorefuninthephilippines.co.uk/wp-content/uploads/Boracay-featured-image.jpg
-CRM,Catarman National Airport,Catarman,PH,Philippines,,,,,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/3f/13/98/the-shadow.jpg?w=600&h=400&s=1
-ILO,Iloilo International Airport,Iloilo,PH,Philippines,,,,,https://wanhandredwan.files.wordpress.com/2012/01/jaro-cathedral.jpg
-KLO,Kalibo International Airport,Kalibo,PH,Philippines,,,,,https://media.istockphoto.com/id/182860526/photo/crystal-cove.jpg?s=612x612&w=0&k=20&c=LESKmAIrbMvkoeqKIRl4OVuBG3HBpBw6K42AXNI6mC0=
-CEB,Mactan Cebu International Airport,Lapu-Lapu,PH,Philippines,,,,,https://lp-cms-production.imgix.net/2019-06/6941db7cfc5a9708afb193d52005bc8d-magellan-s-cross.jpg
-PPS,Puerto Princesa Airport,Puerto Princesa,PH,Philippines,,,,,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRikgSSCFdhTYTZ3MYLphKemrJoTtTMbQ2jlyIO7ch77HvYhGjFbmT1ruly5qnLIi3EIjQ&usqp=CAU
-RXS,Roxas Airport,Roxas,PH,Philippines,,,,,https://outoftownblog.com/wp-content/uploads/2023/02/Panay-Church-in-Capiz.jpg
-EUQ,Evelio Javier Airport,San Jose,PH,Philippines,,,,,https://i1.wp.com/touristspotsfinder.com/wp-content/uploads/2017/11/4.-Igpasungaw-Falls.jpg?resize=750%2C750&ssl=1
-TAG,Tagbilaran Airport,Tagbilaran,PH,Philippines,,,,,https://www.jonnymelon.com/wp-content/uploads/2019/09/hinagdanan-cave-5.jpg
-USU,Francisco B. Reyes Airport,Coron,PH,Philippines,,,,,https://theworldtravelguy.com/wp-content/uploads/2020/02/DJI_0195.jpg
-PNH,Phnom Penh International Airport,Phnom Penh,KH,Cambodia,,,,,https://www.trailsofindochina.com/wp-content/uploads/2017/08/Phnom-Penh_header.jpg
-HKG,Hong Kong International Airport Kai Tak,Hong Kong,HK,Hong Kong,,,,,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/5c/68/b3/lantau-island.jpg?w=500&h=400&s=1
-MFM,Macau International Airport,Macau,MO,Macau,,,,,https://www.worldtravelguide.net/wp-content/uploads/2017/03/shu-Macau-1006756141-1440x823.jpg
-BKK,Suvarnabhumi Airport,Bangkok,TH,Thailand,,,,,https://storage.googleapis.com/mb-mkt-neo-prod-1-uploads/wat_arun_temple_twilight_bangkok_thailand_54cf6f61f9/wat_arun_temple_twilight_bangkok_thailand_54cf6f61f9.jpg
-HAN,Noi Bai International Airport,Hanoi,VN,Vietnam,,,,,https://www.travelassociates.com/sites/v2.travel-associates.com.au/files/fcl-blog/hanoi-hoankiem.jpg
-SGN,Tan Son Nhat International Airport,Ho Chi Minh,VN,Vietnam,,,,,https://touristjourney.com/wp-content/uploads/2020/11/Ho-Chi-Minh-City.jpg
-DPS,Ngurah Rai (Bali) International Airport,Bali,ID,Indonesia,,,,,https://digitalnomads.world/wp-content/uploads/2021/01/bali-for-digital-nomads.jpg
-CGK,Soekarno-Hatta International Airport,Jakarta,ID,Indonesia,,,,,https://www.torntackies.com/wp-content/uploads/2022/05/Borobudur-Java.jpg
-KUL,Kuala Lumpur International Airport,Kuala Lumpur,MY,Malaysia,,,,,https://www.jonesaroundtheworld.com/wp-content/uploads/2022/02/Petronas-Towers-Famous-Landmarks-in-Malaysia.jpg
-SIN,Singapore Changi Airport,Singapore,SG,Singapore,,,,,https://cdn.tiqets.com/wordpress/blog/wp-content/uploads/2020/09/partha-narasimhan-duXJOBVg_l4-unsplash.jpg
-BNE,Brisbane International Airport,Brisbane,AU,Australia,,,,,https://youimg1.tripcdn.com/target/10021f000001gxee9DD5B.jpg
-MEL,Melbourne International Airport,Melbourne,AU,Australia,,,,,https://lp-cms-production.s3.amazonaws.com/public/2021-06/shutterstockRF_594853124.jpg
-PER,Perth International Airport,Perth,AU,Australia,,,,,https://www.planetware.com/photos-large/AUS/australia-western-australia-wave-rock.jpg
-SYD,Sydney Kingsford Smith International Airport,Sydney,AU,Australia,,,,,https://media.istockphoto.com/id/498122776/photo/sydney-skyline-at-night.jpg?s=612x612&w=0&k=20&c=uwtge9Se19aOjAnWBMFLREuDCLUGItlMRlFVyZjFKd4=
-PEK,Beijing Capital International Airport,Beijing,CN,China,,,,,https://www.mandarinzone.com/wp-content/uploads/2015/11/Tianmen.jpg
-CAN,Guangzhou Baiyun International Airport,Guangzhou,CN,China,,,,,https://img.theculturetrip.com/wp-content/uploads/2017/01/canton-tower-1200872_1920.jpg
-XMN,Xiamen Gaoqi International Airport,Xiamen,CN,China,,,,,"https://media.cnn.com/api/v1/images/stellar/prod/170925112300-conrad-xiamen-hotel.jpg?q=w_2000,h_1363,x_0,y_0,c_fill/h_618"
-PVG,Shanghai Pudong International Airport,Shanghai,CN,China,,,,,https://legacy.travelnoire.com/wp-content/uploads/2019/01/edward-he-1082124-unsplash.jpg
-JJN,Quanzhou Jinjiang International Airport,Quanzhou,CN,China,,,,,https://dynamic-media-cdn.tripadvisor.com/media/daodao/photo-o/13/79/0d/ca/caption.jpg?w=500&h=400&s=1
-BGY,Orio Al Serio International Airport,Bergamo / Milan,IT,Italy,,,,,https://media.architecturaldigest.com/photos/56cf2b9e5f9912222d128206/master/w_320%2Cc_limit/milan-architectural-landmarks-01.jpg
-CEQ,Cannes - Mandelieu Airport,Cannes,FR,France,,,,,https://woody.cloudly.space/app/uploads/cannes-tourisme/2022/05/thumbs/vieux-port-cannes-by-nightpalais-des-festivals-640x480.jpg
-DUS,Dusseldorf International Airport,Duesseldorf,DE,Germany,,,,,https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Duesseldorf_Rheinturm_Medienhafen.jpg/760px-Mapcarta.jpg
-KWI,Kuwait International Airport,Kuwait,KW,Kuwait,,,,,https://digital.ihg.com/is/image/ihg/crowne-plaza-kuwait-city-6011742898-2x1
-LAS,Harry Reid International Airport,Nevada,US,United States,,,,,https://cdn.destguides.com/files/store/itinerarystop/9974/background_image/jpeg_large_202112291737-9fd721e7bf7182b243c38e9dd6492f3a.jpeg
-LHR,London Heathrow Airport,London,GB,United Kingdom,,,,,https://cdn.tiqets.com/wordpress/blog/wp-content/uploads/2020/09/shutterstock_1013811547.jpg
-MCZ,Zumbi dos Palmares International Airport,Maceio,BR,Brazil,,,,,https://travel2next.com/wp-content/uploads/Brazil-Landmark-Christ-the-Redeemer-Statue-1024x573.jpg
-MAA,Chennai International Airport,Madras(Chennai),IN,India,,,,,https://lh3.googleusercontent.com/p/AF1QipOP2Vr3o-m9F593rG37E2j4C7tP_-nt4qNPQIMe=s680-w680-h510
-MEX,Mexico City International Airport,Mexico ,MX,Mexico,,,,,https://travellemming.com/wp-content/uploads/Mexico-City-Landmarks.jpg
-NAT,Augusto Severo International Airport,Natal ,BR,Brazil,,,,,https://e8s3v3w7.rocketcdn.me/wp-content/uploads/2021/01/brasilien-der-praia-da-pipa-an-der-succ88dkucc88ste-im-brasilianischen-bundesstaat-rio-grande-do-norte-wird-regelmacc88ssig-zum-besten-strand-brasiliens-gewacc88hlt-longjon-shuttersto.jpg
-CDG,Paris Charles de Gaulle Airport,Paris,FR,France,,,,,https://dreamsinparis.com/wp-content/uploads/2022/01/eiffel-tower-seine-at-night.jpg
-KUF,Kurumoch International Airport,Samara,RU,Russia,,,,,https://bienvenidospb.com/img/destination-spb.jpg
-SVO,Sheremetyevo International Airport,Moscow,RU,Russia,,,,,https://cdn.getyourguide.com/img/tour/5c263e1358db7.jpeg/75.jpg
-SJU,Luis Munoz Marin International Airport,San Juan,PR,Puerto Rico,,,,,https://qtxasset.com/quartz/qcloud1/media/image/travelagentcentral/1565889589/shutterstock_1067855027.jpg?VersionId=pImsmkgr.F4SGDoPtQLjw.578o6M0KkW
-UIO,Mariscal Sucre International Airport,Quito,EC,Ecuador,,,,,https://images.fineartamerica.com/images-medium-5/4-quito-ecuador-john-coletti.jpg
-RAI,Nelson Mandela International Airport,Praia,CV,Cape Verde,,,,,https://www.cruisemapper.com/images/ports/722-a820713163ab.jpg
-FNJ,Sunan International Airport,Pyongyang,KP,North Korea,,,,,https://media.worldnomads.com/Explore/eastern-asia/northkorea-5things.jpg
-YQB,Quebec City Jean Lesage International Airport,Quebec ,CA,Canada,,,,,https://www.quebec-cite.com/sites/otq/files/styles/landscape_wide_desktop/public/blog/jefffrenettephotography_otqete_160902_0064.jpg?itok=LEUZhFWK
-MVD,Carrasco International Airport,Montevideo,UY,Uruguay,,,,,https://assets3.thrillist.com/v1/image/3077179/828x610/flatten;crop;webp=auto;jpeg_quality=60.jpg
-MAR,La Chinita International Airport,Maracaibo,VE,Venezuela,,,,,https://cdn.britannica.com/22/183422-050-D4D6FD35/General-Rafael-Urdaneta-Bridge-Lake-Maracaibo-Venezuela.jpg
-TLV,Ben Gurion International Airport,Tel Aviv,IL,Israel,,,,,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/4f/eb/f8/2016.jpg?w=700&h=500&s=1
-KRK,John Paul II Krakow-Balice International Airport,Krakow,PL,Poland,,,,,https://tricksandtrips.com/wp-content/uploads/2022/10/Discover-the-Main-Square-at-Night-in-Krakow-at-night.jpg
-KRT,Khartoum International Airport,Khartoum,SD,Sudan,,,,,https://www.arch2o.com/wp-content/uploads/2015/09/Arch2O-10-sudanese-buildings-to-reflect-the-diverse-architecture-of-africa-11.jpg
-KTM,Tribhuvan International Airport,Kathmandu,NP,Nepal,,,,,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIWBTej5dtPPbu7Wc3JW6o4mdtIkhWrsgcA&usqp=CAU
-KHI,Jinnah International Airport,Karachi,PK,Pakistan,,,,,https://t4.ftcdn.net/jpg/01/75/28/95/360_F_175289581_7QzVnuWvssadnW0cfHQZKSKsTMOB02vy.jpg
-IAH,George Bush Intercontinental Airport,Houston,US,United States,,,,,https://dunham-bush.com/wp-content/uploads/2019/12/NASA-Space-Centre-Houston-2.jpg
-GVA,Geneva-Cointrin International Airport,Geneva,CH,Switzerland,,,,,https://www.visiteuropeancastles.com/wp-content/uploads/2022/04/chillon-castle-swiss-castles-around-lake-geneva-visiteuropeancastles-1200x801.jpg
-FRA,Frankfurt Airport,Frankfurt,DE,Germany,,,,,https://img.traveltriangle.com/blog/wp-content/uploads/2019/12/Frankfurt-cover_3rd-Dec.jpg
-FPO,Grand Bahama International Airport,Freeport,BS,Bahamas,,,,,https://www.atlantisbahamas.com/storage/media/atlantis-property-shot-royal-hero-sky.jpg
+BCD,Bacolod-Silay Airport,Bacolod,PH,Philippines,Asia,AS,123.014999,10.7764,https://jontotheworld.com/wp-content/uploads/2022/06/The-Ruins.jpg
+BGY,Orio Al Serio International Airport,Bergamo / Milan,IT,Italy,Europe,EU,9.70417,45.673901,https://media.architecturaldigest.com/photos/56cf2b9e5f9912222d128206/master/w_320%2Cc_limit/milan-architectural-landmarks-01.jpg
+BKK,Suvarnabhumi Airport,Bangkok,TH,Thailand,Asia,AS,100.7470016,13.68109989,https://storage.googleapis.com/mb-mkt-neo-prod-1-uploads/wat_arun_temple_twilight_bangkok_thailand_54cf6f61f9/wat_arun_temple_twilight_bangkok_thailand_54cf6f61f9.jpg
+BNE,Brisbane International Airport,Brisbane,AU,Australia,Oceania,OC,153.1170044,-27.38419914,https://youimg1.tripcdn.com/target/10021f000001gxee9DD5B.jpg
+BSO,Basco Airport,Basco,PH,Philippines,Asia,AS,121.980003,20.4513,https://upload.wikimedia.org/wikipedia/commons/9/97/Sabtang_Batanes.jpg
+BXU,Bancasi Airport,Butuan,PH,Philippines,Asia,AS,125.4788,8.9515,https://www.camella.com.ph/wp-content/uploads/2022/09/Cruising-Agusan-River-Photo-from-MindaWow-1024x685.jpg
+CAN,Guangzhou Baiyun International Airport,Guangzhou,CN,China,Asia,AS,113.299004,23.392401,https://img.theculturetrip.com/wp-content/uploads/2017/01/canton-tower-1200872_1920.jpg
+CBO,Awang Airport,Cotabato,PH,Philippines,Asia,AS,124.209938,7.164753,https://4.bp.blogspot.com/-e0Hn4Mwbplo/VLEfqCT2zaI/AAAAAAAABDg/BVphkUQGQ4k/w1200-h630-p-k-no-nu/Cotabato-Golden-Mosque.jpg
+CDG,Paris Charles de Gaulle Airport,Paris,FR,France,Europe,EU,2.55,49.012798,https://dreamsinparis.com/wp-content/uploads/2022/01/eiffel-tower-seine-at-night.jpg
+CEB,Mactan Cebu International Airport,Lapu-Lapu,PH,Philippines,Asia,AS,123.97974,10.309261,https://lp-cms-production.imgix.net/2019-06/6941db7cfc5a9708afb193d52005bc8d-magellan-s-cross.jpg
+CEQ,Cannes - Mandelieu Airport,Cannes,FR,France,Europe,EU,6.95348,43.542,https://woody.cloudly.space/app/uploads/cannes-tourisme/2022/05/thumbs/vieux-port-cannes-by-nightpalais-des-festivals-640x480.jpg
+CGK,Soekarno-Hatta International Airport,Jakarta,ID,Indonesia,Asia,AS,106.6559982,-6.12556982,https://www.torntackies.com/wp-content/uploads/2022/05/Borobudur-Java.jpg
+CGM,Camiguin Airport,Mambajao,PH,Philippines,Asia,AS,124.709115,9.253894,https://villagepipol.com/wp-content/uploads/2022/07/white-beach-camiguin.png
+CGY,Laguindingan Airport,Cagayan de Oro,PH,Philippines,Asia,AS,124.456496,8.612203,https://aboutcagayandeoro.com/wp-content/uploads/2018/01/sinulom-falls.jpg
+CRK,Clark International Airport,Mabalacat,PH,Philippines,Asia,AS,120.559998,15.186,https://upload.wikimedia.org/wikipedia/commons/4/48/Mt_Pinatubo_trekking_-_panoramio_%285%29.jpg
+CRM,Catarman National Airport,Catarman,PH,Philippines,Asia,AS,124.635258,12.50161,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/3f/13/98/the-shadow.jpg?w=600&h=400&s=1
+CTS,New Chitose Airport,Chitose,JP,Japan,Asia,AS,141.692001,42.7752,https://rimage.gnst.jp/livejapan.com/public/article/detail/a/10/00/a1000096/img/en/a1000096_parts_5b303da1f063b.jpg?20220308150500&q=80
+CYP,Calbayog Airport,Calbayog,PH,Philippines,Asia,AS,124.5449982,12.07269955,https://2.bp.blogspot.com/-rpM7xXnsvPg/VV6aVGXdFTI/AAAAAAAAE3s/eiSSPfDSF9I/s1600/cathedral.jpg
+DGT,Sibulan Airport,Dumaguete,PH,Philippines,Asia,AS,123.30191,9.334183,https://www.travelmyglobe.com/images/Uploaded/philippines/Philippines_Campanario%20de%20Dumaguete2.jpg
+DMM,King Fahd International Airport,Dammam,SA,Saudi Arabia,Asia,AS,49.79790115,26.47120094,https://lh5.googleusercontent.com/p/AF1QipOUymr6rWEWqKUR6_BwZuzkU-3fFBP7Fk-b21xQ=w548-h318-n-k-no
+DOH,Hamad International Airport,Doha,QA,Qatar,Asia,AS,51.608056,25.273056,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg/1280px-Modern_buildings_in_West_Bay_from_Dareen_Tower.jpg
+DPL,Dipolog Airport,Dipolog,PH,Philippines,Asia,AS,123.341875,8.601983,https://danielsecotravels.com/wp-content/uploads/2020/03/Capture.jpg
+DPS,Ngurah Rai (Bali) International Airport,Bali,ID,Indonesia,Asia,AS,115.167,-8.74817,https://digitalnomads.world/wp-content/uploads/2021/01/bali-for-digital-nomads.jpg
+DUS,Dusseldorf International Airport,Duesseldorf,DE,Germany,Europe,EU,6.76678,51.289501,https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Duesseldorf_Rheinturm_Medienhafen.jpg/760px-Mapcarta.jpg
+DVO,Francisco Bangoy International Airport,Davao,PH,Philippines,Asia,AS,125.646004,7.12552,https://lh3.googleusercontent.com/p/AF1QipPGBmjo0YcnHSWEyXpw5R5bL4aeXPx6z7rc0JSl=s680-w680-h510
+DXB,Dubai International Airport,Dubai,AE,United Arab Emirates,Asia,AS,55.36439896,25.25279999,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcS89A5I7OLZvglO6vNDZwSvqBOjOZW5dVSruS8A9ub-DGb6zVcehY3H5Su_CRQ8D7SBbA73YuB9m8HSZD18MSLSTzomew
+EUQ,Evelio Javier Airport,San Jose,PH,Philippines,Asia,AS,121.932506,10.766644,https://i1.wp.com/touristspotsfinder.com/wp-content/uploads/2017/11/4.-Igpasungaw-Falls.jpg?resize=750%2C750&ssl=1
+FNJ,Sunan International Airport,Pyongyang,KP,North Korea,Asia,AS,125.669998,39.224098,https://media.worldnomads.com/Explore/eastern-asia/northkorea-5things.jpg
+FPO,Grand Bahama International Airport,Freeport,BS,Bahamas,North America,NA,-78.69560242,26.55870056,https://www.atlantisbahamas.com/storage/media/atlantis-property-shot-royal-hero-sky.jpg
+FRA,Frankfurt Airport,Frankfurt,DE,Germany,Europe,EU,8.561268,50.036521,https://img.traveltriangle.com/blog/wp-content/uploads/2019/12/Frankfurt-cover_3rd-Dec.jpg
+FUK,Fukuoka Airport,Fukuoka,JP,Japan,Asia,AS,130.451004,33.58589935,https://www.planetware.com/photos-large/JPN/japan-fukuoka-nanzoin-temple-reclining-buddha.jpg
+GES,General Santos International Airport,General Santos,PH,Philippines,Asia,AS,125.0960007,6.058000088,https://media-cdn.tripadvisor.com/media/photo-c/2560x500/0a/05/29/b1/sarangani-island.jpg
+GUM,Antonio B. Won Pat International Airport,Guam,GU,Guam,Oceania,OC,144.796005,13.4834,https://i.pinimg.com/736x/ec/ef/f0/eceff0bfb58b496a2c8fd8f800a08f7b.jpg
+GVA,Geneva-Cointrin International Airport,Geneva,CH,Switzerland,Europe,EU,6.108950138,46.23809814,https://www.visiteuropeancastles.com/wp-content/uploads/2022/04/chillon-castle-swiss-castles-around-lake-geneva-visiteuropeancastles-1200x801.jpg
+HAN,Noi Bai International Airport,Hanoi,VN,Vietnam,Asia,AS,105.806999,21.221201,https://www.travelassociates.com/sites/v2.travel-associates.com.au/files/fcl-blog/hanoi-hoankiem.jpg
+HKG,Hong Kong International Airport Kai Tak,Hong Kong,HK,Hong Kong,Asia,AS,113.915001,22.308901,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/5c/68/b3/lantau-island.jpg?w=500&h=400&s=1
+HND,Tokyo Haneda International Airport,Tokyo (Haneda),JP,Japan,Asia,AS,139.779999,35.552299,https://content.api.news/v3/images/bin/19baaccb3d706775bb9c3bbe2f946bb3
+HNL,Daniel K Inouye International Airport,Honolulu,US,United States,Oceania,OC,-157.924228,21.32062,https://a.cdn-hotels.com/gdcs/production11/d1732/5cdbe484-fc40-4518-8ffe-f2841f424e2e.jpg
+IAH,George Bush Intercontinental Airport,Houston,US,United States,North America,NA,-95.34140015,29.9843998,https://dunham-bush.com/wp-content/uploads/2019/12/NASA-Space-Centre-Houston-2.jpg
+IAO,Siargao Airport,Del Carmen,PH,Philippines,Asia,AS,126.014,9.8591,https://www.weseektravel.com/wp-content/uploads/2021/11/siargao-lighthouse-pacifico-beach-1.jpg
+ICN,Incheon International Airport,Seoul,KR,South Korea,Asia,AS,126.4509964,37.46910095,https://travel.usnews.com/images/gettyimages-516351649_rQXknmO.jpg
+ILO,Iloilo International Airport,Iloilo,PH,Philippines,Asia,AS,122.493358,10.833017,https://wanhandredwan.files.wordpress.com/2012/01/jaro-cathedral.jpg
+JFK,John F Kennedy International Airport,New York,US,United States,North America,NA,-73.779317,40.639447,https://www.agoda.com/wp-content/uploads/2020/07/Statue-of-Liberty-things-to-do-in-new-york-USA.jpg
+JJN,Quanzhou Jinjiang International Airport,Quanzhou,CN,China,Asia,AS,118.589996,24.7964,https://dynamic-media-cdn.tripadvisor.com/media/daodao/photo-o/13/79/0d/ca/caption.jpg?w=500&h=400&s=1
+KHI,Jinnah International Airport,Karachi,PK,Pakistan,Asia,AS,67.160797,24.9065,https://t4.ftcdn.net/jpg/01/75/28/95/360_F_175289581_7QzVnuWvssadnW0cfHQZKSKsTMOB02vy.jpg
+KIX,Kansai International Airport,Osaka,JP,Japan,Asia,AS,135.244003,34.427299,https://i.pinimg.com/564x/6e/43/2e/6e432eb3ae60fb4a7e83fc4ff34eabdf.jpg
+KLO,Kalibo International Airport,Kalibo,PH,Philippines,Asia,AS,122.3759995,11.67940044,https://media.istockphoto.com/id/182860526/photo/crystal-cove.jpg?s=612x612&w=0&k=20&c=LESKmAIrbMvkoeqKIRl4OVuBG3HBpBw6K42AXNI6mC0=
+KRK,John Paul II Krakow-Balice International Airport,Krakow,PL,Poland,Europe,EU,19.7848,50.077702,https://tricksandtrips.com/wp-content/uploads/2022/10/Discover-the-Main-Square-at-Night-in-Krakow-at-night.jpg
+KRT,Khartoum International Airport,Khartoum,SD,Sudan,Africa,AF,32.5532,15.5895,https://www.arch2o.com/wp-content/uploads/2015/09/Arch2O-10-sudanese-buildings-to-reflect-the-diverse-architecture-of-africa-11.jpg
+KTM,Tribhuvan International Airport,Kathmandu,NP,Nepal,Asia,AS,85.3591,27.6966,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIWBTej5dtPPbu7Wc3JW6o4mdtIkhWrsgcA&usqp=CAU
+KUF,Kurumoch International Airport,Samara,RU,Russia,Europe,EU,50.16429901,53.50490189,https://bienvenidospb.com/img/destination-spb.jpg
+KUL,Kuala Lumpur International Airport,Kuala Lumpur,MY,Malaysia,Asia,AS,101.709999,2.74558,https://www.jonesaroundtheworld.com/wp-content/uploads/2022/02/Petronas-Towers-Famous-Landmarks-in-Malaysia.jpg
+KWI,Kuwait International Airport,Kuwait,KW,Kuwait,Asia,AS,47.968899,29.226601,https://digital.ihg.com/is/image/ihg/crowne-plaza-kuwait-city-6011742898-2x1
+LAO,Laoag International Airport,Laoag,PH,Philippines,Asia,AS,120.531034,18.176121,https://www.bria.com.ph/wp-content/uploads/2022/06/Ilocos-Norte-Tourist-Spots.jpg
+LAS,Harry Reid International Airport,Nevada,US,United States,North America,NA,-115.151817,36.083361,https://cdn.destguides.com/files/store/itinerarystop/9974/background_image/jpeg_large_202112291737-9fd721e7bf7182b243c38e9dd6492f3a.jpeg
+LAX,Los Angeles International Airport,Los Angeles,US,United States,North America,NA,-118.407997,33.942501,https://media.tacdn.com/media/attractions-splice-spp-674x446/07/3b/4c/fe.jpg
+LHR,London Heathrow Airport,London,GB,United Kingdom,Europe,EU,-0.461941,51.4706,https://cdn.tiqets.com/wordpress/blog/wp-content/uploads/2020/09/shutterstock_1013811547.jpg
+MAA,Chennai International Airport,Madras(Chennai),IN,India,Asia,AS,80.169296,12.990005,https://lh3.googleusercontent.com/p/AF1QipOP2Vr3o-m9F593rG37E2j4C7tP_-nt4qNPQIMe=s680-w680-h510
+MAR,La Chinita International Airport,Maracaibo,VE,Venezuela,South America,SA,-71.7278595,10.55820847,https://cdn.britannica.com/22/183422-050-D4D6FD35/General-Rafael-Urdaneta-Bridge-Lake-Maracaibo-Venezuela.jpg
+MCZ,Zumbi dos Palmares International Airport,Maceio,BR,Brazil,South America,SA,-35.791698,-9.51081,https://travel2next.com/wp-content/uploads/Brazil-Landmark-Christ-the-Redeemer-Statue-1024x573.jpg
+MEL,Melbourne International Airport,Melbourne,AU,Australia,Oceania,OC,144.843002,-37.673302,https://lp-cms-production.s3.amazonaws.com/public/2021-06/shutterstockRF_594853124.jpg
+MEX,Mexico City International Airport,Mexico ,MX,Mexico,North America,NA,-99.082432,19.435433,https://travellemming.com/wp-content/uploads/Mexico-City-Landmarks.jpg
+MFM,Macau International Airport,Macau,MO,Macau,Asia,AS,113.592003,22.149599,https://www.worldtravelguide.net/wp-content/uploads/2017/03/shu-Macau-1006756141-1440x823.jpg
+MNL,Ninoy Aquino International Airport,Manila,PH,Philippines,Asia,AS,121.019997,14.5086,https://www.discoverthephilippines.com/wp-content/uploads/2020/04/article-cover-photo-attraction-template-b.jpg
+MPH,Godofredo P. Ramos Airport,Malay,PH,Philippines,Asia,AS,121.954002,11.9245,https://itsmorefuninthephilippines.co.uk/wp-content/uploads/Boracay-featured-image.jpg
+MVD,Carrasco International Airport,Montevideo,UY,Uruguay,South America,SA,-56.026497,-34.835647,https://assets3.thrillist.com/v1/image/3077179/828x610/flatten;crop;webp=auto;jpeg_quality=60.jpg
+NAT,Augusto Severo International Airport,Natal ,BR,Brazil,South America,SA,-35.366578,-5.769804,https://e8s3v3w7.rocketcdn.me/wp-content/uploads/2021/01/brasilien-der-praia-da-pipa-an-der-succ88dkucc88ste-im-brasilianischen-bundesstaat-rio-grande-do-norte-wird-regelmacc88ssig-zum-besten-strand-brasiliens-gewacc88hlt-longjon-shuttersto.jpg
+NGO,Chubu Centrair International Airport,Tokoname,JP,Japan,Asia,AS,136.8049927,34.85839844,https://i.pinimg.com/564x/5f/b9/c6/5fb9c645ace6e715478f0055e9ae6280.jpg
+NRT,Narita International Airport,Tokyo (Narita),JP,Japan,Asia,AS,140.386002,35.764702,https://i.pinimg.com/564x/3d/e3/66/3de36648251a3aae498969e00882b62c.jpg
+OZC,Labo Airport,Ozamiz,PH,Philippines,Asia,AS,123.842003,8.17851,https://www.asterra.com.ph/wp-content/uploads/2023/05/Ozamiz-Photo-from-Pinoy-Adventurista.jpeg
+PAG,Pagadian Airport,Pagadian,PH,Philippines,Asia,AS,123.459635,7.825632,https://4.bp.blogspot.com/-VFQk6ysFKDI/UeMOMT8PYEI/AAAAAAAANlg/CjbYN-aTvtc/s1600/P1000294.JPG
+PEK,Beijing Capital International Airport,Beijing,CN,China,Asia,AS,116.5849991,40.08010101,https://www.mandarinzone.com/wp-content/uploads/2015/11/Tianmen.jpg
+PER,Perth International Airport,Perth,AU,Australia,Oceania,OC,115.9670029,-31.94029999,https://www.planetware.com/photos-large/AUS/australia-western-australia-wave-rock.jpg
+PNH,Phnom Penh International Airport,Phnom Penh,KH,Cambodia,Asia,AS,104.844002,11.5466,https://www.trailsofindochina.com/wp-content/uploads/2017/08/Phnom-Penh_header.jpg
+POM,Port Moresby Jacksons International Airport,Port Moresby,PG,Papua New Guinea,Oceania,OC,147.2200012,-9.443380356,https://upload.wikimedia.org/wikipedia/commons/6/6a/Port_Moresby_Town2_Mschlauch.jpg
+PPS,Puerto Princesa Airport,Puerto Princesa,PH,Philippines,Asia,AS,118.759003,9.74212,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRikgSSCFdhTYTZ3MYLphKemrJoTtTMbQ2jlyIO7ch77HvYhGjFbmT1ruly5qnLIi3EIjQ&usqp=CAU
+PUS,Gimhae International Airport,Busan,KR,South Korea,Asia,AS,128.938004,35.179501,https://a.cdn-hotels.com/gdcs/production144/d1960/191730c7-8e21-4540-825c-65954ae4d132.jpg?impolicy=fcrop&w=800&h=533&q=medium
+PVG,Shanghai Pudong International Airport,Shanghai,CN,China,Asia,AS,121.805,31.1434,https://legacy.travelnoire.com/wp-content/uploads/2019/01/edward-he-1082124-unsplash.jpg
+RAI,Nelson Mandela International Airport,Praia,CV,Cape Verde,Africa,AF,-23.49349976,14.92450047,https://www.cruisemapper.com/images/ports/722-a820713163ab.jpg
+RUH,King Khaled International Airport,Riyadh,SA,Saudi Arabia,Asia,AS,46.69879913,24.95759964,https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Riyadh_Skyline.jpg/1920px-Riyadh_Skyline.jpg
+RXS,Roxas Airport,Roxas,PH,Philippines,Asia,AS,122.7519989,11.59770012,https://outoftownblog.com/wp-content/uploads/2023/02/Panay-Church-in-Capiz.jpg
+SFO,San Francisco International Airport,San Francisco,US,United States,North America,NA,-122.375,37.61899948,https://lh5.googleusercontent.com/p/AF1QipN0-mJ4M1ftzod1vtrdwMyE2fmmqxGdPxnvQMH4=w548-h318-n-k-no
+SGN,Tan Son Nhat International Airport,Ho Chi Minh,VN,Vietnam,Asia,AS,106.652,10.8188,https://touristjourney.com/wp-content/uploads/2020/11/Ho-Chi-Minh-City.jpg
+SIN,Singapore Changi Airport,Singapore,SG,Singapore,Asia,AS,103.994003,1.35019,https://cdn.tiqets.com/wordpress/blog/wp-content/uploads/2020/09/partha-narasimhan-duXJOBVg_l4-unsplash.jpg
+SJU,Luis Munoz Marin International Airport,San Juan,PR,Puerto Rico,North America,NA,-66.00180054,18.43939972,https://qtxasset.com/quartz/qcloud1/media/image/travelagentcentral/1565889589/shutterstock_1067855027.jpg?VersionId=pImsmkgr.F4SGDoPtQLjw.578o6M0KkW
+SVO,Sheremetyevo International Airport,Moscow,RU,Russia,Europe,EU,37.4146,55.972599,https://cdn.getyourguide.com/img/tour/5c263e1358db7.jpeg/75.jpg
+SWL,San Vicente Airport,San Vicente,PH,Philippines,Asia,AS,119.272899,10.524298,https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQx-pA7PyFMhoj0wnLFK-4CzPfOJR7qAcgp0pyBjQbC_O7IEeEm9uXRpVTazsJHdkeW-Ly_yvm1YBFpjp3t4oYFxKYJGw
+SYD,Sydney Kingsford Smith International Airport,Sydney,AU,Australia,Oceania,OC,151.177002,-33.94609833,https://media.istockphoto.com/id/498122776/photo/sydney-skyline-at-night.jpg?s=612x612&w=0&k=20&c=uwtge9Se19aOjAnWBMFLREuDCLUGItlMRlFVyZjFKd4=
+TAC,Daniel Z. Romualdez Airport,Tacloban,PH,Philippines,Asia,AS,125.027783,11.227761,https://i0.wp.com/outoftownblog.com/wp-content/uploads/2018/06/Visit-MacArthur-Park-photo-by-Ken-Rai-Lang-via-Instagram.jpg?fit=1192%2C896&ssl=1
+TAG,Tagbilaran Airport,Tagbilaran,PH,Philippines,Asia,AS,123.770143,9.573045,https://www.jonnymelon.com/wp-content/uploads/2019/09/hinagdanan-cave-5.jpg
+TLV,Ben Gurion International Airport,Tel Aviv,IL,Israel,Asia,AS,34.88669968,32.01139832,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/4f/eb/f8/2016.jpg?w=700&h=500&s=1
+TPE,Taiwan Taoyuan International Airport,Taipei,TW,Taiwan,Asia,AS,121.233002,25.0777,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/db/62/9d/konfuziustempel-teipeh.jpg?w=500&h=-1&s=1
+TWT,Sanga Sanga Airport,Tawi-tawi,PH,Philippines,Asia,AS,119.743338,5.048196,https://www.vigattintourism.com/assets/article_main_photos/optimize/1346038711MY3dGUzt.jpg
+UIO,Mariscal Sucre International Airport,Quito,EC,Ecuador,South America,SA,-78.354306,-0.125399,https://images.fineartamerica.com/images-medium-5/4-quito-ecuador-john-coletti.jpg
+USU,Francisco B. Reyes Airport,Coron,PH,Philippines,Asia,AS,120.100801,12.121865,https://theworldtravelguy.com/wp-content/uploads/2020/02/DJI_0195.jpg
+XMN,Xiamen Gaoqi International Airport,Xiamen,CN,China,Asia,AS,118.1279984,24.54400063,https://www.chinadiscovery.com/assets/images/xiamen/things-to-do/south-putuo-temple-full.jpg
+YQB,Quebec City Jean Lesage International Airport,Quebec ,CA,Canada,North America,NA,-71.393303,46.7911,https://www.quebec-cite.com/sites/otq/files/styles/landscape_wide_desktop/public/blog/jefffrenettephotography_otqete_160902_0064.jpg?itok=LEUZhFWK
+YVR,Vancouver International Airport,Vancouver,CA,Canada,North America,NA,-123.1839981,49.19390106,https://upload.wikimedia.org/wikipedia/commons/5/57/Concord_Pacific_Master_Plan_Area.jpg
+YYZ,Lester B. Pearson International Airport,Toronto,CA,Canada,North America,NA,-79.6306,43.6772,https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQKjCXgFVcYAJRAlHbxrKbfgasFPFqhh-2fMtSuwYHO9EdVw_qVHqUFY3Wk4N2b8GS9bZ-4yaJDCn9-A2Dz1B15DjANDg
+ZAM,Zamboanga International Airport,Zamboanga,PH,Philippines,Asia,AS,122.0599976,6.922420025,https://lh3.googleusercontent.com/p/AF1QipMBFCSxhQn-Etk59e_As6PvslCjs4lb3axarAC3=s680-w680-h510
