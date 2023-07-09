@@ -8,7 +8,7 @@ query = Blueprint('query', __name__)
 def _debug_bracket():
     return f"[DEBUG {datetime.now().time().strftime('%H:%M:%S')}]"
 
-def create_table(table_name: str, create_table_query: str, csv_filename: str = None, drop_if_exists: bool = True):
+def create_table(table_name: str, create_table_query: str, csv_filename: str = None, clear_if_exists: bool = True):
     
     responses = []
 
@@ -39,22 +39,25 @@ def create_table(table_name: str, create_table_query: str, csv_filename: str = N
         responses.append(response)
         print(response)
 
-        if (drop_if_exists):
-            response = f"{_debug_bracket()} Dropping `{table_name}` table..."
+        if (clear_if_exists):
+            response = f"{_debug_bracket()} Deleting all data from `{table_name}` table..."
             responses.append(response)
             print(response)
             try:
-                cursor.execute(f''' DROP TABLE {table_name}; ''')
-                response = f"{_debug_bracket()} `{table_name}` dropped successfully."
+                cursor.execute(f''' SELECT COUNT(*) FROM `{table_name}`;''')
+                response = f"{_debug_bracket()} {cursor.fetchall()[0][0]} rows deleted."
+                responses.append(response)
+                cursor.execute(f''' DELETE FROM `{table_name}`; ''')
+                response = f"{_debug_bracket()} `{table_name}` cleared successfully."
                 responses.append(response)
                 print(response)
             except Exception as e:
-                response = f"{_debug_bracket()} `{table_name}` cannot be dropped: {e}"
+                response = f"{_debug_bracket()} `{table_name}` cannot be cleared: {e}"
                 responses.append(response)
                 print(response)
                 return jsonify({'response': [responses]})
         else:
-            response = f"{_debug_bracket()} `drop_if_exists` is set to false, table creation will now be terminated."
+            response = f"{_debug_bracket()} `clear_if_exists` is set to false, table creation will now be terminated."
             responses.append(response)
             print(response)
             return jsonify({'response': [responses]})
@@ -63,20 +66,20 @@ def create_table(table_name: str, create_table_query: str, csv_filename: str = N
         responses.append(response)
         print(response)
     
-    response = f"{_debug_bracket()} Creating the table..."
-    responses.append(response)
-    print(response)
+        response = f"{_debug_bracket()} Creating the table..."
+        responses.append(response)
+        print(response)
 
-    try:
-        cursor.execute(create_table_query)
-        response = f"{_debug_bracket()} Successfully created the {table_name} table"
-        responses.append(response)
-        print(response)
-    except Exception as e:
-        response = f"{_debug_bracket()} Something went wrong while creating the table. Check the query and try again: {e}" 
-        responses.append(response)
-        print(response)
-        return jsonify({'response': [responses]})
+        try:
+            cursor.execute(create_table_query)
+            response = f"{_debug_bracket()} Successfully created the {table_name} table"
+            responses.append(response)
+            print(response)
+        except Exception as e:
+            response = f"{_debug_bracket()} Something went wrong while creating the table. Check the query and try again: {e}" 
+            responses.append(response)
+            print(response)
+            return jsonify({'response': [responses]})
 
     if (csv_filename):
         response = f"{_debug_bracket()} Populating the table with the data from {csv_filename}.csv..."
@@ -86,7 +89,7 @@ def create_table(table_name: str, create_table_query: str, csv_filename: str = N
         try:
             cursor.execute(f'''
                     LOAD DATA INFILE "../Uploads/{csv_filename}.csv" IGNORE 
-                    INTO TABLE airport_t
+                    INTO TABLE {table_name}
                     FIELDS TERMINATED BY ',' 
                     LINES TERMINATED BY '\n';
                         ''')
@@ -96,7 +99,12 @@ def create_table(table_name: str, create_table_query: str, csv_filename: str = N
             print(response)
             return jsonify({'response': [responses]})
         
-        response = f"{_debug_bracket()} Table populated successfully."
+        cursor.execute(f'''
+                       SELECT COUNT(*)
+                       FROM {table_name};
+                       ''')
+
+        response = f"{_debug_bracket()} Table populated successfully. {cursor.fetchall()[0][0]} rows imported."
         responses.append(response)
         print(response)
     else:
@@ -188,7 +196,8 @@ def create_flight_table():
                         `source` CHAR(3) NOT NULL,
                         `destination` CHAR(3) NOT NULL,
                         PRIMARY KEY (`flightNo`),
-                        FOREIGN KEY (`source`) REFERENCES `airport_t`(`airport_code`))
+                        FOREIGN KEY (`source`) REFERENCES `airport_t`(`airport_code`),
+                        FOREIGN KEY (`destination`) REFERENCES `airport_t`(`airport_code`))
                         ENGINE = InnoDB
                         DEFAULT CHARACTER SET = utf8mb4
                         COLLATE = utf8mb4_0900_ai_ci;
@@ -226,7 +235,7 @@ def create_ticket_table():
                         ENGINE = InnoDB
                         DEFAULT CHARACTER SET = utf8mb4
                         COLLATE = utf8mb4_0900_ai_ci;                        
-                        ''')
+                        ''', None, False)
 
 @query.route('/create-reservation-table')
 def create_reservation_table():
