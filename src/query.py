@@ -2,11 +2,19 @@ from flask import Blueprint, render_template, jsonify, request
 from . import mysql, app
 from shutil import copy
 from datetime import datetime
+import string
+import random
 
 query = Blueprint('query', __name__)
 
 def _debug_bracket():
     return f"[DEBUG {datetime.now().time().strftime('%H:%M:%S')}]"
+
+def primary_key(first_char):
+    n = 3
+    res = ''.join(random.choices(string.ascii_uppercase +
+                                 string.digits, k=n))
+    return first_char + res
 
 def create_table(table_name: str, create_table_query: str, csv_filename: str = None, clear_if_exists: bool = True):
     
@@ -271,16 +279,3 @@ def search_airports():
                     
     returned = cursor.fetchall()
     return jsonify(returned)
-
-@query.route('/get-geocode', methods=['POST'])
-def get_geocode():
-    iata = request.get_json()['iata']
-    cursor = mysql.connection.cursor()
-    cursor.execute(f'''
-                    SELECT name, longitude_deg, latitude_deg
-                    FROM `all_airport_t`
-                    WHERE iata_code = '{iata}';
-                   ''')
-    
-    rev = cursor.fetchall()
-    return jsonify(rev)
