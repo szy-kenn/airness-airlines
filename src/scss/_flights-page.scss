@@ -590,6 +590,8 @@ body {
             grid-template-rows: 1fr auto;
             padding: 1rem;
             gap: 1rem;
+            user-select: none;
+            pointer-events: none;
 
             .flight-details-text {
                 position: relative;

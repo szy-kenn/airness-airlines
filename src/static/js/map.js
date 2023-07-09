@@ -13,6 +13,9 @@ export class Map {
         this.planeSeries = null;
         this.plane = null;
         this.planeDataItem = null;
+        this.pointsToConnect = {};
+        this.button = null;
+        this.activePointIdx = 1;
     }
 
     ready(container, projection, panX, panY, wheelY, graticulate, mapColor, mapOpacity) {
@@ -43,6 +46,7 @@ export class Map {
             x: 0,
             y: 0,
             zoomLevel: 1,
+            maxPanout: 0,
             projection: this.projection,
             // projection: am5map.geoEquirectangular(),
             // projection: am5map.geoNaturalEarth1(),
@@ -60,7 +64,7 @@ export class Map {
             }
           });
         
-        this.chart.set("zoomControl", am5map.ZoomControl.new(this.root, {}));
+        // this.chart.set("zoomControl", am5map.ZoomControl.new(this.root, {}));
         
         // Create curtain + message to show when wheel is used over chart without CTRL
         this.overlay = this.root.container.children.push(am5.Container.new(this.root, {
@@ -144,24 +148,7 @@ export class Map {
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
         this.pointSeries = this.chart.series.push(am5map.MapPointSeries.new(this.root, {}));
 
-        this.pointSeries.bullets.push(() => {
-
-            this.circle = am5.Circle.new(this.root, {
-                radius: 10,
-                name: "point",
-                tooltipText: "{title}",
-                cursorOverStyle: "pointer",
-                tooltipY: 0,
-                fill: am5.color(0xffba00),
-                stroke: this.root.interfaceColors.get("background"),
-                strokeWidth: 2,
-                draggable: false
-            });
-
-            return am5.Bullet.new(this.root, {
-                sprite: this.circle
-            });
-        });
+        this.createBullets();
 
         this.polygonSeries.mapPolygons.template.states.create("active", {
             // fill: "#FFD700"
@@ -192,11 +179,32 @@ export class Map {
         this.chart.appear(500, 100)
     }
 
+    createBullets() {
+        this.pointSeries.bullets.push(() => {
+
+            this.circle = am5.Circle.new(this.root, {
+                radius: 10,
+                name: "point",
+                tooltipText: "{title}",
+                cursorOverStyle: "pointer",
+                tooltipY: 0,
+                fill: am5.color(0xffba00),
+                stroke: this.root.interfaceColors.get("background"),
+                strokeWidth: 2,
+                draggable: false
+            });
+
+            return am5.Bullet.new(this.root, {
+                sprite: this.circle
+            });
+        });
+    }
+
     setSource(longitude, latitude, name) {
         if (this.fromLocationPoint != null) {
             this.removePoint('from', this.fromLocationPoint);
         }
-        this.fromLocationPoint = this.addPoint(latitude, longitude, name);
+        this.fromLocationPoint = this.addPoint(latitude, longitude, 0, name);
         if (this.fromLocationPoint != null && this.toLocationPoint != null) {
             this.createTrajectoryLines();
         }
@@ -206,32 +214,45 @@ export class Map {
         if (this.toLocationPoint != null) {
             this.removePoint('to', this.toLocationPoint);
         }
-        this.toLocationPoint = this.addPoint(latitude, longitude, name)
+        this.toLocationPoint = this.addPoint(latitude, longitude, 1, name)
         if (this.fromLocationPoint != null && this.toLocationPoint != null) {
             this.createTrajectoryLines();
         }
     }
 
-    addPoint(latitude, longitude, name) {
-        return this.#addCity({ latitude: latitude, longitude: longitude }, name) 
+    addPoint(latitude, longitude, index, name) {
+        const point = this.#addCity({ latitude: latitude, longitude: longitude }, name);
+        if (this.pointsToConnect[index] != null) {
+            this.removePoint('none', this.pointsToConnect[index]);
+        }
+        this.pointsToConnect[index] = point;
+        return point;
     }
 
     removePoint(fromTo, dataItem) {
         this.pointSeries.disposeDataItem(dataItem);
         if (fromTo === 'from') {
             this.fromLocationPoint = null;
+            this.pointsToConnect[0] = null;
         } else if (fromTo === 'to') {
             this.toLocationPoint = null;
-        }
+            this.pointsToConnect[1] = null;
+        } 
     }
 
     clearPoints() {
-        this.pointSeries.clear();
+        let i = 0; 
+        while (this.pointsToConnect[i] !== undefined) {
+            this.removePoint('none', this.pointsToConnect[i]);
+            i++;
+        }
+
+        this.activePointIdx = 1;
+        this.pointsToConnect = {};
     }
 
     createTrajectoryLines() {
-        console.log(this.pointSeries)
-        console.log('From:', this.fromLocationPoint._settings['title'], 'To:', this.toLocationPoint._settings['title'])
+        // console.log('From:', this.fromLocationPoint._settings['title'], 'To:', this.toLocationPoint._settings['title'])
         // Create line series for trajectory lines
         // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
         this.lineSeries = this.chart.series.push(am5map.MapLineSeries.new(this.root, {}));
@@ -243,9 +264,41 @@ export class Map {
         });
 
         this.lineDataItem = this.lineSeries.pushDataItem({
-            pointsToConnect: [this.fromLocationPoint, this.toLocationPoint]
-            // pointsToConnect: [paris, toronto, la, havana]
+            pointsToConnect: Object.values(this.pointsToConnect)
         });
+    }
+
+    createButton() {
+        this.button = this.chart.children.push(am5.Button.new(this.root, {
+            // height: am5.percent(10),
+            // width: am5.percent(5),
+            x: am5.percent(70),
+            y: am5.percent(85),
+            centerX: am5.percent(100),
+            label: am5.Label.new(this.root, {
+                text: "NEXT",
+                fontSize: 16,
+                fill: "#E4EEFD",
+                x: am5.p50,
+                y: am5.p50,
+                centerX: am5.p50,
+                centerY: am5.p50
+              })
+        }));
+
+        this.button.events.on("click", () => {
+            if (this.pointsToConnect[this.activePointIdx] !== undefined) {
+                let point = this.pointsToConnect[this.activePointIdx];
+                console.log(point)
+                this.chart.zoomToGeoPoint({longitude: point._settings['longitude'], latitude: point._settings['latitude']}, 3, true, 2000);
+                this.activePointIdx++;
+            } else {
+                this.activePointIdx = 0;
+                let point = this.pointsToConnect[this.activePointIdx];
+                this.chart.zoomToGeoPoint({longitude: point._settings['longitude'], latitude: point._settings['latitude']}, 3, true, 2000);
+                this.activePointIdx++;
+            }
+        })
     }
 
     createPlane() {

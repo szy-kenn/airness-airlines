@@ -74,20 +74,27 @@ let mapCreated = false;
 function createMap(container) {
     map.ready(container, am5map.geoEquirectangular(),
                 'none', 'none', 'none', false, "#E4EEFD", 1);
-    //     setTimeout(() => {
-    //     map.zoomToCity("PH", 2);
-    // }, 300);
-
-    // fetch(`https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?token=${access_token}&f=pjson&singleLine=${place}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-            
-    //     })
-    //     .catch(error => console.error(error))
+    map.createButton();
 }
 
-function createPoints() {
-    map.setSource()
+function createPoints(iata, index) {
+    fetch('/query/get-geocode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({'iata' : iata})
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data[0])
+        let name = data[0][0];
+        let longitude = data[0][1];
+        let latitude = data[0][2];
+        console.log(index)
+        map.addPoint(latitude, longitude, index, name);
+    })
+    .catch(error => console.error(error))
 }
 
 let searched_flights = null
@@ -98,7 +105,7 @@ fetch('/api/searched-flights')
     .catch(error => console.error(error))
 
 flightContainers.forEach(container => {
-    container.addEventListener('click', () => {
+    container.addEventListener('click', async() => {
         popupWrapper.classList.add('selected');
         
         if (!mapCreated) {
@@ -110,13 +117,32 @@ flightContainers.forEach(container => {
 
         document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][container.dataset.index]['departure_time']).substring(11, 16);
         document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][container.dataset.index]['arrival_time']).substring(11, 16);
-        console.log(searched_flights['best'][container.dataset.index]['stops']);
+        // console.log(searched_flights['best'][container.dataset.index]['stops']);
         let stops = searched_flights['best'][container.dataset.index]['stops'];
 
-        for (let i = 0; i < stops.length; i++) {
-            const circle = document.createElement("div");
+        if (!mapCreated) {
+            setTimeout(() => {
+                createPoints(stops[0]['origin']['iata'], 0);
+                for (let i = 0; i < stops.length; i++) {
+                    createPoints(stops[i]['destination']['iata'], i+1);
+                }
+            }, 150);
+            setTimeout(() => {
+                map.createTrajectoryLines();
+                map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
+            }, 1000);
+
+        } else {
+            createPoints(stops[0]['origin']['iata'], 0);
+            for (let i = 0; i < stops.length; i++) {
+                createPoints(stops[i]['destination']['iata'], i+1);
+            }
+            setTimeout(() => {
+                map.createTrajectoryLines();
+                map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
+            }, 300);
         }
-        // createPoints();
+        
     })
 })
 
@@ -124,8 +150,10 @@ popupWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('popup-wrapper')) {
         popupWrapper.classList.remove('selected');
         popupWrapper.classList.add('closing');
+        
         setTimeout(() => {
             popupWrapper.classList.remove('closing');
+            map.clearPoints();
         }, 100);
     }
 })

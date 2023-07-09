@@ -271,3 +271,16 @@ def search_airports():
                     
     returned = cursor.fetchall()
     return jsonify(returned)
+
+@query.route('/get-geocode', methods=['POST'])
+def get_geocode():
+    iata = request.get_json()['iata']
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT name, longitude_deg, latitude_deg
+                    FROM `all_airport_t`
+                    WHERE iata_code = '{iata}';
+                   ''')
+    
+    rev = cursor.fetchall()
+    return jsonify(rev)

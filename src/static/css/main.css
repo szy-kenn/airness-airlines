@@ -1580,6 +1580,10 @@ body {
   grid-template-rows: 1fr auto;
   padding: 1rem;
   gap: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 .popup-selected-details .popup-body .flight-details-text-container .flight-details-text {
   position: relative;
