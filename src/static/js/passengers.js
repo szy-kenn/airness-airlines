@@ -2,6 +2,7 @@ let ageGroupExpandBtns = {}
 let passengerForms = [];
 let passengerFormsExpandBtns = [];
 
+document.querySelector("html").style.scrollSnapType = "none";
 function getCurrentIdx(ageGroupIdx) {
     let idx = 0;
     for (let k = ageGroupIdx-1; k >= 0; k--) {

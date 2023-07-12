@@ -1080,6 +1080,22 @@ body {
   font-size: clamp(0.35rem, 0.86vw, 0.75rem);
 }
 
+.available-flights-input-details {
+  position: relative;
+  place-self: center;
+  margin: 0;
+  width: 95%;
+  height: 10vh;
+}
+
+.input-results-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .available-flights {
   display: grid;
   grid-auto-rows: auto;
@@ -1417,7 +1433,7 @@ body {
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: 25.5%;
-  padding: 2rem 2rem;
+  padding: 0 2rem 2rem 2rem;
 }
 .available-flights-test .flight-container {
   background: linear-gradient(to bottom, white 60%, #E4EEFD);
@@ -1554,6 +1570,9 @@ body {
 }
 .popup-wrapper.closing .popup-selected-details {
   animation: scaleDown 0.1s ease-in forwards;
+}
+.popup-wrapper .show-results-text {
+  position: relative;
 }
 
 .popup-selected-details {

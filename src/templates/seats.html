@@ -8,7 +8,7 @@
 {% set total_passengers = (form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int) + (form_part_one['passenger-infant'] | int) %}
 {% set infants = form_part_one['passenger-infant'] %}
 <!-- {% include 'blocks/selected-flight-details.html' %} -->
-
+<div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0;"></div>
 <div class="seats-page-wrapper">
     <div class="seats-page-wrapper__item selected-seats-container" data-currentlySelecting="">
 

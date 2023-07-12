@@ -54,6 +54,20 @@ body {
     }
 }
 
+.available-flights-input-details {
+    position: relative;
+    place-self: center;
+    margin: 0;
+    width: 95%;
+    height: 10vh;
+}
+
+.input-results-wrapper {
+    @include flex(center);
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
 .available-flights {
     display: grid;
     grid-auto-rows: auto;
@@ -418,7 +432,7 @@ body {
     display: grid;
     grid-auto-flow: row;
     grid-auto-rows: 25.5%;
-    padding: 2rem 2rem;
+    padding: 0 2rem 2rem 2rem;
     // border: 1px solid red;
 
     .flight-container {
@@ -560,6 +574,10 @@ body {
         .popup-selected-details {
             animation: scaleDown 0.1s ease-in forwards;
         }
+    }
+    
+    .show-results-text {
+        position: relative;
     }
 }
 

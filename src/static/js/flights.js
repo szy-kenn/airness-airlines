@@ -18,7 +18,7 @@ departureDay.textContent = dayOfTheWeek[new Date(departureDate.textContent).getD
 
 const expandFlightDetailsBtn = document.querySelectorAll(".expand-flight-stops");
 // const expandedSection = document.querySelectorAll(".expanded-section");
-
+document.querySelector("html").style.scrollSnapType = "y mandatory";
 expandFlightDetailsBtn.forEach( btn => {
     btn.addEventListener("click", () => {
         btn.classList.toggle('expanded-btn');
