@@ -203,6 +203,18 @@ const airlineClassContainer = document.querySelectorAll('.passenger-form__contai
 // maximum adult + children, excluding infants
 const maxPassenger = 9;
 
+for (let i = 0; i < btnDown.length; i++) {
+    btnDown[i].addEventListener('click', () => {
+        passengerBtnOnClick('down', i);
+    })
+}
+
+for (let i = 0; i < btnDown.length; i++) {
+    btnUp[i].addEventListener('click', () => {
+        passengerBtnOnClick('up', i);
+    })
+}
+
 function btnStateUpdate() {
 
     if (parseInt(passengerCount[0].value) < parseInt(passengerCount[2].value)) {
