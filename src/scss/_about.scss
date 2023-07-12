@@ -1,21 +1,19 @@
-
-
-
 .about-page-title
 { 
     padding-left: 0.75em;
-    text-align: left;
+    text-align: center;
     color: black;
     font-weight: oblique; 
     font-size: 10vh;
     font-family : fantasy;
     padding-bottom: 0px;
     
+    
 }
 .essay
 {   
   margin: 2em;  
-  text-align: left;
+  text-align: center;
   text-justify: inter-word;
   line-height: 1.3;
   font-weight: 500;
@@ -23,9 +21,10 @@
   font-size: 3.5vh;
   font-family: Georgia, serif;
   position:relative;
-  white-space: nowrap;
   padding-bottom:0px;
-
+  // overflow-wrap:
+  // white-space: nowrap;
+  
 
 }
 .mission{
@@ -55,7 +54,7 @@
 }
 .vision{   
     padding-left: 0.75em;
-    text-align: left;
+    text-align: center;
     color: black;
     font-weight: oblique; 
     font-size: 10vh;
@@ -65,7 +64,7 @@
 }
 .vision-content{
     margin:2em;
-    text-align: left;
+    text-align: center;
     text-justify: inter-word;
     line-height: 1.3;
     font-weight: 500;
@@ -86,7 +85,7 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center center;
+    background-position:  center;
     z-index: -1;
 }
 
