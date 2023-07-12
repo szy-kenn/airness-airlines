@@ -104,10 +104,18 @@ fetch('/api/searched-flights')
     .then(data => searched_flights = data)
     .catch(error => console.error(error))
 
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP'
+});
+
+let currentSelectedFlightIdx = null;
+
 flightContainers.forEach(container => {
-    container.addEventListener('click', async() => {
+    container.addEventListener('click', async(event) => {
         popupWrapper.classList.add('selected');
-        
+        currentSelectedFlightIdx = event.target.dataset.index;
+
         if (!mapCreated) {
             setTimeout(() => {
                 createMap(flightContainerMap);
@@ -115,9 +123,9 @@ flightContainers.forEach(container => {
             }, 100);
         }
 
-        document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][container.dataset.index]['departure_time']).substring(11, 16);
-        document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][container.dataset.index]['arrival_time']).substring(11, 16);
-        // console.log(searched_flights['best'][container.dataset.index]['stops']);
+        document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][currentSelectedFlightIdx]['departure_time']).substring(11, 16);
+        document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][currentSelectedFlightIdx]['arrival_time']).substring(11, 16);
+        document.querySelector(".popup-sidebar-price__price").textContent = "PHP " + formatter.format(searched_flights['best'][currentSelectedFlightIdx]['price']);
         let stops = searched_flights['best'][container.dataset.index]['stops'];
 
         if (!mapCreated) {
@@ -144,6 +152,11 @@ flightContainers.forEach(container => {
         }
         
     })
+})
+
+document.querySelector(".popup-sidebar-button").addEventListener("click", () => {
+    // console.log(searched_flights['best'][currentSelectedFlightIdx]);
+    selectFlight(searched_flights['best'][currentSelectedFlightIdx]);
 })
 
 popupWrapper.addEventListener('click', (event) => {

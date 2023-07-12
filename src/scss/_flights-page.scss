@@ -757,6 +757,7 @@ body {
             align-self: stretch;
             position: relative;
             padding: 1rem;
+            cursor:  pointer;
 
             button {
                 position: relative;
@@ -769,6 +770,7 @@ body {
                 border-radius: 0px;
                 border: none;
                 outline: none;
+                cursor:  pointer;
             }
             // padding: 1rem;
         }

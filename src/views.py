@@ -55,6 +55,7 @@ def flights():
 def selected_flight(flight):
     if request.method == 'POST':
         session['selected_flight'] = json.loads(flight)
+        print(json.loads(flight))
         response = {'status': 200}
         return jsonify(response)
 

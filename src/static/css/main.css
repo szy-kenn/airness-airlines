@@ -1755,6 +1755,7 @@ body {
   align-self: stretch;
   position: relative;
   padding: 1rem;
+  cursor: pointer;
 }
 .popup-selected-details .popup-sidebar-button button {
   position: relative;
@@ -1769,6 +1770,7 @@ body {
   border-radius: 0px;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .icon-plane {

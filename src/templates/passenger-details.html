@@ -3,9 +3,10 @@
 {% block booking %}
 
 {% set header = "Input Passenger Details" %}
-{% include 'blocks/selected-flight-details.html' %}
-
-    <div class="passenger-details-wrapper">
+{% include 'blocks/flight-input-details.html' %}
+<!-- {% include 'blocks/selected-flight-details.html' %} -->
+<div class="home-body" style="position: absolute;"></div>
+    <div class="main-wrapper passenger-details-wrapper">
         <form action="/seats" method="POST">
         {% set idx = {'value': 0} %}
         {% for n in range(3) %}
@@ -112,6 +113,6 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript" src="{{ url_for('static', filename='js/passengers.js')}}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/flights.js')}}"></script>
+<script type="module" src="{{ url_for('static', filename='js/passengers.js')}}"></script>
+<script type="module" src="{{ url_for('static', filename='js/flights.js')}}"></script>
 {% endblock %}

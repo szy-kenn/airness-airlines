@@ -289,7 +289,6 @@ export class Map {
         this.button.events.on("click", () => {
             if (this.pointsToConnect[this.activePointIdx] !== undefined) {
                 let point = this.pointsToConnect[this.activePointIdx];
-                console.log(point)
                 this.chart.zoomToGeoPoint({longitude: point._settings['longitude'], latitude: point._settings['latitude']}, 3, true, 2000);
                 this.activePointIdx++;
             } else {
