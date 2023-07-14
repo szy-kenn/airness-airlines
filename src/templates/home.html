@@ -76,7 +76,7 @@
         <img src="{{ url_for('static', filename='img/paulo_jayr.jpg') }}" alt="Flight Attendant" id="img-slideshow__1">
     </div> -->
 
-
+{% include 'blocks/footer.html' %}
 {% endblock %}
 {% block script %}
 
@@ -105,4 +105,5 @@
 </script> -->
 
 <script type="module" src="{{ url_for('static', filename='js/index.js')}}"></script>
+
 {% endblock %}
