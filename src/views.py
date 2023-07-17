@@ -21,6 +21,10 @@ def _loading():
 def about():
     return render_template('about.html')
 
+@view.route('/contact-us')
+def contact_us():
+    return render_template('contact_us.html')
+
 @view.route('/flights', methods=['GET', 'POST'])
 def flights():
     if request.method  == 'POST':
@@ -41,6 +45,7 @@ def flights():
     
     available_flights = skyscanner.skyscanner.request(origin, destination, departure_date)
     requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
+    
     # return jsonify(available_flights)
 
     if available_flights[0] == 0:
@@ -55,7 +60,10 @@ def flights():
 def selected_flight(flight):
     if request.method == 'POST':
         session['selected_flight'] = json.loads(flight)
-        print(json.loads(flight))
+        # print(session['selected_flight']['stops'])
+        for stop in session['selected_flight']['stops']:
+            print(stop['flight_number'])
+            
         response = {'status': 200}
         return jsonify(response)
 
@@ -66,7 +74,12 @@ def passenger_details():
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
-        return render_template('passenger-details.html', selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
+        # origin_country = requests.post("http://127.0.0.1/get-country", json=)
+        if session['form_part_one']['from-json']['iso_country'] == session['form_part_one']['to-json']['iso_country']:
+            flight_type = 'local'
+        else:
+            flight_type = 'international'
+        return render_template('passenger-details.html', flight_type=flight_type, selected_flight=session['selected_flight'], form_part_one=(session['form_part_one']))
     
     try:
         return render_template('passenger-details.html')

@@ -36,7 +36,8 @@
     <button onclick="createTable('all-airport')">All Airports Table</button>
     <button onclick="createTable('passenger')" >Passengers Table</button>
     <button onclick="createTable('flight')" >Flights Table</button>
-    <button onclick="createTable('seat')" >Seats Table</button>
+    <button onclick="createTable('itinerary')" >Itinerary Table</button>
+    <button onclick="createTable('itinerary-flight')" >Itinerary Flights Table</button>
     <button onclick="createTable('ticket')" >Tickets Table</button>
     <button onclick="createTable('reservation')" >Reservation Table (main table)</button>
     <p>Response: </p>
@@ -70,7 +71,7 @@
         }
 
         var endpoints = ['airport', 'all-airport', 'passenger', 'flight',
-                         'seat', 'ticket', 'reservation'];
+                         'itinerary', 'itinerary-flight', 'ticket', 'reservation'];
         for (let i = 0; i < endpoints.length; i++) {
             fetch(`/query/create-${endpoints[i]}-table`)
             .then(response => response.json())

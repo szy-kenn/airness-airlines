@@ -2,6 +2,56 @@ let ageGroupExpandBtns = {}
 let passengerForms = [];
 let passengerFormsExpandBtns = [];
 
+const namesFields = document.querySelectorAll(".name-field")
+const alphanumericFields = document.querySelectorAll(".alphanumeric-field")
+const numberFields = document.querySelectorAll(".number-field")
+
+namesFields.forEach(field => {
+    field.addEventListener("keypress", (event) => {
+        if (!/[a-z -.]/i.test(event.key)) {
+            event.preventDefault();
+        }
+    })
+}) 
+
+alphanumericFields.forEach(field => {
+    field.addEventListener("keypress", (event) => {
+        event.preventDefault();
+        if (/[0-9a-z]/i.test(event.key)) {
+            field.value = (field.value + event.key).toUpperCase();
+        }
+    })
+})
+
+numberFields.forEach(field => {
+    field.addEventListener("keypress", (event) => {
+        if (!/[0-9-()]/.test(event.key)) {
+            event.preventDefault()
+        }
+    })
+})
+
+document.querySelectorAll(".birthdate-input").forEach(input => {
+    const date = new Date();
+    const year = date.getUTCFullYear();
+    const month = date.getMonth();
+    const day = date.getUTCDate();
+    if (input.dataset.ageGroup == 'Adult') {
+        date.setFullYear(date.getUTCFullYear() - 18);
+        input.max = date.toISOString().split('T')[0];
+    } else if (input.dataset.ageGroup == 'Children') {
+        date.setFullYear(date.getUTCFullYear() - 12);
+        input.min = date.toISOString().split('T')[0];
+        date.setFullYear(date.getUTCFullYear() + 10);
+        input.max = date.toISOString().split('T')[0];
+    } else if (input.dataset.ageGroup == 'Infant') {
+        date.setFullYear(date.getUTCFullYear() - 2);
+        input.min = date.toISOString().split('T')[0];
+        date.setFullYear(date.getUTCFullYear() + 2, date.getUTCMonth(), date.getUTCDate() - 16);
+        input.max = date.toISOString().split('T')[0];
+    }
+})
+
 document.querySelector("html").style.scrollSnapType = "none";
 function getCurrentIdx(ageGroupIdx) {
     let idx = 0;

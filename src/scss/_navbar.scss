@@ -64,9 +64,14 @@
     align-items: center;
     gap: 1rem;
 
-    img {
+    a {
         cursor: pointer;
+
+        img {
+            cursor: pointer;
+        }
     }
+
 }
 
 .airline-name-div-navbar{

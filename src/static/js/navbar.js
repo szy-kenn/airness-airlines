@@ -45,5 +45,13 @@ const welcomeObserver = new IntersectionObserver((entries, observer) => {
     })
 }, options) 
 
+const logoNavbarIcon = document.querySelector(".logo-navbar-link")
+const logoNavbarImg = document.getElementById("logo-navbar-img")
+
+logoNavbarImg.addEventListener("dragstart", (event) => {
+    event.preventDefault()
+    console.log("dropped")
+})
+
 bodyObserver.observe(homeBody);
 // welcomeObserver.observe(welcomeSection);

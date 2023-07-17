@@ -4,14 +4,13 @@
 
 {% set header = "Choose a Payment" %}
 {% include 'blocks/flight-input-details.html' %}
-
+<div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0; z-index: -999;"></div>
 {{ booked_seats }}
-<div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0;"></div>
 <div class="payment-page-wrapper">
     <div class="payment-page-wrapper__item payment-pg-mode">
         <p class="payment-page-wrapper__item__text">Mode Of Payment</p>
         <div class="payment-pg-mode__list">
-            <div class="payment-pg-mode__list__item gcash">
+            <div class="payment-pg-mode__list__item gcash clicked">
                 <img src="..\static\img\gcash.png" alt="Gcash">
             </div>
             <div class="payment-pg-mode__list__item maya">
@@ -32,27 +31,44 @@
         <p class="payment-page-wrapper__item__text">Account Details</p>
 
         <div class="payment-pg-details__container">
-            <div class="payment-pg-details__item input-field">
-                <label for="account-name">Account Name</label>
-                <input type="text" name="account-name" id="account-name">
-            </div>
-            <div class="payment-account-details">
                 <div class="payment-pg-details__item input-field">
-                    <label for="account-number">Account Number</label>
-                    <input type="text" name="account-number" id="account-number">
+                    <label for="account-name">Account Name</label>
+                    <input type="text" name="account-name" id="account-name" class="name-field" placeholder="Enter your Account Name">
+                </div>
+                <div class="payment-pg-details__item input-field">
+                    <label for="account-number" id="account-number-label">Mobile Number</label>
+                    <input type="text" name="account-number" id="account-number" class="number-field" placeholder="Enter your Account/Mobile Number">
                 </div>
                 <div class="payment-pg-details__item input-field">
                     <label for="account-exp-date">Account Exp Date</label>
-                    <input type="text" name="account-exp-date" id="account-exp-date">
+                    <input type="text" name="account-exp-date" id="account-exp-date" disabled>
                 </div>
-            </div>
-
+                <div class="payment-pg-details__item submit-button-container">
+                    <button class="form-btn">Submit</button>
+                </div>
         </div>
 
     </div>
     <div class="payment-page-wrapper__item payment-pg-summary">
         <p class="payment-page-wrapper__item__text">Payment Summary</p>
+        <div class="payment-summary">
+            <div class="payment-summary-heading">
+                <div class="payment-summary-heading__logo">
+                    <img src="static\img\logo_noname.png" alt="">
+                </div>
+                <div class="payment-summary-heading__title">
+                    <p>Airness Airlines</p>
+                </div>
+                <div class="payment-summary-heading__date">
+                    <p>2023-07-16</p>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 
+{% endblock %}
+{% block script %}
+<script type="module" src="{{ url_for('static', filename='js/payment.js')}}"></script>
 {% endblock %}

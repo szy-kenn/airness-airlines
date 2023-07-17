@@ -7,8 +7,8 @@ document.querySelector("html").style.scrollSnapType = "y mandatory";
 // scroll-snap-type: y mandatory;
 
 // create new airport_t table   
-fetch('/query/create-airport-table')
-    .then(response => response.json())
+// fetch('/query/create-airport-table')
+//     .then(response => response.json())
 
 map.ready("globe-container", am5map.geoOrthographic(), 
             'rotateX', 'rotateY',

@@ -87,8 +87,8 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
 }
 
 .home-body {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    scroll-snap-align: end;
+    scroll-snap-stop: normal;
     position: relative;
     // width: 100dvw;
     // scroll-margin-top: 100px;

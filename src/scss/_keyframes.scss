@@ -12,6 +12,16 @@
     }
 }
 
+@keyframes backgroundOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
 @keyframes pop {
     0% {
         transform: scale(1);
@@ -43,6 +53,15 @@
 
     to {
         transform: scale(0);
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(1);
+    } 
+    to {
+        transform: scale(1.1);
     }
 }
 

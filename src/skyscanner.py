@@ -73,7 +73,10 @@ class Skyscanner:
             try:
                 status = skyscanner_response['context']['status']
                 if (status == 'incomplete'):
+                    requests.post('http://127.0.0.1:5000/query/post-flight', json=skyscanner_response)
                     self._delete_cache(response)
+                elif status == 'complete':
+                    requests.post('http://127.0.0.1:5000/query/post-flight', json=skyscanner_response)
             except:
                 print(skyscanner_response)
                 return (0, ('Bad Request', skyscanner_response['message']))

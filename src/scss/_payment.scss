@@ -8,7 +8,7 @@
 
     &__item {
 
-        border: 1px solid red;
+        // border: 1px solid red;
         display: grid;
         grid-template-rows: 1fr 9fr;
         place-items: center;
@@ -29,6 +29,7 @@
             gap: 1rem;
             grid-auto-flow: row;
             grid-auto-rows: 1fr;
+            // user-select: none;
 
             &__item {
 
@@ -36,30 +37,39 @@
                 flex-direction: column;
                 box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                 border-radius: 5px;
+                cursor: pointer;
+                user-select: hover;
 
-                &:hover {
-                    animation: zoom 0.1s cubic-bezier(.48,.12,.48,.81) forwards;
-                    
-                    
+                &.clicked {
+                    animation: zoom 0.05s cubic-bezier(.48,.12,.48,.81) forwards;
                     &.gcash {
                         background: linear-gradient(to right,rgba(#6FBAF7, 0.4), rgba(#002CB8, 1) );
+                        animation: backgroundOpacity 0.5s ease forwards;
                     }
 
                     &.maya {
                         background: linear-gradient(to right,rgba(#2DF19D, 0.4), rgba(black, 1) );
+                        animation: backgroundOpacity 0.5s ease forwards;
                     }
 
                     &.paypal {
                         background: linear-gradient(to right,rgba(#253B80, 0.4), rgba(#179BD7, .4) );
+                        animation: backgroundOpacity 0.5s ease forwards;
                     }
 
                     &.mastercard {
                         background: linear-gradient(to right, rgba(red, 0.4), rgba(orange, 0.4));
+                        animation: backgroundOpacity 0.5s ease forwards;
                     }
 
                     &.visa {
                         background: linear-gradient(to right, rgba(#1E2566, 0.8), rgba(#044A9C, 0.4));
+                        animation: backgroundOpacity 0.5s ease forwards;
                     }
+                }
+
+                &:hover {
+                    animation: zoom 0.05s cubic-bezier(.48,.12,.48,.81) forwards;
                 }
 
                 img {
@@ -71,6 +81,78 @@
             }
         }
 
+    }
+
+    .payment-pg-details {
+        // border: 1px solid blue;
+
+        &__container {
+            // border: 2px solid blue;
+            width: 75%;
+            // height: 100%;
+            place-self: start center;
+            position: relative;
+            display: grid;
+            gap: 0.5rem;
+
+            .input-field {
+                position: relative;
+                background-color: white;
+                border-radius: 10px;
+                border: 2px solid rgba($primary-button, 0.2);
+                color: rgba($primary-button, 0.4);
+                @include font(1rem, 500);
+                @include flex(center, stretch);
+
+                &.focused {
+                    border: 2px solid rgba($primary-button, 0.8);
+                    color: rgba($primary-button, 0.8);
+                }
+
+                input {
+                    width: 100%;
+                    position: relative;
+                    margin-left: 10%;
+                    align-self: stretch;
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                    text-align: left;
+                    @include font(clamp(0.75rem, 1vw, 1.25rem), 500);
+
+                    &:disabled {
+                        // background-color: red;
+                    }
+                }
+            }
+
+            .submit-button-container {
+                // align-self: center;
+            }
+        }
+    }
+
+    .payment-pg-summary {
+        position: relative;
+        place-self: center;
+        .payment-summary {
+            @include flex(center, start);
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 1px solid red;
+
+            .payment-summary-heading {
+                border: 1px solid green;
+                @include flex(center);
+                flex-direction: column;
+                flex-grow: 1;
+                img {
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+        }
     }
 
 }

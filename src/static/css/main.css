@@ -1,5 +1,6 @@
 @import url("https://meyerweb.com/eric/tools/css/reset/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 html {
   scroll-behavior: smooth !important;
   padding: 0;
@@ -35,6 +36,15 @@ a,
     transform: rotate(360deg);
   }
 }
+@keyframes backgroundOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
 @keyframes pop {
   0% {
     transform: scale(1);
@@ -63,6 +73,14 @@ a,
   }
   to {
     transform: scale(0);
+  }
+}
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
   }
 }
 @keyframes panImage {
@@ -149,8 +167,8 @@ a,
 }
 
 .home-body {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-align: end;
+  scroll-snap-stop: normal;
   position: relative;
   height: calc(100vh - 64px);
   display: grid;
@@ -843,7 +861,10 @@ a,
   align-items: center;
   gap: 1rem;
 }
-.logo-navbar img {
+.logo-navbar a {
+  cursor: pointer;
+}
+.logo-navbar a img {
   cursor: pointer;
 }
 
@@ -3017,7 +3038,6 @@ body {
   padding: 2rem;
 }
 .payment-page-wrapper__item {
-  border: 1px solid red;
   display: grid;
   grid-template-rows: 1fr 9fr;
   place-items: center;
@@ -3042,30 +3062,264 @@ body {
   flex-direction: column;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
   border-radius: 5px;
+  cursor: pointer;
+  -webkit-user-select: hover;
+     -moz-user-select: hover;
+          user-select: hover;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked {
+  animation: zoom 0.05s cubic-bezier(0.48, 0.12, 0.48, 0.81) forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked.gcash {
+  background: linear-gradient(to right, rgba(111, 186, 247, 0.4), #002cb8);
+  animation: backgroundOpacity 0.5s ease forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked.maya {
+  background: linear-gradient(to right, rgba(45, 241, 157, 0.4), black);
+  animation: backgroundOpacity 0.5s ease forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked.paypal {
+  background: linear-gradient(to right, rgba(37, 59, 128, 0.4), rgba(23, 155, 215, 0.4));
+  animation: backgroundOpacity 0.5s ease forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked.mastercard {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.4), rgba(255, 165, 0, 0.4));
+  animation: backgroundOpacity 0.5s ease forwards;
+}
+.payment-page-wrapper .payment-pg-mode__list__item.clicked.visa {
+  background: linear-gradient(to right, rgba(30, 37, 102, 0.8), rgba(4, 74, 156, 0.4));
+  animation: backgroundOpacity 0.5s ease forwards;
 }
 .payment-page-wrapper .payment-pg-mode__list__item:hover {
-  animation: zoom 0.1s cubic-bezier(0.48, 0.12, 0.48, 0.81) forwards;
-}
-.payment-page-wrapper .payment-pg-mode__list__item:hover.gcash {
-  background: linear-gradient(to right, rgba(111, 186, 247, 0.4), #002cb8);
-}
-.payment-page-wrapper .payment-pg-mode__list__item:hover.maya {
-  background: linear-gradient(to right, rgba(45, 241, 157, 0.4), black);
-}
-.payment-page-wrapper .payment-pg-mode__list__item:hover.paypal {
-  background: linear-gradient(to right, rgba(37, 59, 128, 0.4), rgba(23, 155, 215, 0.4));
-}
-.payment-page-wrapper .payment-pg-mode__list__item:hover.mastercard {
-  background: linear-gradient(to right, rgba(255, 0, 0, 0.4), rgba(255, 165, 0, 0.4));
-}
-.payment-page-wrapper .payment-pg-mode__list__item:hover.visa {
-  background: linear-gradient(to right, rgba(30, 37, 102, 0.8), rgba(4, 74, 156, 0.4));
+  animation: zoom 0.05s cubic-bezier(0.48, 0.12, 0.48, 0.81) forwards;
 }
 .payment-page-wrapper .payment-pg-mode__list__item img {
   inline-size: 45%;
   aspect-ratio: 1;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.payment-page-wrapper .payment-pg-details__container {
+  width: 75%;
+  place-self: start center;
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+}
+.payment-page-wrapper .payment-pg-details__container .input-field {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid rgba(12, 40, 73, 0.2);
+  color: rgba(12, 40, 73, 0.4);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+.payment-page-wrapper .payment-pg-details__container .input-field.focused {
+  border: 2px solid rgba(12, 40, 73, 0.8);
+  color: rgba(12, 40, 73, 0.8);
+}
+.payment-page-wrapper .payment-pg-details__container .input-field input {
+  width: 100%;
+  position: relative;
+  margin-left: 10%;
+  align-self: stretch;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  text-align: left;
+  font-size: clamp(0.75rem, 1vw, 1.25rem);
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+.payment-page-wrapper .payment-pg-summary {
+  position: relative;
+  place-self: center;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-heading {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-heading img {
+  width: 64px;
+  height: 64px;
+}
+
+.contact-footer {
+  background-color: #0c2849;
+  height: auto;
+  padding-bottom: 5px;
+  padding-block: 25px;
+}
+
+.socialIcons-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-us-footer {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.download-footer {
+  margin-top: 0px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.socialIcons-footer a {
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 15px;
+  margin-top: 5px;
+}
+
+.socialIcons-footer a i.fa-facebook:hover {
+  color: rgb(24, 119, 242);
+  transition: color 0.5s;
+}
+
+.socialIcons-footer a i.fa-instagram:hover {
+  color: #E4405F;
+  transition: color 0.5;
+}
+
+.socialIcons-footer a i.fa-envelope:hover {
+  color: rgb(200, 25, 25);
+  transition: color 0.5s;
+}
+
+.socialIcons-footer:hover {
+  box-shadow: 19 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.socialIcons-footer i {
+  color: #F4AF1B;
+}
+
+.downloadIcons-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.downloadIcons-footer img {
+  padding: 5px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.playstore-footer {
+  margin-left: 30px;
+}
+
+.appstore-footer {
+  margin-top: 10px;
+}
+
+.sameLine-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.sameLine-footer hr {
+  height: 0px;
+}
+
+.payment-footer {
+  width: 100%;
+  height: 60px;
+  margin-left: 95px;
+  display: flex;
+}
+
+.payment-footer img {
+  padding-top: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.gcash-footer {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.maya-footer {
+  margin-right: 10px;
+}
+
+.visa-footer {
+  margin-right: 10px;
+}
+
+.mastercard-footer {
+  margin-right: 10px;
+}
+
+.paypal-footer {
+  margin-right: 10px;
+}
+
+.logo-footer {
+  margin-left: 450px;
+}
+
+.airline-name-div-footer {
+  height: 64px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.airline-name-footer {
+  line-height: 0.75;
+  font-family: "Montserrat";
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.airlines-name-footer {
+  font-family: "Montserrat";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 0;
 }
 
 @media screen and (max-width: 768px) {
