@@ -279,7 +279,7 @@ def create_ticket_table():
                         `airlineClass` CHAR(8) NOT NULL,
                         `itineraryCode` CHAR(6) NOT NULL,
                         PRIMARY KEY (`ticketId`),
-                        FOREIGN KEY (`itineraryCode`) REFERENCES `itinerary`(`itineraryCode`))
+                        FOREIGN KEY (`itineraryCode`) REFERENCES `itinerary_t`(`itineraryCode`))
                         ENGINE = InnoDB
                         DEFAULT CHARACTER SET = utf8mb4
                         COLLATE = utf8mb4_0900_ai_ci;                        
@@ -294,7 +294,7 @@ def create_reservation_table():
                             `seatNo` CHAR(4) NOT NULL,
                             PRIMARY KEY (`passengerId`, `ticketId`),
                             FOREIGN KEY (`passengerId`) REFERENCES `passenger_t`(`passengerId`),
-                            FOREIGN KEY (`ticketId`) REFERENCES `ticket_t`(`ticketId`)
+                            FOREIGN KEY (`ticketId`) REFERENCES `ticket_t`(`ticketId`))
                         ENGINE = InnoDB
                         DEFAULT CHARACTER SET = utf8mb4
                         COLLATE = utf8mb4_0900_ai_ci;
