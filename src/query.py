@@ -112,7 +112,11 @@ def create_table(table_name: str, create_table_query: str, csv_filename: str = N
             cursor.execute(f'''
                         DELETE
                         FROM `all_airport_t`
-                        WHERE iata_code IS NULL;
+                        WHERE iata_code = '' or type not like "%airport%";
+                           ''')
+            cursor.execute(f'''
+                        ALTER TABLE `all_airport_t`
+                        ADD UNIQUE INDEX `iata_code_UNIQUE` (`iata_code` ASC) VISIBLE;;
                            ''')
 
         cursor.execute(f'''
@@ -142,7 +146,7 @@ def query_home():
 def create_airport_table():
     return create_table('airport_t', f'''
                     CREATE TABLE {app.config['MYSQL_DB']}.`airport_t` (
-                        `airport_code` CHAR(3) NOT NULL,
+                        `airport_code` CHAR(4) NOT NULL,
                         `name` VARCHAR(100) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NULL,
                         `municipality` VARCHAR(50) NULL,
                         `country_code` CHAR(2) NULL,
@@ -172,14 +176,14 @@ def create_all_airport_table():
                     `iso_country` VARCHAR(45) NULL,
                     `municipality` VARCHAR(45) NULL,
                     `gps_code` VARCHAR(45) NULL,
-                    `iata_code` CHAR(3) NULL,
+                    `iata_code` CHAR(4),
                     `local_code` VARCHAR(45) NULL,
                     `keywords` VARCHAR(45) NULL,
                     PRIMARY KEY (`id`))
                     ENGINE = InnoDB
                     DEFAULT CHARACTER SET = utf8mb4
                     COLLATE = utf8mb4_0900_ai_ci;
-                    ''', 'all_airports', False)
+                    ''', 'all_airports', True)
 
 @query.route('/create-passenger-table')
 def create_passenger_table():
@@ -288,7 +292,7 @@ def create_ticket_table():
 @query.route('/create-reservation-table')
 def create_reservation_table():
     return create_table('reservation_t', f'''
-                        CREATE TABLE `flask_test`.`reservation_t` (
+                        CREATE TABLE `{app.config['MYSQL_DB']}`.`reservation_t` (
                             `passengerId` CHAR(4) NOT NULL,
                             `ticketId` CHAR(4) NOT NULL,
                             `seatNo` CHAR(4) NOT NULL,
