@@ -6,26 +6,31 @@
 {% include 'blocks/flight-input-details.html' %}
 <div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0; z-index: -999;"></div>
 {{ booked_seats }}
-<div class="payment-page-wrapper">
+<!-- {{ selected_flight }}
+{{ form_part_one }}
+{{ session['passenger-details'] }} -->
+<form class="payment-page-wrapper" method="POST" action="/query/post-reservation">
+    <input type="hidden" name="">
     <div class="payment-page-wrapper__item payment-pg-mode">
         <p class="payment-page-wrapper__item__text">Mode Of Payment</p>
         <div class="payment-pg-mode__list">
-            <div class="payment-pg-mode__list__item gcash clicked">
+            <div class="payment-pg-mode__list__item gcash clicked" data-mode="gcash">
                 <img src="..\static\img\gcash.png" alt="Gcash">
             </div>
-            <div class="payment-pg-mode__list__item maya">
+            <div class="payment-pg-mode__list__item maya" data-mode="maya">
                 <img src="..\static\img\maya.svg" alt="Maya">
             </div>
-            <div class="payment-pg-mode__list__item paypal">
+            <div class="payment-pg-mode__list__item paypal" data-mode="paypal">
                 <img src="..\static\img\paypal.png" alt="Paypal">
             </div>
-            <div class="payment-pg-mode__list__item mastercard">
+            <div class="payment-pg-mode__list__item mastercard" data-mode="mastercard">
                 <img src="..\static\img\mastercard.png" alt="Mastercard">
             </div>
-            <div class="payment-pg-mode__list__item visa">
+            <div class="payment-pg-mode__list__item visa" data-mode="visa">
                 <img src="..\static\img\visa.png" alt="Visa">
             </div>
         </div>
+        <input type="hidden" name="mode-of-payment" id="mode-of-payment" value="gcash">
     </div>
     <div class="payment-page-wrapper__item payment-pg-details"> 
         <p class="payment-page-wrapper__item__text">Account Details</p>
@@ -44,7 +49,7 @@
                     <input type="text" name="account-exp-date" id="account-exp-date" disabled>
                 </div>
                 <div class="payment-pg-details__item submit-button-container">
-                    <button class="form-btn">Submit</button>
+                    <button class="form-btn" id="submit-reservation" type="submit">Submit</button>
                 </div>
         </div>
 
@@ -66,7 +71,7 @@
             </div>
         </div>
     </div>
-</div>
+</form>
 
 {% endblock %}
 {% block script %}

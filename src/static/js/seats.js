@@ -21,7 +21,7 @@ function getAllBookedSeats() {
 
     selectedSeatsContainer.childNodes.forEach(child => {
         if (child.nodeName === 'DIV' && child.dataset.state !== undefined){
-            bookedSeats[`${child.dataset.age + child.dataset.number}`] = child.dataset.state;
+            bookedSeats[`${'p'+ child.dataset.number}`] = child.dataset.state;
         }
     })
 

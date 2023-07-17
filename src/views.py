@@ -70,7 +70,6 @@ def selected_flight(flight):
 @view.route('/passenger-details', methods=['GET', 'POST'])
 def passenger_details():
     if request.method == 'POST':
-
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
 
@@ -86,22 +85,30 @@ def passenger_details():
     except:
         return redirect(url_for('view.home'))
 
+@view.route('/save-passenger-details', methods=['POST'])
+def save_passenger_details():
+    session['passenger-details'] = request.get_json()
+    # session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    # session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    # return redirect(url_for('view.seats'))
+    return jsonify({})
+
 @view.route('/seats', methods=['GET', 'POST'])
 def seats():
     if request.method == 'POST':
-
         try:
+            # session['passenger-details'] = request.form
             session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
             session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
         except:
             return redirect(url_for('view.passenger_details'))
         
         return render_template('seats.html', selected_flight=session['selected_flight'], form_part_one=session['form_part_one'])
-
     try:
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
-        return render_template('seats.html')
+        return render_template('seats.html', selected_flight=session['selected_flight'], form_part_one=session['form_part_one'])
+        # return render_template('seats.html')
     except:
         return redirect(url_for('view.passenger_details'))
 

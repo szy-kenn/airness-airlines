@@ -7,7 +7,7 @@
 <!-- {% include 'blocks/selected-flight-details.html' %} -->
 <div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0;"></div>
     <div class="main-wrapper passenger-details-wrapper">
-        <form action="/seats" method="POST">
+        <form method="POST" id="passenger-details-form">
         {% set idx = {'value': 0} %}
         {% for n in range(3) %}
         {% if n == 0 %}
@@ -23,6 +23,8 @@
                     <i class="fa-sharp fa-solid fa-chevron-down age-group-expand" id="{{ age_group.lower() + '_expand'}}"></i>
                 </div>
                 {% for i in range (idx.value, (form_part_one['passenger-' ~ age_group.lower()] | int) + idx.value)%}
+                <input type="hidden" name="{{'p' + ((i+1) | string) + 'AgeGroup'}}" 
+                    id="{{'p' + ((i+1) | string) + 'AgeGroup'}}" value="{{ age_group }}"> 
                     <div class="adult-passenger-details-container__items" id="{{'p' ~ ((i+1)|int)}}">
                         <div class="passenger-number-container">
                             <p class="passenger-number">{{ '(' ~ age_group.upper() ~ ')'}} PASSENGER {{ i + 1}} DETAILS</p>

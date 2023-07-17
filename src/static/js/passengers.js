@@ -129,3 +129,22 @@ try {
 } catch {
     ;
 }
+
+const passengerDetailsForm = document.getElementById("passenger-details-form");
+
+passengerDetailsForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(passengerDetailsForm);
+    const formDataJson = JSON.stringify(Object.fromEntries(formData));
+    console.log(formDataJson);
+    fetch('/save-passenger-details', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: formDataJson
+    }).then(() => {
+        window.location.href = '/seats';
+    })
+})

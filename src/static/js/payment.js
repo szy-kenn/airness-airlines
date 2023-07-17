@@ -8,6 +8,7 @@ const visa = document.querySelector(".visa")
 const creditCards = [mastercard, visa]
 
 const modeOfPayments = [gcash, maya, paypal, mastercard, visa]
+const modeOfPaymentInput = document.getElementById("mode-of-payment");
 
 const accountNumberLabel = document.getElementById("account-number-label")
 const accountExpDate = document.getElementById("account-exp-date")
@@ -24,6 +25,7 @@ mobileNumbers.forEach(method => {
         accountExpDate.disabled = true;
         accountNumberLabel.textContent = "Mobile Number";
         method.classList.add('clicked')
+        modeOfPaymentInput.value = method.dataset.mode;
         modeOfPayments.forEach(mode => {
             if (mode != method) {
                 mode.classList.remove('clicked');
@@ -73,3 +75,13 @@ numberFields.forEach(field => {
         }
     })
 })
+// const submitReservationBtn = document.getElementById("submit-reservation");
+// submitReservationBtn.addEventListener("click", () => {
+//     fetch('/query/post-reservation', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//             },
+//         body: JSON.stringify({'reservation' : 'reservation'})
+//     })
+// })
