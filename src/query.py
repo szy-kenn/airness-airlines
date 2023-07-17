@@ -172,7 +172,7 @@ def create_all_airport_table():
                     `iso_country` VARCHAR(45) NULL,
                     `municipality` VARCHAR(45) NULL,
                     `gps_code` VARCHAR(45) NULL,
-                    `iata_code` VARCHAR(45) NULL,
+                    `iata_code` CHAR(3) NULL,
                     `local_code` VARCHAR(45) NULL,
                     `keywords` VARCHAR(45) NULL,
                     PRIMARY KEY (`id`))
