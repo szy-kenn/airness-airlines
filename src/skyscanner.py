@@ -1,5 +1,8 @@
 import requests, requests_cache
 import sqlite3
+from flask import session
+from . import mysql
+from .query import primary_key
 
 class Skyscanner:
     def __init__(self) -> None:
@@ -56,6 +59,10 @@ class Skyscanner:
                 except:
                     print('THERE IS A PROBLEM WITH THE DB CONNECTION RIGHT NOW')
 
+    def post_itinerary(self):
+        
+        pass
+
     def request(self, origin, destination, departure_date) -> tuple:
 
         headers = {
@@ -97,6 +104,7 @@ class Skyscanner:
             "totalResults": len(best)
         }
 
+        cur = mysql.connection.cursor()
         i = 0
         while True:
             try:
@@ -131,7 +139,48 @@ class Skyscanner:
                 available_flights[key][i]['stops'][j]['origin']['name']                = result['legs'][0]['segments'][j]['origin']['name'] + ' ' + result['legs'][0]['segments'][j]['origin']['type']
                 available_flights[key][i]['stops'][j]['origin']['municipality']        = result['legs'][0]['segments'][j]['origin']['parent']['name']
 
+            stops = []
+            # print(f"STOP COUNT: {}")
+            for stop in available_flights[key][i]['stops']:
+                stops.append('"' + stop['flight_number'] + '"')
+
+            cur.execute(f"""
+                        SELECT COUNT(*)
+                        FROM itinerary_flight_t T, itinerary_t I
+                        WHERE flightNo IN ({', '.join(stops)}) AND T.itineraryCode = I.itineraryCode
+                        GROUP BY I.itineraryCode;
+                        """)
+            
+            if len(cur.fetchall()) == 0:
+                
+                itineraryCode = primary_key('I', 'itineraryCode', 'itinerary_flight_t', 5)
+
+                cur.execute(f"""
+                            INSERT INTO itinerary_t(
+                                itineraryCode, source, destination, flightDate, flightCount
+                            ) VALUES(
+                                "{itineraryCode}",
+                                "{session['form_part_one']['from-json']['iata']}", 
+                                "{session['form_part_one']['to-json']['iata']}",
+                                "{session['form_part_one']['departure-date']}",
+                                {len(available_flights[key][i]['stops']) + 1}
+                            );
+                            """)
+
+                # insert
+                for idx, flight_no in enumerate(stops):
+                    cur.execute(f"""
+                                INSERT INTO itinerary_flight_t(
+                                    itineraryCode, flightNo, flightOrder
+                                ) VALUES (
+                                    "{itineraryCode}", "{flight_no.strip('"')}", {idx+1}
+                                );
+                                """)
+            
+            # print(len(cur.fetchall()))
+
             i+=1
+
         return (i, available_flights)
 
         # skyscanner_response['itineraries']['buckets'][0/1/2] => best / cheapest / fastest
