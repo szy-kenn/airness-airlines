@@ -140,33 +140,38 @@ class Skyscanner:
                 available_flights[key][i]['stops'][j]['origin']['municipality']        = result['legs'][0]['segments'][j]['origin']['parent']['name']
 
             stops = []
-            # print(f"STOP COUNT: {}")
             for stop in available_flights[key][i]['stops']:
                 stops.append('"' + stop['flight_number'] + '"')
 
-            cur.execute(f"""
-                        SELECT COUNT(*)
-                        FROM itinerary_flight_t T, itinerary_t I
-                        WHERE flightNo IN ({', '.join(stops)}) AND T.itineraryCode = I.itineraryCode
+            cur.execute(f'''
+                        SELECT I.itineraryCode, COUNT(DISTINCT I.itineraryCode)
+                        FROM itinerary_flight_t T, itinerary_t I, flight_t F
+                        WHERE T.flightNo IN ({', '.join(stops)}) AND T.itineraryCode = I.itineraryCode 
+                            AND I.source = '{session['form_part_one']['from-json']['iata']}' 
+                            AND I.destination = '{session['form_part_one']['to-json']['iata']}' 
+                            AND I.flightCount = {available_flights[key][i]['stop_count'] + 1}
                         GROUP BY I.itineraryCode;
-                        """)
+                        ''')
             
-            if len(cur.fetchall()) == 0:
-                
+            result = cur.fetchall()
+            if len(result) == 0:
+                print("addibng")
+
                 itineraryCode = primary_key('I', 'itineraryCode', 'itinerary_flight_t', 5)
 
                 cur.execute(f"""
                             INSERT INTO itinerary_t(
-                                itineraryCode, source, destination, flightDate, flightCount
+                                itineraryCode, source, destination, flightCount, duration, price
                             ) VALUES(
                                 "{itineraryCode}",
                                 "{session['form_part_one']['from-json']['iata']}", 
                                 "{session['form_part_one']['to-json']['iata']}",
-                                "{session['form_part_one']['departure-date']}",
-                                {len(available_flights[key][i]['stops']) + 1}
+                                {available_flights[key][i]['stop_count'] + 1},
+                                {available_flights[key][i]['duration_in_mins']},
+                                {available_flights[key][i]['price']}
                             );
                             """)
-
+                
                 # insert
                 for idx, flight_no in enumerate(stops):
                     cur.execute(f"""
@@ -176,12 +181,25 @@ class Skyscanner:
                                     "{itineraryCode}", "{flight_no.strip('"')}", {idx+1}
                                 );
                                 """)
-            
-            # print(len(cur.fetchall()))
-
+                    
+            mysql.connection.commit()
             i+=1
 
-        return (i, available_flights)
+        # GET ALL AVAILABLE ITINERARIES
+        cursor = mysql.connection.cursor()
+        # cursor.execute(f'''
+        #             SELECT *
+        #             FROM itinerary_t i
+        #             WHERE i.source = '{origin}' AND i.destination = '{destination}';
+        #             ''')
+        cursor.execute(f'''
+                        SELECT *
+                        FROM itinerary_t I
+                        WHERE (I.source = '{origin}' AND I.destination = '{destination}')
+                        ORDER BY I.itineraryCode;
+                        ''')
+    
+        return (cursor.fetchall())
 
         # skyscanner_response['itineraries']['buckets'][0/1/2] => best / cheapest / fastest
         # => ['items'][0-n] results in best/cheaptest/fastest

@@ -111,6 +111,16 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 let currentSelectedFlightIdx = null;
 
+function getSelectedFlight(itineraryCode) {
+    fetch('/query/get_itinerary_details', {
+        method: 'POST',
+        body: JSON.stringify({'itineraryCode': itineraryCode})
+    })
+    .then(res => {
+        res
+    })
+}
+
 flightContainers.forEach(container => {
     container.addEventListener('click', async(event) => {
         popupWrapper.classList.add('selected');
@@ -123,9 +133,28 @@ flightContainers.forEach(container => {
             }, 100);
         }
 
-        document.querySelector('.map-flights-from__time').textContent = (searched_flights['best'][currentSelectedFlightIdx]['departure_time']).substring(11, 16);
-        document.querySelector('.map-flights-to__time').textContent = (searched_flights['best'][currentSelectedFlightIdx]['arrival_time']).substring(11, 16);
-        document.querySelector(".popup-sidebar-price__price").textContent = "PHP " + formatter.format(searched_flights['best'][currentSelectedFlightIdx]['price']);
+        const toFetch = ['get-itinerary-details', 'get-departure-time', 'get-arrival-time']
+        toFetch.forEach(_fetch => {
+            fetch(`/query/${_fetch}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'itineraryCode': container.dataset.itineraryCode})
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (_fetch === toFetch[0]) {
+                    document.querySelector(".popup-sidebar-price__price").textContent = "PHP " + formatter.format(data[0][5]);
+                } else if (_fetch === toFetch[1]) {
+                    document.querySelector('.map-flights-from__time').textContent = data[0][0];
+                } else {
+                    document.querySelector('.map-flights-to__time').textContent = data[0][0];
+                }
+                    
+            })
+        })
+
         let stops = searched_flights['best'][container.dataset.index]['stops'];
 
         if (!mapCreated) {

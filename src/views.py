@@ -39,22 +39,52 @@ def flights():
 
     # return session['form_part_one']
 
-    origin = session['form_part_one']['from-json']['iata'],
-    destination = session['form_part_one']['to-json']['iata'],
-    departure_date = session['form_part_one']['departure-date'],
+    origin = session['form_part_one']['from-json']['iata']
+    destination = session['form_part_one']['to-json']['iata']
+    departure_date = session['form_part_one']['departure-date']
     
-    available_flights = skyscanner.skyscanner.request(origin, destination, departure_date)
-    requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
+    cursor = mysql.connection.cursor()
+
+    # GET ALL AVAILABLE ITINERARIES
+    cursor.execute(f'''
+                    SELECT *
+                    FROM itinerary_t I
+                    WHERE (I.source = '{origin}' AND I.destination = '{destination}')
+                    ORDER BY i.itineraryCode;
+                    ''')
+    
+    available_flights = cursor.fetchall()
+    
+    if len(available_flights) == 0:
+        available_flights = skyscanner.skyscanner.request(origin, destination, departure_date)
+        requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
+
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    ORDER BY i.itineraryCode;
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   ORDER BY i.itineraryCode;
+                   ''')
+    
+    arrival_time_list = cursor.fetchall()
     
     # return jsonify(available_flights)
 
-    if available_flights[0] == 0:
-        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=available_flights[1])
+    if len(available_flights) == 0:
+        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=["No results found."])
 
-    try: 
-        return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights[1], result_count=available_flights[0])
-    except:
-        return redirect(url_for('view.home'))
+    return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights, depart_time_list=depart_time_list, arrival_time_list=arrival_time_list, result_count=len(available_flights))
+    # except:
+    #     return redirect(url_for('view.home'))
 
 @view.route('/selected-flight/<path:flight>', methods=['POST', 'GET'])
 def selected_flight(flight):

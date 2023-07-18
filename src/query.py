@@ -318,6 +318,7 @@ def create_reservation_table():
 
 @query.route('/search-airports', methods=['POST'])
 def search_airports():
+
     input = request.get_json()['query']
 
     cursor = mysql.connection.cursor()
@@ -468,6 +469,40 @@ def get_country():
                    ''')
     rev = cursor.fetchall()
     return jsonify(rev)
+
+@query.route('/get-itinerary-details', methods=['POST'])
+def get_itinerary_details():
+    itineraryCode = request.get_json()['itineraryCode']
+    print("ITINERARY ",itineraryCode)
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                   SELECT *
+                   FROM itinerary_t i
+                   WHERE i.itineraryCode = "{itineraryCode}";
+                   ''')
+    return jsonify(cursor.fetchall())
+
+@query.route('/get-departure-time', methods=['POST'])
+def get_departure_time():
+    itineraryCode = request.get_json()['itineraryCode']
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_flight_t it, flight_t f
+                    WHERE it.itineraryCode = "{itineraryCode}" AND it.flightOrder = 1 and f.flightNo = it.flightNo;
+                   ''')
+    return jsonify(cursor.fetchall())
+
+@query.route('/get-arrival-time', methods=['POST'])
+def get_arrival_time():
+    itineraryCode = request.get_json()['itineraryCode']
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.eta, '%H:%i')
+                    FROM itinerary_flight_t it, flight_t f, itinerary_t i
+                    WHERE it.itineraryCode = "{itineraryCode}" AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo;
+                   ''')
+    return jsonify(cursor.fetchall())
 
 @query.route('/post-flight', methods=['POST'])
 def post_flight():

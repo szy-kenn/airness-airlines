@@ -136,7 +136,7 @@
                         <p class="popup-sidebar-text__desc">Destination</p>
                     </div>
                     <div class="popup-sidebar-price">
-                        <p class="popup-sidebar-price__price">PHP {{ "{:,}".format(available_flights['best'][0]['price']) }}</p>
+                        <p class="popup-sidebar-price__price">PHP {{ "{:,}".format(available_flights[0][5]) }}</p>
                         <p class="popup-sidebar-price__desc">/per person</p>
                     </div>
                     <div class="popup-sidebar-button">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 {% if result_count  > 0 %} 
-                    <p class="show-results-text">Showing <span style="font-weight: 700;">{{ available_flights['totalResults'] }} </span>flights from Skyscanner API. ({{ available_flights['status'] }})</p>
+                    <p class="show-results-text">Retrieved <span style="font-weight: 700;">{{ (available_flights | length) }} </span>flights from the database.</p>
                 {% else %}
                     <p class="show-results-text">{{ error_message[0] }}</p>
                 {% endif %}
@@ -180,7 +180,7 @@
 
             {% for i in range(result_count) %}
         
-                {% set duration_in_min = available_flights['best'][i]['duration_in_mins'] %}
+                {% set duration_in_min = available_flights[i][4] %}
                 {% set hours = duration_in_min // 60 %}
                 {% set min = duration_in_min % 60 %}
                 {% if hours > 0 and min > 0 %}
@@ -191,7 +191,7 @@
                     {% set duration = min ~ 'm' %}
                 {% endif %}
         
-                {% set stop_count = available_flights['best'][i]['stop_count'] %}
+                {% set stop_count = (available_flights[i][3] | int) - 1 %}
                 {% if stop_count > 1 %}
                     {% set stops = stop_count ~ ' stops' %}
                 {% elif stop_count == 1 %}
@@ -200,14 +200,14 @@
                     {% set stops = 'Direct' %}
                 {% endif %}
 
-            <div class="flight-container closed" data-index="{{ i }}">
+            <div class="flight-container closed" data-index="{{ i }}" data-itinerary-code="{{ available_flights[i][0] }}">
                 <div class="flight-details-section">
                     <div class="flight-details-subsection stops">
                         <p>{{ stops }}</p>
                     </div>
                     <div class="flight-details-subsection details">
                         <div class="time-location from">
-                            <p>{{ available_flights['best'][i]['departure_time'][11:16] }}</p>
+                            <p>{{ depart_time_list[i][0] }}</p>
                             <span>{{ form_part_one['from-json']['iata'] }}</span>
                         </div>
                         <div class="airplane-track-container">
@@ -215,13 +215,13 @@
                             <i class="fa-solid fa-plane"></i>
                         </div>
                         <div class="time-location to">
-                            <p>{{ available_flights['best'][i]['arrival_time'][11:16] }}</p>
+                            <p>{{ arrival_time_list[i][0] }}</p>
                             <span>{{ form_part_one['to-json']['iata'] }}</span>
                         </div>
                     </div>
                 </div>  
                 <div class="flight-price-section">
-                    <p><span style="font-size: 0.75em;">PHP</span> {{ "{:,}".format(available_flights['best'][i]['price']) }}</p>
+                    <p><span style="font-size: 0.75em;">PHP</span> {{ "{:,}".format(available_flights[i][5]) }}</p>
                     <button>Select</button>
                 </div>
             </div>
