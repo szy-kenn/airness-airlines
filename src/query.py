@@ -11,11 +11,24 @@ query = Blueprint('query', __name__)
 def _debug_bracket():
     return f"[DEBUG {datetime.now().time().strftime('%H:%M:%S')}]"
 
-def primary_key(first_char):
-    n = 3
-    res = ''.join(random.choices(string.ascii_uppercase +
-                                 string.digits, k=n))
-    return first_char + res
+def primary_key(first_char, attribute, table_name, n=3):
+
+    invalid_key = True
+    while invalid_key:
+        cur = mysql.connection.cursor()
+        res = first_char + ''.join(random.choices(string.ascii_uppercase +
+                                    string.digits, k=n))
+        cur.execute(f"""
+                    SELECT COUNT(*)
+                    FROM {table_name}
+                    WHERE {attribute} = "{res}";
+                    """)
+        
+        count = cur.fetchone()
+        if count[0] == 0:
+            invalid_key = False
+
+    return res
 
 def create_table(table_name: str, create_table_query: str, csv_filename: str = None, clear_if_exists: bool = True):
     
@@ -365,11 +378,6 @@ def post_reservation():
                             int(session['form_part_one']['passenger-children']) +
                             int(session['form_part_one']['passenger-infant']))
     
-    main_source = session['form_part_one']['from-json']['iata']
-    main_dest = session['form_part_one']['to-json']['iata']
-    departure_date = datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()
-    airline_class = session['form_part_one']['airline-class']
-    
     print(session['passenger-details'])
     
     seats = []
@@ -392,22 +400,9 @@ def post_reservation():
         IssueDate = datetime.strptime(IssueDateStr, '%Y-%m-%d').date()
         ExpDate = datetime.strptime(ExpDateStr, '%Y-%m-%d').date()
         BirthDate = datetime.strptime(BirthDateStr, '%Y-%m-%d').date()
+        passengerId = primary_key('P', 'passengerId', 'passenger_t')
 
         cur = mysql.connection.cursor()
-
-        invalid_key = True
-        while invalid_key:
-            passengerId = primary_key('P')
-            cur.execute(f"""
-                        SELECT COUNT(*)
-                        FROM passenger_t
-                        WHERE passengerId = "{passengerId}";
-                        """)
-            
-            res = cur.fetchone()
-            if res[0] == 0:
-                invalid_key = False
-
         cur.execute("""INSERT INTO passenger_t(
                         PassengerId,
                         FirstName,
@@ -419,6 +414,30 @@ def post_reservation():
                         BirthDate,
                         AgeGroup) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (passengerId, FirstName, MiddleName, LastName, PassportNo, IssueDate, ExpDate, BirthDate, AgeGroup))
         
+        # Itinerary
+        main_source = session['form_part_one']['from-json']['iata']
+        main_dest = session['form_part_one']['to-json']['iata']
+        departure_date = datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()
+        airline_class = session['form_part_one']['airline-class']
+        flight_count = session['selected_flight']['stop_count'] + 1
+        itinerary_code = primary_key('I', 'itineraryCode', 'itinerary_t', 5)
+
+        cur.execute(f"""
+                    INSERT INTO itinerary_t(
+                    itineraryCode, source, destination, flightDate, flightCount
+                    ) VALUES ("{itinerary_code}", "{main_source}", "{main_dest}", "{departure_date}", "{flight_count}");
+                    """)
+
+        # STOPS
+        print(session['selected_flight']['stops'])
+        print(len(session['selected_flight']['stops']))
+        for idx, flight in enumerate(session['selected_flight']['stops']):
+            flight_number = flight['flight_number']
+            cur.execute(f"""
+                        INSERT INTO itinerary_flight_t(
+                        itineraryCode, flightNo, flightOrder
+                        ) VALUES ("{itinerary_code}", "{flight_number}", "{idx+1}");
+                        """)
 
         mysql.connection.commit()
         cur.close()
