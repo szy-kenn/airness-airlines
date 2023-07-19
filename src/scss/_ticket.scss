@@ -20,6 +20,8 @@
   border-radius: 30px;
   user-select: none;
 
+  margin-bottom: 50px;
+
 }
 
 .vertical_dashed_ticket{
@@ -297,6 +299,7 @@
     width: 160px;
     margin-top: 220px;
     margin-left: 420px;
+    object-fit: contain;
 }
 
 
@@ -486,10 +489,11 @@
 
 .barcode-right-ticket{
     position: absolute;
-    height: 30px;
-    width: 130px;
+    height: 35px;
+    width: 145px;
     margin-top: 180px;
     margin-left: 150px;
+    object-fit: contain;
 }
 
 
