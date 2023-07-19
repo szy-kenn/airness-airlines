@@ -32,11 +32,11 @@ expandFlightDetailsBtn.forEach( btn => {
     });
 })
 
-async function selectFlight(flight) {
+async function selectFlight(itineraryCode) {
     try {
-        const response = await fetch(`selected-flight/${JSON.stringify(flight)}`, {
+        const response = await fetch(`selected-itinerary/${JSON.stringify(itineraryCode)}`, {
             method: 'POST',
-            body: JSON.stringify(flight),
+            body: JSON.stringify({'itineraryCode': itineraryCode}),
         });
     
         const result = await response.json();
@@ -97,12 +97,12 @@ function createPoints(iata, index) {
     .catch(error => console.error(error))
 }
 
-let searched_flights = null
+// let searched_flights = null
 
-fetch('/api/searched-flights')
-    .then(response => response.json())
-    .then(data => searched_flights = data)
-    .catch(error => console.error(error))
+// fetch('/api/searched-flights')
+//     .then(response => response.json())
+//     .then(data => searched_flights = data)
+//     .catch(error => console.error(error))
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -110,21 +110,13 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 let currentSelectedFlightIdx = null;
-
-function getSelectedFlight(itineraryCode) {
-    fetch('/query/get_itinerary_details', {
-        method: 'POST',
-        body: JSON.stringify({'itineraryCode': itineraryCode})
-    })
-    .then(res => {
-        res
-    })
-}
+let currentSelectedItineraryCode = null;
 
 flightContainers.forEach(container => {
     container.addEventListener('click', async(event) => {
         popupWrapper.classList.add('selected');
         currentSelectedFlightIdx = event.target.dataset.index;
+        currentSelectedItineraryCode = container.dataset.itineraryCode;
 
         if (!mapCreated) {
             setTimeout(() => {
@@ -154,38 +146,49 @@ flightContainers.forEach(container => {
                     
             })
         })
-
-        let stops = searched_flights['best'][container.dataset.index]['stops'];
-
-        if (!mapCreated) {
-            setTimeout(() => {
-                createPoints(stops[0]['origin']['iata'], 0);
-                for (let i = 0; i < stops.length; i++) {
-                    createPoints(stops[i]['destination']['iata'], i+1);
-                }
-            }, 150);
-            setTimeout(() => {
-                map.createTrajectoryLines();
-                map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
-            }, 1000);
-
-        } else {
-            createPoints(stops[0]['origin']['iata'], 0);
-            for (let i = 0; i < stops.length; i++) {
-                createPoints(stops[i]['destination']['iata'], i+1);
-            }
-            setTimeout(() => {
-                map.createTrajectoryLines();
-                map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
-            }, 300);
-        }
         
+        fetch('/query/get-stops', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'itineraryCode': container.dataset.itineraryCode})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            let stops = data;
+
+            if (!mapCreated) {
+                setTimeout(() => {
+                    createPoints(stops[0][4], 0);
+                    for (let i = 0; i < stops.length; i++) {
+                        createPoints(stops[i][5], i+1);
+                    }
+                }, 150);
+                setTimeout(() => {
+                    map.createTrajectoryLines();
+                    map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
+                }, 1000);
+    
+            } else {
+                createPoints(stops[0][4], 0);
+                for (let i = 0; i < stops.length; i++) {
+                    createPoints(stops[i][5], i+1);
+                }
+                setTimeout(() => {
+                    map.createTrajectoryLines();
+                    map.chart.zoomToGeoPoint({longitude: map.pointsToConnect[0]._settings.longitude, latitude: map.pointsToConnect[0]._settings.latitude}, 3, true, 2000)
+                }, 300);
+            }
+        })
+        // let stops = searched_flights['best'][container.dataset.index]['stops'];        
     })
 })
 
 document.querySelector(".popup-sidebar-button").addEventListener("click", () => {
     // console.log(searched_flights['best'][currentSelectedFlightIdx]);
-    selectFlight(searched_flights['best'][currentSelectedFlightIdx]);
+    selectFlight(currentSelectedItineraryCode);
 })
 
 popupWrapper.addEventListener('click', (event) => {

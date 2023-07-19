@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, session
+from flask import Blueprint, render_template, jsonify, request, session, redirect, url_for
 from . import mysql, app
 from shutil import copy
 from datetime import datetime
@@ -10,6 +10,16 @@ query = Blueprint('query', __name__)
 
 def _debug_bracket():
     return f"[DEBUG {datetime.now().time().strftime('%H:%M:%S')}]"
+
+def get_attribute_or_none(attribute):
+    try:
+        attr = attribute
+        if attr != None:
+            return '"' + attr + '"'
+        else:
+            return 'NULL'
+    except:
+        return 'NULL'
 
 def primary_key(first_char, attribute, table_name, n=3):
 
@@ -235,19 +245,6 @@ def create_flight_table():
                         COLLATE = utf8mb4_0900_ai_ci;
                         ''', None, False)
 
-# @query.route('/create-seat-table')
-# def create_seat_table():
-#     return create_table('seat_t', f'''
-#                         CREATE TABLE `{app.config['MYSQL_DB']}`.`seat_t` (
-#                         `seatId` CHAR(4) NOT NULL,
-#                         `airlineClass` CHAR(8) NOT NULL,
-#                         `extras` CHAR(8) NULL,
-#                         PRIMARY KEY (`seatId`))
-#                         ENGINE = InnoDB
-#                         DEFAULT CHARACTER SET = utf8mb4
-#                         COLLATE = utf8mb4_0900_ai_ci;
-#                         ''', None, False)
-
 @query.route('/create-itinerary-table')
 def create_itinerary_table():
     return create_table('itinerary_t', f'''
@@ -337,50 +334,41 @@ def search_airports():
     returned = cursor.fetchall()
     return jsonify(returned)
 
-def passenger():
-    if request.method == 'POST':
-        passengerDetails = request.form
-        # PassengerId
-        FirstName = passengerDetails['firstName']
-        MiddleName = passengerDetails['middleName']
-        LastName = passengerDetails['lastName']
-        PassportNo = passengerDetails['passportNo']
-        IssueDateStr = passengerDetails['issueDate']
-        ExpDateStr = passengerDetails['expDate']
-        BirthDateStr = passengerDetails['birthDate']
-        AgeGroup = passengerDetails['ageGroup']
-
-        # convert string to datetime then insert in db
-        IssueDate = datetime.strptime(IssueDateStr, '%Y-%m-%d').date()
-        ExpDate = datetime.strptime(ExpDateStr, '%Y-%m-%d').date()
-        BirthDate = datetime.strptime(BirthDateStr, '%Y-%m-%d').date()
-
-        cur = mysql.connection.cursor()
-        cur.execute("""INSERT INTO passenger(
-                        FirstName,
-                        MiddleName,
-                        LastName,
-                        PassportNo,
-                        IssueDate,
-                        ExpDate,
-                        BirthDate,
-                        AgeGroup,)  
-                    VALUES(%s, %s, %s, %s, %s, %s, %s, %s,)""", (FirstName, MiddleName, LastName, PassportNo, IssueDate, ExpDate, BirthDate, AgeGroup))
-        mysql.connection.commit()
-        cur.close()
-
-
 @query.route('/post-reservation', methods=['POST'])
 def post_reservation():
     session['payment'] = request.form
+    
+    cur = mysql.connection.cursor()
 
     # PASSENGER FORM
     total_passenger_count = (int(session['form_part_one']['passenger-adult']) + 
                             int(session['form_part_one']['passenger-children']) +
                             int(session['form_part_one']['passenger-infant']))
     
-    print(session['passenger-details'])
-    
+    # Itinerary
+    itinerary_code = session['selected_itinerary']
+
+    # Ticket
+    ticket_id = session['ticketId']
+    accountName = session['payment']['account-name']
+    accountNumber = session['payment']['account-number']
+    expDate = (session['payment']['account-exp-date'] if session['payment'].get('account-exp-pdate') != None else None)
+    modeOfPayment = session['payment']['mode-of-payment']
+    contactNo = session['passenger-details']['contactNumber']
+    emailAddress = session['passenger-details']['emailAddress']
+    airline_class = session['form_part_one']['airline-class']
+    departure_date = datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()
+
+    cur.execute(f'''
+                INSERT INTO ticket_t (ticketId, accountName, modeOfPayment,
+                    accountNumber, expDate, contactNo, emailAddress, passengerCount,
+                    totalFare, airlineClass, itineraryCode, departureDate)
+                VALUES ("{ticket_id}", "{accountName}", "{modeOfPayment}",
+                        "{accountNumber}", {get_attribute_or_none(expDate)}, "{contactNo}",
+                        "{emailAddress}", {total_passenger_count},
+                        100000.00, "{airline_class}", "{itinerary_code}", "{departure_date}");
+                ''')
+
     seats = []
     for i in range(total_passenger_count):
         FirstName = session['passenger-details'][f"p{i+1}FirstName"]
@@ -398,13 +386,35 @@ def post_reservation():
             seats.append(session['booked_seats'][f"p{i+1}"])
 
         # convert string to datetime then insert in db
-        IssueDate = datetime.strptime(IssueDateStr, '%Y-%m-%d').date()
-        ExpDate = datetime.strptime(ExpDateStr, '%Y-%m-%d').date()
+        if IssueDateStr != '':
+            IssueDate = datetime.strptime(IssueDateStr, '%Y-%m-%d').date()
+        else:
+            IssueDate = None
+        if ExpDateStr != '':
+            ExpDate = datetime.strptime(ExpDateStr, '%Y-%m-%d').date()
+        else:
+            ExpDate = None
         BirthDate = datetime.strptime(BirthDateStr, '%Y-%m-%d').date()
-        passengerId = primary_key('P', 'passengerId', 'passenger_t')
 
-        cur = mysql.connection.cursor()
-        cur.execute("""INSERT INTO passenger_t(
+        if PassportNo == '':
+            PassportNo = None
+
+        passengerId = primary_key('P', 'passengerId', 'passenger_t')
+        if PassportNo == None:
+            cur.execute(f"""
+                        SELECT passengerId
+                        FROM passenger_t
+                        WHERE firstName = "{FirstName}"
+                            AND middleName = "{MiddleName}"
+                            AND lastName = "{LastName}"
+                            AND birthdate = "{BirthDate}";
+                        """)
+            result = cur.fetchall()
+            print(f"RESULT: {result}")
+            if len(result) == 1:
+                passengerId = result[0][0]
+            else:
+                cur.execute(f"""INSERT INTO passenger_t(
                         PassengerId,
                         FirstName,
                         MiddleName,
@@ -413,37 +423,43 @@ def post_reservation():
                         IssueDate,
                         ExpDate,
                         BirthDate,
-                        AgeGroup) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (passengerId, FirstName, MiddleName, LastName, PassportNo, IssueDate, ExpDate, BirthDate, AgeGroup))
-        
-        # Itinerary
-        main_source = session['form_part_one']['from-json']['iata']
-        main_dest = session['form_part_one']['to-json']['iata']
-        departure_date = datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()
-        airline_class = session['form_part_one']['airline-class']
-        flight_count = session['selected_flight']['stop_count'] + 1
-        itinerary_code = primary_key('I', 'itineraryCode', 'itinerary_t', 5)
+                        AgeGroup) 
+                    VALUES("{passengerId}", "{FirstName}", "{MiddleName}", "{LastName}", 
+                     {get_attribute_or_none(PassportNo)}, {get_attribute_or_none(IssueDate)}, 
+                     {get_attribute_or_none(ExpDate)}, "{BirthDate}", "{AgeGroup}");""")
 
-        cur.execute(f"""
-                    INSERT INTO itinerary_t(
-                    itineraryCode, source, destination, flightDate, flightCount
-                    ) VALUES ("{itinerary_code}", "{main_source}", "{main_dest}", "{departure_date}", "{flight_count}");
-                    """)
-
-        # STOPS
-        print(session['selected_flight']['stops'])
-        print(len(session['selected_flight']['stops']))
-        for idx, flight in enumerate(session['selected_flight']['stops']):
-            flight_number = flight['flight_number']
+        else:
             cur.execute(f"""
-                        INSERT INTO itinerary_flight_t(
-                        itineraryCode, flightNo, flightOrder
-                        ) VALUES ("{itinerary_code}", "{flight_number}", "{idx+1}");
+                        SELECT passengerId
+                        FROM passenger_t
+                        WHERE passportNo = "{PassportNo}";
                         """)
+            result = cur.fetchall()
+            if len(result) == 1:
+                passengerId = result[0][0]
+            else:
+                cur.execute(f"""INSERT INTO passenger_t(
+                        PassengerId,
+                        FirstName,
+                        MiddleName,
+                        LastName,
+                        PassportNo,
+                        IssueDate,
+                        ExpDate,
+                        BirthDate,
+                        AgeGroup) 
+                    VALUES("{passengerId}", "{FirstName}", "{MiddleName}", "{LastName}", 
+                     {get_attribute_or_none(PassportNo)}, {get_attribute_or_none(IssueDate)}, 
+                     {get_attribute_or_none(ExpDate)}, "{BirthDate}", "{AgeGroup}");""")
 
-        mysql.connection.commit()
-        cur.close()
+        cur.execute(f'''
+                    INSERT INTO reservation_t
+                    VALUES ("{passengerId}", "{ticket_id}", {get_attribute_or_none(session['booked_seats'][f"p{i+1}"])})            
+                    ''')
 
-    return jsonify(session['passenger-details'], session['form_part_one'], session['selected_flight'], session['booked_seats'], request.form)
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('view.confirmation'))
 
 @query.route('/get-geocode', methods=['POST'])
 def get_geocode():
@@ -473,7 +489,6 @@ def get_country():
 @query.route('/get-itinerary-details', methods=['POST'])
 def get_itinerary_details():
     itineraryCode = request.get_json()['itineraryCode']
-    print("ITINERARY ",itineraryCode)
     cursor = mysql.connection.cursor()
     cursor.execute(f'''
                    SELECT *
@@ -500,7 +515,22 @@ def get_arrival_time():
     cursor.execute(f'''
                     SELECT TIME_FORMAT(f.eta, '%H:%i')
                     FROM itinerary_flight_t it, flight_t f, itinerary_t i
-                    WHERE it.itineraryCode = "{itineraryCode}" AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo;
+                    WHERE it.itineraryCode = "{itineraryCode}" AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo;
+                   ''')
+    return jsonify(cursor.fetchall())
+
+@query.route('/get-stops', methods=['POST'])
+def get_stops():
+    itineraryCode = request.get_json()['itineraryCode']
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                   SELECT f.flightNo, TIME_FORMAT(f.eta, '%H:%i'), TIME_FORMAT(f.etd, '%H:%i'), 
+                            f.duration, f.source, f.destination
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE i.itineraryCode = it.itineraryCode 
+                    AND i.itineraryCode = "{itineraryCode}"
+                    AND f.flightNo = it.flightNo
+                   ORDER BY it.flightOrder;
                    ''')
     return jsonify(cursor.fetchall())
 

@@ -291,7 +291,6 @@ function searchAirport(inputSourceIdx, substring) {
             // Handle the received JSON data here
             let i = 0;
             let filtered = 0;
-            // console.log(data);
             
             for (let row of data) {
 

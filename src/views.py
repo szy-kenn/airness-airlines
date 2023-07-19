@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify, session, flash
 from . import mysql
+from .query import primary_key
 import json
 import requests
 from . import skyscanner
@@ -8,6 +9,7 @@ view = Blueprint('view', __name__)
 
 @view.route('/', methods=['GET', 'POST'])
 def home():
+    session['ticketId'] = primary_key('T', 'ticketId', 'ticket_t')
     if request.method == 'POST':
         session['form_part_one'] = request.form
         return redirect(url_for('.flights'))
@@ -55,9 +57,9 @@ def flights():
     
     available_flights = cursor.fetchall()
     
-    if len(available_flights) == 0:
+    if len(available_flights) < 10:
         available_flights = skyscanner.skyscanner.request(origin, destination, departure_date)
-        requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
+        # requests.post('http://127.0.0.1:5000/api/searched-flights', json=available_flights)
 
     cursor.execute(f'''
                     SELECT TIME_FORMAT(f.etd, '%H:%i')
@@ -86,13 +88,12 @@ def flights():
     # except:
     #     return redirect(url_for('view.home'))
 
-@view.route('/selected-flight/<path:flight>', methods=['POST', 'GET'])
-def selected_flight(flight):
+@view.route('/selected-itinerary/<path:itineraryCode>', methods=['POST', 'GET'])
+def selected_itinerary(itineraryCode):
     if request.method == 'POST':
-        session['selected_flight'] = json.loads(flight)
-        # print(session['selected_flight']['stops'])
-        for stop in session['selected_flight']['stops']:
-            print(stop['flight_number'])
+        session['selected_itinerary'] = json.loads(itineraryCode)
+        # for stop in session['selected_flight']['stops']:
+        #     print(stop['flight_number'])
             
         response = {'status': 200}
         return jsonify(response)
