@@ -534,10 +534,6 @@ def get_stops():
                    ''')
     return jsonify(cursor.fetchall())
 
-@query.route('/filtered')
-def get_filtered():
-    pass
-
 @query.route('/get-cheapest-itinerary')
 def get_cheapest_itinerary():
     session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
@@ -722,6 +718,23 @@ def get_one_stop_only():
                             depart_time_list=depart_time_list, 
                             arrival_time_list=arrival_time_list, 
                             result_count=len(available_flights))
+
+
+
+@query.route('/min-max-duration')
+def get_min_max_duration():
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT min(i.duration), max(i.duration)
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}"
+                    AND I.destination = "{session['form_part_one']['to-json']['iata']}") and i.itineraryCode = it.itineraryCode and it.flightNo = f.flightNo;
+                   ''')
+    
+    return jsonify(cursor.fetchall())
 
 @query.route('/post-flight', methods=['POST'])
 def post_flight():

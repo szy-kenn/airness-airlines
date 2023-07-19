@@ -199,6 +199,195 @@ document.querySelector(".popup-sidebar-button").addEventListener("click", () => 
     selectFlight(currentSelectedItineraryCode);
 })
 
+let filtered = false
+let filtersValue = {}
+// EXISTING FILTERS
+try {
+    const filters = document.getElementById("filters");
+    filtersValue = JSON.parse(filters.value);
+    console.log(filtersValue)
+    filtered = true;
+} catch {
+
+}
+
+// HIDDEN INPUTS FOR FILTER
+const sortByInput = document.getElementById("sortBy") 
+const stopsInput = document.getElementById("stops") 
+const departureFromInput = document.getElementById("departure-from") 
+const departureToInput = document.getElementById("departure-to") 
+const durationFromInput = document.getElementById("duration-from") 
+const durationToInput = document.getElementById("duration-to") 
+
+const sort_by_btns = document.querySelectorAll(".sort-by-btn")
+sort_by_btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('clicked');
+        if (btn.classList.contains('clicked')) {
+            sort_by_btns.forEach(sort_btn => {
+                if (sort_btn != btn) {
+                    sort_btn.classList.remove('clicked')
+                }
+            })
+            sortByInput.value = btn.dataset.value;
+        }
+    })
+})
+
+if (filtered) {
+    let sortBy = filtersValue["sortBy"]
+    let stops = parseInt(filtersValue["sortBy"])
+
+    if (sortBy !== '') {
+        document.querySelector(`.${sortBy}`).classList.add('clicked')
+    }
+    if (stops == 0) {
+        document.querySelectorAll('.stops-btn')[0].classList.add('clicked')
+    } else if (stops == 1) {
+        document.querySelectorAll('.stops-btn')[1].classList.add('clicked')
+    } else {
+        document.querySelectorAll('.stops-btn')[2].classList.add('clicked')
+    }
+
+}
+
+const stops_btns = document.querySelectorAll(".stops-btn")
+stops_btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('clicked');
+        if (btn.classList.contains('clicked')) {
+            stops_btns.forEach(stop_btn => {
+                if (stop_btn != btn) {
+                    stop_btn.classList.remove('clicked')
+                }
+            })
+            stopsInput.value = btn.dataset.value;
+        }
+    })
+})
+
+const pointer1DepartureTime = document.getElementById("point1-departure-time");
+const pointer2DepartureTime = document.getElementById("point2-departure-time");
+const includedRange = document.querySelector(".departure-time-included-range");
+
+if (filtered) {
+    let departureFrom = filtersValue['departure-from'];
+    let departureTo = filtersValue['departure-to'];
+
+    if (departureFrom !== "") {
+        pointer1DepartureTime.value = parseInt(departureFrom.substring(0, 2)) * 60 + parseInt(departureFrom.substring(3, 5));
+    }
+
+    if (departureTo !== "") {
+        pointer2DepartureTime.value = parseInt(departureTo.substring(0, 2)) * 60 + parseInt(departureTo.substring(3, 5));
+        document.querySelector(".departure-from-value").textContent = departureFrom;
+        document.querySelector(".departure-to-value").textContent = departureTo;
+    }
+
+    includedRange.style.right = `${pointer1DepartureTime.clientWidth - (pointer2DepartureTime.value/1440 * pointer1DepartureTime.clientWidth)}px`;
+}
+
+includedRange.style.left = `${(pointer1DepartureTime.value/1440 * pointer1DepartureTime.clientWidth)}px`;
+
+pointer1DepartureTime.addEventListener('input', (event) => {
+    if (parseInt(event.target.value) >= parseInt(pointer2DepartureTime.value)) {
+        event.target.value = parseInt(pointer2DepartureTime.value) - 30;
+    }
+    includedRange.style.left = `${(event.target.value/1440 * pointer1DepartureTime.clientWidth)}px`;
+    document.querySelector(".departure-from-value").textContent = 
+            `${(parseInt(event.target.value/60)).toString().padStart(2, '0')}:${(event.target.value%60).toString().padStart(2, '0')}`;
+    departureFromInput.value = document.querySelector(".departure-from-value").textContent;
+});
+
+pointer2DepartureTime.addEventListener('input', (event) => {
+    if (parseInt(event.target.value) <= parseInt(pointer1DepartureTime.value)) {
+        event.target.value = parseInt(pointer1DepartureTime.value) + 30;
+    }
+
+    includedRange.style.right = `${pointer1DepartureTime.clientWidth - (event.target.value/1440 * pointer1DepartureTime.clientWidth)}px`;
+    
+    if (parseInt(event.target.value) === 1440) {
+        document.querySelector(".departure-to-value").textContent = "23:59";
+        departureToInput.value = document.querySelector(".departure-to-value").textContent;
+        return;
+    }
+    
+    document.querySelector(".departure-to-value").textContent = 
+            `${(parseInt(event.target.value/60)).toString().padStart(2, '0')}:${(event.target.value%60).toString().padStart(2, '0')}`;
+    departureToInput.value = document.querySelector(".departure-to-value").textContent;
+});
+
+// =================================
+
+const pointer1Duration = document.getElementById("point1-duration");
+const pointer2Duration = document.getElementById("point2-duration");
+const includedRange2 = document.querySelector(".duration-included-range");
+let minDuration = 0;
+let maxDuration = 0;
+let steps = 0;
+
+fetch('/query/min-max-duration')
+.then(res => res.json())
+.then(data => {
+    minDuration = data[0][0];
+    maxDuration = data[0][1];
+    steps = parseFloat((maxDuration - minDuration) / 30);
+    console.log(steps)
+    pointer1Duration.min = minDuration;
+    pointer1Duration.max = maxDuration;
+    pointer1Duration.value = minDuration;
+
+    pointer2Duration.min = minDuration;
+    pointer2Duration.max = maxDuration;
+    pointer2Duration.value = maxDuration;
+
+    document.querySelector(".duration-from-value").textContent = `${parseInt(minDuration/60)}`;
+    document.querySelector(".duration-to-value").textContent = `${parseInt(maxDuration/60)}`;
+
+    durationFromInput.value = document.querySelector(".duration-from-value").textContent;
+    durationToInput.value = document.querySelector(".duration-to-value").textContent;
+
+    if (filtered) {
+        let durationFrom = filtersValue['duration-from'];
+        let durationTo = filtersValue['duration-to'];
+
+        pointer1Duration.value = durationFrom * 60;
+        pointer2Duration.value = durationTo * 60;
+
+        document.querySelector(".duration-from-value").textContent = `${durationFrom}`;
+        document.querySelector(".duration-to-value").textContent = `${durationTo}`;
+
+        includedRange2.style.left = `${(((pointer1Duration.value)-minDuration)/maxDuration * pointer1Duration.clientWidth)}px`;
+        includedRange2.style.right = `${pointer1Duration.clientWidth - (((pointer2Duration.value)-minDuration)/(maxDuration-minDuration) * pointer1Duration.clientWidth)}px`;
+    }
+})
+
+pointer1Duration.addEventListener('input', (event) => {
+    if (parseFloat(event.target.value) >= parseFloat(pointer2Duration.value)) {
+        event.target.value = parseFloat(pointer2Duration.value) - steps;
+    }
+    includedRange2.style.left = `${((parseInt(event.target.value)-minDuration)/(maxDuration-minDuration) * pointer1Duration.clientWidth)}px`;
+    document.querySelector(".duration-from-value").textContent = `${parseInt(event.target.value/60)}`;
+    durationFromInput.value = document.querySelector(".duration-from-value").textContent;
+});
+
+pointer2Duration.addEventListener('input', (event) => {
+    if (parseFloat(event.target.value) <= parseFloat(pointer1Duration.value)) {
+        event.target.value = parseFloat(pointer1Duration.value) + steps;
+    }
+
+    includedRange2.style.right = `${pointer1Duration.clientWidth - ((parseInt(event.target.value)-minDuration)/(maxDuration-minDuration) * pointer1Duration.clientWidth)}px`;
+    
+    if (parseFloat(event.target.value) > maxDuration) {
+        document.querySelector(".duration-to-value").textContent = `${parseInt(maxDuration/60)}`;
+        durationToInput.value = document.querySelector(".duration-to-value").textContent;
+        return;
+    }
+    
+    document.querySelector(".duration-to-value").textContent =`${parseInt(event.target.value/60)}`; 
+    durationToInput.value = document.querySelector(".duration-to-value").textContent;
+});
+
 popupWrapper.addEventListener('click', (event) => {
     if (event.target.classList.contains('popup-wrapper')) {
         popupWrapper.classList.remove('selected');

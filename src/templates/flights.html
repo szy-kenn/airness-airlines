@@ -45,46 +45,68 @@
                         <input type="date" tabindex="0" class="with-dropdown-select__input flight-date-form__container__input" value="{{ form_part_one['departure-date'] }}" readonly>
                     </div>
                 </div> -->
-
-                <div class="filter-section-sidebar">
+                {% if filtered == True %}
+                    <input type="hidden" name="filters" id="filters" value="{{ filters }}">
+                {% endif %}
+                    <div class="filter-section-sidebar">
                     <div class="filter-heading">
                         <p>Filters</p>
                         <span>Select the filter according to your preferences</span>
                     </div>
                     <div class="sort-by-btns-container">
-                        <button class="sort-by-btn airness-btn" id="bestBtn">Best</button>
-                        <button class="sort-by-btn airness-btn" id="cheapestBtn">Cheapest</button>
-                        <button class="sort-by-btn airness-btn" id="fastestBtn">Fastest</button>
+                        <button class="sort-by-btn airness-btn best" id="bestBtn" data-value="Best">Best</button>
+                        <button class="sort-by-btn airness-btn cheapest" id="cheapestBtn" data-value="Cheapest">Cheapest</button>
+                        <button class="sort-by-btn airness-btn fastest" id="fastestBtn" data-value="Fastest">Fastest</button>
                     </div>
                     <div class="stops-btns-container">
-                        <button class="stops-btn radio-btn airness-btn">Direct</button>
-                        <button class="stops-btn radio-btn airness-btn">1 Stop</button>
-                        <button class="stops-btn radio-btn airness-btn">2+ Stops</button>
+                        <button class="stops-btn radio-btn airness-btn" data-value="0">Direct</button>
+                        <button class="stops-btn radio-btn airness-btn" data-value="1">1 Stop</button>
+                        <button class="stops-btn radio-btn airness-btn" data-value="2">2+ Stops</button>
                     </div>
                     <div class="departure-time-slider-container filter-subsection-container">
                         <div class="departure-time-slider-heading filter-subsection-heading-container">
                             <p class="filter-subsection__heading">Departure Time</p>
-                            <p class="fiter-subsection__subheading">00:00 - 23:59</p>
+                            <p class="fiter-subsection__subheading"><span class="departure-from-value">00:00</span> - <span class="departure-to-value">23:59</span></p>
                         </div>
                         <div class="departure-time-slider-element slider">
-                        </div>
+                            <div class="two-thumb-slider">
+                                <input type="range" min="0" max="1440" value="0" step="30" class="slider-range" id="point1-departure-time">
+                                <div class="departure-time-included-range"></div>
+                                <input type="range" min="0" max="1440" value="1439" step="30" class="slider-range" id="point2-departure-time">
+                            </div>
+                            </div>
                     </div>
                     <div class="duration-slider-container filter-subsection-container">
                         <div class="duration-slider-heading filter-subsection-heading-container">
                             <p class="filter-subsection__heading">Duration</p>
-                            <p class="fiter-subsection__subheading">x hrs to y hrs</p>
+                            <p class="fiter-subsection__subheading"><span class="duration-from-value">0</span>h - <span class="duration-to-value">23</span>h</p>
                         </div>
                         <div class="duration-slider-element slider">
-                        </div>
+                            <div class="two-thumb-slider">
+                                <input type="range" step="30" class="slider-range" id="point1-duration">
+                                <div class="duration-included-range"></div>
+                                <input type="range" step="30" class="slider-range" id="point2-duration">
+                            </div>
+                          </div>
                     </div>
 
                 </div>
 
                 <div class="sidebar-btn-container filter-flights-btn-container">
-                    <button id="filter-flights-btn">
-                        <i class="fa-solid fa-filter"></i> &nbsp&nbspFilter Results
-                    </button>
+                    <form action="/filtered" method="POST">
+                        <input type="hidden" name="sortBy" id="sortBy">
+                        <input type="hidden" name="stops" id="stops" value="3">
+                        <input type="hidden" name="departure-from" id="departure-from" value="00:00">
+                        <input type="hidden" name="departure-to" id="departure-to" value="23:59">
+                        <input type="hidden" name="duration-from" id="duration-from">
+                        <input type="hidden" name="duration-to" id="duration-to">
+
+                        <button id="filter-flights-btn" type="submit">
+                            <i class="fa-solid fa-filter"></i> &nbsp&nbspFilter Results
+                        </button>
+                    </form>
                 </div>
+                </form>
             </div>
         </div>
 
@@ -170,7 +192,7 @@
                     </div>
                 </div>
                 {% if result_count  > 0 %} 
-                    <p class="show-results-text">Retrieved <span style="font-weight: 700;">{{ (available_flights | length) }} </span>flights from the database.</p>
+                    <p class="show-results-text">Showing <span style="font-weight: 700;">{{ (available_flights | length) }} </span>flights retrieved from the database</p>
                 {% else %}
                     <p class="show-results-text">{{ error_message[0] }}</p>
                 {% endif %}

@@ -82,11 +82,92 @@ def flights():
     # return jsonify(available_flights)
 
     if len(available_flights) == 0:
-        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=["No results found."])
+        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=["No results found."], filtered=False)
 
-    return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights, depart_time_list=depart_time_list, arrival_time_list=arrival_time_list, result_count=len(available_flights))
+    return render_template('flights.html', form_part_one=session['form_part_one'], available_flights=available_flights, depart_time_list=depart_time_list, arrival_time_list=arrival_time_list, result_count=len(available_flights), filtered=False)
     # except:
     #     return redirect(url_for('view.home'))
+
+@view.route('/filtered', methods=['POST'])
+def get_filtered():
+    filters = request.form
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    cursor = mysql.connection.cursor()
+    
+    print(f'''
+                    SELECT i.*, it.*
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                            AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                            AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+                            AND i.duration <= {filters['duration-to']} * 60 
+                            AND i.flightCount {'<=' if int(filters['stops']) < 2 else '>=' if int(filters['stops']) == 2 else '>='} {int(filters['stops']) + 1 if int(filters['stops']) != 3 else 0}
+                            AND it.flightOrder = 1 AND f.ETD BETWEEN '{filters['departure-from']}' AND '{filters['departure-to']}'
+                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                   ''')
+
+    cursor.execute(f'''
+                    SELECT i.*, it.*
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                            AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                            AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+                            AND i.duration <= {filters['duration-to']} * 60 
+                            AND i.flightCount {'<=' if int(filters['stops']) < 2 else '>=' if int(filters['stops']) == 2 else '>='} {int(filters['stops']) + 1 if int(filters['stops']) != 3 else 0}
+                            AND it.flightOrder = 1 AND f.ETD BETWEEN '{filters['departure-from']}' AND '{filters['departure-to']}'
+                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                   ''')
+    
+    available_flights = cursor.fetchall()
+    
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                            AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                            AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+                            AND i.duration <= {filters['duration-to']} * 60 
+                            AND i.flightCount {'<=' if int(filters['stops']) < 2 else '>=' if int(filters['stops']) == 2 else '>='} {int(filters['stops']) + 1 if int(filters['stops']) != 3 else 0}
+                            AND it.flightOrder = 1 AND f.ETD BETWEEN '{filters['departure-from']}' AND '{filters['departure-to']}'
+                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    if len(available_flights) == 0:
+        return render_template('flights.html', form_part_one=session['form_part_one'], 
+                               result_count=0, error_message=["No results found."], filtered=True, filters=json.dumps(filters))
+
+    # cursor.execute(f'''
+    #                 SELECT TIME_FORMAT(f.eta, '%H:%i')
+    #                 FROM itinerary_t i, itinerary_flight_t it, flight_t f
+    #                 WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+    #                         AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+    #                         AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+    #                         AND i.duration <= {filters['duration-to']} * 60 
+    #                         AND i.flightCount {'<=' if int(filters['stops']) < 2 else '>=' if int(filters['stops']) == 2 else '>='} {int(filters['stops']) + 1 if int(filters['stops']) != 3 else 0}
+    #                         AND it.flightOrder = i.flightCount AND f.ETD BETWEEN '{filters['departure-from']}' AND '{filters['departure-to']}'
+    #                 ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+    #                ''')
+    available_flights_iata = ['"' + available_flight[0] + '"' for available_flight in available_flights]
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE i.itineraryCode IN ({", ".join(available_flights_iata)}) AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+                        AND it.flightOrder = i.flightCount
+                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                   ''')
+
+    arrival_time_list = cursor.fetchall()
+
+    return render_template('flights.html', form_part_one=session['form_part_one'], 
+                            available_flights=available_flights, 
+                            depart_time_list=depart_time_list, 
+                            arrival_time_list=arrival_time_list, 
+                            result_count=len(available_flights),
+                            filtered=True, filters=json.dumps(filters))
 
 @view.route('/selected-itinerary/<path:itineraryCode>', methods=['POST', 'GET'])
 def selected_itinerary(itineraryCode):

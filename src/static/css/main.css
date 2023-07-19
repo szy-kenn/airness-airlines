@@ -457,6 +457,13 @@ a,
   background-color: white;
   border-radius: 10px;
 }
+.airness-btn:hover {
+  border: 2px solid rgba(12, 40, 73, 0.3);
+}
+.airness-btn.clicked {
+  background: #0c2849;
+  color: white;
+}
 
 .input-field {
   opacity: 1;
@@ -1115,6 +1122,14 @@ body {
   flex-direction: column;
   gap: 0.25rem;
 }
+.input-results-wrapper .show-results-text {
+  position: relative;
+  padding: 0.25rem;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Montserrat";
+}
 
 .available-flights {
   display: grid;
@@ -1390,6 +1405,11 @@ body {
   grid-template-rows: repeat(3, 1fr);
   gap: 0.5rem;
 }
+.flight-wrapper .filter-form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .flight-wrapper .filter-section-sidebar {
   position: relative;
   padding-inline: clamp(1.5rem, 2.35vw, 3rem);
@@ -1397,6 +1417,7 @@ body {
   grid-template-columns: 100%;
   grid-template-rows: auto auto auto auto atuo;
   gap: 0.25rem;
+  padding-block: 0 1rem;
 }
 .flight-wrapper .filter-section-sidebar .filter-heading {
   display: flex;
@@ -1449,7 +1470,7 @@ body {
 .flight-wrapper .filter-section-sidebar .duration-slider-container {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-start;
   flex-direction: column;
   align-self: stretch;
@@ -1468,10 +1489,49 @@ body {
 }
 .flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider,
 .flight-wrapper .filter-section-sidebar .duration-slider-container .slider {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  border: none;
   position: relative;
   width: 100%;
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider .two-thumb-slider .slider-range,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .slider .two-thumb-slider .slider-range {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  pointer-events: none;
+  outline: none;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(12, 40, 73, 0.1);
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider .two-thumb-slider .slider-range::-webkit-slider-thumb,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .slider .two-thumb-slider .slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  pointer-events: all;
+  width: 20px;
+  height: 20px;
+  background-color: #0c2849;
+  border: 2px solid #0c2849;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider .two-thumb-slider .departure-time-included-range,
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider .two-thumb-slider .duration-included-range,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .slider .two-thumb-slider .departure-time-included-range,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .slider .two-thumb-slider .duration-included-range {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
   height: 2px;
-  background: #0c2849;
+  background-color: #0c2849;
 }
 .flight-wrapper .filter-flights-btn-container button {
   font-size: clamp(1em, 1.75vw, 2em);
@@ -1647,6 +1707,7 @@ body {
 }
 .popup-wrapper .show-results-text {
   position: relative;
+  color: white;
 }
 
 .popup-selected-details {
@@ -3378,6 +3439,12 @@ body {
   font-weight: bold;
   font-style: italic;
   line-height: 0;
+}
+
+.wrapper-r {
+  background-color: #0c2849;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 768px) {

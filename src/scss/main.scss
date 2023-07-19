@@ -370,6 +370,14 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
     // @include color($secondary-font);
     background-color: white;
     border-radius: 10px;
+
+    &:hover {
+        border: 2px solid rgba($primary-button, 0.3);
+    }
+
+    &.clicked {
+        @include color($primary-button);
+    }
 }
 
 .input-field {
@@ -389,7 +397,6 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
         line-height: 1rem;
         @include font(1rem, 500);
         // width: 15rem;
-
         // height: 100%;
     }
 }
