@@ -47,12 +47,21 @@ export class Map {
             y: 0,
             zoomLevel: 1,
             maxPanout: 0,
-            projection: this.projection,
+            projection: this.projection(),
             // projection: am5map.geoEquirectangular(),
             // projection: am5map.geoNaturalEarth1(),
             // homeGeoPoint: { latitude: 14.5995, longitude: 120.9842 }
         }));
-
+ 
+        if (this.projection == am5map.geoOrthographic) {
+            this.chart.animate({
+                key: "rotationX",
+                from: 0,
+                to: 360,
+                duration: 30000,
+                loops: Infinity
+              });
+        }
 
         this.chart.events.on("wheel", (ev) => {
             if (ev.originalEvent.ctrlKey) {

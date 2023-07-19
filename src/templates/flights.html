@@ -52,9 +52,9 @@
                         <span>Select the filter according to your preferences</span>
                     </div>
                     <div class="sort-by-btns-container">
-                        <button class="sort-by-btn airness-btn">Best</button>
-                        <button class="sort-by-btn airness-btn">Cheapest</button>
-                        <button class="sort-by-btn airness-btn">Fastest</button>
+                        <button class="sort-by-btn airness-btn" id="bestBtn">Best</button>
+                        <button class="sort-by-btn airness-btn" id="cheapestBtn">Cheapest</button>
+                        <button class="sort-by-btn airness-btn" id="fastestBtn">Fastest</button>
                     </div>
                     <div class="stops-btns-container">
                         <button class="stops-btn radio-btn airness-btn">Direct</button>
@@ -67,7 +67,6 @@
                             <p class="fiter-subsection__subheading">00:00 - 23:59</p>
                         </div>
                         <div class="departure-time-slider-element slider">
-                            <hr>
                         </div>
                     </div>
                     <div class="duration-slider-container filter-subsection-container">
@@ -76,7 +75,6 @@
                             <p class="fiter-subsection__subheading">x hrs to y hrs</p>
                         </div>
                         <div class="duration-slider-element slider">
-                            <hr>
                         </div>
                     </div>
 
@@ -211,8 +209,13 @@
                             <span>{{ form_part_one['from-json']['iata'] }}</span>
                         </div>
                         <div class="airplane-track-container">
-                            <div class="airplane-track"></div>
-                            <i class="fa-solid fa-plane"></i>
+                            <div class="airplane-track-duration">
+                                <p>{{ available_flights[i][4] // 60 }}h {{ available_flights[i][4] % 60 }}m</p>
+                            </div>
+                            <div class="airplane-main-track">
+                                <div class="airplane-track"></div>
+                                <i class="fa-solid fa-plane"></i>
+                            </div>
                         </div>
                         <div class="time-location to">
                             <p>{{ arrival_time_list[i][0] }}</p>

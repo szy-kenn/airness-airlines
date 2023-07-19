@@ -363,9 +363,12 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
 }
 
 .airness-btn {
-    border: none;
-    outline: none;
-    @include color($primary-button);
+    cursor: pointer;
+    border: 2px solid rgba($primary-button, 0.1);
+    // outline: none;
+    // @include color(rgba($primary-button, 0.1));
+    // @include color($secondary-font);
+    background-color: white;
     border-radius: 10px;
 }
 

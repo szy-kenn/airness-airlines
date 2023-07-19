@@ -161,7 +161,7 @@ class Skyscanner:
 
                 cur.execute(f"""
                             INSERT INTO itinerary_t(
-                                itineraryCode, source, destination, flightCount, duration, price
+                                itineraryCode, source, destination, flightCount, duration, basefare
                             ) VALUES(
                                 "{itineraryCode}",
                                 "{session['form_part_one']['from-json']['iata']}", 

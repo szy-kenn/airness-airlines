@@ -452,10 +452,9 @@ a,
   transition: all 0.1s ease-in-out;
 }
 .airness-btn {
-  border: none;
-  outline: none;
-  background: #0c2849;
-  color: white;
+  cursor: pointer;
+  border: 2px solid rgba(12, 40, 73, 0.1);
+  background-color: white;
   border-radius: 10px;
 }
 
@@ -1396,13 +1395,19 @@ body {
   padding-inline: clamp(1.5rem, 2.35vw, 3rem);
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto auto 1fr auto atuo;
+  grid-template-rows: auto auto auto auto atuo;
   gap: 0.25rem;
 }
 .flight-wrapper .filter-section-sidebar .filter-heading {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
   font-size: clamp(1em, 1.4vw, 1.5em);
   font-weight: 700;
   font-family: "Montserrat";
+  color: #0c2849;
 }
 .flight-wrapper .filter-section-sidebar .filter-heading span {
   font-size: clamp(0.75em, 1vw, 1em);
@@ -1415,12 +1420,18 @@ body {
   align-items: stretch;
   flex-direction: column;
   gap: 0.25rem;
+  position: relative;
+}
+.flight-wrapper .filter-section-sidebar .stops-btns-container form {
+  position: relative;
+  width: 100%;
 }
 .flight-wrapper .filter-section-sidebar .stops-btns-container button {
   text-transform: uppercase;
   font-size: 0.75em;
   font-weight: 500;
   font-family: "Montserrat";
+  width: 100%;
 }
 .flight-wrapper .filter-section-sidebar .sort-by-btns-container {
   display: flex;
@@ -1433,6 +1444,34 @@ body {
   font-size: 0.75em;
   font-weight: 500;
   font-family: "Montserrat";
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container,
+.flight-wrapper .filter-section-sidebar .duration-slider-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 0.5rem;
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .filter-subsection__heading,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .filter-subsection__heading {
+  font-weight: 700;
+  color: #0c2849;
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .fiter-subsection__subheading,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .fiter-subsection__subheading {
+  font-size: 0.8em;
+  font-weight: 400;
+  font-family: "Montserrat";
+}
+.flight-wrapper .filter-section-sidebar .departure-time-slider-container .slider,
+.flight-wrapper .filter-section-sidebar .duration-slider-container .slider {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #0c2849;
 }
 .flight-wrapper .filter-flights-btn-container button {
   font-size: clamp(1em, 1.75vw, 2em);
@@ -1524,13 +1563,27 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 .available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .airplane-track-container i {
   font-size: 1.5em;
   color: rgba(12, 40, 73, 0.3);
 }
-.available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .airplane-track-container .airplane-track {
+.available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .airplane-track-container .airplane-track-duration p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Montserrat";
+  color: rgba(12, 40, 73, 0.8);
+}
+.available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .airplane-track-container .airplane-main-track {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+.available-flights-test .flight-container .flight-details-section .flight-details-subsection.details .airplane-track-container .airplane-main-track .airplane-track {
   position: relative;
   height: 2px;
   width: 90%;
@@ -2505,6 +2558,7 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  margin-bottom: 50px;
 }
 
 .vertical_dashed_ticket {
@@ -2773,6 +2827,8 @@ body {
   width: 160px;
   margin-top: 220px;
   margin-left: 420px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 /* end of information on the left*/
@@ -2952,10 +3008,12 @@ body {
 
 .barcode-right-ticket {
   position: absolute;
-  height: 30px;
-  width: 130px;
+  height: 35px;
+  width: 145px;
   margin-top: 180px;
   margin-left: 150px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .plane-route-container {

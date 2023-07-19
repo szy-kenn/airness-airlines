@@ -10,7 +10,7 @@ document.querySelector("html").style.scrollSnapType = "y mandatory";
 // fetch('/query/create-airport-table')
 //     .then(response => response.json())
 
-map.ready("globe-container", am5map.geoOrthographic(), 
+map.ready("globe-container", am5map.geoOrthographic, 
             'rotateX', 'rotateY',
             'zoom', true, "#0C2849", 1);
 

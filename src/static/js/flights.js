@@ -66,13 +66,21 @@ function getFlightContainersGlobe(container) {
     }
 } 
 
+// document.getElementById("cheapestBtn").addEventListener('click', (event) => {
+//     fetch('/query/get-cheapest-itinerary')
+//     .then(res => res.json())
+//     .then(data => {
+//         console.log(data);
+//     })
+// })
+
 import { Map } from '../js/Map.js';
 
 let map = new Map();
 let mapCreated = false;
 
 function createMap(container) {
-    map.ready(container, am5map.geoEquirectangular(),
+    map.ready(container, am5map.geoEquirectangular,
                 'none', 'none', 'none', false, "#E4EEFD", 1);
     map.createButton();
 }

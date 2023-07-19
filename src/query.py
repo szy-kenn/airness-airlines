@@ -534,6 +534,195 @@ def get_stops():
                    ''')
     return jsonify(cursor.fetchall())
 
+@query.route('/filtered')
+def get_filtered():
+    pass
+
+@query.route('/get-cheapest-itinerary')
+def get_cheapest_itinerary():
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT *
+                    FROM itinerary_t I
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                    ORDER BY I.baseFare;
+                    ''')
+    available_flights = cursor.fetchall()
+    
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    ORDER BY i.baseFare;
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   ORDER BY i.baseFare;
+                   ''')
+    
+    arrival_time_list = cursor.fetchall()
+
+    return render_template('flights.html', form_part_one=session['form_part_one'], 
+                            available_flights=available_flights, 
+                            depart_time_list=depart_time_list, 
+                            arrival_time_list=arrival_time_list, 
+                            result_count=len(available_flights))
+
+
+@query.route('/get-fastest-itinerary')
+def get_fastest_itinerary():
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'''
+                    SELECT *
+                    FROM itinerary_t I
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                    ORDER BY I.duration;
+                    ''')
+    available_flights = cursor.fetchall()
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    ORDER BY i.duration;
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   ORDER BY i.duration;
+                   ''')
+    
+    arrival_time_list = cursor.fetchall()
+
+    return render_template('flights.html', form_part_one=session['form_part_one'], 
+                            available_flights=available_flights, 
+                            depart_time_list=depart_time_list, 
+                            arrival_time_list=arrival_time_list, 
+                            result_count=len(available_flights))
+
+@query.route('/get-direct-only')
+def get_direct_only():
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(f'''
+                    SELECT *
+                    FROM itinerary_t I
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                     AND I.flightCount = 1
+                    ORDER BY I.itineraryCode;
+                    ''')
+    
+    available_flights = cursor.fetchall()
+
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    ORDER BY i.itineraryCode;
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   ORDER BY i.itineraryCode;
+                   ''')
+    
+    arrival_time_list = cursor.fetchall()
+
+    if len(available_flights) == 0:
+        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=["No results found."])
+
+
+    return render_template('flights.html', form_part_one=session['form_part_one'], 
+                            available_flights=available_flights, 
+                            depart_time_list=depart_time_list, 
+                            arrival_time_list=arrival_time_list, 
+                            result_count=len(available_flights))
+
+@query.route('/get-one-stop-only')
+def get_one_stop_only():
+    session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(f'''
+                    SELECT *
+                    FROM itinerary_t I
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}")
+                     AND I.flightCount = 2
+                    ORDER BY I.itineraryCode;
+                    ''')
+    
+    available_flights = cursor.fetchall()
+
+    cursor.execute(f'''
+                    SELECT TIME_FORMAT(f.etd, '%H:%i')
+                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                    WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    ORDER BY i.itineraryCode;
+                   ''')
+    
+    depart_time_list = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT TIME_FORMAT(f.eta, '%H:%i')
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f
+                   WHERE (I.source = "{session['form_part_one']['from-json']['iata']}" 
+                     AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                     AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   ORDER BY i.itineraryCode;
+                   ''')
+    
+    arrival_time_list = cursor.fetchall()
+
+    if len(available_flights) == 0:
+        return render_template('flights.html', form_part_one=session['form_part_one'], result_count=0, error_message=["No results found."])
+
+    return render_template('flights.html', form_part_one=session['form_part_one'], 
+                            available_flights=available_flights, 
+                            depart_time_list=depart_time_list, 
+                            arrival_time_list=arrival_time_list, 
+                            result_count=len(available_flights))
+
 @query.route('/post-flight', methods=['POST'])
 def post_flight():
     flight_details = request.get_json()
