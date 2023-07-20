@@ -3,12 +3,58 @@
 
 <div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0;"></div>
 
+     {% include 'blocks/navbar.html' %} 
+
+ <head>
+     <script src="https://kit.fontawesome.com/3201c1db43.js" crossorigin="anonymous"></script>
+ </head>
 <div class="wrapper-contact">
      
+     
+     <p class="contact-us-contact">CONTACT US</p>
+     <p class="description-contact">Want to get in touch? We'd love to hear from you. <br>Here's how you can reach us....</p>
+     <div class="allcontent-contact">
+     <div class="team-content">
+        
+          <p class="talk-contact">Talk to our team</p>
+          <p class="feelfree-contact">Feel free to contact us through email, phone, or live chat during our business hours, and even outside those hours, we'll get back to you as soon as possible. We highly value your feedback and suggestions, as they enable us to continually improve our services and products to better serve you.</p>
+          <div class="icon-contact">
+               <i class="fa-solid fa-phone fa-3x"></i>
+               <p class="number-contact">(296) 250-1635<br>(456) 828-0105</p>
+
+               <i class="fa-solid fa-envelope fa-3x"></i>
+               
+               <p class="mail-contact">airnessairlines@gmail.com</p>
+
+               <i class="fa-solid fa-headset fa-3x"></i>
+            
+               <button class="live-contact">LIVE CHAT</button>
+          </div>
+     </div>
+
+     <div class="tellmore-contact">
+          <p class="telltext-contact">Tell us more</p>
+          <p class="fname-contact">First Name</p>
+          <input  class="fnameholder-contact"type="text" placeholder=" ">
+
+          <p class="lname-contact">Last Name</p>
+          <input  class="lnameholder-contact"type="text" placeholder=" ">
+
+          <p class="email-contact">E-mail</p>
+          <input  class="mailholder-contact"type="text" placeholder=" ">
+          
+
+          <p class="message-contact">Message</p>
+          <input  class="messageholder-contact"type="text" placeholder=" ">
+
+          <button class="send-contact">SEND</button>
+     </div>
+     </div>
+
+   
 </div>
 
 
-     {% include 'blocks/navbar.html' %} 
 
 
 
@@ -25,7 +71,5 @@
 
 
 
-
-
-
+{% include 'blocks/footer.html' %}
 {% endblock %}
