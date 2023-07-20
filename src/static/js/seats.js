@@ -7,6 +7,7 @@ let completed = 0;
 let totalPassengers = document.querySelector('.sticky-passenger-list-container').dataset.totalpassengers;
 let infants = document.querySelector('.sticky-passenger-list-container').dataset.infants;
 let passengersToBook = totalPassengers - infants;
+let extras = 0;
 
 function getStatusText(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusText`);
@@ -28,11 +29,45 @@ function getAllBookedSeats() {
     return bookedSeats;
 }
 
+function updateExtras(container, extras) {
+    container.childNodes.forEach(child => {
+        if (child.classList.contains('passenger-info-extra')) {
+            child.childNodes.forEach(grandchild => {
+                if (grandchild.classList.contains('passenger-info-extra__value')) {
+                    grandchild.childNodes.forEach(grandgrandchild => {
+                        if (grandgrandchild.nodeName === 'SPAN') {
+                            grandgrandchild.textContent = `PHP ${extras}.00`;
+                            container.dataset.extras = extras;
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
 function getCurrentlySelecting() {
     return selectedSeatsContainer.dataset.currentlySelecting;
 }
 
 function makeSelected(element, seat) {
+
+    if (seat.classList.contains('extra-leg-room')) {
+        
+        console.log(element.dataset.extras)
+        if (parseInt(element.dataset.extras) === 0) {
+            updateExtras(element, 350);
+            extras += 1;
+        } 
+
+    } else {
+        if (parseInt(element.dataset.extras) === 350) {
+            updateExtras(element, 0);
+            extras -= 1;
+        }
+    }
+
+    document.querySelector('.extra-cost-value').textContent = `PHP ${350 * extras}.00`;
 
     if (seat.classList.contains('selected') || seat.classList.contains('reserved')) {
         // forced make selecting
@@ -78,7 +113,7 @@ function makeInactive(element) {
 
 function makeActive(element) {
 
-    if (element.classList.contains('pending') || element.classList.contains('new') ) {
+    if (element.classList.contains('pending') || element.classList.contains('new')) {
         // pending -> selecting
         element.classList.remove('pending', 'inactive', 'new');
         element.classList.add('selecting', 'active');
@@ -138,6 +173,10 @@ function selectSeat(seat) {
         if (container.dataset.state !== 'Selecting...') {
             document.getElementById(container.dataset.state).classList.remove('selected');
         }
+
+        if (container.classList.contains("extra-leg-room")) {
+            console.log("leg room");
+        }
         
         makeSelected(container, seat);
 
@@ -188,6 +227,7 @@ function createPassengerSelectedSeat(container) {
     updateSelectedSeatsContainer();
 
     let passengerSelectedSeat = document.createElement("div");
+    passengerSelectedSeat.dataset.extras = 0;
     passengerSelectedSeat.dataset.age = container.dataset.age;
     passengerSelectedSeat.dataset.number = container.dataset.number;
     passengerSelectedSeat.id = container.dataset.age + container.dataset.number + 'passengerSelectedSeat';
@@ -229,6 +269,16 @@ function createPassengerSelectedSeat(container) {
 
     makeActive(passengerSelectedSeat);
 }
+
+fetch('/query/get-seat')
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+    for (let i = 0; i < data.length; i++) {
+        let unavailableSeatNo = document.getElementById(data[0][i]);
+        unavailableSeatNo.classList.add('seat-unavailable');
+    }
+})
 
 let i = 1;
 while (document.getElementById(`adultPassengerContainer${i}`) !== null) {

@@ -17,7 +17,7 @@
         </div>
 
         {% for i in range(0) %}
-            <div class="passenger-selected-seat" data-state="Selecting...">
+            <div class="passenger-selected-seat" data-state="Selecting..." data-extras="0">
                 <div class="select-seat-status">
                     <p id="">Selecting...</p>
                     <i class="fa-solid fa-spinner"></i>
@@ -37,7 +37,7 @@
             <div class="seats-left-container">
                 {% for letter in range(0, 4) %}
                 <div class="seats-columns">
-                    {% for i in range(12) %}
+                    {% for i in range(6) %}
                     {% if i == 0 or i == 11 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}
@@ -64,7 +64,7 @@
             <div class="seats-mid-container">
                 {% for letter in range(4, 7) %}
                 <div class="seats-columns">
-                    {% for i in range(12) %}
+                    {% for i in range(6) %}
                     {% if i == 0 or i == 11 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}
@@ -91,7 +91,7 @@
             <div class="seats-right-container">
                 {% for letter in range(7, 11) %}
                 <div class="seats-columns">
-                    {% for i in range(12) %}
+                    {% for i in range(6) %}
                     {% if i == 0 or i == 11 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}

@@ -2127,6 +2127,7 @@ body {
 
 .seat-unavailable {
   color: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
 }
 .seat-unavailable:hover {
   color: rgba(0, 0, 0, 0.25);
@@ -2134,7 +2135,8 @@ body {
 
 .seats-page-wrapper {
   position: relative;
-  height: 110%;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 1rem;
   display: grid;
   grid-template-columns: 1.25fr 1.5fr 1fr;
@@ -2146,11 +2148,12 @@ body {
   display: grid;
   gap: 2rem;
   grid-auto-flow: row;
-  grid-auto-rows: 8%;
+  grid-auto-rows: 17.5%;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
   padding: 0rem 1rem 1.75rem 1rem;
+  height: 100%;
 }
 .seats-page-wrapper .selected-seats-container::-webkit-scrollbar-thumb {
   border: 5px solid #dde4ec;

@@ -534,6 +534,31 @@ def get_stops():
                    ''')
     return jsonify(cursor.fetchall())
 
+@query.route('/get-seat')
+def get_seat():
+    itineraryCode = session['selected_itinerary']
+    print(itineraryCode)
+    ticketId = session['ticketId']
+
+    cursor = mysql.connection.cursor()
+
+    print(f'''
+                   select seatNo
+                    from itinerary_t i, reservation_t r, ticket_t t
+                    where i.itineraryCode = '{itineraryCode}' and i.itineraryCode = t.itineraryCode
+                        and r.ticketid = t.ticketid 
+                        and t.departureDate = '{datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()}';
+                   ''')
+
+    cursor.execute(f'''
+                   select seatNo
+                    from itinerary_t i, reservation_t r, ticket_t t
+                    where i.itineraryCode = '{itineraryCode}' and i.itineraryCode = t.itineraryCode
+                        and r.ticketid = t.ticketid 
+                        and t.departureDate = '{datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()}';
+                   ''')
+    return jsonify(cursor.fetchall())
+
 @query.route('/get-cheapest-itinerary')
 def get_cheapest_itinerary():
     session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])

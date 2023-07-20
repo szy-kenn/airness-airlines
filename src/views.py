@@ -239,4 +239,18 @@ def payment():
 
 @view.route('/confirmation')
 def confirmation():
+
+    reservation = []
+    all_passengers = []
+    itinerary = []
+    ticket = []
+    seats = []
+
     return render_template('ticket.html')
+    # session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
+    # session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
+    # return render_template('ticket.html',
+    #                        form_part_one=session['form_part_one'],
+    #                        selected_flight=session['selected_flight'], 
+    #                        booked_seats=session['booked_seats'],
+    #                        payment=session['payment'])

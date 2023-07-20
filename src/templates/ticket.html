@@ -2,6 +2,12 @@
 {% block title %}Ticket{% endblock %}
 {% block booking %}
 
+{% set header = "Boarding Pass" %}
+<div class="page-header">
+    <p>{{ header }}</p>
+</div>
+
+<div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0;"></div>
 <div class="ticket_div" >
     <div class="ticket-top">
         
@@ -16,7 +22,7 @@
 
     <div class="info-left-ticket">
         <img src="/static/img/world_map.png" class="world-map-ticket" >
-        <p class="class-ticket">ECONOMY CLASS</p> 
+        <p class="class-ticket">{{ payment }} CLASS</p> 
         
         <div class="name-info-ticket">
             <p class="name-ticket">Name<br><span class="passenger-name-ticket">JEREMY JHAY B. CAYABYAB</span> </p>
