@@ -22,11 +22,20 @@ function getAllBookedSeats() {
 
     selectedSeatsContainer.childNodes.forEach(child => {
         if (child.nodeName === 'DIV' && child.dataset.state !== undefined){
-            bookedSeats[`${'p'+ child.dataset.number}`] = child.dataset.state;
+            // console.log(`${'p'+ child.dataset.number}`, child.dataset.state)
+            bookedSeats[`${child.dataset.age + child.dataset.number}`] = child.dataset.state;
         }
     })
 
-    return bookedSeats;
+    let orderedBookedSeats = {};
+
+    let i = 1;
+    for (const [key, val] of Object.entries(bookedSeats)) {
+        orderedBookedSeats['p' + i] = val;
+        i++;
+    }
+
+    return orderedBookedSeats;
 }
 
 function updateExtras(container, extras) {
@@ -275,7 +284,7 @@ fetch('/query/get-seat')
 .then(data => {
     console.log(data);
     for (let i = 0; i < data.length; i++) {
-        let unavailableSeatNo = document.getElementById(data[0][i]);
+        let unavailableSeatNo = document.getElementById(data[i][0]);
         unavailableSeatNo.classList.add('seat-unavailable');
     }
 })
@@ -315,6 +324,7 @@ childPassengerContainer.forEach(container => {
 });
 
 seatsDoneBtn.addEventListener('click', () => {
+    // console.log(getAllBookedSeats());
     fetch("/payment", {
         method: "POST",
         body: JSON.stringify(getAllBookedSeats())

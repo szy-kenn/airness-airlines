@@ -13,9 +13,8 @@ def _debug_bracket():
 
 def get_attribute_or_none(attribute):
     try:
-        attr = attribute
-        if attr != None:
-            return '"' + attr + '"'
+        if attribute != None:
+            return '"' + str(attribute) + '"'
         else:
             return 'NULL'
     except:

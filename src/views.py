@@ -200,6 +200,7 @@ def passenger_details():
 @view.route('/save-passenger-details', methods=['POST'])
 def save_passenger_details():
     session['passenger-details'] = request.get_json()
+    print(session['passenger-details'])
     # session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
     # session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
     # return redirect(url_for('view.seats'))
@@ -227,6 +228,7 @@ def seats():
 @view.route('/payment', methods=['GET', 'POST'])
 def payment():
     if request.method == 'POST':
+        print(request.data)
         session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
         session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
         session['booked_seats'] = json.loads(request.data)

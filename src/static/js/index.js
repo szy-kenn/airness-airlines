@@ -22,9 +22,9 @@ const passengerCount = document.querySelectorAll('.passenger-form__container__pa
 const btnDown = document.querySelectorAll('.btn-down');
 const btnUp = document.querySelectorAll('.btn-up');
 const airlineClassSelected = document.querySelector('.airline-class--selected');
-const airlineClassChoices = document.querySelectorAll('.airline-class__group-choices')
+const airlineClassChoices = document.querySelector('.airline-class__group-choices')
 const airlineChoicesDiv = document.querySelectorAll('.airline-class--choices')
-const airlineClassContainer = document.querySelectorAll('.passenger-form__container__airline-class');
+const airlineClassContainer = document.querySelector('.passenger-form__container__airline-class');
 
 // maximum adult + children, excluding infants
 const maxPassenger = 9;
@@ -117,7 +117,7 @@ export function showChoices(choicesType, index) {
 }
 
 airlineChoicesDiv.forEach(choice => {
-    choice.addEventListener('click', () => selectAirlineClass(choice.data.airlineClass))
+    choice.addEventListener('click', () => selectAirlineClass(choice.dataset.airlineClass))
 })
 
 airlineClassSelected.addEventListener('blur', () => {

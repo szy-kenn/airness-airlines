@@ -38,7 +38,7 @@
                 {% for letter in range(0, 4) %}
                 <div class="seats-columns">
                     {% for i in range(6) %}
-                    {% if i == 0 or i == 11 %}
+                    {% if i == 0 or i == 5 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}
                         {% set seat_class = 'standard' %}
@@ -65,7 +65,7 @@
                 {% for letter in range(4, 7) %}
                 <div class="seats-columns">
                     {% for i in range(6) %}
-                    {% if i == 0 or i == 11 %}
+                    {% if i == 0 or i == 5 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}
                         {% set seat_class = 'standard' %}
@@ -92,7 +92,7 @@
                 {% for letter in range(7, 11) %}
                 <div class="seats-columns">
                     {% for i in range(6) %}
-                    {% if i == 0 or i == 11 %}
+                    {% if i == 0 or i == 5 %}
                         {% set seat_class = 'extra-leg-room' %}
                     {% else %}
                         {% set seat_class = 'standard' %}
