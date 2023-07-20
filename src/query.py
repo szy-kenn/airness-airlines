@@ -353,6 +353,7 @@ def post_reservation():
     accountNumber = session['payment']['account-number']
     expDate = (session['payment']['account-exp-date'] if session['payment'].get('account-exp-pdate') != None else None)
     modeOfPayment = session['payment']['mode-of-payment']
+    totalFare = session['payment']['totalFare']
     contactNo = session['passenger-details']['contactNumber']
     emailAddress = session['passenger-details']['emailAddress']
     airline_class = session['form_part_one']['airline-class']
@@ -365,7 +366,7 @@ def post_reservation():
                 VALUES ("{ticket_id}", "{accountName}", "{modeOfPayment}",
                         "{accountNumber}", {get_attribute_or_none(expDate)}, "{contactNo}",
                         "{emailAddress}", {total_passenger_count},
-                        100000.00, "{airline_class}", "{itinerary_code}", "{departure_date}");
+                        {totalFare}, "{airline_class}", "{itinerary_code}", "{departure_date}");
                 ''')
 
     seats = []

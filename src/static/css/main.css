@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://meyerweb.com/eric/tools/css/reset/reset.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
@@ -410,21 +411,77 @@ a,
 
 .current-page-indicator {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  width: 65%;
+  position: relative;
   color: white;
   margin: auto;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
 }
-.current-page-indicator p {
-  font-size: 0.75rem;
+.current-page-indicator .page-between-line {
+  width: 10%;
+  height: 2px;
+  background-color: rgba(12, 40, 73, 0.4);
+}
+.current-page-indicator .page-number {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.current-page-indicator .page-number .circle-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(12, 40, 73, 0.5);
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+.current-page-indicator .page-number .circle-indicator p {
+  text-align: center;
+  color: #0c2849;
+}
+.current-page-indicator .page-number.current .circle-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0c2849;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+.current-page-indicator .page-number.current .circle-indicator p {
+  color: white;
+}
+.current-page-indicator .page-number.done .circle-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffdf29;
+  border: 1px solid #ffdf29;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+}
+.current-page-indicator .page-number.done .circle-indicator::before {
+  content: "✔";
+  position: absolute;
+  font-weight: 700;
+  top: 32%;
+  left: 9.5%;
+  color: #0c2849;
+}
+.current-page-indicator .page-number.done .circle-indicator p {
+  color: #ffdf29;
+}
+.current-page-indicator .page-number p {
+  font-size: 0.8rem;
   font-weight: 700;
   font-family: "Montserrat";
   text-align: center;
-  width: 13%;
-  background: white;
-  color: black;
+  color: #0c2849;
   padding: 0.75rem 0.5rem;
 }
 
@@ -2611,10 +2668,20 @@ body {
   font-family: computer-says-no;
   src: url(/static/fonts/computer-says-no.ttf) format("truetype");
 }
+.splide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-wrapper {
+  padding: 1rem;
+}
+
 .ticket_div {
   background-color: white;
-  margin-top: 50px;
-  margin-left: 200px;
+  margin-top: 30px;
   height: 350px;
   width: 950px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -2623,6 +2690,15 @@ body {
      -moz-user-select: none;
           user-select: none;
   margin-bottom: 50px;
+}
+
+.ticket-subheading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  color: #0c2849;
+  font-weight: 700;
 }
 
 .vertical_dashed_ticket {
@@ -3154,6 +3230,7 @@ body {
   }
 }
 .payment-page-wrapper {
+  position: relative;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 0.5fr 1.5fr 1fr;
@@ -3221,11 +3298,21 @@ body {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.payment-page-wrapper .payment-pg-details {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: -moz-fit-content;
+  height: fit-content;
+}
 .payment-page-wrapper .payment-pg-details__container {
   width: 75%;
-  place-self: start center;
   position: relative;
   display: grid;
+  grid-template-rows: auto auto;
+  place-self: center;
   gap: 0.5rem;
 }
 .payment-page-wrapper .payment-pg-details__container .input-field {
@@ -3258,30 +3345,85 @@ body {
   font-weight: 500;
   font-family: "Montserrat";
 }
-.payment-page-wrapper .payment-pg-summary {
-  position: relative;
-  place-self: center;
-}
 .payment-page-wrapper .payment-pg-summary .payment-summary {
-  display: flex;
-  justify-content: center;
-  align-items: start;
+  display: grid;
+  grid-template-rows: 0.75fr 0.1fr 2fr 0.1fr 0.5fr 0.5fr;
+  flex-direction: column;
   position: relative;
-  width: 100%;
+  width: 65%;
   height: 100%;
-  border: 1px solid red;
+  background-color: #0c2849;
+  padding: 1rem;
+  padding-inline: 2rem;
+  gap: 0.5rem;
+  border-radius: 5px;
 }
 .payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-heading {
-  border: 1px solid green;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
-  flex-grow: 1;
+  gap: 0.5rem;
 }
 .payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-heading img {
   width: 64px;
   height: 64px;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-heading__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+  letter-spacing: -0.02em;
+  color: white;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-detail-container {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-detail {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: -0.01em;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-detail .category {
+  color: white;
+  opacity: 0.5;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-total .total-text {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: "Montserrat";
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-total .total-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "Montserrat";
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary .payment-summary-line-break {
+  position: relative;
+  background-color: white;
+  height: 1px;
+  width: 100%;
+}
+.payment-page-wrapper .payment-pg-summary .payment-summary-btn .payment-btn {
+  background-color: white;
+  color: #0c2849;
+  width: 100%;
 }
 
 .contact-footer {

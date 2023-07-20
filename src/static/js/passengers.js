@@ -6,6 +6,11 @@ const namesFields = document.querySelectorAll(".name-field")
 const alphanumericFields = document.querySelectorAll(".alphanumeric-field")
 const numberFields = document.querySelectorAll(".number-field")
 
+document.querySelector('.navbar').classList.add('scrolled');
+
+document.getElementById("pgIndicator1").classList.add('done');
+document.getElementById("pgIndicator2").classList.add('current');
+
 namesFields.forEach(field => {
     field.addEventListener("keypress", (event) => {
         if (!/[a-z -.]/i.test(event.key)) {
@@ -82,7 +87,7 @@ function expandForm(category, btn, container, ageGroup) {
         }
     } else if (category == 'passenger') {
 
-        ageGroupContainer = ageGroupExpandBtns[ageGroup][3];
+        let ageGroupContainer = ageGroupExpandBtns[ageGroup][3];
 
         if (btn.classList.contains('collapsed')) {
             container.style.height = '2.7rem';

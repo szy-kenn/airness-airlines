@@ -10,10 +10,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
+.splide {
+    position: relative;
+    @include flex(center, center);
+}
+
+.ticket-wrapper {
+    padding: 1rem;
+}
+
 .ticket_div{
   background-color: white;
-  margin-top: 50px;
-  margin-left: 200px;
+  margin-top: 30px;
+//   margin-left: 200px;
   height: 350px;
   width: 950px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -22,6 +31,13 @@
 
   margin-bottom: 50px;
 
+}
+
+.ticket-subheading {
+    @include flex(center);
+    padding: 0.5rem;
+    color: $primary-button;
+    font-weight: 700;
 }
 
 .vertical_dashed_ticket{

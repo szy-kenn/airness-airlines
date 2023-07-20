@@ -5,14 +5,22 @@
 {% set header = "Choose a Payment" %}
 {% include 'blocks/flight-input-details.html' %}
 <div class="home-body" style="position: absolute; height: 100%; width: 100%; opacity: 0; z-index: -999;"></div>
-{{ booked_seats }}
+
+{% if form_part_one['airline-class'] == 'Economy' %}
+{% set multiplier = 1 %}
+{% elif form_part_one['airline-class'] == 'Premium Economy' %}
+{% set multiplier = 1.15 %}
+{% elif form_part_one['airline-class'] == 'Business' %}
+{% set multiplier = 1.35 %}
+{% endif %}
+
 <!-- {{ selected_flight }}
 {{ form_part_one }}
 {{ session['passenger-details'] }} -->
 <form class="payment-page-wrapper" method="POST" action="/query/post-reservation">
     <input type="hidden" name="">
     <div class="payment-page-wrapper__item payment-pg-mode">
-        <p class="payment-page-wrapper__item__text">Mode Of Payment</p>
+        <!-- <p class="payment-page-wrapper__item__text">Mode Of Payment</p> -->
         <div class="payment-pg-mode__list">
             <div class="payment-pg-mode__list__item gcash clicked" data-mode="gcash">
                 <img src="..\static\img\gcash.png" alt="Gcash">
@@ -33,41 +41,74 @@
         <input type="hidden" name="mode-of-payment" id="mode-of-payment" value="gcash">
     </div>
     <div class="payment-page-wrapper__item payment-pg-details"> 
-        <p class="payment-page-wrapper__item__text">Account Details</p>
+        <p class="payment-page-wrapper__item__text">Payment Information</p>
 
         <div class="payment-pg-details__container">
                 <div class="payment-pg-details__item input-field">
                     <label for="account-name">Account Name</label>
-                    <input type="text" name="account-name" id="account-name" class="name-field" placeholder="Enter your Account Name">
+                    <input type="text" name="account-name" id="account-name" class="name-field payment-input" placeholder="Enter your Account Name">
                 </div>
                 <div class="payment-pg-details__item input-field">
                     <label for="account-number" id="account-number-label">Mobile Number</label>
-                    <input type="text" name="account-number" id="account-number" class="number-field" placeholder="Enter your Account/Mobile Number">
+                    <input type="text" name="account-number" id="account-number" class="number-field payment-input" placeholder="Enter your Account/Mobile Number">
                 </div>
                 <div class="payment-pg-details__item input-field">
                     <label for="account-exp-date">Account Exp Date</label>
-                    <input type="text" name="account-exp-date" id="account-exp-date" disabled>
+                    <input type="text" name="account-exp-date" id="account-exp-date" class="payment-input" disabled>
                 </div>
-                <div class="payment-pg-details__item submit-button-container">
+                <!-- <div class="payment-pg-details__item submit-button-container">
                     <button class="form-btn" id="submit-reservation" type="submit">Submit</button>
-                </div>
+                </div> -->
         </div>
 
     </div>
     <div class="payment-page-wrapper__item payment-pg-summary">
-        <p class="payment-page-wrapper__item__text">Payment Summary</p>
+        <!-- <p class="payment-page-wrapper__item__text">Payment Summary</p> -->
         <div class="payment-summary">
             <div class="payment-summary-heading">
-                <div class="payment-summary-heading__logo">
-                    <img src="static\img\logo_noname.png" alt="">
-                </div>
                 <div class="payment-summary-heading__title">
-                    <p>Airness Airlines</p>
+                    <p>Payment Summary</p>
                 </div>
-                <div class="payment-summary-heading__date">
-                    <p>2023-07-16</p>
+                <!-- <div class="payment-summary-heading__date">
+                    <p>2023-10-20</p>
+                </div> -->
+            </div>
+            <div class="payment-summary-line-break"></div>
+            <div class="payment-summary-detail-container">
+                <div class="payment-summary-detail">
+                    <p class="category">Payment Date</p>
+                    <p id="payment-date-value">2023-10-20</p>
                 </div>
+                <div class="payment-summary-detail">
+                    <p class="category">Base Fare</p>
+                    <p id="payment-fare-value"> PHP {{ ((selected_flight[0][5]| float) * (multiplier)) | round(2) }}</p>
+                </div>
+                <div class="payment-summary-detail">
+                    <p class="category">Passenger Count</p>
+                    <p>{{ (form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int) + (form_part_one['passenger-infant'] | int)}} pax</p>
+                </div>
+                <div class="payment-summary-detail">
+                    <p class="category">Extras</p>
+                    <p>PHP {{ booked_seats['extras'] }}.00 </p>
+                </div>
+                <div class="payment-summary-detail">
+                    <p class="category">Discount</p>
+                    <p>PHP 0.00</p>
+                </div>
+                <div class="payment-summary-detail">
+                    <p class="category">Taxes&Fees</p>
+                    <p>PHP 0.00</p>
+                </div>
+            </div>
 
+            <div class="payment-summary-line-break"></div>
+            <div class="payment-summary-total">
+                <p class="total-text">TOTAL</p>
+                <p class="total-value">PHP {{ ((selected_flight[0][5]| float) * (multiplier)) | round(2) * ((form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int)) + (booked_seats['extras'] | int) }} </p>
+                <input type="hidden" name="totalFare" id="totalFare" value="{{ ((selected_flight[0][5]| float) * (multiplier)) | round(2) * ((form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int)) + (booked_seats['extras'] | int) }}">
+            </div>
+            <div class="payment-summary-btn">
+                <button class=" form-btn payment-btn" type="submit">Continue</button>
             </div>
         </div>
     </div>

@@ -144,8 +144,17 @@ flightContainers.forEach(container => {
             })
             .then(res => res.json())
             .then(data => {
+
+                let multiplier = 1;
+                let airlineClass = document.getElementById("airline-class-flight-pg");
+                if (airlineClass.textContent == 'Premium Economy') {
+                    multiplier = 1.15;
+                } else if (airlineClass.textContent == 'Business') { 
+                    multiplier = 1.35;
+                }
+
                 if (_fetch === toFetch[0]) {
-                    document.querySelector(".popup-sidebar-price__price").textContent = "PHP " + formatter.format(data[0][5]);
+                    document.querySelector(".popup-sidebar-price__price").textContent = "PHP " + formatter.format(Math.round(data[0][5] * multiplier));
                 } else if (_fetch === toFetch[1]) {
                     document.querySelector('.map-flights-from__time').textContent = data[0][0];
                 } else {

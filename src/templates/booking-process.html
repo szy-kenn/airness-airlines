@@ -3,10 +3,33 @@
 
 {% block content %}
     <div class="current-page-indicator">
-        <p>Select a Flight</p>
-        <p>Passenger Details</p>
-        <p>Book a Seat</p>
-        <p>Confirmation</p>
+        <div class="page-number" id="pgIndicator1">
+            <div class="circle-indicator">
+                <p>1</p>
+            </div>
+            <p>Select a Flight</p>
+        </div>
+        <div class="page-between-line"></div>
+        <div class="page-number" id="pgIndicator2">
+            <div class="circle-indicator">
+                <p>2</p>
+            </div>
+            <p>Input Details</p>
+        </div>
+        <div class="page-between-line"></div>
+        <div class="page-number" id="pgIndicator3">
+            <div class="circle-indicator">
+                <p>3</p>
+            </div>
+            <p>Book a Seat</p>
+        </div>
+        <div class="page-between-line"></div>
+        <div class="page-number" id="pgIndicator4">
+            <div class="circle-indicator">
+                <p>4</p>
+            </div>
+            <p>Confirm Payment</p>
+        </div>
     </div>
     {% block booking %}
   

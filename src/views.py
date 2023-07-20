@@ -234,25 +234,69 @@ def payment():
         session['booked_seats'] = json.loads(request.data)
         return jsonify({'status': 202})
 
-    try:
-        return render_template('payment.html', selected_flight=session['selected_flight'], form_part_one=session['form_part_one'], booked_seats = session['booked_seats'])
-    except:
-        return redirect(url_for('view.seats'))
+    res = requests.post('http://127.0.0.1:5000/query/get-itinerary-details', json={'itineraryCode': session['selected_itinerary']}).json()
+    print(res)
+
+    # try:
+    return render_template('payment.html', 
+                               selected_flight=res, 
+                               form_part_one=session['form_part_one'], 
+                               booked_seats = session['booked_seats'])
+    # except:
+    #     return redirect(url_for('view.seats'))
 
 @view.route('/confirmation')
 def confirmation():
 
     reservation = []
-    all_passengers = []
-    itinerary = []
-    ticket = []
-    seats = []
+    passenger_names = []
+    itinerary = []  # departureDate
+    ticket = []     # airlineClass,     
+    seats = []      # bookedSeats
+    stops = []      # flightNo, source, dest
 
-    return render_template('ticket.html')
+    municipalities = []
+
+    cursor = mysql.connection.cursor()
+
+    stops = (requests.post('http://127.0.0.1:5000/query/get-stops', json={'itineraryCode' : session['selected_itinerary']})).json()
+    print(session['booked_seats'])
+
+    cursor.execute(f'''
+                    SELECT DATE_FORMAT(departureDate, '%d-%m-%Y')
+                   FROM ticket_t
+                   WHERE ticketid = "{session['ticketId']}";
+                   ''')
+    
+    departureDate = cursor.fetchall()[0][0]
+
+    cursor.execute(f'''
+                   SELECT CONCAT_WS(' ', CONCAT(UPPER(LEFT(firstName, 1)), MID(firstName, 2, LENGTH(firstName))), CONCAT(UPPER(LEFT(middleName, 1)), '.'), CONCAT(UPPER(LEFT(firstName, 1)), MID(lastName, 2, LENGTH(lastName))))
+                   FROM passenger_t p, reservation_t r
+                   WHERE r.ticketId = "{session['ticketId']}"
+                        AND r.passengerId = p.passengerId;
+                   ''')
+    
+    passenger_names = cursor.fetchall()
+
+    cursor.execute(f'''
+                   SELECT UPPER(CONCAT_WS(' ', CONCAT(a.municipality, ','), a.iso_country))
+                   FROM itinerary_t i, itinerary_flight_t it, flight_t f, all_airport_t a
+                   WHERE i.itineraryCode = it.itineraryCode 
+                    AND i.itineraryCode = "{session['selected_itinerary']}"
+                    AND f.flightNo = it.flightNo
+                    AND (f.source = a.iata_code OR (f.destination = a.iata_code AND it.flightOrder = i.flightCount))
+                    ORDER BY it.flightOrder;
+                    ''')
+
+    municipalities = cursor.fetchall()
+
+    # return render_template('ticket.html')
     # session['form_part_one']['to-json'] = json.loads(session['form_part_one']['to-json'])
     # session['form_part_one']['from-json'] = json.loads(session['form_part_one']['from-json'])
-    # return render_template('ticket.html',
-    #                        form_part_one=session['form_part_one'],
-    #                        selected_flight=session['selected_flight'], 
-    #                        booked_seats=session['booked_seats'],
-    #                        payment=session['payment'])
+    return render_template('ticket.html',
+                           form_part_one=session['form_part_one'],
+                           stops=stops,
+                           departureDate=departureDate,
+                           passenger_names=passenger_names,
+                           municipalities=municipalities)

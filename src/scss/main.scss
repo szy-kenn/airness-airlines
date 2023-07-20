@@ -317,19 +317,90 @@ $_sidebar-padding-inline: clamp(1.5rem, 2.35vw, 3rem);
 }
 
 .current-page-indicator {
-    @include flex;
-    width: $width;
+    @include flex(space-around);
+    // width: $width;
+    position: relative;
     color: $secondary-color;
     margin: auto;
-    padding: 1rem 0;
-
-    p {
-        @include font(0.75rem, 700);
-        text-align: center;
-        width: 13%;
-        @include color($secondary-color);
-        padding: 0.75rem 0.5rem;
+    padding: 1rem 1rem;
+    
+    .page-between-line {
+        width: 10%;
+        height: 2px;
+        background-color: rgba($primary-button, 0.4);
     }
+
+    .page-number {
+
+        position: relative;
+        height: 100%;
+        @include flex(center);
+        
+        .circle-indicator {
+            @include flex(center);
+            border: 2px solid rgba($primary-button, 0.5);
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+
+            p {
+                text-align: center;
+                color: rgba($primary-button, 1);
+            }
+
+        }
+
+        &.current {
+            .circle-indicator {
+                @include flex(center);
+                background-color: rgba($primary-button, 1);
+                width: 36px;
+                height: 36px;
+                border-radius: 999px;
+
+                p {
+                    color: white;
+                }
+            }
+        }
+
+        &.done {
+            .circle-indicator {
+                @include flex(center);
+                background-color: $accent;
+                border: 1px solid $accent;
+                // background-color: rgba($primary-button, 1);
+                width: 36px;
+                height: 36px;
+                border-radius: 999px;
+
+                &::before {
+                    content: "✔";
+                    position: absolute;
+                    font-weight: 700;
+                    top: 32%;
+                    left: 9.5%;
+                    color: $primary-button;
+                }
+
+                p {
+                    color: $accent;
+                }
+            }
+        }
+
+        p {
+            @include font(0.8rem, 700);
+            text-align: center;
+            color: $primary-button;
+            // width: 13%;
+            // @include color($secondary-color);
+            padding: 0.75rem 0.5rem;
+        }
+
+    }
+
+
 
 }
 

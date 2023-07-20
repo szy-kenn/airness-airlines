@@ -26,7 +26,7 @@
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-tag"></i>
-                            <p>Economy</p>
+                            <p id="airline-class-flight-pg">{{ form_part_one['airline-class']}}</p>
                         </div>
                     </div>
                 </div>
@@ -109,8 +109,14 @@
                 </form>
             </div>
         </div>
-
         {% if result_count > 0 %}
+        {% if form_part_one['airline-class'] == 'Economy' %}
+        {% set multiplier = 1 %}
+        {% elif form_part_one['airline-class'] == 'Premium Economy' %}
+        {% set multiplier = 1.15 %}
+        {% elif form_part_one['airline-class'] == 'Business' %}
+        {% set multiplier = 1.35 %}
+        {% endif %}
         <div class="popup-wrapper">
             <div class="popup-selected-details">
                 <div class="popup-body">
@@ -156,7 +162,7 @@
                         <p class="popup-sidebar-text__desc">Destination</p>
                     </div>
                     <div class="popup-sidebar-price">
-                        <p class="popup-sidebar-price__price">PHP {{ "{:,}".format(available_flights[0][5]) }}</p>
+                        <p class="popup-sidebar-price__price">PHP {{ "{:,}".format(((available_flights[0][5] | float) * (multiplier)) | round(2)) }}</p>
                         <p class="popup-sidebar-price__desc">/per person</p>
                     </div>
                     <div class="popup-sidebar-button">
@@ -246,7 +252,7 @@
                     </div>
                 </div>  
                 <div class="flight-price-section">
-                    <p><span style="font-size: 0.75em;">PHP</span> {{ "{:,}".format(available_flights[i][5]) }}</p>
+                    <p><span style="font-size: 0.75em;">PHP</span> {{ "{:,}".format(((available_flights[i][5] | float) * (multiplier)) | round(2)) }}</p>
                     <button>Select</button>
                 </div>
             </div>

@@ -12,8 +12,13 @@ const modeOfPaymentInput = document.getElementById("mode-of-payment");
 
 const accountNumberLabel = document.getElementById("account-number-label")
 const accountExpDate = document.getElementById("account-exp-date")
-const inputFields = document.querySelectorAll(".input-field")
-const inputs = document.querySelectorAll("input")
+const inputFields = document.querySelectorAll(".payment-pg-details__item")
+const inputs = document.querySelectorAll(".payment-input")
+
+document.getElementById("pgIndicator1").classList.add('done');
+document.getElementById("pgIndicator2").classList.add('done');
+document.getElementById("pgIndicator3").classList.add('done');
+document.getElementById("pgIndicator4").classList.add('current');
 
 for (let i = 0; i < inputFields.length; i++) {
     inputs[i].addEventListener("focus", () => inputFields[i].classList.add("focused"))
@@ -75,6 +80,15 @@ numberFields.forEach(field => {
         }
     })
 })
+
+const paymentDateValue = document.getElementById("payment-date-value");
+const paymentFareValue = document.getElementById("payment-fare-value");
+
+const _date = new Date();
+
+paymentDateValue.textContent = `${_date.getFullYear()}-${(_date.getMonth()).toString().padStart(2, 0)}-${(_date.getDate()).toString().padStart(2, 0)}`;
+// paymentFareValue.textContent =
+
 // const submitReservationBtn = document.getElementById("submit-reservation");
 // submitReservationBtn.addEventListener("click", () => {
 //     fetch('/query/post-reservation', {

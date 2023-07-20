@@ -9,6 +9,10 @@ let infants = document.querySelector('.sticky-passenger-list-container').dataset
 let passengersToBook = totalPassengers - infants;
 let extras = 0;
 
+document.getElementById("pgIndicator1").classList.add('done');
+document.getElementById("pgIndicator2").classList.add('done');
+document.getElementById("pgIndicator3").classList.add('current');
+
 function getStatusText(element) {
     return document.getElementById(`${element.dataset.age}${element.dataset.number}statusText`);
 }
@@ -34,6 +38,19 @@ function getAllBookedSeats() {
         orderedBookedSeats['p' + i] = val;
         i++;
     }
+
+    console.log(document.querySelector('.sticky-passenger-list-container').dataset.infants);
+
+    let adultIdx = 1;
+    if (parseInt(infants) > 0) {
+        for (let j = i; j <= totalPassengers; j++) {
+            orderedBookedSeats['p' + j] = bookedSeats[`adult${adultIdx}`];
+            adultIdx++;
+        }
+    }
+
+    console.log(extras);
+    orderedBookedSeats['extras'] = extras * 350;
 
     return orderedBookedSeats;
 }
@@ -324,7 +341,7 @@ childPassengerContainer.forEach(container => {
 });
 
 seatsDoneBtn.addEventListener('click', () => {
-    // console.log(getAllBookedSeats());
+    console.log(getAllBookedSeats());
     fetch("/payment", {
         method: "POST",
         body: JSON.stringify(getAllBookedSeats())

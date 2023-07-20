@@ -1,5 +1,6 @@
 .payment-page-wrapper {
     // border: 1px solid red;
+    position: relative;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 0.5fr 1.5fr 1fr;
@@ -85,14 +86,19 @@
 
     .payment-pg-details {
         // border: 1px solid blue;
+        position: relative;
+        @include flex;
+        flex-direction: column;
+        height: fit-content;
 
         &__container {
             // border: 2px solid blue;
             width: 75%;
             // height: 100%;
-            place-self: start center;
             position: relative;
             display: grid;
+            grid-template-rows: auto auto;
+            place-self: center;
             gap: 0.5rem;
 
             .input-field {
@@ -133,23 +139,94 @@
     }
 
     .payment-pg-summary {
-        position: relative;
-        place-self: center;
+        // position: relative;
+        // height: 100%;
+        // place-self: center;
         .payment-summary {
-            @include flex(center, start);
+            // @include flex(space-around, start);
+            display: grid;
+            grid-template-rows: 0.75fr 0.1fr 2fr 0.1fr 0.5fr 0.5fr;
+            flex-direction: column;
             position: relative;
-            width: 100%;
+            width: 65%;
             height: 100%;
-            border: 1px solid red;
+            // border: 1px solid red;
+            background-color: $primary-button;
+            padding: 1rem; 
+            padding-inline: 2rem;
+            gap: 0.5rem;
+            border-radius: 5px;
 
             .payment-summary-heading {
-                border: 1px solid green;
-                @include flex(center);
-                flex-direction: column;
-                flex-grow: 1;
+                // border: 1px solid green;
+                @include flex(flex-start);
+                // flex-direction: column;
+                // flex-grow: 1;
+                gap: 0.5rem;
                 img {
                     width: 64px;
                     height: 64px;
+                }
+
+                &__title {
+                    @include font(1.2rem, 700);
+                    letter-spacing: -0.02em;
+                    color: white;
+                }
+
+                // &__date {
+                //     @include font(0.75rem, 400);
+                //     color: white;
+                // }
+            }
+
+            &-detail-container {
+                align-self: stretch;
+                @include flex(space-around);
+                flex-direction: column;
+                position: relative;
+            }
+            
+            &-detail {
+                position: relative;
+                width: 100%;
+                @include flex(space-between);
+                color: white;
+                font-size: 0.8rem;
+                letter-spacing: -0.01em;
+
+                .category {
+                    color: white;
+                    opacity: 0.5;
+                }
+            }
+
+            &-total {
+                @include flex(flex-end, center);
+                gap: 0.5rem;
+                color: white;
+
+                .total-text {
+                    @include font(0.75rem, 400);
+                }
+
+                .total-value {
+                    @include font(1.25rem, 700);
+                }
+            }
+
+            .payment-summary-line-break {
+                position: relative;
+                background-color: white;
+                height: 1px;
+                width: 100%;
+            }
+
+            &-btn {
+                .payment-btn {
+                    background-color: white;
+                    color: $primary-button;
+                    width: 100%;
                 }
             }
         }
