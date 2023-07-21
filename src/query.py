@@ -327,7 +327,7 @@ def search_airports():
                         OR continent_name LIKE '%{input}%' 
                         OR airport_code LIKE '%{input}%'
                         OR country_code LIKE '%{input}'
-                    ORDER BY municipality
+                    ORDER BY municipality;
                     ''')
                     
     returned = cursor.fetchall()
@@ -481,7 +481,7 @@ def get_country():
     cursor.execute(f'''
                     SELECT country_code
                     FROM `airport_t`
-                    WHERE iata_code = '{iata}';
+                    WHERE airport_code = '{iata}';
                    ''')
     rev = cursor.fetchall()
     return jsonify(rev)
@@ -515,7 +515,9 @@ def get_arrival_time():
     cursor.execute(f'''
                     SELECT TIME_FORMAT(f.eta, '%H:%i')
                     FROM itinerary_flight_t it, flight_t f, itinerary_t i
-                    WHERE it.itineraryCode = "{itineraryCode}" AND it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo;
+                    WHERE it.itineraryCode = "{itineraryCode}" 
+                    AND it.itineraryCode = i.itineraryCode 
+                    AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo;
                    ''')
     return jsonify(cursor.fetchall())
 
@@ -555,7 +557,8 @@ def get_seat():
                     from itinerary_t i, reservation_t r, ticket_t t
                     where i.itineraryCode = '{itineraryCode}' and i.itineraryCode = t.itineraryCode
                         and r.ticketid = t.ticketid 
-                        and t.departureDate = '{datetime.strptime(session['form_part_one']['departure-date'], '%Y-%m-%d').date()}';
+                        and t.departureDate = '{datetime.strptime(session['form_part_one']['departure-date'], 
+                                                                  '%Y-%m-%d').date()}';
                    ''')
     return jsonify(cursor.fetchall())
 
@@ -753,10 +756,11 @@ def get_min_max_duration():
     
     cursor = mysql.connection.cursor()
     cursor.execute(f'''
-                    SELECT min(i.duration), max(i.duration)
+                    SELECT MIN(i.duration), MAX(i.duration)
                     FROM itinerary_t i, itinerary_flight_t it, flight_t f
                     WHERE (I.source = "{session['form_part_one']['from-json']['iata']}"
-                    AND I.destination = "{session['form_part_one']['to-json']['iata']}") and i.itineraryCode = it.itineraryCode and it.flightNo = f.flightNo;
+                        AND I.destination = "{session['form_part_one']['to-json']['iata']}") 
+                        AND i.itineraryCode = it.itineraryCode and it.flightNo = f.flightNo;
                    ''')
     
     return jsonify(cursor.fetchall())

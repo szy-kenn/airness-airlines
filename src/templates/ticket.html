@@ -17,7 +17,7 @@
     <div class="splide" id="{{ id }}" role="group" aria-label="Splide Basic HTML Example">
         <div class="splide__track">
             <ul class="splide__list">
-                {% for j in range(1) %}
+                {% for j in range((form_part_one['passenger-adult'] | int) + (form_part_one['passenger-children'] | int) + (form_part_one['passenger-infant'] | int)) %}
                 <li class="splide__slide">
                     <div class="ticket_div" >
                         <div class="ticket-top">

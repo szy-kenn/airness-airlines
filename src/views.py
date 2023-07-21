@@ -64,7 +64,8 @@ def flights():
     cursor.execute(f'''
                     SELECT TIME_FORMAT(f.etd, '%H:%i')
                     FROM itinerary_t i, itinerary_flight_t it, flight_t f
-                    WHERE it.itineraryCode = i.itineraryCode AND it.flightOrder = 1 and f.flightNo = it.flightNo
+                    WHERE it.itineraryCode = i.itineraryCode 
+                        AND it.flightOrder = 1 and f.flightNo = it.flightNo
                     ORDER BY i.itineraryCode;
                    ''')
     
@@ -73,7 +74,8 @@ def flights():
     cursor.execute(f'''
                    SELECT TIME_FORMAT(f.eta, '%H:%i')
                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
-                   WHERE it.itineraryCode = i.itineraryCode AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
+                   WHERE it.itineraryCode = i.itineraryCode 
+                    AND it.flightOrder = i.flightCount and f.flightNo = it.flightNo
                    ORDER BY i.itineraryCode;
                    ''')
     
@@ -128,9 +130,19 @@ def get_filtered():
                             AND I.destination = "{session['form_part_one']['to-json']['iata']}")
                             AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
                             AND i.duration <= {filters['duration-to']} * 60 
-                            AND i.flightCount {'<=' if int(filters['stops']) < 2 else '>=' if int(filters['stops']) == 2 else '>='} {int(filters['stops']) + 1 if int(filters['stops']) != 3 else 0}
-                            AND it.flightOrder = 1 AND f.ETD BETWEEN '{filters['departure-from']}' AND '{filters['departure-to']}'
-                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                            AND i.flightCount 
+                                {'<=' if int(filters['stops']) < 2 
+                                    else '>=' if int(filters['stops']) == 2 
+                                    else '>='} 
+                                {int(filters['stops']) + 1 
+                                 if int(filters['stops']) != 3 
+                                 else 0}
+                            AND it.flightOrder = 1 AND f.ETD BETWEEN '{filters['departure-from']}' 
+                            AND '{filters['departure-to']}'
+                    ORDER BY {'basefare, i.duration' 
+                              if filters['sortBy'] == 'Best' 
+                              else 'basefare' if filters['sortBy'] == 'Cheapest' 
+                              else 'i.duration'};
                    ''')
     
     depart_time_list = cursor.fetchall()
@@ -155,9 +167,13 @@ def get_filtered():
     cursor.execute(f'''
                    SELECT TIME_FORMAT(f.eta, '%H:%i')
                    FROM itinerary_t i, itinerary_flight_t it, flight_t f
-                   WHERE i.itineraryCode IN ({", ".join(available_flights_iata)}) AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
+                   WHERE i.itineraryCode IN ({", ".join(available_flights_iata)}) 
+                        AND i.itineraryCode = it.itineraryCode AND it.flightNo = f.flightNo
                         AND it.flightOrder = i.flightCount
-                    ORDER BY {'basefare, i.duration' if filters['sortBy'] == 'Best' else 'basefare' if filters['sortBy'] == 'Cheapest' else 'i.duration'};
+                    ORDER BY {'basefare, i.duration' 
+                              if filters['sortBy'] == 'Best' 
+                              else 'basefare' if filters['sortBy'] == 'Cheapest' 
+                              else 'i.duration'};
                    ''')
 
     arrival_time_list = cursor.fetchall()
@@ -271,7 +287,12 @@ def confirmation():
     departureDate = cursor.fetchall()[0][0]
 
     cursor.execute(f'''
-                   SELECT CONCAT_WS(' ', CONCAT(UPPER(LEFT(firstName, 1)), MID(firstName, 2, LENGTH(firstName))), CONCAT(UPPER(LEFT(middleName, 1)), '.'), CONCAT(UPPER(LEFT(firstName, 1)), MID(lastName, 2, LENGTH(lastName))))
+                   SELECT CONCAT_WS(' ', CONCAT(UPPER(LEFT(firstName, 1)), 
+                        MID(firstName, 2, LENGTH(firstName))), 
+                        IF(LENGTH(middleName)>0, 
+                        CONCAT(UPPER(LEFT(middleName, 1)), '.'), ''), 
+                        CONCAT(UPPER(LEFT(lastName, 1)), 
+                        MID(lastName, 2, LENGTH(lastName))))
                    FROM passenger_t p, reservation_t r
                    WHERE r.ticketId = "{session['ticketId']}"
                         AND r.passengerId = p.passengerId;
@@ -285,7 +306,8 @@ def confirmation():
                    WHERE i.itineraryCode = it.itineraryCode 
                     AND i.itineraryCode = "{session['selected_itinerary']}"
                     AND f.flightNo = it.flightNo
-                    AND (f.source = a.iata_code OR (f.destination = a.iata_code AND it.flightOrder = i.flightCount))
+                    AND (f.source = a.iata_code 
+                    OR (f.destination = a.iata_code AND it.flightOrder = i.flightCount))
                     ORDER BY it.flightOrder;
                     ''')
 
