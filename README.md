@@ -10,7 +10,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
-![forthebadge](/assets/svg/uses-sql.svg "Uses SQL")
+![forthebadge](./assets/svg/uses-sql.svg "Uses SQL")
 ## About
 This repository only serves as the container for the web application's source code. This is not intended
 for local machine deployment or execution.
