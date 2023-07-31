@@ -13,10 +13,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
-## About
-This repository only serves as the container for the web application's source code. This is not intended
-for local machine deployment or execution.
-
 <div align="center">
 	<table>
 		<tr>
@@ -33,6 +29,9 @@ for local machine deployment or execution.
 	</table>
 </div>
 
+## About
+This repository only serves as the container for the web application's source code. This is not intended
+for local machine deployment or execution.
 ## Third Party Tools
 - [Skyscanner API](https://rapidapi.com/3b-data-3b-data-default/api/skyscanner44/pricing)
 - [Am5Charts Map Chart](https://www.amcharts.com/docs/v5/charts/map-chart/)
