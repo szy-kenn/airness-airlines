@@ -37,8 +37,13 @@
 ### Loading Page
 ![Loading Screen](/assets/screenshots/10.png)
 
+### About Us Section
+![About Us Section](/assets/screenshots/13.png)
 ### Contact Us Section
 ![Contact Us Section](/assets/screenshots/11.png)
+
+### Footer Section
+![Footer Section](/assets/screenshots/14.png)
 
 ## Additional Features
 - Real-time City Search Suggestions
@@ -82,5 +87,7 @@ for local machine deployment or execution.
 - [Splide](https://splidejs.com)
 - [Draggable](https://shopify.github.io/draggable/)
 
+## Main Contributors
+@szy-kenn (Lead Programmer)
 
 
