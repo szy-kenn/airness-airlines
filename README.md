@@ -88,12 +88,24 @@ for local machine deployment or execution.
 - [Draggable](https://shopify.github.io/draggable/)
 
 ## Main Contributors
-`@szy-kenn` - Project Leader, Lead Programmer
+`@szy-kenn` 
+- Project Leader
+- Lead Programmer
 
-`@JJCayabyab` - Programmer, coded <b>Contact Us</b>, <b>Footer Section</b>, <b>Boarding Pass</b>, and created a Python function for a primary key generator.
+`@JJCayabyab` 
+- Programmer
+- coded <b>Contact Us</b>, <b>Footer Section</b>, and <b>Boarding Pass</b>
+- created a Python function for a primary key generator
+- created a query for airport search
 
-`@qwoop` - Programmer, coded Python functions for inserting data in MySQL database, and made the <b>Loading Page</b>.
+`@qwoop` 
+- Programmer
+- coded Python functions for inserting data in MySQL database
+- made the <b>Loading Page</b>
 
-`@DCqt33` - Programmer, coded <b>About Us Section</b>.
+`@DCqt33` 
+- Programmer
+- coded <b>About Us Section</b>
+- provided data and images for all available airports
 
 
