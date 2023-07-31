@@ -28,6 +28,9 @@
 ### Choose Seats
 ![Choose Seats](/assets/screenshots/8.png)
 
+### Payment Section
+![Payment Section](/assets/screenshots/12.png)
+
 ### Boarding Pass
 ![Boarding Pass](/assets/screenshots/9.png)
 
@@ -36,6 +39,13 @@
 
 ### Contact Us Section
 ![Contact Us Section](/assets/screenshots/11.png)
+
+## Additional Features
+- Real-time City Search Suggestions
+- Filter Search by Country, Continent, etc.
+- Filter Available Flights by Cheapest, Fastest, No. of Stops, Duration, Departure Time
+- Extra Leg Room on some seats (with extra costs)
+- Collapse/Expand Forms
 
 ## Web Application Structure
 ![Web Application Structure](/assets/img/structure.png "Web Application Structure")
