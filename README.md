@@ -88,6 +88,9 @@ for local machine deployment or execution.
 - [Draggable](https://shopify.github.io/draggable/)
 
 ## Main Contributors
-@szy-kenn (Lead Programmer)
+`@szy-kenn` - Project Leader, Lead Programmer
+`@JJCayabyab` - Programmer, coded <b>Contact Us</b>, <b>Footer Section</b>, and <b>Boarding Pass</b>
+`@qwoop` - Programmer, coded Python functions for inserting data in MySQL database, and made the <b>Loading Page</b>
+`@DCqt33` - Programmer, coded <b>About Us Section</b>
 
 
