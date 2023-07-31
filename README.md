@@ -19,6 +19,23 @@
 ### Choose a Flight
 ![Choose a Flight](/assets/screenshots/5.png)
 
+### See Detailed Route
+![See Detailed Route](/assets/screenshots/6.png)
+
+### Input Passenger Details
+![Input Passenger Details](/assets/screenshots/7.png)
+
+### Choose Seats
+![Choose Seats](/assets/screenshots/8.png)
+
+### Boarding Pass
+![Boarding Pass](/assets/screenshots/9.png)
+
+### Loading Page
+![Loading Screen](/assets/screenshots/10.png)
+
+### Contact Us Section
+![Contact Us Section](/assets/screenshots/11.png)
 
 ## Web Application Structure
 ![Web Application Structure](/assets/img/structure.png "Web Application Structure")
