@@ -8,9 +8,11 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](/assets/svg/uses-sql.svg)](https://forthebadge.com)
+
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
-[![forthebadge](/assets/svg/uses-sql.svg)](https://forthebadge.com)
+
 ## About
 This repository only serves as the container for the web application's source code. This is not intended
 for local machine deployment or execution.
