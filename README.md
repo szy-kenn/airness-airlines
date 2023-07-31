@@ -2,7 +2,11 @@
 <h3 align='center'>A Web Application Project for the course <b>COMP 20093 - Information Management</b> from Polytechnic University of the Philippines.</h3>
 
 ---
+
+### Landing Page
 ![Home Page](/assets/screenshots/1.png)
+
+### Search a Flight Section
 ![Home Page](/assets/screenshots/2.png)
 
 ## Web Application Structure
