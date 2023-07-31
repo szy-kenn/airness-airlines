@@ -2,6 +2,8 @@
 <h3 align='center'>A Web Application Project for the course <b>COMP 20093 - Information Management</b> from Polytechnic University of the Philippines.</h3>
 
 ---
+![Home Page](/assets/screenshots/1.png)
+![Home Page](/assets/screenshots/2.png)
 
 ## Web Application Structure
 ![Web Application Structure](/assets/img/structure.png "Web Application Structure")
@@ -32,6 +34,10 @@
 ## About
 This repository only serves as the container for the web application's source code. This is not intended
 for local machine deployment or execution.
+
+## Overview
+
+
 ## Third Party Tools
 - [Skyscanner API](https://rapidapi.com/3b-data-3b-data-default/api/skyscanner44/pricing)
 - [Am5Charts Map Chart](https://www.amcharts.com/docs/v5/charts/map-chart/)
