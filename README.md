@@ -35,6 +35,8 @@ for local machine deployment or execution.
 ## Third Party Tools
 - [Skyscanner API](https://rapidapi.com/3b-data-3b-data-default/api/skyscanner44/pricing)
 - [Am5Charts Map Chart](https://www.amcharts.com/docs/v5/charts/map-chart/)
+- [Splide](https://splidejs.com)
+- [Draggable](https://shopify.github.io/draggable/)
 
 
 
