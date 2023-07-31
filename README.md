@@ -10,12 +10,10 @@
 This repository only serves as the container for the web application's source code. This is not intended
 for local machine deployment or execution.
 
-## Languages Used
-- HTML5
-- CSS3
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
-- Python
-- SQL
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
 ## Main Web Tech Tools
 - SASS (CSS Pre-processor)
