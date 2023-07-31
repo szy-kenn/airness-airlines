@@ -4,10 +4,16 @@
 ---
 
 ### Landing Page
-![Home Page](/assets/screenshots/1.png)
+![Landing Page](/assets/screenshots/1.png)
 
 ### Search a Flight Section
-![Home Page](/assets/screenshots/2.png)
+![Search a Flight Section](/assets/screenshots/2.png)
+
+### Point to a City/Country
+![Point to a City/Country](/assets/screenshots/3.png)
+
+### Source to Destination Trajectory
+![Source to Destination Trajectory](/assets/screenshots/4.png)
 
 ## Web Application Structure
 ![Web Application Structure](/assets/img/structure.png "Web Application Structure")
